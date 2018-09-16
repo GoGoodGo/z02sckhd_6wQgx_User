@@ -1,6 +1,6 @@
 {
   "name": "z02sckhd_6wQgx_User",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "summary": "TM User.",
   "description": "TM User framework",
   "homepage": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git",
-    "tag": "1.0.0"
+    "tag": "1.1.0"
   },
   "swift_version": "4.1",
   "platforms": {
@@ -58,7 +58,7 @@
       "~> 16.0"
     ],
     "YHTool": [
-      "~> 1.0.3"
+      "~> 1.1.1"
     ],
     "MJRefresh": [
       "~> 3.1.12"

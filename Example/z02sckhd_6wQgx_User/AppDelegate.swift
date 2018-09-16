@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import YHTool
 import z02sckhd_6wQgx_User
 
 @UIApplicationMain

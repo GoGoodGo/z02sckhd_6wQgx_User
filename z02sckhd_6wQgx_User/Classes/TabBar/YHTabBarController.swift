@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YHTool
 
 public class YHTabBarController: UITabBarController {
 
