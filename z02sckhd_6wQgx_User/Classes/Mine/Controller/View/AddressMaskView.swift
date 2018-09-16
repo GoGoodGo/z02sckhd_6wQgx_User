@@ -22,7 +22,7 @@ class AddressMaskView: UIView {
     // MARK: - XIB View
     public class func maskView() -> Any? {
         
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
+        return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

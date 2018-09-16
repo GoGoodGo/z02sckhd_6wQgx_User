@@ -26,7 +26,7 @@ class EvaluateSectionHeader: UIView {
     
     public class func evaluateHeader() -> Any? {
         
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
+        return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
 
     @IBAction func action_showAll() {

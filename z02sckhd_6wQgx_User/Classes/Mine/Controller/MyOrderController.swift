@@ -42,8 +42,8 @@ class MyOrderController: UIViewController {
         tableView.sectionFooterHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         tableView.estimatedSectionFooterHeight = 50
-        tableView.register(UINib.init(nibName: CellName(MyOrderCell.self), bundle: nil), forCellReuseIdentifier: CellName(MyOrderCell.self))
-        tableView.register(UINib.init(nibName: CellName(NotEvaluateCell.self), bundle: nil), forCellReuseIdentifier: CellName(NotEvaluateCell.self))
+        tableView.register(UINib.init(nibName: CellName(MyOrderCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(MyOrderCell.self))
+        tableView.register(UINib.init(nibName: CellName(NotEvaluateCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(NotEvaluateCell.self))
         
         load()
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
@@ -88,7 +88,7 @@ class MyOrderController: UIViewController {
     /** 立即付款 */
     func loadPay(section: Int) {
         
-        let onlinePay = OnlinePayController()
+        let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: bundle(type(of: self)))
         onlinePay.mid = (orderInfo?.result[section].mid)!
         onlinePay.orderSN = (orderInfo?.result[section].order_sn)!
         onlinePay.amount = (orderInfo?.result[section].order_amount)!
@@ -140,7 +140,7 @@ class MyOrderController: UIViewController {
     }
     /** 订单详情 */
     private func orderDetial(section: Int) {
-        let orderDetial = OrderDetialController()
+        let orderDetial = OrderDetialController.init(nibName: "OrderDetialController", bundle: bundle(type(of: self)))
         orderDetial.orderResult = orderInfo?.result[section]
         navigationController?.pushViewController(orderDetial, animated: true)
     }
@@ -171,7 +171,7 @@ class MyOrderController: UIViewController {
                     self?.loadCancel(section: footer.section)
                 }, cancelHandler: nil)
             case 2: // 查看物流
-                let logisticsCtrl = LogisticsController()
+                let logisticsCtrl = LogisticsController.init(nibName: "LogisticsController", bundle: bundle(type(of: self) as! AnyClass))
                 self?.navigationController?.pushViewController(logisticsCtrl, animated: true)
             default: return
             }
@@ -205,7 +205,7 @@ class MyOrderController: UIViewController {
     }
     private func callbacks(cell: NotEvaluateCell) {
         cell.evaluateBlock = { [weak self] (cell, goods) in
-            let evaluateCtrl = EvaluateController()
+            let evaluateCtrl = EvaluateController.init(nibName: "EvaluateController", bundle: bundle(type(of: self) as! AnyClass))
             evaluateCtrl.evaluate = goods
             self?.navigationController?.pushViewController(evaluateCtrl, animated: true)
         }
@@ -244,7 +244,7 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MyOrderCell.self)) as! MyOrderCell
-            cell.type = currentIndex
+            cell.cellType = currentIndex
             cell.orders = (orderInfo?.result[indexPath.section]._orders)!
             
             return cell

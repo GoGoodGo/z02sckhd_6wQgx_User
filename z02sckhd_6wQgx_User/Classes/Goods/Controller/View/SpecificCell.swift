@@ -27,7 +27,7 @@ class SpecificCell: UITableViewCell {
         
         layout.itemSize = CGSize.init(width: 70, height: 25)
         
-        collectionView.register(UINib.init(nibName: CellName(GoodsParameterCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(GoodsParameterCell.self))
+        collectionView.register(UINib.init(nibName: CellName(GoodsParameterCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(GoodsParameterCell.self))
         
         collectionView.delegate = self
         collectionView.dataSource = self

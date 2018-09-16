@@ -55,9 +55,9 @@ class StoreController: UIViewController {
         layout.itemSize = CGSize.init(width: width, height: height)
         layout.sectionInset = UIEdgeInsets.init(top: gap, left: gap, bottom: gap, right: gap)
         
-        collectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
-        collectionView.register(UINib.init(nibName: CellName(SectionHeaderReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: SectionHeaderReusableView.self))
-        collectionView.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: SegmentReusableView.self))
+        collectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
+        collectionView.register(UINib.init(nibName: CellName(SectionHeaderReusableView.self), bundle: bundle(type(of: self))), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: SectionHeaderReusableView.self))
+        collectionView.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: bundle(type(of: self))), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: SegmentReusableView.self))
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -279,7 +279,7 @@ extension StoreController: UICollectionViewDelegate, UICollectionViewDataSource,
     
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let goodsDetialCtrl = GoodsDetialController()
+        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: bundle(type(of: self)))
         goodsDetialCtrl.ID = indexPath.section == 0 ? recommends[indexPath.row].goods_id : goodsList[indexPath.row].goods_id
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }

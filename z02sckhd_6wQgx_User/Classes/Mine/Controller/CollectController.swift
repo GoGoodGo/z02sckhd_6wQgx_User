@@ -39,8 +39,8 @@ class CollectController: UIViewController {
         layout.itemSize = CGSize.init(width: width, height: getHeight(index: 0))
         layout.sectionInset = UIEdgeInsets.init(top: gap, left: gap, bottom: gap, right: gap)
         
-        collectionView.register(UINib.init(nibName: CellName(CollectGoodsCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(CollectGoodsCell.self))
-        collectionView.register(UINib.init(nibName: CellName(CollectStoreCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(CollectStoreCell.self))
+        collectionView.register(UINib.init(nibName: CellName(CollectGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(CollectGoodsCell.self))
+        collectionView.register(UINib.init(nibName: CellName(CollectStoreCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(CollectStoreCell.self))
         
         collectionView.delegate = self
         collectionView.dataSource = self

@@ -12,7 +12,7 @@ import YHTool
 class MyOrderCell: UITableViewCell {
     
     @IBOutlet weak var tableView: UITableView!
-    var type = 0
+    var cellType = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +24,7 @@ class MyOrderCell: UITableViewCell {
     private func setupUI() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: nil), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
+        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
     }
     
     // MARK: - Setter
@@ -62,7 +62,7 @@ extension MyOrderCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = MyOrderHeader.headerView() as! MyOrderHeader
-        header.type = type
+        header.type = cellType
         header.order = orders[section]
         
         return header

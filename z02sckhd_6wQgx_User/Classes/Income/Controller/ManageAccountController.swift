@@ -18,7 +18,7 @@ class ManageAccountController: UIViewController {
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var accountTypeView: UIView!
     
-    var type = "" // 账户类型
+    var accountType = "" // 账户类型
     var types = ["支付宝", "微信", "银联"]
     var accountData: AccountData?
     var tag = 0 // 操作类型
@@ -34,7 +34,7 @@ class ManageAccountController: UIViewController {
     // MARK: - PrivateMethod
     private func setupUI() {
         
-        tableView.register(UINib.init(nibName: CellName(WithdrawAccountCell.self), bundle: nil), forCellReuseIdentifier: CellName(WithdrawAccountCell.self))
+        tableView.register(UINib.init(nibName: CellName(WithdrawAccountCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(WithdrawAccountCell.self))
         header.addSubview(pullDownView)
         callbacksPullDown()
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
@@ -78,7 +78,7 @@ class ManageAccountController: UIViewController {
     /** 新增账户 */
     func loadAdd(number: String) {
         showHUD()
-        getRequest(baseUrl: AddAccount_URL, params: ["token" : Singleton.shared.token, "type" : type, "number" : number, "is_default" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddAccount_URL, params: ["token" : Singleton.shared.token, "type" : accountType, "number" : number, "is_default" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
@@ -92,7 +92,7 @@ class ManageAccountController: UIViewController {
     /** 编辑账户 */
     func loadEdit(number: String) {
         showHUD()
-        getRequest(baseUrl: EditAccount_URL, params: ["token" : Singleton.shared.token, "type" : type, "number" : number, "id" : currentID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: EditAccount_URL, params: ["token" : Singleton.shared.token, "type" : accountType, "number" : number, "id" : currentID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
@@ -144,7 +144,7 @@ class ManageAccountController: UIViewController {
         if tag == 1 {
             loadEdit(number: textField.text!)
         } else {
-            if type.isEmpty {
+            if accountType.isEmpty {
                 showAutoHideHUD(message: "请选择账户类型！")
                 return
             }
@@ -159,7 +159,7 @@ class ManageAccountController: UIViewController {
     private func callbacksPullDown() {
         pullDownView.selectedRowBlock = { [weak self] (title, index) in
             self?.option.setTitle(title, for: .normal)
-            self?.type = "\(index + 1)"
+            self?.accountType = "\(index + 1)"
         }
     }
     
@@ -174,7 +174,7 @@ class ManageAccountController: UIViewController {
             case 0:
                 self?.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
             case 1:
-                self?.type = (account?.type)!
+                self?.accountType = (account?.type)!
                 self?.option.setTitle(self?.types[Int((account?.type)!)! - 1], for: .normal)
                 self?.textField.text = account?.number
                 self?.tableView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)

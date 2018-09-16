@@ -86,7 +86,7 @@ class ApplyWithdrawController: UIViewController {
     }
     
     @IBAction func action_management() {
-        let manageAccount = ManageAccountController()
+        let manageAccount = ManageAccountController.init(nibName: "ManageAccountController", bundle: bundle(type(of: self)))
         navigationController?.pushViewController(manageAccount, animated: true)
     }
     

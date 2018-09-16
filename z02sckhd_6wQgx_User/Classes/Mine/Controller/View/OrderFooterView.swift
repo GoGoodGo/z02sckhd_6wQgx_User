@@ -40,7 +40,7 @@ class OrderFooterView: UIView {
 
     public class func footerView() -> Any? {
         
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
+        return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

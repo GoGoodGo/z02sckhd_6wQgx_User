@@ -17,7 +17,7 @@ class OrderSectionHeader: UIView {
     // MARK: - XIB View
     public class func header() -> Any? {
         
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
+        return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
     
     // MARK: - Setter

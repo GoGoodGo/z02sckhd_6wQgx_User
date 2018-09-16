@@ -43,8 +43,8 @@ class OnlinePayController: UIViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
-        tableView.register(UINib.init(nibName: CellName(OnlinePayOrderInfoCell.self), bundle: nil), forCellReuseIdentifier: CellName(OnlinePayOrderInfoCell.self))
-        tableView.register(UINib.init(nibName: CellName(OnlinePayWayCell.self), bundle: nil), forCellReuseIdentifier: CellName(OnlinePayWayCell.self))
+        tableView.register(UINib.init(nibName: CellName(OnlinePayOrderInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(OnlinePayOrderInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(OnlinePayWayCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(OnlinePayWayCell.self))
     }
     /** 订单支付 */
     func loadPay(type: String) {
@@ -135,7 +135,7 @@ class OnlinePayController: UIViewController {
     
     /** 支付成功 */
     func paySuccess() {
-        let paySuccess = PaySuccessController()
+        let paySuccess = PaySuccessController.init(nibName: "PaySuccessController", bundle: bundle(type(of: self)))
         navigationController?.pushViewController(paySuccess, animated: true)
     }
 }

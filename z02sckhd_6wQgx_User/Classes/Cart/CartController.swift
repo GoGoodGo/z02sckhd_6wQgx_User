@@ -40,7 +40,7 @@ public class CartController: UIViewController {
         tableView.estimatedSectionFooterHeight = 50
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
-        tableView.register(UINib.init(nibName: CellName(CartGoodsCell.self), bundle: nil), forCellReuseIdentifier: CellName(CartGoodsCell.self))
+        tableView.register(UINib.init(nibName: CellName(CartGoodsCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(CartGoodsCell.self))
         tableView.allowsMultipleSelection = true
         
         load()
@@ -253,7 +253,7 @@ public class CartController: UIViewController {
         getRequest(baseUrl: CartSubmit_URL, params: ["token" : Singleton.shared.token], success: { [weak self] (obj: CartOrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
-                let confirmOrder = ConfirmOrderController()
+                let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: bundle(type(of: self) as! AnyClass))
                 confirmOrder.orderInfo = obj
                 self?.navigationController?.pushViewController(confirmOrder, animated: true)
             } else {

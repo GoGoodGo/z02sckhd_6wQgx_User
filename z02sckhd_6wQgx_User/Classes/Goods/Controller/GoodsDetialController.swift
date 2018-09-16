@@ -32,7 +32,7 @@ class GoodsDetialController: UIViewController {
     let bannerHeight: CGFloat = 280
     var ID = ""
     var specID = ""
-    var type: DetialType = .detial
+    var detialType: DetialType = .detial
     
     var goodsDetial: GoodsDetial?
     var salesDetial: SalesDetialData?
@@ -66,17 +66,17 @@ class GoodsDetialController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        tableView.register(UINib.init(nibName: CellName(DetialBaseInfoCell.self), bundle: nil), forCellReuseIdentifier: CellName(DetialBaseInfoCell.self))
-        tableView.register(UINib.init(nibName: CellName(SpecificCell.self), bundle: nil), forCellReuseIdentifier: CellName(SpecificCell.self))
-        tableView.register(UINib.init(nibName: CellName(TimelimitBaseInfoCell.self), bundle: nil), forCellReuseIdentifier: CellName(TimelimitBaseInfoCell.self))
-        tableView.register(UINib.init(nibName: CellName(AuctionBaseInfoCell.self), bundle: nil), forCellReuseIdentifier: CellName(AuctionBaseInfoCell.self))
-        tableView.register(UINib.init(nibName: CellName(GoodsCreditCell.self), bundle: nil), forCellReuseIdentifier: CellName(GoodsCreditCell.self))
-        tableView.register(UINib.init(nibName: CellName(GoodsEvaluateCell.self), bundle: nil), forCellReuseIdentifier: CellName(GoodsEvaluateCell.self))
-        tableView.register(UINib.init(nibName: CellName(GoodsDetialCell.self), bundle: nil), forCellReuseIdentifier: CellName(GoodsDetialCell.self))
-        tableView.register(UINib.init(nibName: CellName(AuctionRecordCell.self), bundle: nil), forCellReuseIdentifier: CellName(AuctionRecordCell.self))
+        tableView.register(UINib.init(nibName: CellName(DetialBaseInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(DetialBaseInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(SpecificCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(SpecificCell.self))
+        tableView.register(UINib.init(nibName: CellName(TimelimitBaseInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(TimelimitBaseInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(AuctionBaseInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(AuctionBaseInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(GoodsCreditCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(GoodsCreditCell.self))
+        tableView.register(UINib.init(nibName: CellName(GoodsEvaluateCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(GoodsEvaluateCell.self))
+        tableView.register(UINib.init(nibName: CellName(GoodsDetialCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(GoodsDetialCell.self))
+        tableView.register(UINib.init(nibName: CellName(AuctionRecordCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(AuctionRecordCell.self))
         
         tableView.tableHeaderView = carouselView
-        switch type {
+        switch detialType {
         case .auction:
             loadAuction()
         case .groupBuy:
@@ -90,14 +90,14 @@ class GoodsDetialController: UIViewController {
     }
     
     private func footerSetup() {
-        if type != .auction && type != .auctionSuccess {
+        if detialType != .auction && detialType != .auctionSuccess {
             auctionView.isHidden = true
         }
-        if type == .timelimit || type == .detial {
+        if detialType == .timelimit || detialType == .detial {
             groupbuyView.isHidden = true
             participate.isHidden = true
             participativeNum.isHidden = true
-            if type == .timelimit {
+            if detialType == .timelimit {
                 addCartBtn.isHidden = true
             }
         }
@@ -257,7 +257,7 @@ class GoodsDetialController: UIViewController {
     }
     
     @IBAction func action_store() {
-        let storeCtrl = StoreController()
+        let storeCtrl = StoreController.init(nibName: "StoreController", bundle: bundle(type(of: self)))
         storeCtrl.ID = (goodsDetial?.sid)!
         navigationController?.pushViewController(storeCtrl, animated: true)
     }
@@ -279,7 +279,7 @@ class GoodsDetialController: UIViewController {
     }
     /** 立即购买 */
     @IBAction func action_buy(_ sender: UIButton) {
-        switch type {
+        switch detialType {
         case .detial:
             goodsBuy()
         case .auction:
@@ -380,7 +380,7 @@ class GoodsDetialController: UIViewController {
     func submit(flowType: String) {
         getRequest(baseUrl: CartSubmit_URL, params: ["token" : Singleton.shared.token, "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
             if "success" == obj.status {
-                let confirmOrder = ConfirmOrderController()
+                let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: bundle(type(of: self) as! AnyClass))
                 confirmOrder.flowType = flowType
                 confirmOrder.orderInfo = obj
                 self?.navigationController?.pushViewController(confirmOrder, animated: true)
@@ -409,39 +409,39 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDataSorce
     func numberOfSections(in tableView: UITableView) -> Int {
-        if type == .auction || type == .auctionSuccess {
+        if detialType == .auction || detialType == .auctionSuccess {
             return 4
         }
         return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if type == .auction || type == .auctionSuccess {
+        if detialType == .auction || detialType == .auctionSuccess {
             return section == 3 || section == 0 ? 1 : section == 1 ? 2 : comments.count
         }
-        return section == 2 ? 1 : section == 1 ? comments.count : type == .detial ? 3 : 2
+        return section == 2 ? 1 : section == 1 ? comments.count : detialType == .detial ? 3 : 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard type == .auction || type == .auctionSuccess else {
+        guard detialType == .auction || detialType == .auctionSuccess else {
             switch indexPath.section {
             case 0:
                 if indexPath.row == 0 {
-                    if type == .detial {
+                    if detialType == .detial {
                         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(DetialBaseInfoCell.self)) as! DetialBaseInfoCell
                         cell.goodsDetial = goodsDetial
                         
                         return cell
                     } else {
                         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(TimelimitBaseInfoCell.self)) as! TimelimitBaseInfoCell
-                        cell.type = type
+                        cell.type = detialType
                         cell.result = salesDetial
                         
                         return cell
                     }
                 } else {
-                    if type == .detial && indexPath.row == 1 {
+                    if detialType == .detial && indexPath.row == 1 {
                         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(SpecificCell.self)) as! SpecificCell
                         callbacks(cell: cell)
                         cell.specs = specs
@@ -494,10 +494,10 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = EvaluateSectionHeader.evaluateHeader() as! EvaluateSectionHeader
-        if type == .auction || type == .auctionSuccess {
+        if detialType == .auction || detialType == .auctionSuccess {
             switch section {
             case 1:
-                if type == .auction || type == .auctionSuccess {
+                if detialType == .auction || detialType == .auctionSuccess {
                     view.sectionType = .auction
                 }
             case 3:

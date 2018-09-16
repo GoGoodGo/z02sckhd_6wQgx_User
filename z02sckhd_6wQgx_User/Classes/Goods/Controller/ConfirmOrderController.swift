@@ -42,8 +42,8 @@ class ConfirmOrderController: UIViewController {
         tableView.estimatedSectionFooterHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
-        tableView.register(UINib.init(nibName: CellName(ConfirmAddressCell.self), bundle: nil), forCellReuseIdentifier: CellName(ConfirmAddressCell.self))
-        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: nil), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
+        tableView.register(UINib.init(nibName: CellName(ConfirmAddressCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(ConfirmAddressCell.self))
+        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
         tableView.allowsMultipleSelection = true
         
         getConsignee()
@@ -76,7 +76,7 @@ class ConfirmOrderController: UIViewController {
         getRequest(baseUrl: OrderDone_URL, params: ["token" : Singleton.shared.token, "flow_type" : flowType, "address_id" : (consignee?.address_id)!], success: { [weak self] (obj: OrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
-                let onlinePay = OnlinePayController()
+                let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: bundle(type(of: self) as! AnyClass))
                 onlinePay.mid = (obj.data?.order_id)!
                 onlinePay.orderSN = (obj.data?.order_sn)!
                 onlinePay.amount = "\(self?.orderInfo?.data?.total?.goods_price ?? 0.00)"
@@ -136,7 +136,7 @@ extension ConfirmOrderController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let address = AddressController()
+            let address = AddressController.init(nibName: "AddressController", bundle: bundle(type(of: self)))
             address.selectedAddress = { [weak self] (model, index) in
                 self?.consignee = model
                 tableView.reloadData()

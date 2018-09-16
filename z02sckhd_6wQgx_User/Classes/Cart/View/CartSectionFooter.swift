@@ -16,7 +16,7 @@ class CartSectionFooter: UIView {
     // MARK: - XIB View
     public class func sectionFooter() -> Any? {
         
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
+        return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
 
 }

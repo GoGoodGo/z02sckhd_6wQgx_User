@@ -36,8 +36,8 @@ class EvaluateGoodsCell: UITableViewCell {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib.init(nibName: CellName(GoodsImgCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(GoodsImgCell.self))
-        collectionView.register(UINib.init(nibName: CellName(AddImageCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(AddImageCell.self))
+        collectionView.register(UINib.init(nibName: CellName(GoodsImgCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(GoodsImgCell.self))
+        collectionView.register(UINib.init(nibName: CellName(AddImageCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(AddImageCell.self))
     }
     
     // MARK: - Setter

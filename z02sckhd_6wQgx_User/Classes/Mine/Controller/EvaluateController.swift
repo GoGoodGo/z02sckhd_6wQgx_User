@@ -42,8 +42,8 @@ class EvaluateController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        tableView.register(UINib.init(nibName: CellName(EvaluateGoodsCell.self), bundle: nil), forCellReuseIdentifier: CellName(EvaluateGoodsCell.self))
-        tableView.register(UINib.init(nibName: CellName(StarRatingCell.self), bundle: nil), forCellReuseIdentifier: CellName(StarRatingCell.self))
+        tableView.register(UINib.init(nibName: CellName(EvaluateGoodsCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(EvaluateGoodsCell.self))
+        tableView.register(UINib.init(nibName: CellName(StarRatingCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(StarRatingCell.self))
         
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 20, right: 0)
     }

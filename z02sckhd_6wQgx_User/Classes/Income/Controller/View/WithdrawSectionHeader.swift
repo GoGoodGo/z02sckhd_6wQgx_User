@@ -12,7 +12,7 @@ class WithdrawSectionHeader: UIView {
 
     public class func sectionHeader() -> Any? {
         
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
+        return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
     
     

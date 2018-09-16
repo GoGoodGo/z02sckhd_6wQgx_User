@@ -11,6 +11,13 @@ import Foundation
 let BASE_URL = "http://shop.dktoo.com/lee/"
 let IMG_URL = ""
 
+public let bundle: (AnyClass) -> Bundle = { any in
+    
+    let bundle = Bundle.init(for: any)
+    let url = bundle.url(forResource: "z02sckhd_6wQgx_User", withExtension: "bundle")
+    return Bundle.init(url: url!)!
+}
+
 /** 商品 */
 
 // 商品分类

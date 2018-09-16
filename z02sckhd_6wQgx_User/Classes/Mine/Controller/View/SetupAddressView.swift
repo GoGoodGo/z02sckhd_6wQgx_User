@@ -66,7 +66,7 @@ class SetupAddressView: UIView {
     // MARK: - XIB View
     public class func addressView() -> Any? {
         
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
+        return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,7 +84,7 @@ class SetupAddressView: UIView {
     }
     /** 获取地址信息 */
     private func getAddress() {
-        let path = Bundle.main.path(forResource: "Address", ofType: "plist")
+        let path = bundle(type(of: self)).path(forResource: "Address", ofType: "plist")
         address = NSDictionary.init(contentsOfFile: path!)
     }
     
@@ -141,7 +141,7 @@ class SetupAddressView: UIView {
     
     @IBAction func action_sure() {
         if let click = sure {
-            click(name.text!, phone.text!, detailAddress.text!, type)
+            click(name.text!, phone.text!, detailAddress.text!, addressType)
         }
     }
     
@@ -163,7 +163,7 @@ class SetupAddressView: UIView {
     // MARK: - Setter
     var addressModel: Address? {
         didSet {
-            if type == .add { return }
+            if addressType == .add { return }
             name.text = addressModel?.consignee
             phone.text = addressModel?.tel
             detailAddress.text = addressModel?.address_name
@@ -176,9 +176,9 @@ class SetupAddressView: UIView {
         }
     }
     
-    var type: AddressType = .edit {
+    var addressType: AddressType = .edit {
         didSet {
-            switch type {
+            switch addressType {
             case .add:
                 title.text = "请添加收货地址"
                 sureBtn.setTitle("确认添加", for: .normal)

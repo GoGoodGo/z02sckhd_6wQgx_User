@@ -10,15 +10,13 @@ import YHTool
 
 public class YHTabBarController: UITabBarController {
 
-    let vcNameList = ["HomeController", "GoodsController", "CartController", "IncomeController", "MineController"]
+    let vcNameList = [".HomeController", ".GoodsController", "CartController", "IncomeController", "MineController"]
     let titleList = ["首页", "商品", "购物车", "收益", "我的"]
     let normalImgList = ["ico_img_indexw.png", "ico_img_spw.png", "ico_img_gwcw.png", "ico_img_wdsyw.png", "ico_img_wdw.png"]
     let selectedImgList = ["ico_img_index.png", "ico_img_sp.png", "ico_img_gwc.png", "ico_img_wdsy.png", "ico_img_wd.png"]
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         setupSubviews()
     }
@@ -30,22 +28,30 @@ public class YHTabBarController: UITabBarController {
         itemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : HexString("#cccccc")], for: .normal)
         itemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : HexString("#ff5863")], for: .selected)
         
-        for index in 0 ..< self.vcNameList.count {
+        for (index, name) in vcNameList.enumerated() {
             
-            let vcName = self.vcNameList[index]
-            let VC = (NSClassFromString(NameSpace + vcName) as! UIViewController.Type).init()
-            VC.tabBarItem.title = self.titleList[index]
-            VC.tabBarItem.image = UIImage.init(named: self.normalImgList[index])
-            VC.tabBarItem.selectedImage = UIImage.init(named: self.selectedImgList[index])?.withRenderingMode(.alwaysOriginal)
-            let navigationCtrl = YHNavigaitonController.init(rootViewController: VC)
+            let bundle = Bundle.init(for: type(of: self))
+            let ctrlName = bundle.infoDictionary!["CFBundleExecutable"] as! String + name
+            
+            var VC: UIViewController? = nil
+            if index >= 2 {
+                let url = bundle.url(forResource: "z02sckhd_6wQgx_User", withExtension: "bundle")
+                
+                VC = (NSClassFromString(bundle.infoDictionary!["CFBundleExecutable"] as! String + "." + name) as! UIViewController.Type).init(nibName: name, bundle: Bundle.init(url: url!))
+            } else {
+                VC = (NSClassFromString(ctrlName) as! UIViewController.Type).init()
+            }
+            
+            VC?.tabBarItem.title = self.titleList[index]
+            VC?.tabBarItem.image = UIImage.init(named: self.normalImgList[index])
+            VC?.tabBarItem.selectedImage = UIImage.init(named: self.selectedImgList[index])?.withRenderingMode(.alwaysOriginal)
+            let navigationCtrl = YHNavigaitonController.init(rootViewController: VC!)
             navigationCtrl.title = self.titleList[index]
             
             addChildViewController(navigationCtrl)
         }
         self.setValue(YHTabBar(), forKeyPath: "tabBar")
     }
-    
-
     
     
     

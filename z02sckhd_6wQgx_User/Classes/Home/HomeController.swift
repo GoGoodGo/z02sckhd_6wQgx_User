@@ -200,7 +200,7 @@ public class HomeController: UIViewController {
     @objc private func action_search() {
         
         isShowSearchBar(isShow: false)
-        let searchCtrl = SearchController()
+        let searchCtrl = SearchController.init(nibName: "SearchController", bundle: bundle(type(of: self)))
         navigationController?.pushViewController(searchCtrl, animated: true)
     }
     
@@ -218,7 +218,7 @@ public class HomeController: UIViewController {
     private func callbacksHeader(header: HomeHeaderView) {
         header.clickItemBlock = { [weak self] index in
             let category = self?.categorys[index]
-            let typeCtrl = SecondaryTypesController()
+            let typeCtrl = SecondaryTypesController.init(nibName: "SecondaryTypesController", bundle: bundle(type(of: self) as! AnyClass))
             typeCtrl.pID = (category?.id)!
             self?.navigationController?.pushViewController(typeCtrl, animated: true)
         }
@@ -236,13 +236,13 @@ public class HomeController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: HEIGHT), collectionViewLayout:self.layout)
-        view.register(UINib.init(nibName: CellName(TimelimitGoodsCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(TimelimitGoodsCell.self))
-        view.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
-        view.register(UINib.init(nibName: CellName(MerchantCell.self), bundle: nil), forCellWithReuseIdentifier: CellName(MerchantCell.self))
+        view.register(UINib.init(nibName: CellName(TimelimitGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(TimelimitGoodsCell.self))
+        view.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
+        view.register(UINib.init(nibName: CellName(MerchantCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(MerchantCell.self))
         
         view.register(HomeHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(HomeHeaderView.self))
-        view.register(UINib.init(nibName: CellName(SectionNormalReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SectionNormalReusableView.self))
-        view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
+        view.register(UINib.init(nibName: CellName(SectionNormalReusableView.self), bundle: bundle(type(of: self))), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SectionNormalReusableView.self))
+        view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: bundle(type(of: self))), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
         view.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: TabBarH, right: 0)
         view.delegate = self
         view.dataSource = self
@@ -371,30 +371,30 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         let section = indexPath.section
         var ID = ""
-        var type: DetialType = .detial
+        var detialType: DetialType = .detial
         if section == 5 {
-            let storeCtrl = StoreController()
+            let storeCtrl = StoreController.init(nibName: "StoreController", bundle: bundle(type(of: self)))
             storeCtrl.ID = shops[indexPath.row].id
             navigationController?.pushViewController(storeCtrl, animated: true)
             return
         } else if section == 0 {
             ID = auctionGoods[indexPath.row].act_id
-            type = .auction
+            detialType = .auction
         } else if section == 1 {
             ID = groupGoods[indexPath.row].act_id
-            type = .groupBuy
+            detialType = .groupBuy
         } else if section == 2 {
             ID = timelimitGoods[indexPath.row].act_id
-            type = .timelimit
+            detialType = .timelimit
         } else if section == 3 {
             ID = recommendGoods[indexPath.row].goods_id
         } else if section == 4 {
             ID = newGoods[indexPath.row].goods_id
         }
         
-        let goodsDetialCtrl = GoodsDetialController()
+        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: bundle(type(of: self)))
         goodsDetialCtrl.ID = ID
-        goodsDetialCtrl.type = type
+        goodsDetialCtrl.detialType = detialType
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }
     

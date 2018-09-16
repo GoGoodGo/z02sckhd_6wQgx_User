@@ -16,7 +16,7 @@ class OrderDetialFooter: UIView {
     
     public class func footerView() -> Any? {
         
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
+        return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
     // MARK: - Setter
     var result: MyOrderResult? {
