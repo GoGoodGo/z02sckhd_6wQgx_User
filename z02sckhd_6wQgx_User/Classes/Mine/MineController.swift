@@ -9,29 +9,28 @@
 import UIKit
 import YHTool
 
-class MineController: UIViewController {
-    
+public class MineController: UIViewController {
     
     @IBOutlet weak var imgBtn: UIButton!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header: UIView!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isTranslucent = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.isTranslucent = false
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
@@ -62,11 +61,11 @@ class MineController: UIViewController {
 
 extension MineController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MineInfoCell.self)) as! MineInfoCell
         cell.index = indexPath.row
@@ -75,7 +74,7 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.row {
@@ -98,7 +97,7 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 60
     }

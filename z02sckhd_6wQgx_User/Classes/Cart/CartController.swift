@@ -10,7 +10,7 @@ import UIKit
 import MJRefresh
 import YHTool
 
-class CartController: UIViewController {
+public class CartController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var amount: UILabel!
@@ -24,7 +24,7 @@ class CartController: UIViewController {
     var sectionHeaders = [Int : CartSectionHeader]()
     var sectionFooters = [Int : CartSectionFooter]()
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "购物车"
@@ -292,16 +292,16 @@ class CartController: UIViewController {
 extension CartController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDataSorce
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         
         return stores.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stores[section].result.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(CartGoodsCell.self)) as! CartGoodsCell
         callbacks(cell: cell)
@@ -311,17 +311,17 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         loadCheck(indexPath: indexPath, isSelected: true)
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         loadCheck(indexPath: indexPath, isSelected: false)
     }
 
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction.init(style: .default, title: "删除") { (action, indexPath) in
             self.alertViewCtrl(title: "提示", message: "是否删除此商品？", sureHandler: { (action) in
                 self.loadDelete(indexPath: indexPath)
@@ -330,11 +330,11 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
         return [deleteAction];
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let store = stores[section]
         let header = CartSectionHeader.sectionHeader() as! CartSectionHeader
@@ -347,7 +347,7 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
         return header
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let store = stores[section]
         let footer = CartSectionFooter.sectionFooter() as! CartSectionFooter
@@ -357,17 +357,17 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
         return footer
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 
         return tableView.sectionHeaderHeight
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         return tableView.sectionFooterHeight
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.rowHeight
     }
     

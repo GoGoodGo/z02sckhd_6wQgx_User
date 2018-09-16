@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.
@@ -47,7 +47,7 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'Kingfisher', '~> 4.8.0'
   s.dependency 'Cosmos', '~> 16.0'
-  s.dependency 'YHTool', '~> 1.0.3'
+  s.dependency 'YHTool', '~> 1.1.1'
   
   s.dependency 'MJRefresh', '~> 3.1.12'
   

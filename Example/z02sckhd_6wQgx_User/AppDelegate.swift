@@ -7,16 +7,61 @@
 //
 
 import UIKit
+import YHTool
+import z02sckhd_6wQgx_User
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+        
+        window?.rootViewController = YHTabBarController()
+        window?.makeKeyAndVisible()
+        
+        WXApi.registerApp("wx7ba7fbd409123407")
+        
         return true
+    }
+    
+    /** Pay */
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.host == "safepay" {
+            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
+                self.payWithResult(result: result!)
+            })
+        }
+        
+        if url.host == "platformapi" {
+            AlipaySDK.defaultService().processAuthResult(url, standbyCallback: { (result) in
+                self.payWithResult(result: result!)
+            })
+        }
+        
+        if url.host == "pay" {
+            return WXApi.handleOpen(url, delegate: self)
+        }
+        
+        return true
+    }
+    
+    // MARK: - WXApiDelegate
+    func onResp(_ resp: BaseResp!) {
+        if resp.isKind(of: PayResp.self) {
+            let result = ["errorCode" : "\(resp.errCode)"]
+            payWithResult(result: result)
+        }
+    }
+    
+    /** 处理支付结果 */
+    private func payWithResult(result: Dictionary<AnyHashable, Any>) {
+        // 通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: PayNotificationName), object: self, userInfo: result)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

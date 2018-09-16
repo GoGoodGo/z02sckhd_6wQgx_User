@@ -1,6 +1,6 @@
 {
   "name": "z02sckhd_6wQgx_User",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "summary": "TM User.",
   "description": "TM User framework",
   "homepage": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git",
-    "tag": "0.1.0"
+    "tag": "1.0.0"
   },
   "swift_version": "4.1",
   "platforms": {

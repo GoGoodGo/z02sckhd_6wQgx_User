@@ -10,7 +10,7 @@ import UIKit
 import MJRefresh
 import YHTool
 
-class HomeController: UIViewController {
+public class HomeController: UIViewController {
     
     var rowHeight: CGFloat = 0
     let gap: CGFloat = 15
@@ -26,23 +26,23 @@ class HomeController: UIViewController {
     var sort = ""
     var order = ""
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isTranslucent = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         isShowSearchBar(isShow: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         isShowSearchBar(isShow: true)
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
@@ -273,12 +273,12 @@ class HomeController: UIViewController {
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     // MARK: - UICollectionViewDataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 6
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
             return auctionGoods.count
@@ -296,7 +296,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let section = indexPath.section
         
@@ -329,12 +329,12 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize.init(width: (WIDTH - gap * 3) / 2, height: getRowHeight(section: indexPath.section))
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let section = indexPath.section
         if section == 0 {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellName(HomeHeaderView.self), for: indexPath) as! HomeHeaderView
@@ -356,7 +356,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         var height: CGFloat = 60
         if section == 0 {
             let header = HomeHeaderView()
@@ -366,7 +366,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     // MARK: - UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         isShowSearchBar(isShow: false)
         
         let section = indexPath.section
@@ -398,7 +398,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         navigationController?.navigationBar.endEditing(true)
     }
     

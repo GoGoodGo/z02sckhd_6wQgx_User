@@ -9,7 +9,7 @@
 import UIKit
 import YHTool
 
-let PayNotificationName = "payNotificationName"
+public let PayNotificationName = "payNotificationName"
 
 class OnlinePayController: UIViewController {
     

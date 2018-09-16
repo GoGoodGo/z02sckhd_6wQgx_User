@@ -9,20 +9,20 @@
 import UIKit
 import YHTool
 
-class IncomeController: UIViewController {
+public class IncomeController: UIViewController {
     
     @IBOutlet weak var withdraw: UILabel!
     @IBOutlet weak var income: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header: UIView!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.isTranslucent = false
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "收益"
@@ -70,11 +70,11 @@ class IncomeController: UIViewController {
 
 extension IncomeController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(IncomeCell.self)) as! IncomeCell
         cell.index = indexPath.row
@@ -83,7 +83,7 @@ extension IncomeController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
@@ -102,7 +102,7 @@ extension IncomeController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 60
     }

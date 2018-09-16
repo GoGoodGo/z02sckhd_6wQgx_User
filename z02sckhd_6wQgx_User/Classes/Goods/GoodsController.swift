@@ -10,7 +10,7 @@ import UIKit
 import MJRefresh
 import YHTool
 
-class GoodsController: UIViewController {
+public class GoodsController: UIViewController {
     
     let gap: CGFloat = 15
     
@@ -24,12 +24,12 @@ class GoodsController: UIViewController {
     var sort = "" // 筛选
     var order = "" // 排序方式
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isTranslucent = false
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "商品"
@@ -184,11 +184,11 @@ class GoodsController: UIViewController {
 extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     // MARK: - UICollectionViewDataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return recommends.count
         }
@@ -196,7 +196,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
         return goodsList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellName(RecommendGoodsCell.self), for: indexPath) as! RecommendGoodsCell
         
         cell.goods = indexPath.section == 0 ? recommends[indexPath.row] : goodsList[indexPath.row]
@@ -204,7 +204,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 0 {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellName(GoodsHeaderView.self), for: indexPath) as! GoodsHeaderView
             callbacksHeader(header: headerView)
@@ -219,7 +219,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         var height: CGFloat = 60
         if section == 0 {
             let header = GoodsHeaderView()
@@ -229,7 +229,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     // MARK: - UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let goods = indexPath.section == 0 ? recommends[indexPath.row] : goodsList[indexPath.row]
         let goodsDetialCtrl = GoodsDetialController()
