@@ -1,0 +1,646 @@
+//
+//  GoodsModel.swift
+//  TianMaUser
+//
+//  Created by YH_O on 2018/8/13.
+//  Copyright © 2018 YH. All rights reserved.
+//
+
+import Foundation
+import ObjectMapper
+import YHTool
+
+class CommentInfo: BaseModel {
+    
+    var data: CommentData?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class CommentData: Mappable {
+    
+    var result = [Comment]()
+    var totalpage = 1
+    var page = 1
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        result <- map["result"]
+        totalpage <- map["totalpage"]
+    }
+}
+
+class Comment: Mappable {
+    
+    var images = [CommentImage]()
+    var Score = ""
+    var user_id = ""
+    var head_pic = "" // 暂不显示
+    var goods_id = ""
+    var comment = ""
+    var member_name = ""
+    var add_time = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        images <- map["images"]
+        Score <- map["Score"]
+        user_id <- map["user_id"]
+        head_pic <- map["head_pic"]
+        goods_id <- map["goods_id"]
+        comment <- map["comment"]
+        member_name <- map["member_name"]
+        add_time <- map["add_time"]
+    }
+}
+
+class CommentImage: Mappable {
+    
+    var id = ""
+    var path = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        path <- map["path"]
+    }
+}
+
+class ShopInfo: BaseModel {
+    
+    var data: ShopData?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class ShopData: Mappable {
+    
+    var seller: Seller?
+    var category = [Category]()
+    var isbest = [Goods]()
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        seller <- map["seller"]
+        category <- map["category"]
+        isbest <- map["isbest"]
+    }
+}
+
+class Seller: Mappable {
+    
+    var id = ""
+    var shopname = ""
+    var banner = ""
+    var logo = ""
+    var is_collect = 0
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        shopname <- map["shopname"]
+        banner <- map["banner"]
+        logo <- map["logo"]
+        is_collect <- map["is_collect"]
+    }
+}
+
+class AuctionBid: BaseModel {
+    
+    var data = ""
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class OrderInfo: BaseModel {
+    
+    var data: Order?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class Order: Mappable {
+    
+    var order_id = ""
+    var order_sn = ""
+    var orderAmount = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        order_id <- map["order_id"]
+        order_sn <- map["order_sn"]
+    }
+}
+
+class PayInfo: BaseModel {
+    
+    var data = ""
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class WxPayInfo: BaseModel {
+    
+    var data: Pay?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class Pay: Mappable {
+    
+    var appid = ""
+    var noncestr = ""
+    var package = ""
+    var partnerid = ""
+    var prepayid = ""
+    var timestamp: UInt32 = 0
+    var sign = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        appid <- map["appid"]
+        noncestr <- map["noncestr"]
+        package <- map["package"]
+        partnerid <- map["partnerid"]
+        prepayid <- map["prepayid"]
+        timestamp <- map["timestamp"]
+        sign <- map["sign"]
+    }
+}
+
+class DataInfo: BaseModel {
+    
+    var data: GoodsInfo?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class GoodsInfo: Mappable {
+    
+    var totalpage = 1
+    var result = [Goods]()
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        totalpage <- map["totalpage"]
+        result <- map["result"]
+    }
+}
+
+class SalesDetialInfo: BaseModel {
+    
+    var data: SalesDetialData?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class SalesDetialData: Mappable {
+    
+    var store: SalesStore?
+    var goods: GoodsDetial?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        store <- map["store"]
+        goods <- map["goods"]
+    }
+}
+
+class SalesStore: Mappable {
+    
+    var act_id = ""
+    var act_type = ""
+    var goods_id = ""
+    var goods_name = ""
+    var start_time = ""
+    var end_time = ""
+    var is_finished = ""
+    
+    var is_end = false // 是否结束
+    
+    var new_price = "" // 当前价格
+    var ext_info = ""
+    var total = ""
+    var number = ""
+    var price = ""
+    var spec_id = ""
+    var spec_name = ""
+    var num = ""
+    var pid = ""
+    var markups = ""
+    var maxprice = ""
+    var sid = ""
+    var type = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        act_id <- map["act_id"]
+        act_type <- map["act_type"]
+        goods_id <- map["goods_id"]
+        goods_name <- map["goods_name"]
+        start_time <- map["start_time"]
+        end_time <- map["end_time"]
+        is_finished <- map["is_finished"]
+        
+        new_price <- map["new_price"]
+        
+        ext_info <- map["ext_info"]
+        total <- map["total"]
+        number <- map["number"]
+        price <- map["price"]
+        spec_id <- map["spec_id"]
+        spec_name <- map["spec_name"]
+        num <- map["num"]
+        pid <- map["pid"]
+        markups <- map["markups"]
+        maxprice <- map["maxprice"]
+        sid <- map["sid"]
+        type <- map["type"]
+    }
+}
+
+class DetialInfo: BaseModel {
+    
+    var data: GoodsDetial?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class GoodsDetial: Mappable {
+    
+    var give_integral = "" // 获取积分 -1 不送
+    var default_spec = 0 // 规格
+    var seo_keys = ""
+    var description = ""
+    var click_count = 0
+    var sales = "0" // 销量
+    var sid = "" // 商户 id
+    var is_shipping = false
+    var is_best = false
+    var is_promote = false
+    var is_hot = false
+    var is_del = false
+    var is_new = false
+    var is_collect = "0"
+    var price = "0"
+    var integral = 0
+    var last_update = ""
+    var from = "0"
+    var brand = ""
+    var collects = "0"
+    var views = 0
+    var goods_weight: CGFloat = 0
+    var cost_price = ""
+    var promote_start_date = ""
+    var rank_integral = ""
+    var goods_name = ""
+    var spec_name_1 = "颜色"
+    var spec_name_2 = "尺码"
+    var promote_end_date = ""
+    var seo_desc = ""
+    var comments = ""
+    var spec_qty = 0
+    var goods_id = ""
+    var goods_sn = ""
+    var promote_price = "0.0"
+    var cate_id = 0 // 商品分类
+    var sort = 0
+    var carts = 0
+    var goods_number = "1"
+    var market_price: CGFloat = 0
+    var default_image = "" // 默认封面
+    var orders = 0
+    var goods_type = 0
+    var is_check = false
+    var add_time = ""
+    var status = false //是否下架
+    var cate_name = ""
+    var _images = [GoodsImage]()
+    var _specs = [GoodsSpec]()
+    var _specs_all = [GoodsSpec]()
+    var attr = [GoodsAttr]()
+    var _statistics: SalesStatistics?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        
+        give_integral <- map["give_integral"]
+        default_spec <- map["default_spec"]
+        seo_keys <- map["seo_keys"]
+        is_shipping <- map["is_shipping"]
+        description <- map["description"]
+        click_count <- map["click_count"]
+        is_best <- map["is_best"]
+        sales <- map["sales"]
+        sid <- map["sid"]
+        is_promote <- map["is_promote"]
+        is_hot <- map["is_hot"]
+        is_del <- map["is_del"]
+        is_collect <- map["is_collect"]
+        price <- map["price"]
+        integral <- map["integral"]
+        last_update <- map["last_update"]
+        from <- map["from"]
+        brand <- map["brand"]
+        collects <- map["collects"]
+        views <- map["views"]
+        goods_weight <- map["goods_weight"]
+        cost_price <- map["cost_price"]
+        promote_start_date <- map["promote_start_date"]
+        rank_integral <- map["rank_integral"]
+        goods_name <- map["goods_name"]
+        spec_name_1 <- map["spec_name_1"]
+        spec_name_2 <- map["spec_name_2"]
+        promote_end_date <- map["promote_end_date"]
+        seo_desc <- map["seo_desc"]
+        comments <- map["comments"]
+        is_new <- map["is_new"]
+        spec_qty <- map["spec_qty"]
+        goods_id <- map["goods_id"]
+        goods_sn <- map["goods_sn"]
+        promote_price <- map["promote_price"]
+        cate_id <- map["cate_id"]
+        sort <- map["sort"]
+        carts <- map["carts"]
+        goods_number <- map["goods_number"]
+        market_price <- map["market_price"]
+        default_image <- map["default_image"]
+        orders <- map["orders"]
+        goods_type <- map["goods_type"]
+        is_check <- map["is_check"]
+        add_time <- map["add_time"]
+        cate_name <- map["cate_name"]
+        status <- map["status"]
+        _images <- map["_images"]
+        _specs <- map["_specs"]
+        _specs_all <- map["_specs_all"]
+        _statistics <- map["_statistics"]
+    }
+}
+
+class GoodsImage: Mappable {
+    
+    var id = ""
+    var gid = ""
+    var fid = ""
+    var url = ""
+    var thumb = ""
+    var sort = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        id <- map["id"]
+        gid <- map["gid"]
+        fid <- map["fid"]
+        url <- map["url"]
+        thumb <- map["thumb"]
+        sort <- map["sort"]
+    }
+}
+
+class GoodsSpec: Mappable {
+    
+    var spec_id = ""
+    var goods_id = ""
+    var spec_1 = ""
+    var spec_2 = ""
+    var color_rgb = ""
+    var price = ""
+    var stock = ""
+    var sku = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        spec_id <- map["spec_id"]
+        goods_id <- map["goods_id"]
+        spec_1 <- map["spec_1"]
+        spec_2 <- map["spec_2"]
+        color_rgb <- map["color_rgb"]
+        price <- map["price"]
+        stock <- map["stock"]
+        sku <- map["sku"]
+    }
+}
+
+class GoodsAttr: Mappable {
+    
+    var aid = ""
+    var value = ""
+    var attr_name = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        aid <- map["aid"]
+        value <- map["value"]
+        attr_name <- map["attr_name"]
+    }
+}
+
+
+class Goods: Mappable {
+    
+    var give_integral = -1 // 获取积分 -1 不送
+    var default_spec = 0 // 规格
+    var seo_keys = ""
+    var is_shipping = false
+    var description = ""
+    var click_count = 0
+    var is_best = false
+    var sales = "0" // 销量
+    var sid = 0 // 商户 id
+    var is_promote = false
+    var is_hot = false
+    var price = "0"
+    var integral = 0
+    var last_update = ""
+    var from = "0"
+    var brand = ""
+    var collects = 0
+    var views = 0
+    var goods_weight: CGFloat = 0
+    var cost_price: CGFloat = 0
+    var promote_start_date = ""
+    var rank_integral = -1
+    var goods_name = ""
+    var spec_name_1 = "颜色"
+    var spec_name_2 = "尺码"
+    var promote_end_date = ""
+    var seo_desc = ""
+    var comments = ""
+    var is_new = false
+    var spec_qty = 0
+    var goods_id = ""
+    var goods_sn = ""
+    var promote_price: CGFloat = 0
+    var cate_id = 0 // 商品分类
+    var sort = 0
+    var carts = 0
+    var goods_number = 1
+    var market_price: CGFloat = 0
+    var default_image = "" // 默认封面
+    var orders = 0
+    var goods_type = 0
+    var is_check = false
+    var add_time = ""
+    var status = false //是否下架
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        
+        give_integral <- map["give_integral"]
+        default_spec <- map["default_spec"]
+        seo_keys <- map["seo_keys"]
+        is_shipping <- map["is_shipping"]
+        description <- map["description"]
+        click_count <- map["click_count"]
+        is_best <- map["is_best"]
+        sales <- map["sales"]
+        sid <- map["sid"]
+        is_promote <- map["is_promote"]
+        is_hot <- map["is_hot"]
+        price <- map["price"]
+        integral <- map["integral"]
+        last_update <- map["last_update"]
+        from <- map["from"]
+        brand <- map["brand"]
+        collects <- map["collects"]
+        views <- map["views"]
+        goods_weight <- map["goods_weight"]
+        cost_price <- map["cost_price"]
+        promote_start_date <- map["promote_start_date"]
+        rank_integral <- map["rank_integral"]
+        goods_name <- map["goods_name"]
+        spec_name_1 <- map["spec_name_1"]
+        spec_name_2 <- map["spec_name_2"]
+        promote_end_date <- map["promote_end_date"]
+        seo_desc <- map["seo_desc"]
+        comments <- map["comments"]
+        is_new <- map["is_new"]
+        spec_qty <- map["spec_qty"]
+        goods_id <- map["goods_id"]
+        goods_sn <- map["goods_sn"]
+        promote_price <- map["promote_price"]
+        cate_id <- map["cate_id"]
+        sort <- map["sort"]
+        carts <- map["carts"]
+        goods_number <- map["goods_number"]
+        market_price <- map["market_price"]
+        default_image <- map["default_image"]
+        orders <- map["orders"]
+        goods_type <- map["goods_type"]
+        is_check <- map["is_check"]
+        add_time <- map["add_time"]
+        status <- map["status"]
+        
+    }
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

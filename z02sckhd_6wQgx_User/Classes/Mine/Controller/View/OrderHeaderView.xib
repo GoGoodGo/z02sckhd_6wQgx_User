@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OrderHeaderView" customModule="TianMaUser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fiq-nS-eOS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单编号：123123123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c95-bA-GSb">
+                            <rect key="frame" x="15" y="18" width="123" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建时间：2018-08-12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ben-EE-IoO">
+                            <rect key="frame" x="231" y="18" width="129" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MgH-zd-dXB">
+                            <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="5OF-3v-zhw"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="MgH-zd-dXB" firstAttribute="leading" secondItem="fiq-nS-eOS" secondAttribute="leading" id="1AT-zq-dWs"/>
+                        <constraint firstItem="c95-bA-GSb" firstAttribute="centerY" secondItem="fiq-nS-eOS" secondAttribute="centerY" id="8Kp-hd-6tz"/>
+                        <constraint firstAttribute="height" constant="50" id="902-K7-YiG"/>
+                        <constraint firstAttribute="trailing" secondItem="ben-EE-IoO" secondAttribute="trailing" constant="15" id="D8u-Y9-yJU"/>
+                        <constraint firstItem="ben-EE-IoO" firstAttribute="centerY" secondItem="c95-bA-GSb" secondAttribute="centerY" id="VHu-8n-DO4"/>
+                        <constraint firstAttribute="trailing" secondItem="MgH-zd-dXB" secondAttribute="trailing" id="aD9-9m-17r"/>
+                        <constraint firstAttribute="bottom" secondItem="MgH-zd-dXB" secondAttribute="bottom" id="bYO-Fq-Sn7"/>
+                        <constraint firstItem="c95-bA-GSb" firstAttribute="leading" secondItem="fiq-nS-eOS" secondAttribute="leading" constant="15" id="kWw-cQ-kqy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fiq-nS-eOS" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="FBb-RL-Nwb"/>
+                <constraint firstItem="fiq-nS-eOS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="JPn-Yg-nfU"/>
+                <constraint firstItem="fiq-nS-eOS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Tte-SD-iPE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fiq-nS-eOS" secondAttribute="trailing" id="gpw-pN-Rbf"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="date" destination="ben-EE-IoO" id="YwL-fs-gx5"/>
+                <outlet property="orderID" destination="c95-bA-GSb" id="BCf-YF-2v4"/>
+            </connections>
+            <point key="canvasLocation" x="30.5" y="226"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EvaluateSectionHeader" customModule="TianMaUser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品评价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xz9-dz-JMz">
+                    <rect key="frame" x="15" y="18" width="61.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOc-KY-8x7">
+                    <rect key="frame" x="284" y="13.5" width="60" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="2Y8-pp-gfv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="查看全部">
+                        <color key="titleColor" red="1" green="0.34509803921568627" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="action_showAll" destination="iN0-l3-epB" eventType="touchUpInside" id="NDZ-p2-BaA"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_img_xyhs.png" translatesAutoresizingMaskIntoConstraints="NO" id="GHR-4S-UKw">
+                    <rect key="frame" x="344" y="19" width="16" height="16"/>
+                </imageView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33人参与竞拍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oat-cl-tec">
+                    <rect key="frame" x="283" y="19.5" width="77" height="15"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="xz9-dz-JMz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="7Sf-Ic-7Kq"/>
+                <constraint firstItem="xz9-dz-JMz" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="83N-tX-YtE"/>
+                <constraint firstItem="oat-cl-tec" firstAttribute="centerY" secondItem="xz9-dz-JMz" secondAttribute="centerY" id="CkA-ma-Ttj"/>
+                <constraint firstItem="zOc-KY-8x7" firstAttribute="centerY" secondItem="GHR-4S-UKw" secondAttribute="centerY" id="TYv-9N-N7c"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GHR-4S-UKw" secondAttribute="trailing" constant="15" id="WpQ-YE-KQy"/>
+                <constraint firstItem="GHR-4S-UKw" firstAttribute="centerY" secondItem="xz9-dz-JMz" secondAttribute="centerY" id="dJ3-6x-cY3"/>
+                <constraint firstItem="GHR-4S-UKw" firstAttribute="leading" secondItem="zOc-KY-8x7" secondAttribute="trailing" id="jTY-JO-jZg"/>
+                <constraint firstItem="oat-cl-tec" firstAttribute="trailing" secondItem="GHR-4S-UKw" secondAttribute="trailing" id="vyS-bp-ghj"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="auctionNum" destination="oat-cl-tec" id="JYH-7n-uO6"/>
+                <outlet property="imgView" destination="GHR-4S-UKw" id="YPi-QC-KJd"/>
+                <outlet property="showAll" destination="zOc-KY-8x7" id="wf5-Wx-zZD"/>
+                <outlet property="title" destination="xz9-dz-JMz" id="Ra7-tE-ZOF"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="360"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ico_img_xyhs.png" width="16" height="16"/>
+    </resources>
+</document>

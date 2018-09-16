@@ -1,0 +1,91 @@
+//
+//  TimelimitBaseInfoCell.swift
+//  TianMaUser
+//
+//  Created by Healson on 2018/7/27.
+//  Copyright © 2018 YH. All rights reserved.
+//
+
+import UIKit
+
+class TimelimitBaseInfoCell: UITableViewCell {
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var describe: UILabel!
+    @IBOutlet weak var boughtNum: UILabel!
+    @IBOutlet weak var remainingNum: UILabel!
+    @IBOutlet weak var priceType: UILabel!
+    @IBOutlet weak var discountPrice: UILabel!
+    @IBOutlet weak var originalPrice: UILabel!
+    @IBOutlet weak var hours: UIButton!
+    @IBOutlet weak var minutes: UIButton!
+    @IBOutlet weak var seconds: UIButton!
+    
+    var timer: Timer?
+    var type: DetialType = .groupBuy
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(action_timer), userInfo: nil, repeats: true)
+        timer?.fireDate = Date.distantFuture
+        
+        let loop = RunLoop.current
+        loop.add(timer!, forMode: .commonModes)
+        
+        setupUI()
+    }
+    
+    // MARK: - Private Method
+    private func setupUI() {
+        
+    }
+    
+    // MARK: - Callbacks
+    @objc private func action_timer() {
+        
+        let currentTime = Int(Date().timeIntervalSince1970)
+        let endTime = Date.timestampFromString(dateStr: (result?.store?.end_time ?? "2018-09-06 20:00:00"), format: "yyyy-MM-dd HH:mm:ss")
+        let time = Int(endTime)! - currentTime
+        if time >= 0 {
+            let dateComp = Date.dateFromTimestamp(timestamp: "\(time)")
+            hours.setTitle("\(time / 60 / 60)", for: .normal)
+            minutes.setTitle("\(dateComp.minute ?? 00)", for: .normal)
+            seconds.setTitle("\(dateComp.second ?? 00)", for: .normal)
+        }
+    }
+    
+    // MARK: - Setter
+    var result: SalesDetialData? {
+        didSet {
+            timer?.fireDate = Date.distantPast
+            
+            name.text = result?.goods?.goods_name
+            describe.text = (result?.goods?.spec_name_1 ?? "") + (result?.goods?.spec_name_2 ?? "")
+            switch type {
+            case .groupBuy:
+                boughtNum.text = "团购人数：\(result?.store?.num ?? "0")人"
+                remainingNum.text = "满团人数：\(result?.store?.number ?? "0")人"
+                priceType.text = "起团价"
+                discountPrice.text = "¥\(result?.store?.price ?? "0.00")"
+            case .timelimit:
+                boughtNum.text = "秒杀数量：\(result?.store?.num ?? "0")件"
+                remainingNum.text = "剩余数量：\(result?.store?.number ?? "0")件"
+                priceType.text = "秒杀价"
+                discountPrice.text = "¥\(result?.store?.price ?? "0.00")"
+            default: break
+            }
+            originalPrice.attributedText = "¥ \(result?.goods?.price ?? "0.00")".addStrikethrough()
+        }
+    }
+    
+    deinit {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    
+    
+    
+    
+}

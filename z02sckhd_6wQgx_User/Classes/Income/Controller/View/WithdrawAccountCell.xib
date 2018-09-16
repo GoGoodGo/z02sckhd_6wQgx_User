@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="109" id="KGk-i7-Jjw" customClass="WithdrawAccountCell" customModule="TianMaUser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="109"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="367" height="108.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_img_zfb" translatesAutoresizingMaskIntoConstraints="NO" id="i4x-J0-aG5">
+                        <rect key="frame" x="15" y="35" width="38" height="38"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123@qq.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGF-nJ-dwu">
+                        <rect key="frame" x="68" y="46.5" width="74" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_img_mr" translatesAutoresizingMaskIntoConstraints="NO" id="O7P-ev-G8J">
+                        <rect key="frame" x="68" y="35" width="31" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Vyl-cL-ESS"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" tag="335" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-eG-KUp">
+                        <rect key="frame" x="322" y="10" width="30" height="88.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="删除"/>
+                        <connections>
+                            <action selector="action_accountSet:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mtZ-K9-1wq"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="334" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzM-Vb-kaU">
+                        <rect key="frame" x="272" y="10" width="30" height="88.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="编辑"/>
+                        <connections>
+                            <action selector="action_accountSet:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Fk1-Q9-1gA"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="333" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qsq-Xg-Ybu">
+                        <rect key="frame" x="202" y="10.5" width="50" height="88.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="设置默认"/>
+                        <connections>
+                            <action selector="action_accountSet:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5WI-OJ-dKZ"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pgw-8E-VEh">
+                        <rect key="frame" x="15" y="107.5" width="337" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="tON-EC-zp9"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JzM-Vb-kaU" firstAttribute="centerY" secondItem="fF7-eG-KUp" secondAttribute="centerY" id="3DJ-3X-nc2"/>
+                    <constraint firstItem="fF7-eG-KUp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Cb5-XV-LWC"/>
+                    <constraint firstAttribute="bottom" secondItem="pgw-8E-VEh" secondAttribute="bottom" id="DOS-sk-7yx"/>
+                    <constraint firstItem="O7P-ev-G8J" firstAttribute="leading" secondItem="i4x-J0-aG5" secondAttribute="trailing" constant="15" id="DTY-KT-i0Z"/>
+                    <constraint firstItem="EGF-nJ-dwu" firstAttribute="leading" secondItem="i4x-J0-aG5" secondAttribute="trailing" constant="15" id="GVU-hX-NkB"/>
+                    <constraint firstAttribute="bottom" secondItem="fF7-eG-KUp" secondAttribute="bottom" constant="10" id="IvM-Me-IPw"/>
+                    <constraint firstItem="Qsq-Xg-Ybu" firstAttribute="centerY" secondItem="JzM-Vb-kaU" secondAttribute="centerY" id="Ivd-mp-kzZ"/>
+                    <constraint firstItem="pgw-8E-VEh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="JUG-Lb-Yfi"/>
+                    <constraint firstAttribute="trailing" secondItem="fF7-eG-KUp" secondAttribute="trailing" constant="15" id="JWf-of-DGZ"/>
+                    <constraint firstItem="i4x-J0-aG5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="JhN-ze-P0D"/>
+                    <constraint firstItem="JzM-Vb-kaU" firstAttribute="height" secondItem="fF7-eG-KUp" secondAttribute="height" id="L5W-8L-cKg"/>
+                    <constraint firstItem="EGF-nJ-dwu" firstAttribute="centerY" secondItem="i4x-J0-aG5" secondAttribute="centerY" id="Ofl-A3-ZxE"/>
+                    <constraint firstItem="fF7-eG-KUp" firstAttribute="leading" secondItem="JzM-Vb-kaU" secondAttribute="trailing" constant="20" id="Tj3-Gd-ylU"/>
+                    <constraint firstItem="JzM-Vb-kaU" firstAttribute="leading" secondItem="Qsq-Xg-Ybu" secondAttribute="trailing" constant="20" id="b1U-1H-41W"/>
+                    <constraint firstItem="Qsq-Xg-Ybu" firstAttribute="height" secondItem="JzM-Vb-kaU" secondAttribute="height" id="fM1-vM-3hc"/>
+                    <constraint firstItem="O7P-ev-G8J" firstAttribute="top" secondItem="i4x-J0-aG5" secondAttribute="top" id="ogs-HK-caV"/>
+                    <constraint firstAttribute="trailing" secondItem="pgw-8E-VEh" secondAttribute="trailing" constant="15" id="syF-Xy-qrL"/>
+                    <constraint firstItem="i4x-J0-aG5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xod-ot-SCl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="defaultImg" destination="O7P-ev-G8J" id="ciF-2T-SWo"/>
+                <outlet property="img" destination="i4x-J0-aG5" id="Nhu-fA-HD1"/>
+                <outlet property="name" destination="EGF-nJ-dwu" id="kyy-AR-pVa"/>
+                <outlet property="nameY" destination="Ofl-A3-ZxE" id="84r-a0-wKk"/>
+            </connections>
+            <point key="canvasLocation" x="57.5" y="86.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ico_img_mr" width="31" height="20"/>
+        <image name="ico_img_zfb" width="38" height="38"/>
+    </resources>
+</document>

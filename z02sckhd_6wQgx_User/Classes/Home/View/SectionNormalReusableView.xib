@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="SectionNormalReusableView" customModule="TianMaUser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zlB-9n-6KC">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="zuF-VE-x8b"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_img_xspm" translatesAutoresizingMaskIntoConstraints="NO" id="55U-bL-YE0">
+                    <rect key="frame" x="71.5" y="10" width="177" height="50"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ioe-GU-sQV">
+                    <rect key="frame" x="0.0" y="84" width="320" height="1"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="ofn-9r-3bT"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Ioe-GU-sQV" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="34Q-rX-T6Q"/>
+                <constraint firstItem="zlB-9n-6KC" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="BFV-zb-yV3"/>
+                <constraint firstItem="zlB-9n-6KC" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="PGH-jC-nqg"/>
+                <constraint firstAttribute="bottom" secondItem="Ioe-GU-sQV" secondAttribute="bottom" id="anc-Eq-gcb"/>
+                <constraint firstItem="55U-bL-YE0" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="jio-L9-z3K"/>
+                <constraint firstItem="55U-bL-YE0" firstAttribute="top" secondItem="zlB-9n-6KC" secondAttribute="bottom" id="jxa-Zc-WA7"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="Ioe-GU-sQV" secondAttribute="trailing" id="ld2-JI-SlY"/>
+                <constraint firstAttribute="trailing" secondItem="zlB-9n-6KC" secondAttribute="trailing" id="wcd-Rw-e4t"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="imgView" destination="55U-bL-YE0" id="y9e-wj-hNC"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="78.5"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="ico_img_xspm" width="177" height="50"/>
+    </resources>
+</document>

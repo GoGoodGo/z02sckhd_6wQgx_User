@@ -1,15 +1,90 @@
 PODS:
-  - z02sckhd_6wQgx_User (0.1.0)
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.3)
+  - Cosmos (16.0.0)
+  - Kingfisher (4.8.1)
+  - MBProgressHUD (0.9.2)
+  - MJRefresh (3.1.15.7)
+  - ObjectMapper (3.3.0)
+  - QBImagePickerController (3.4.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SwiftyJSON (4.1.0)
+  - YHTool (1.0.3):
+    - Alamofire
+    - AlamofireObjectMapper (~> 5.0)
+    - MBProgressHUD (~> 0.9.2)
+    - ObjectMapper (~> 3.3)
+    - QBImagePickerController
+    - SDWebImage (~> 3.8.0)
+    - SwiftyJSON
+  - z02sckhd_6wQgx_User (0.1.0):
+    - AFNetworking (~> 2.3)
+    - Cosmos (~> 16.0)
+    - Kingfisher (~> 4.8.0)
+    - MJRefresh (~> 3.1.12)
+    - YHTool (~> 1.0.3)
 
 DEPENDENCIES:
   - z02sckhd_6wQgx_User (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Alamofire
+    - AlamofireObjectMapper
+    - Cosmos
+    - Kingfisher
+    - MBProgressHUD
+    - MJRefresh
+    - ObjectMapper
+    - QBImagePickerController
+    - SDWebImage
+    - SwiftyJSON
+    - YHTool
 
 EXTERNAL SOURCES:
   z02sckhd_6wQgx_User:
     :path: "../"
 
 SPEC CHECKSUMS:
-  z02sckhd_6wQgx_User: 69c46c5c859616da22bb9d7f7aa5e971b36d9bbb
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  Cosmos: 7bcee0fa858a9355a214f2a181be5dffcee42c81
+  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  YHTool: 025fee2dc2a2e1a9c7b6c86a339193eb4da1ba7d
+  z02sckhd_6wQgx_User: 515dff74e4b4977f46a4b4e839309551d444278a
 
 PODFILE CHECKSUM: e035ae6efa5c094d42e9fe2157c6125497b728bf
 

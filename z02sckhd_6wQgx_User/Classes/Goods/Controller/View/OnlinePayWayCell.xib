@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="198" id="KGk-i7-Jjw" customClass="OnlinePayWayCell" customModule="TianMaUser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="377" height="197.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jda-nx-5Jw">
+                        <rect key="frame" x="0.0" y="0.0" width="377" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EC-hE-ifm">
+                                <rect key="frame" x="15" y="16" width="108" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6EC-hE-ifm" firstAttribute="leading" secondItem="jda-nx-5Jw" secondAttribute="leading" constant="15" id="MKG-3y-937"/>
+                            <constraint firstAttribute="height" constant="50" id="PMd-tE-PRg"/>
+                            <constraint firstItem="6EC-hE-ifm" firstAttribute="centerY" secondItem="jda-nx-5Jw" secondAttribute="centerY" id="teN-iC-DOy"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xGt-Zq-kLS">
+                        <rect key="frame" x="15" y="50" width="347" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="l4r-PM-MUx"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DH5-Xz-Zfz">
+                        <rect key="frame" x="0.0" y="61" width="377" height="60"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccW-3L-eSo">
+                                <rect key="frame" x="15" y="11.5" width="307" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="支付宝" image="ico_img_zfb">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="action_aliPay:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HRX-pr-YcQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cU-oN-TdT">
+                                <rect key="frame" x="322" y="10.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="TKa-zz-kl0"/>
+                                    <constraint firstAttribute="width" constant="40" id="XLd-pV-Mb3"/>
+                                </constraints>
+                                <state key="normal" image="ico_img_xy"/>
+                                <state key="selected" image="ico_img_xy"/>
+                                <connections>
+                                    <action selector="action_aliPay:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="M0Z-rZ-oPz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0cU-oN-TdT" firstAttribute="centerY" secondItem="ccW-3L-eSo" secondAttribute="centerY" id="cuJ-wH-7ec"/>
+                            <constraint firstItem="0cU-oN-TdT" firstAttribute="leading" secondItem="ccW-3L-eSo" secondAttribute="trailing" id="hel-Va-x8c"/>
+                            <constraint firstAttribute="height" constant="60" id="mgG-gh-QQW"/>
+                            <constraint firstItem="ccW-3L-eSo" firstAttribute="leading" secondItem="DH5-Xz-Zfz" secondAttribute="leading" constant="15" id="tRi-N5-QJL"/>
+                            <constraint firstItem="ccW-3L-eSo" firstAttribute="centerY" secondItem="DH5-Xz-Zfz" secondAttribute="centerY" id="tdb-Br-8A7"/>
+                            <constraint firstAttribute="trailing" secondItem="0cU-oN-TdT" secondAttribute="trailing" constant="15" id="u32-fl-k9f"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ymt-Vm-lRV">
+                        <rect key="frame" x="0.0" y="121" width="377" height="60"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emr-aP-Uap">
+                                <rect key="frame" x="15" y="11.5" width="307" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="微信" image="ico_img_wx">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="action_wxPay:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mKb-DQ-h5j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csp-88-LSp">
+                                <rect key="frame" x="322" y="10.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6rE-Q7-XGJ"/>
+                                    <constraint firstAttribute="height" constant="40" id="iLr-BW-pgI"/>
+                                </constraints>
+                                <state key="normal" image="ico_img_xy"/>
+                                <state key="selected" image="ico_img_pjwx"/>
+                                <connections>
+                                    <action selector="action_wxPay:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ipv-Iu-xgC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="emr-aP-Uap" firstAttribute="centerY" secondItem="Ymt-Vm-lRV" secondAttribute="centerY" id="8N8-Ph-4Ir"/>
+                            <constraint firstItem="csp-88-LSp" firstAttribute="leading" secondItem="emr-aP-Uap" secondAttribute="trailing" id="R82-Wb-D7g"/>
+                            <constraint firstItem="csp-88-LSp" firstAttribute="centerY" secondItem="emr-aP-Uap" secondAttribute="centerY" id="YwM-zI-Eix"/>
+                            <constraint firstItem="emr-aP-Uap" firstAttribute="leading" secondItem="Ymt-Vm-lRV" secondAttribute="leading" constant="15" id="fa6-ES-eWO"/>
+                            <constraint firstAttribute="trailing" secondItem="csp-88-LSp" secondAttribute="trailing" constant="15" id="khF-sQ-bgX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jda-nx-5Jw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1ZK-Lk-jUh"/>
+                    <constraint firstItem="xGt-Zq-kLS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="6It-N9-UTz"/>
+                    <constraint firstItem="DH5-Xz-Zfz" firstAttribute="top" secondItem="xGt-Zq-kLS" secondAttribute="bottom" constant="10" id="6t2-Uf-1a1"/>
+                    <constraint firstItem="xGt-Zq-kLS" firstAttribute="top" secondItem="jda-nx-5Jw" secondAttribute="bottom" id="CNA-CL-Wst"/>
+                    <constraint firstAttribute="bottom" secondItem="Ymt-Vm-lRV" secondAttribute="bottom" priority="750" constant="15" id="I4L-wN-Zne"/>
+                    <constraint firstItem="Ymt-Vm-lRV" firstAttribute="leading" secondItem="DH5-Xz-Zfz" secondAttribute="leading" id="PoE-aQ-CT8"/>
+                    <constraint firstAttribute="trailing" secondItem="jda-nx-5Jw" secondAttribute="trailing" id="Wi5-CS-3oT"/>
+                    <constraint firstAttribute="trailing" secondItem="xGt-Zq-kLS" secondAttribute="trailing" constant="15" id="dca-Q0-kTs"/>
+                    <constraint firstItem="Ymt-Vm-lRV" firstAttribute="top" secondItem="DH5-Xz-Zfz" secondAttribute="bottom" id="gop-Or-1U6"/>
+                    <constraint firstAttribute="trailing" secondItem="DH5-Xz-Zfz" secondAttribute="trailing" id="hYu-2h-Axe"/>
+                    <constraint firstItem="DH5-Xz-Zfz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ipU-Gk-nuW"/>
+                    <constraint firstItem="Ymt-Vm-lRV" firstAttribute="height" secondItem="DH5-Xz-Zfz" secondAttribute="height" id="jeB-om-kxQ"/>
+                    <constraint firstItem="Ymt-Vm-lRV" firstAttribute="trailing" secondItem="DH5-Xz-Zfz" secondAttribute="trailing" id="ruD-gh-1BB"/>
+                    <constraint firstItem="jda-nx-5Jw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="v3A-Iy-yNE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="aliPay" destination="0cU-oN-TdT" id="0p1-3x-5js"/>
+                <outlet property="wxPay" destination="csp-88-LSp" id="mho-ZN-YuO"/>
+            </connections>
+            <point key="canvasLocation" x="62.5" y="138"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ico_img_pjwx" width="17" height="17"/>
+        <image name="ico_img_wx" width="38" height="38"/>
+        <image name="ico_img_xy" width="11" height="11"/>
+        <image name="ico_img_zfb" width="38" height="38"/>
+    </resources>
+</document>
