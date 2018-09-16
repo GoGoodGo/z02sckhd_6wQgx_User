@@ -29,8 +29,8 @@
 
 /* Begin PBXFileReference section */
 		24FD942274F7C17B2599E8E5 /* Pods_z02sckhd_6wQgx_User_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_z02sckhd_6wQgx_User_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FAA95E6CA9B3994999CFF14 /* z02sckhd_6wQgx_User.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = z02sckhd_6wQgx_User.podspec; path = ../z02sckhd_6wQgx_User.podspec; sourceTree = "<group>"; };
-		5B40E9DF9AB5FE04187C7C26 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		4FAA95E6CA9B3994999CFF14 /* z02sckhd_6wQgx_User.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = z02sckhd_6wQgx_User.podspec; path = ../z02sckhd_6wQgx_User.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5B40E9DF9AB5FE04187C7C26 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		5B6813F2ED6D0D97086B6F3C /* Pods_z02sckhd_6wQgx_User_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_z02sckhd_6wQgx_User_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* z02sckhd_6wQgx_User_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = z02sckhd_6wQgx_User_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		64B3842AE721963548CFCDED /* Pods-z02sckhd_6wQgx_User_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Example/Pods-z02sckhd_6wQgx_User_Example.release.xcconfig"; sourceTree = "<group>"; };
 		65E7A5C06F30C882E6A3E0E8 /* Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Tests/Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CACC7C0F6A4B78697335A45 /* Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Example/Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		DFDFCEAAA42919F8C5040EC3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		DFDFCEAAA42919F8C5040EC3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EAA22B3A85FE7721A2E9E841 /* Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Tests/Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

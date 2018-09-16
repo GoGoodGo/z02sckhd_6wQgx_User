@@ -1,0 +1,16 @@
+PODS:
+  - z02sckhd_6wQgx_User (0.1.0)
+
+DEPENDENCIES:
+  - z02sckhd_6wQgx_User (from `../`)
+
+EXTERNAL SOURCES:
+  z02sckhd_6wQgx_User:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  z02sckhd_6wQgx_User: 69c46c5c859616da22bb9d7f7aa5e971b36d9bbb
+
+PODFILE CHECKSUM: e035ae6efa5c094d42e9fe2157c6125497b728bf
+
+COCOAPODS: 1.5.3

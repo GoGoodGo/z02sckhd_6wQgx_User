@@ -1,0 +1,6 @@
+framework module z02sckhd_6wQgx_User {
+  umbrella header "z02sckhd_6wQgx_User-umbrella.h"
+
+  export *
+  module * { export * }
+}

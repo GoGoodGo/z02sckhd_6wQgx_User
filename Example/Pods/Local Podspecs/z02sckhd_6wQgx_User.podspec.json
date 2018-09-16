@@ -1,0 +1,22 @@
+{
+  "name": "z02sckhd_6wQgx_User",
+  "version": "0.1.0",
+  "summary": "A short description of z02sckhd_6wQgx_User.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/OYHHYO/z02sckhd_6wQgx_User",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "OYHHYO": "442371047@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/OYHHYO/z02sckhd_6wQgx_User.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "z02sckhd_6wQgx_User/Classes/**/*"
+}
