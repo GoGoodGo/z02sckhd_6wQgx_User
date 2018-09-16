@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'z02sckhd_6wQgx_User_Example' do
+  pod 'z02sckhd_6wQgx_User', :path => '../'
+
+  target 'z02sckhd_6wQgx_User_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
