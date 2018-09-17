@@ -47,7 +47,7 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'Kingfisher', '~> 4.8.0'
   s.dependency 'Cosmos', '~> 16.0'
-  s.dependency 'YHTool', '~> 1.1.1'
+  s.dependency 'YHTool', '~> 1.1.4'
   
   s.dependency 'MJRefresh', '~> 3.1.12'
   

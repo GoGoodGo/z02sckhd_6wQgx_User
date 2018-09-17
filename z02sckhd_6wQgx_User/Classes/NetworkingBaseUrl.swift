@@ -14,7 +14,7 @@ let IMG_URL = ""
 public let bundle: (AnyClass) -> Bundle = { any in
     
     let bundle = Bundle.init(for: any)
-    let url = bundle.url(forResource: "z02sckhd_6wQgx_User", withExtension: "bundle")
+    let url = bundle.url(forResource: (bundle.infoDictionary?["CFBundleName"] as! String), withExtension: "bundle")
     return Bundle.init(url: url!)!
 }
 
