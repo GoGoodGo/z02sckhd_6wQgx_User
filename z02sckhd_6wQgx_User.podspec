@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift', 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h', 'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h'
   
   s.resource_bundles = {
-      'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.{xib,plist}']
+      'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.{xib,plist}', 'z02sckhd_6wQgx_User/Assets/Crop/**/*.png']
   }
   
   # s.public_header_files = 'Pod/Classes/**/*.h'

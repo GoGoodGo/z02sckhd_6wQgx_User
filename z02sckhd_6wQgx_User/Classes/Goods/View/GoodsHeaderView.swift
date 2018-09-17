@@ -74,7 +74,7 @@ class GoodsHeaderView: UICollectionReusableView {
     private lazy var imgView: UIImageView = {
         let view = UIImageView.init(frame: CGRect.init(x: 0, y: separator.frame.maxY, width: 180, height: 50))
         view.centerX = self.centerX
-        view.image = UIImage.init(named: "ico_img_tbtj.png")
+        view.image = getImage(type(of: self), "ico_img_tbtj")
         return view
     }()
     

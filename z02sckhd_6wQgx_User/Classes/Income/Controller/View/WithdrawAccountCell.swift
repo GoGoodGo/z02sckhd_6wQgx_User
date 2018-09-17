@@ -16,7 +16,7 @@ class WithdrawAccountCell: UITableViewCell {
     @IBOutlet weak var nameY: NSLayoutConstraint!
     
     let btnTag = 333
-    var accountTypes = ["ico_img_zfb.png", "ico_img_wx.png", "ico_img_yl.png"]
+    var accountTypes = ["ico_img_zfb", "ico_img_wx", "ico_img_yl"]
     var accountSetBlock: ((_ cell: WithdrawAccountCell, _ tag: Int) -> Void)?
     
     override func awakeFromNib() {
@@ -52,8 +52,7 @@ class WithdrawAccountCell: UITableViewCell {
         didSet {
             name.text = account?.number
 //            setDefaultAnimail(isDefault: account?.is_default == "1" ? true : false)
-            let type = account?.type
-            img.image = UIImage.init(named: accountTypes[Int(type!)! - 1])
+            img.image = getImage(type(of: self), accountTypes[Int((account?.type)!)! - 1])
         }
     }
     

@@ -49,11 +49,11 @@ class WithdrawRecordCell: UITableViewCell {
     func withdrawWay(way: String) {
         switch way {
         case "0":
-            img.image = UIImage.init(named: "ico_img_zfb.png")
+            img.image = getImage(type(of: self), "ico_img_zfb")
         case "1":
-            img.image = UIImage.init(named: "ico_img_wx.png")
+            img.image = getImage(type(of: self), "ico_img_wx")
         case "2":
-            img.image = UIImage.init(named: "ico_img_yl.png")
+            img.image = getImage(type(of: self), "ico_img_yl")
         default:
             break
         }
@@ -63,12 +63,13 @@ class WithdrawRecordCell: UITableViewCell {
         didSet {
             switch way {
             case .aliPay:
-                img.image = UIImage.init(named: "ico_img_zfb.png")
+                img.image = getImage(type(of: self), "ico_img_zfb")
             case .wxPay:
-                img.image = UIImage.init(named: "ico_img_wx.png")
+                img.image = getImage(type(of: self), "ico_img_wx")
             case .unionPay:
-                img.image = UIImage.init(named: "ico_img_yl.png")
-            default: break
+                img.image = getImage(type(of: self), "ico_img_yl")
+            default:
+                break
             }
         }
     }

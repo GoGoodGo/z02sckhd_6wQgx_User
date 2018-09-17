@@ -257,7 +257,7 @@ public class HomeController: UIViewController {
         btn.frame = CGRect.init(x: gap, y: (NavigationBarH - height - 20) / 2, width: WIDTH - gap * 2, height: height)
         btn.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         btn.setTitle("请输入宝贝名称", for: .normal)
-        btn.setImage(UIImage.init(named: "ico_img_ss.png"), for: .normal)
+        btn.setImage(getImage(type(of: self), "ico_img_ss"), for: .normal)
         btn.contentHorizontalAlignment = .left
         btn.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 0)
         btn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 0)

@@ -1,6 +1,6 @@
 {
   "name": "z02sckhd_6wQgx_User",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "summary": "TM User.",
   "description": "TM User framework",
   "homepage": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git",
-    "tag": "1.1.0"
+    "tag": "1.1.1"
   },
   "swift_version": "4.1",
   "platforms": {
@@ -29,7 +29,8 @@
   ],
   "resource_bundles": {
     "z02sckhd_6wQgx_User": [
-      "z02sckhd_6wQgx_User/Classes/**/**/**/*.{xib,plist}"
+      "z02sckhd_6wQgx_User/Classes/**/**/**/*.{xib,plist}",
+      "z02sckhd_6wQgx_User/Assets/Crop/**/*.png"
     ]
   },
   "libraries": [

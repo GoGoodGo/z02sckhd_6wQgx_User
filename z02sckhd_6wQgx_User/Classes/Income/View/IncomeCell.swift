@@ -13,7 +13,7 @@ class IncomeCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var name: UILabel!
     
-    let imgs = ["ico_img_ewm.png", "ico_img_hy.png", "ico_img_sy.png", "ico_img_txjl.png"]
+    let imgs = ["ico_img_ewm", "ico_img_hy", "ico_img_sy", "ico_img_txjl"]
     let names = ["我的二维码", "我的会员", "我的收益", "提现记录"]
 
     override func awakeFromNib() {
@@ -24,7 +24,7 @@ class IncomeCell: UITableViewCell {
     // MARK: - Setter
     var index: Int = 0 {
         didSet {
-            imgView.image = UIImage.init(named: imgs[index])
+            imgView.image = getImage(type(of: self), imgs[index])
             name.text = names[index]
         }
     }

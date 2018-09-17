@@ -13,7 +13,7 @@ class MineInfoCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var name: UILabel!
     
-    let imgs = ["ico_img_shdz.png", "ico_img_dd.png", "ico_img_sy1.png", "ico_img_tx.png", "ico_img_sc_blue.png"]
+    let imgs = ["ico_img_shdz", "ico_img_dd", "ico_img_sy1", "ico_img_tx", "ico_img_sc1"]
     let names = ["收货地址", "我的订单", "我的收益", "我的提现", "我的收藏"]
 
     override func awakeFromNib() {
@@ -25,7 +25,7 @@ class MineInfoCell: UITableViewCell {
     // MARK: - Setter
     var index: Int = 0 {
         didSet {
-            img.image = UIImage.init(named: imgs[index])
+            img.image = getImage(type(of: self), imgs[index])
             name.text = names[index]
         }
     }

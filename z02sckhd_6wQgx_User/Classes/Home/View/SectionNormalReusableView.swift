@@ -31,35 +31,34 @@ class SectionNormalReusableView: UICollectionReusableView {
         didSet {
             switch homeSection {
             case 1:
-                type = .group
+                headerType = .group
             case 2:
-                type = .timelimit
+                headerType = .timelimit
             case 3:
-                type = .recommend
+                headerType = .recommend
             case 5:
-                type = .store
+                headerType = .store
             default: return
             }
         }
     }
     
-    
-    var type: HeaderType = .auction {
+    var headerType: HeaderType = .auction {
         didSet {
             var imgName = ""
-            switch type {
+            switch headerType {
             case .auction:
-                imgName = "ico_img_xspm.png"
+                imgName = "ico_img_xspm"
             case .group:
-                imgName = "ico_img_thtg.png"
+                imgName = "ico_img_thtg"
             case .timelimit:
-                imgName = "ico_img_xlms.png"
+                imgName = "ico_img_xlms"
             case .recommend:
-                imgName = "ico_img_tbtj.png"
+                imgName = "ico_img_tbtj"
             default:
-                imgName = "ico_img_jpdp.png"
+                imgName = "ico_img_jpdp"
             }
-            imgView.image = UIImage.init(named: imgName)
+            imgView.image = getImage(type(of: self), imgName)
         }
     }
     

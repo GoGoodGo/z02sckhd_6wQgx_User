@@ -18,6 +18,15 @@ public let bundle: (AnyClass) -> Bundle = { any in
     return Bundle.init(url: url!)!
 }
 
+public let getImage: (AnyClass, String) -> UIImage? = { any, name in
+    
+    let imageBundle = bundle(any)
+    let scale = Int(UIScreen.main.scale)
+    let path = imageBundle.path(forResource: name + "@\(scale)x", ofType: "png")
+    
+    return UIImage.init(contentsOfFile: path!)
+}
+
 /** 商品 */
 
 // 商品分类

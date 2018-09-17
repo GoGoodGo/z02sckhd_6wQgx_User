@@ -37,7 +37,7 @@ class SecondaryTypeCell: UICollectionViewCell {
             
             self.backgroundColor = isSelected ? HexString("#ff5863") : HexString("#f3f4f8")
             name.textColor = isSelected ? UIColor.white : HexString("#9fa5bb")
-            imgView.image = isSelected ? UIImage.init(named: "ico_img_mz1xz.png") : UIImage.init(named: "ico_img_mz1.png")
+            imgView.image = isSelected ? getImage(type(of: self), "ico_img_mz1xz") : getImage(type(of: self), "ico_img_mz1")
         }
     }
     

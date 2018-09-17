@@ -1,4 +1,7 @@
+platform :ios, "9.0"
 use_frameworks!
+
+install! 'cocoapods', :deterministic_uuids => false
 
 target 'z02sckhd_6wQgx_User_Example' do
   pod 'z02sckhd_6wQgx_User', :path => '../'
