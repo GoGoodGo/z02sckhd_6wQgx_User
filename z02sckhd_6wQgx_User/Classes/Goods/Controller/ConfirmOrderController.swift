@@ -76,7 +76,7 @@ class ConfirmOrderController: UIViewController {
         getRequest(baseUrl: OrderDone_URL, params: ["token" : Singleton.shared.token, "flow_type" : flowType, "address_id" : (consignee?.address_id)!], success: { [weak self] (obj: OrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
-                let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: bundle(type(of: self) as! AnyClass))
+                let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())
                 onlinePay.mid = (obj.data?.order_id)!
                 onlinePay.orderSN = (obj.data?.order_sn)!
                 onlinePay.amount = "\(self?.orderInfo?.data?.total?.goods_price ?? 0.00)"
@@ -100,7 +100,7 @@ class ConfirmOrderController: UIViewController {
                 price += Float(goods.quantity)! * Float(goods.price)!
             }
             store.totalQuantity = "\(quantity)"
-            store.amount = price
+            store.amount = price + store.pay_fee
         }
     }
     

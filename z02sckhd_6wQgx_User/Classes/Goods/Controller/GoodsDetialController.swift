@@ -264,7 +264,9 @@ class GoodsDetialController: UIViewController {
     }
     
     @IBAction func action_service() {
-        
+        let phone = "telprompt://" + (goodsDetial?.phone)!
+        let url = URL.init(string: phone)
+        UIApplication.shared.openURL(url!)
     }
     
     @IBAction func action_collect(_ sender: UIButton) {
@@ -381,7 +383,7 @@ class GoodsDetialController: UIViewController {
     func submit(flowType: String) {
         getRequest(baseUrl: CartSubmit_URL, params: ["token" : Singleton.shared.token, "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
             if "success" == obj.status {
-                let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: bundle(type(of: self) as! AnyClass))
+                let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())
                 confirmOrder.flowType = flowType
                 confirmOrder.orderInfo = obj
                 self?.navigationController?.pushViewController(confirmOrder, animated: true)

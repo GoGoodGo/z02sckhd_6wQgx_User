@@ -171,7 +171,7 @@ class MyOrderController: UIViewController {
                     self?.loadCancel(section: footer.section)
                 }, cancelHandler: nil)
             case 2: // 查看物流
-                let logisticsCtrl = LogisticsController.init(nibName: "LogisticsController", bundle: bundle(type(of: self) as! AnyClass))
+                let logisticsCtrl = LogisticsController.init(nibName: "LogisticsController", bundle: getBundle())
                 self?.navigationController?.pushViewController(logisticsCtrl, animated: true)
             default: return
             }
@@ -205,7 +205,7 @@ class MyOrderController: UIViewController {
     }
     private func callbacks(cell: NotEvaluateCell) {
         cell.evaluateBlock = { [weak self] (cell, goods) in
-            let evaluateCtrl = EvaluateController.init(nibName: "EvaluateController", bundle: bundle(type(of: self) as! AnyClass))
+            let evaluateCtrl = EvaluateController.init(nibName: "EvaluateController", bundle: getBundle())
             evaluateCtrl.evaluate = goods
             self?.navigationController?.pushViewController(evaluateCtrl, animated: true)
         }

@@ -20,15 +20,23 @@ public class CartController: UIViewController {
     var cart: Cart?
     var stores = [CartStore]()
     var currentAmount: Float = 0.0
+    var isSubmitOrder = false // 是否提交订单
     
     var sectionHeaders = [Int : CartSectionHeader]()
     var sectionFooters = [Int : CartSectionFooter]()
     
-    override public func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "购物车"
         setupUI()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isSubmitOrder {
+            load()
+        }
     }
     
     // MARK: - Private Method
@@ -253,7 +261,8 @@ public class CartController: UIViewController {
         getRequest(baseUrl: CartSubmit_URL, params: ["token" : Singleton.shared.token], success: { [weak self] (obj: CartOrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
-                let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: bundle(type(of: self) as! AnyClass))
+                self?.isSubmitOrder = true
+                let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())
                 confirmOrder.orderInfo = obj
                 self?.navigationController?.pushViewController(confirmOrder, animated: true)
             } else {

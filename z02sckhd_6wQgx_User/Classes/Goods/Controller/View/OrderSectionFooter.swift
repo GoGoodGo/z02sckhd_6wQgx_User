@@ -32,7 +32,8 @@ class OrderSectionFooter: UIView {
     var store: CartStore? {
         didSet {
             totalNum.text = "共\(store?.totalQuantity ?? "0")件商品"
-            totoalPrice.text = "¥\(store?.amount ?? 0.0)"
+            totoalPrice.text = "¥\(store?.amount ?? 0.00)"
+            expressPrice.text = "¥\(store?.pay_fee ?? 0.00)"
         }
     }
 

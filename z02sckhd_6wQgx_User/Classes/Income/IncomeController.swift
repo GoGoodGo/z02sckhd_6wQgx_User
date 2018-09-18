@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 import YHTool
 
 public class IncomeController: UIViewController {
@@ -35,15 +36,16 @@ public class IncomeController: UIViewController {
         tableView.tableFooterView = nil
         header.height = HeightPercent(145)
         tableView.register(UINib.init(nibName: CellName(IncomeCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(IncomeCell.self))
-        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
         load()
     }
     
     /** 获取收益 */
-    func load() {
+    @objc func load() {
         showHUD()
         getRequest(baseUrl: Income_URL, params: ["token" : Singleton.shared.token, "type" : "11", "status" : "0"], success: { [weak self] (obj: IncomeInfo) in
             self?.hideHUD()
+            self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.withdraw.text = "¥\(obj.data?.money ?? "0.00")"
                 self?.income.text = "¥\(obj.data?.ok ?? 0.00)"
@@ -52,6 +54,7 @@ public class IncomeController: UIViewController {
             }
         }) { (error) in
             self.hideHUD()
+            self.tableView.mj_header.endRefreshing()
             self.inspectError()
         }
     }

@@ -31,24 +31,26 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
-  s.vendored_frameworks = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework'
-  s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle'
+  s.vendored_frameworks = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework', 'z02sckhd_6wQgx_User/Classes/ThirdParty/TMShareSdk/*.framework'
+  s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle', 'z02sckhd_6wQgx_User/Classes/ThirdParty/TMShareSdk/*.bundle'
   
-  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift', 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h', 'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h'
+  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift'
+                   'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h'
+                   'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h'
   
   s.resource_bundles = {
-      'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.{xib,plist}', 'z02sckhd_6wQgx_User/Assets/Crop/**/*.png']
+      'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.xib', 'z02sckhd_6wQgx_User/Classes/Mine/*.plist', 'z02sckhd_6wQgx_User/Assets/Crop/**/*.png']
   }
   
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.libraries = 'sqlite3.0', 'z', 'c++'
   s.frameworks = 'Security', 'CoreMotion', 'CFNetwork', 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics'
   
-  s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'Kingfisher', '~> 4.8.0'
   s.dependency 'Cosmos', '~> 16.0'
   s.dependency 'YHTool', '~> 1.1.4'
   
+  s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'MJRefresh', '~> 3.1.12'
   
   

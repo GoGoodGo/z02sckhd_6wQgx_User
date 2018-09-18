@@ -76,7 +76,7 @@ class CartTotal: Mappable {
     var my_integral = "0"
     var my_money = "0"
     var surplus = 0
-    var pay_fee = 0
+    var pay_fee: Float = 0.00
     var goods_price: Float = 0.00
     var is_integral_pay = 0
     var integral = 0
@@ -108,6 +108,7 @@ class Cart: Mappable {
     
     var amount: Float = 0.00
     var quantity = 1
+    var pay_fee = 0
     var goods = [CartStore]()
     
     required init?(map: Map) {
@@ -118,6 +119,7 @@ class Cart: Mappable {
         
         amount <- map["amount"]
         quantity <- map["quantity"]
+        pay_fee <- map["pay_fee"]
         goods <- map["goods"]
     }
 }
@@ -126,6 +128,7 @@ class CartStore: Mappable {
     
     var shopname = ""
     var sid = ""
+    var pay_fee: Float = 0
     var result = [CartGoods]()
     var totalQuantity = "0"
     var notes = ""
@@ -142,6 +145,7 @@ class CartStore: Mappable {
         
         shopname <- map["shopname"]
         sid <- map["sid"]
+        pay_fee <- map["pay_fee"]
         result <- map["result"]
     }
 }

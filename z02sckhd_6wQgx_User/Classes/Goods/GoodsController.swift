@@ -128,7 +128,7 @@ public class GoodsController: UIViewController {
     private func callbacksHeader(header: GoodsHeaderView) {
         header.clickItemBlock = { [weak self] index in
             let category = self?.categorys[index]
-            let typeCtrl = SecondaryTypesController.init(nibName: "SecondaryTypesController", bundle: bundle(type(of: self) as! AnyClass))
+            let typeCtrl = SecondaryTypesController.init(nibName: "SecondaryTypesController", bundle: getBundle())
             typeCtrl.pID = (category?.id)!
             self?.navigationController?.pushViewController(typeCtrl, animated: true)
         }

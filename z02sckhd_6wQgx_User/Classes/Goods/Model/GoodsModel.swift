@@ -390,6 +390,8 @@ class GoodsDetial: Mappable {
     var add_time = ""
     var status = false //是否下架
     var cate_name = ""
+    var phone = ""
+    var pay_fee: Float = 0.00
     var _images = [GoodsImage]()
     var _specs = [GoodsSpec]()
     var _specs_all = [GoodsSpec]()
@@ -447,6 +449,8 @@ class GoodsDetial: Mappable {
         is_check <- map["is_check"]
         add_time <- map["add_time"]
         cate_name <- map["cate_name"]
+        phone <- map["phone"]
+        pay_fee <- map["pay_fee"]
         status <- map["status"]
         _images <- map["_images"]
         _specs <- map["_specs"]
