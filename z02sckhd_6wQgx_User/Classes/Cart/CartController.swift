@@ -65,7 +65,7 @@ public class CartController: UIViewController {
     @objc func load() {
         showHUD()
         getRequest(baseUrl: Cart_URL, params: ["token" : Singleton.shared.token], success: { [weak self] (obj: CartInfo) in
-            self?.hideHUD()
+            self?.hideAllHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.cart = obj.data
@@ -77,7 +77,7 @@ public class CartController: UIViewController {
             }
         }) { (error) in
             self.tableView.mj_header.endRefreshing()
-            self.hideHUD()
+            self.hideAllHUD()
             self.inspectError()
         }
     }
@@ -185,6 +185,11 @@ public class CartController: UIViewController {
                     checkSuccess(isSelected: true, indexPath: indexPath)
                 }
             }
+        }
+        if stores.count == 0 {
+            isSelectedAll = false
+            currentAmount = 0.00
+            amount.text = "\(currentAmount)"
         }
     }
     /** 更新 section 的状态 */
