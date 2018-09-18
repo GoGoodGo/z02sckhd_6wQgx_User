@@ -160,10 +160,10 @@ public class GoodsController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: HEIGHT), collectionViewLayout:self.layout)
-        view.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
+        view.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
         
         view.register(GoodsHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(GoodsHeaderView.self))
-        view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: bundle(type(of: self))), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
+        view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
         view.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: TabBarH, right: 0)
         view.delegate = self
         view.dataSource = self
@@ -232,7 +232,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let goods = indexPath.section == 0 ? recommends[indexPath.row] : goodsList[indexPath.row]
-        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: bundle(type(of: self)))
+        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
         goodsDetialCtrl.ID = goods.goods_id
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }

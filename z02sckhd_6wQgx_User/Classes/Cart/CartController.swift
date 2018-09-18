@@ -40,7 +40,7 @@ public class CartController: UIViewController {
         tableView.estimatedSectionFooterHeight = 50
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
-        tableView.register(UINib.init(nibName: CellName(CartGoodsCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(CartGoodsCell.self))
+        tableView.register(UINib.init(nibName: CellName(CartGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(CartGoodsCell.self))
         tableView.allowsMultipleSelection = true
         
         load()

@@ -39,7 +39,7 @@ class AddressController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem.item(title: "新增", titleColor: HexString("#3363ff"), target: self, action: #selector(action_add))
         
         tableView.tableFooterView = nil
-        tableView.register(UINib.init(nibName: CellName(AddressCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(AddressCell.self))
+        tableView.register(UINib.init(nibName: CellName(AddressCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(AddressCell.self))
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 10, right: 0)
         
         callbacksMask()

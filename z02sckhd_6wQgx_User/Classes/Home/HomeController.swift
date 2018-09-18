@@ -200,7 +200,7 @@ public class HomeController: UIViewController {
     @objc private func action_search() {
         
         isShowSearchBar(isShow: false)
-        let searchCtrl = SearchController.init(nibName: "SearchController", bundle: bundle(type(of: self)))
+        let searchCtrl = SearchController.init(nibName: "SearchController", bundle: getBundle())
         navigationController?.pushViewController(searchCtrl, animated: true)
     }
     
@@ -236,13 +236,13 @@ public class HomeController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: HEIGHT), collectionViewLayout:self.layout)
-        view.register(UINib.init(nibName: CellName(TimelimitGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(TimelimitGoodsCell.self))
-        view.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
-        view.register(UINib.init(nibName: CellName(MerchantCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(MerchantCell.self))
+        view.register(UINib.init(nibName: CellName(TimelimitGoodsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(TimelimitGoodsCell.self))
+        view.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
+        view.register(UINib.init(nibName: CellName(MerchantCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(MerchantCell.self))
         
         view.register(HomeHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(HomeHeaderView.self))
-        view.register(UINib.init(nibName: CellName(SectionNormalReusableView.self), bundle: bundle(type(of: self))), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SectionNormalReusableView.self))
-        view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: bundle(type(of: self))), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
+        view.register(UINib.init(nibName: CellName(SectionNormalReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SectionNormalReusableView.self))
+        view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
         view.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: TabBarH, right: 0)
         view.delegate = self
         view.dataSource = self
@@ -373,7 +373,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         var ID = ""
         var detialType: DetialType = .detial
         if section == 5 {
-            let storeCtrl = StoreController.init(nibName: "StoreController", bundle: bundle(type(of: self)))
+            let storeCtrl = StoreController.init(nibName: "StoreController", bundle: getBundle())
             storeCtrl.ID = shops[indexPath.row].id
             navigationController?.pushViewController(storeCtrl, animated: true)
             return
@@ -392,7 +392,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
             ID = newGoods[indexPath.row].goods_id
         }
         
-        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: bundle(type(of: self)))
+        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
         goodsDetialCtrl.ID = ID
         goodsDetialCtrl.detialType = detialType
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)

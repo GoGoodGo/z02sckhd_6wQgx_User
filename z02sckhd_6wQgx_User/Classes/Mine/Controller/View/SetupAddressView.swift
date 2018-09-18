@@ -84,7 +84,7 @@ class SetupAddressView: UIView {
     }
     /** 获取地址信息 */
     private func getAddress() {
-        let path = bundle(type(of: self)).path(forResource: "Address", ofType: "plist")
+        let path = getBundle().path(forResource: "Address", ofType: "plist")
         address = NSDictionary.init(contentsOfFile: path!)
     }
     

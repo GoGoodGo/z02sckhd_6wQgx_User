@@ -60,20 +60,21 @@ class GoodsDetialController: UIViewController {
     // MARK: - Private Method
     private func setupUI() {
         footerSetup()
-        navigationItem.leftBarButtonItem = UIBarButtonItem.item(image: "ico_img_fh1.png", target: self, action: #selector(action_back))
-        navigationItem.rightBarButtonItem = UIBarButtonItem.item(image: "ico_img_fx.png", target: self, action: #selector(action_share))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.itemBundle(bundle: getBundle(), image: "ico_img_fh1", target: self, action: #selector(action_back))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem.itemBundle(bundle: getBundle(), image: "ico_img_fx", target: self, action: #selector(action_share))
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        tableView.register(UINib.init(nibName: CellName(DetialBaseInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(DetialBaseInfoCell.self))
-        tableView.register(UINib.init(nibName: CellName(SpecificCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(SpecificCell.self))
-        tableView.register(UINib.init(nibName: CellName(TimelimitBaseInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(TimelimitBaseInfoCell.self))
-        tableView.register(UINib.init(nibName: CellName(AuctionBaseInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(AuctionBaseInfoCell.self))
-        tableView.register(UINib.init(nibName: CellName(GoodsCreditCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(GoodsCreditCell.self))
-        tableView.register(UINib.init(nibName: CellName(GoodsEvaluateCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(GoodsEvaluateCell.self))
-        tableView.register(UINib.init(nibName: CellName(GoodsDetialCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(GoodsDetialCell.self))
-        tableView.register(UINib.init(nibName: CellName(AuctionRecordCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(AuctionRecordCell.self))
+        tableView.register(UINib.init(nibName: CellName(DetialBaseInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(DetialBaseInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(SpecificCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(SpecificCell.self))
+        tableView.register(UINib.init(nibName: CellName(TimelimitBaseInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(TimelimitBaseInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(AuctionBaseInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(AuctionBaseInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(GoodsCreditCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(GoodsCreditCell.self))
+        tableView.register(UINib.init(nibName: CellName(GoodsEvaluateCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(GoodsEvaluateCell.self))
+        tableView.register(UINib.init(nibName: CellName(GoodsDetialCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(GoodsDetialCell.self))
+        tableView.register(UINib.init(nibName: CellName(AuctionRecordCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(AuctionRecordCell.self))
         
         tableView.tableHeaderView = carouselView
         switch detialType {
@@ -257,7 +258,7 @@ class GoodsDetialController: UIViewController {
     }
     
     @IBAction func action_store() {
-        let storeCtrl = StoreController.init(nibName: "StoreController", bundle: bundle(type(of: self)))
+        let storeCtrl = StoreController.init(nibName: "StoreController", bundle: getBundle())
         storeCtrl.ID = (goodsDetial?.sid)!
         navigationController?.pushViewController(storeCtrl, animated: true)
     }

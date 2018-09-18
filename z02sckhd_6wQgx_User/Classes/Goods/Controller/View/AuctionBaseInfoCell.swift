@@ -46,7 +46,7 @@ class AuctionBaseInfoCell: UITableViewCell {
         
         layout.itemSize = CGSize.init(width: 70, height: 20)
         
-        collectionView.register(UINib.init(nibName: CellName(GoodsParameterCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(GoodsParameterCell.self))
+        collectionView.register(UINib.init(nibName: CellName(GoodsParameterCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(GoodsParameterCell.self))
         
         collectionView.delegate = self
         collectionView.dataSource = self

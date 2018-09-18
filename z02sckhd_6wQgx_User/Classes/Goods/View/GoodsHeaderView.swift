@@ -56,7 +56,7 @@ class GoodsHeaderView: UICollectionReusableView {
     
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: getItemHeight() * 2), collectionViewLayout:self.layout)
-        view.register(UINib.init(nibName: CellName(GoodsTypesCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(GoodsTypesCell.self))
+        view.register(UINib.init(nibName: CellName(GoodsTypesCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(GoodsTypesCell.self))
         view.isScrollEnabled = false
         view.delegate = self
         view.dataSource = self

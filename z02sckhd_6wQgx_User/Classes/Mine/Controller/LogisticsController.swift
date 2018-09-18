@@ -35,8 +35,8 @@ class LogisticsController: UIViewController {
         tableView.estimatedSectionFooterHeight = 50
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
-        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
-        tableView.register(UINib.init(nibName: CellName(LogisticsInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(LogisticsInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
+        tableView.register(UINib.init(nibName: CellName(LogisticsInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(LogisticsInfoCell.self))
         
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 70, right: 0)
     }

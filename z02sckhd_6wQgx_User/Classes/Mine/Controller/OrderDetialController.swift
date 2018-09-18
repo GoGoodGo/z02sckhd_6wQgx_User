@@ -28,8 +28,8 @@ class OrderDetialController: UIViewController {
         tableView.sectionFooterHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         tableView.estimatedSectionFooterHeight = 50
-        tableView.register(UINib.init(nibName: CellName(MyOrderCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(MyOrderCell.self))
-        tableView.register(UINib.init(nibName: CellName(OrderDetialInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(OrderDetialInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(MyOrderCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MyOrderCell.self))
+        tableView.register(UINib.init(nibName: CellName(OrderDetialInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderDetialInfoCell.self))
     }
     /** 订单详情 */
     func load() {

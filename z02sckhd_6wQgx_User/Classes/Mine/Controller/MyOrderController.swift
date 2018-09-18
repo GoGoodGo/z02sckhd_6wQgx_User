@@ -42,8 +42,8 @@ class MyOrderController: UIViewController {
         tableView.sectionFooterHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         tableView.estimatedSectionFooterHeight = 50
-        tableView.register(UINib.init(nibName: CellName(MyOrderCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(MyOrderCell.self))
-        tableView.register(UINib.init(nibName: CellName(NotEvaluateCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(NotEvaluateCell.self))
+        tableView.register(UINib.init(nibName: CellName(MyOrderCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MyOrderCell.self))
+        tableView.register(UINib.init(nibName: CellName(NotEvaluateCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(NotEvaluateCell.self))
         
         load()
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
@@ -88,7 +88,7 @@ class MyOrderController: UIViewController {
     /** 立即付款 */
     func loadPay(section: Int) {
         
-        let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: bundle(type(of: self)))
+        let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())
         onlinePay.mid = (orderInfo?.result[section].mid)!
         onlinePay.orderSN = (orderInfo?.result[section].order_sn)!
         onlinePay.amount = (orderInfo?.result[section].order_amount)!
@@ -140,7 +140,7 @@ class MyOrderController: UIViewController {
     }
     /** 订单详情 */
     private func orderDetial(section: Int) {
-        let orderDetial = OrderDetialController.init(nibName: "OrderDetialController", bundle: bundle(type(of: self)))
+        let orderDetial = OrderDetialController.init(nibName: "OrderDetialController", bundle: getBundle())
         orderDetial.orderResult = orderInfo?.result[section]
         navigationController?.pushViewController(orderDetial, animated: true)
     }

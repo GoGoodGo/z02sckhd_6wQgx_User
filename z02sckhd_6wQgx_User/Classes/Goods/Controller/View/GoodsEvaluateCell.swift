@@ -37,7 +37,7 @@ class GoodsEvaluateCell: UITableViewCell {
         layout.itemSize = CGSize.init(width: width, height: width)
         collectionViewH.constant = width + gap
         
-        collectionView.register(UINib.init(nibName: CellName(EvaluateImageCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(EvaluateImageCell.self))
+        collectionView.register(UINib.init(nibName: CellName(EvaluateImageCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(EvaluateImageCell.self))
         
         collectionView.contentInset = UIEdgeInsets.init(top: gap, left: 0, bottom: 0, right: 0)
         collectionView.delegate = self

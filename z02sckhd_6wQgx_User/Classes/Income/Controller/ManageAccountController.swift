@@ -34,7 +34,7 @@ class ManageAccountController: UIViewController {
     // MARK: - PrivateMethod
     private func setupUI() {
         
-        tableView.register(UINib.init(nibName: CellName(WithdrawAccountCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(WithdrawAccountCell.self))
+        tableView.register(UINib.init(nibName: CellName(WithdrawAccountCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(WithdrawAccountCell.self))
         header.addSubview(pullDownView)
         callbacksPullDown()
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))

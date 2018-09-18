@@ -52,7 +52,7 @@ class SearchController: UIViewController {
         layout.itemSize = CGSize.init(width: width, height: height)
         layout.minimumLineSpacing = gap
         
-        collectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
+        collectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
         
         collectionView.contentInset = UIEdgeInsets.init(top: gap, left: gap, bottom: gap, right: gap)
         collectionView.delegate = self

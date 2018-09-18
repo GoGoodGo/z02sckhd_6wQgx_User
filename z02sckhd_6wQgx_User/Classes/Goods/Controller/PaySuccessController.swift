@@ -33,7 +33,7 @@ class PaySuccessController: UIViewController {
         let height = width + gap + 60
         layout.itemSize = CGSize.init(width: width, height: height)
         
-        collectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
+        collectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -65,7 +65,7 @@ extension PaySuccessController: UICollectionViewDelegate, UICollectionViewDataSo
     
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: bundle(type(of: self)))
+        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }
     

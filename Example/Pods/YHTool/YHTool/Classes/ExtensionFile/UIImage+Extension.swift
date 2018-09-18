@@ -9,7 +9,35 @@ import UIKit
 
 extension UIImage {
     
-    // MARK: - 图片压缩
+    /** 获取 bundle 图片 eg. xxx@2x.png, name = xxx */
+    static public func bundleImage(name: String) -> UIImage? {
+        
+        let bundle = getBundle(Singleton.self)
+        let scale = Int(UIScreen.main.scale)
+        let path = bundle.path(forResource: name + "@\(scale)x", ofType: "png")
+        
+        return UIImage.init(contentsOfFile: path!)
+    }
+    /** 获取指定类 bundle 图片 eg. xxx@2x.png, name = xxx */
+    static public func bundleImage(any: AnyClass, name: String) -> UIImage? {
+        
+        let bundle = getBundle(any)
+        let scale = Int(UIScreen.main.scale)
+        let path = bundle.path(forResource: name + "@\(scale)x", ofType: "png")
+        
+        return UIImage.init(contentsOfFile: path!)
+    }
+    
+    /** 获取指定 bundle 图片 eg. xxx@2x.png, name = xxx */
+    static public func bundleImage(bundle: Bundle, name: String) -> UIImage? {
+        
+        let scale = Int(UIScreen.main.scale)
+        let path = bundle.path(forResource: name + "@\(scale)x", ofType: "png")
+        
+        return UIImage.init(contentsOfFile: path!)
+    }
+    
+    /** 图片压缩 */
     public func zoomedImage(width: CGFloat) -> UIImage {
         
         var imgWidth = size.width

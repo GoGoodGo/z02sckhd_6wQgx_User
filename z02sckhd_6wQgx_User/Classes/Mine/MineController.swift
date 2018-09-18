@@ -45,7 +45,7 @@ public class MineController: UIViewController {
     // MARK: - Callbacks
     @IBAction func action_userInfo(_ sender: UIButton) {
         
-        let signInCtrl = SignInController.init(nibName: "SignInController", bundle: bundle(type(of: self)))
+        let signInCtrl = SignInController.init(nibName: "SignInController", bundle: getBundle())
         navigationController?.pushViewController(signInCtrl, animated: true)
     }
     
@@ -55,7 +55,7 @@ public class MineController: UIViewController {
         imgBtn.layer.borderColor = UIColor.white.cgColor
         
         tableView.tableFooterView = nil
-        tableView.register(UINib.init(nibName: CellName(MineInfoCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(MineInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(MineInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MineInfoCell.self))
     }
 }
 
@@ -79,19 +79,19 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            let addressCtrl = AddressController.init(nibName: "AddressController", bundle: bundle(type(of: self)))
+            let addressCtrl = AddressController.init(nibName: "AddressController", bundle: getBundle())
             navigationController?.pushViewController(addressCtrl, animated: true)
         case 1:
-            let orderCtrl = MyOrderController.init(nibName: "MyOrderController", bundle: bundle(type(of: self)))
+            let orderCtrl = MyOrderController.init(nibName: "MyOrderController", bundle: getBundle())
             navigationController?.pushViewController(orderCtrl, animated: true)
         case 2:
-            let incomeCtrl = MyIncomeController.init(nibName: "MyIncomeController", bundle: bundle(type(of: self)))
+            let incomeCtrl = MyIncomeController.init(nibName: "MyIncomeController", bundle: getBundle())
             navigationController?.pushViewController(incomeCtrl, animated: true)
         case 3:
-            let withdraw = WithdrawRecordController.init(nibName: "WithdrawRecordController", bundle: bundle(type(of: self)))
+            let withdraw = WithdrawRecordController.init(nibName: "WithdrawRecordController", bundle: getBundle())
             navigationController?.pushViewController(withdraw, animated: true)
         case 4:
-            let collectCtrl = CollectController.init(nibName: "CollectController", bundle: bundle(type(of: self)))
+            let collectCtrl = CollectController.init(nibName: "CollectController", bundle: getBundle())
             navigationController?.pushViewController(collectCtrl, animated: true)
         default: return
         }

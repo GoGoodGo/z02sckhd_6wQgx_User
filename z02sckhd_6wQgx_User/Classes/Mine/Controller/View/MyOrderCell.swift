@@ -24,7 +24,7 @@ class MyOrderCell: UITableViewCell {
     private func setupUI() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
+        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
     }
     
     // MARK: - Setter

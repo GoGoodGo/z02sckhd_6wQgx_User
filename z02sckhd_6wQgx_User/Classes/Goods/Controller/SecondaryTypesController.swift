@@ -64,8 +64,8 @@ class SecondaryTypesController: UIViewController {
         let width = (WIDTH - gap * 3) / 2
         let height = width + gap + 60
         goodsLayout.itemSize = CGSize.init(width: width, height: height)
-        typeCollectionView.register(UINib.init(nibName: CellName(SecondaryTypeCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(SecondaryTypeCell.self))
-        goodsCollectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: bundle(type(of: self))), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
+        typeCollectionView.register(UINib.init(nibName: CellName(SecondaryTypeCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(SecondaryTypeCell.self))
+        goodsCollectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
         
         typeCollectionView.contentInset = UIEdgeInsets.init(top: gap, left: gap, bottom: gap, right: gap)
         goodsCollectionView.contentInset = UIEdgeInsets.init(top: gap, left: gap, bottom: gap, right: gap)
@@ -219,7 +219,7 @@ extension SecondaryTypesController: UICollectionViewDelegate, UICollectionViewDa
             currentCategory = categorys[indexPath.row]
             load()
         } else {
-            let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: bundle(type(of: self)))
+            let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
             navigationController?.pushViewController(goodsDetialCtrl, animated: true)
         }
     }

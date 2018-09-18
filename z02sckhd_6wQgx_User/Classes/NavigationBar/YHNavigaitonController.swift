@@ -28,7 +28,8 @@ public class YHNavigaitonController: UINavigationController {
             
             viewController.hidesBottomBarWhenPushed = true
             
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.item(image: "ico_img_jt.png", highligtImage: nil, title: nil, target: self, action: #selector(action_PopBack))
+//            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.item(image: "ico_img_jt.png", highligtImage: nil, title: nil, target: self, action: #selector(action_PopBack))
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.itemBundle(bundle: getBundle(), image: "ico_img_jt", target: self, action: #selector(action_PopBack))
         }
         super.pushViewController(viewController, animated: animated)
     }

@@ -30,7 +30,7 @@ class MyIncomeController: UIViewController {
     // MARK: - Private Method
     private func setupUI() {
         
-        tableView.register(UINib.init(nibName: CellName(MyIncomeCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(MyIncomeCell.self))
+        tableView.register(UINib.init(nibName: CellName(MyIncomeCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MyIncomeCell.self))
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))

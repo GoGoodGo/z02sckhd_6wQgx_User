@@ -34,7 +34,7 @@ public class IncomeController: UIViewController {
         
         tableView.tableFooterView = nil
         header.height = HeightPercent(145)
-        tableView.register(UINib.init(nibName: CellName(IncomeCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(IncomeCell.self))
+        tableView.register(UINib.init(nibName: CellName(IncomeCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(IncomeCell.self))
         
         load()
     }
@@ -87,16 +87,16 @@ extension IncomeController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
-            let qrCodeCtrl = QRCodeController.init(nibName: "QRCodeController", bundle: bundle(type(of: self)))
+            let qrCodeCtrl = QRCodeController.init(nibName: "QRCodeController", bundle: getBundle())
             navigationController?.pushViewController(qrCodeCtrl, animated: true)
         case 1:
-            let memberCtrl = MyMemberController.init(nibName: "MyMemberController", bundle: bundle(type(of: self)))
+            let memberCtrl = MyMemberController.init(nibName: "MyMemberController", bundle: getBundle())
             navigationController?.pushViewController(memberCtrl, animated: true)
         case 2:
-            let incomeCtrl = MyIncomeController.init(nibName: "MyIncomeController", bundle: bundle(type(of: self)))
+            let incomeCtrl = MyIncomeController.init(nibName: "MyIncomeController", bundle: getBundle())
             navigationController?.pushViewController(incomeCtrl, animated: true)
         case 3:
-            let withdraw = WithdrawRecordController.init(nibName: "WithdrawRecordController", bundle: bundle(type(of: self)))
+            let withdraw = WithdrawRecordController.init(nibName: "WithdrawRecordController", bundle: getBundle())
             navigationController?.pushViewController(withdraw, animated: true)
         default: return
         }

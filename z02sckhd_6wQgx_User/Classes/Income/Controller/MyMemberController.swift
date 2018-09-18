@@ -29,7 +29,7 @@ class MyMemberController: UIViewController {
         segmentContent.addSubview(segmentView)
         
         tableView.tableFooterView = nil
-        tableView.register(UINib.init(nibName: CellName(MemberCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(MemberCell.self))
+        tableView.register(UINib.init(nibName: CellName(MemberCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MemberCell.self))
     }
     // MARK: - Getter
     private lazy var segmentView: YHSegmentView = {

@@ -32,7 +32,7 @@ class WithdrawRecordController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.item(title: "申请提现", titleColor: HexString("#3363ff"), target: self, action: #selector(action_withdraw))
         
-        tableView.register(UINib.init(nibName: CellName(WithdrawRecordCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(WithdrawRecordCell.self))
+        tableView.register(UINib.init(nibName: CellName(WithdrawRecordCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(WithdrawRecordCell.self))
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
@@ -103,7 +103,7 @@ class WithdrawRecordController: UIViewController {
     
     @objc func action_withdraw() {
         
-        let applyWithdraw = ApplyWithdrawController.init(nibName: "ApplyWithdrawController", bundle: bundle(type(of: self)))
+        let applyWithdraw = ApplyWithdrawController.init(nibName: "ApplyWithdrawController", bundle: getBundle())
         applyWithdraw.withdrawData = withdrawData
         navigationController?.pushViewController(applyWithdraw, animated: true)
     }

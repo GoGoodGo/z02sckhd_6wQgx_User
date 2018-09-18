@@ -42,8 +42,8 @@ class ConfirmOrderController: UIViewController {
         tableView.estimatedSectionFooterHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
-        tableView.register(UINib.init(nibName: CellName(ConfirmAddressCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(ConfirmAddressCell.self))
-        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: bundle(type(of: self))), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
+        tableView.register(UINib.init(nibName: CellName(ConfirmAddressCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(ConfirmAddressCell.self))
+        tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
         tableView.allowsMultipleSelection = true
         
         getConsignee()
@@ -136,7 +136,7 @@ extension ConfirmOrderController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let address = AddressController.init(nibName: "AddressController", bundle: bundle(type(of: self)))
+            let address = AddressController.init(nibName: "AddressController", bundle: getBundle())
             address.selectedAddress = { [weak self] (model, index) in
                 self?.consignee = model
                 tableView.reloadData()

@@ -11,6 +11,13 @@ import Foundation
 let BASE_URL = "http://shop.dktoo.com/lee/"
 let IMG_URL = ""
 
+public let getBundle: () -> Bundle = {
+    
+    let bundle = Bundle.init(for: YHNavigaitonController.self)
+    let url = bundle.url(forResource: (bundle.infoDictionary?["CFBundleName"] as! String), withExtension: "bundle")
+    return Bundle.init(url: url!)!
+}
+
 public let bundle: (AnyClass) -> Bundle = { any in
     
     let bundle = Bundle.init(for: any)
