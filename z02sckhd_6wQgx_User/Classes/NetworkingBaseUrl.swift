@@ -8,7 +8,7 @@
 
 import Foundation
 
-let BASE_URL = "http://shop.dktoo.com/lee/"
+let BASE_URL = "http://shop.dktoo.com/z02sckhd_6wQgx/"
 let IMG_URL = ""
 
 public let getBundle: () -> Bundle = {

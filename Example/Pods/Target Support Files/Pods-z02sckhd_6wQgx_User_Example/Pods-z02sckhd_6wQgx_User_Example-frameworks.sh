@@ -155,7 +155,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YHTool/YHTool.framework"
-  install_framework "${PODS_ROOT}/../../z02sckhd_6wQgx_User/Classes/ThirdParty/TMSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/z02sckhd_6wQgx_User/z02sckhd_6wQgx_User.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -171,7 +170,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YHTool/YHTool.framework"
-  install_framework "${PODS_ROOT}/../../z02sckhd_6wQgx_User/Classes/ThirdParty/TMSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/z02sckhd_6wQgx_User/z02sckhd_6wQgx_User.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

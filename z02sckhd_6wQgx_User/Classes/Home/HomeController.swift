@@ -9,9 +9,8 @@
 import UIKit
 import MJRefresh
 import YHTool
-import TMSDK
 
-public class HomeController: TMViewController {
+public class HomeController: UIViewController {
     
     var rowHeight: CGFloat = 0
     let gap: CGFloat = 15

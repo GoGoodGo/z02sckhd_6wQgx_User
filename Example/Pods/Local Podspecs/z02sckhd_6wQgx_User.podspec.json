@@ -20,14 +20,8 @@
     "ios": "9.0"
   },
   "vendored_libraries": "z02sckhd_6wQgx_User/Classes/ThirdParty/*.a",
-  "vendored_frameworks": [
-    "z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework",
-    "z02sckhd_6wQgx_User/Classes/ThirdParty/TMShareSdk/*.framework"
-  ],
-  "resources": [
-    "z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle",
-    "z02sckhd_6wQgx_User/Classes/ThirdParty/TMShareSdk/*.bundle"
-  ],
+  "vendored_frameworks": "z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework",
+  "resources": "z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle",
   "source_files": [
     "z02sckhd_6wQgx_User/Classes/**/**/**/*.swift",
     "z02sckhd_6wQgx_User/Classes/ThirdParty/*.h",

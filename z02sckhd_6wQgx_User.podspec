@@ -31,12 +31,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
-  s.vendored_frameworks = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework', 'z02sckhd_6wQgx_User/Classes/ThirdParty/TMShareSdk/*.framework'
-  s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle', 'z02sckhd_6wQgx_User/Classes/ThirdParty/TMShareSdk/*.bundle'
   
-  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift'
-                   'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h'
-                   'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h'
+  s.vendored_frameworks = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework'
+  
+  s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle'
+  
+  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift', 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h', 'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h'
   
   s.resource_bundles = {
       'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.xib', 'z02sckhd_6wQgx_User/Classes/Mine/*.plist', 'z02sckhd_6wQgx_User/Assets/Crop/**/*.png']
@@ -52,6 +52,15 @@ Pod::Spec.new do |s|
   
   s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'MJRefresh', '~> 3.1.12'
+  
+  #s.dependency 'TMSDK', '~> 0.0.2-beta.3'
+  #s.dependency 'TMShare', '~> 0.0.2-beta.1'
+  #s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
+  #s.dependency 'TMUserCenter', '~> 0.0.2-beta.1'
+  
+  
+  
+  
   
   
 end
