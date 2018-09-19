@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
   s.author           = { 'OYangHui' => '442371047@qq.com' }
   s.source           = { :git => 'https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git', :tag => s.version.to_s }
   
+  s.static_framework = true
   s.swift_version = '4.1'
   s.ios.deployment_target = '9.0'
 
