@@ -8,8 +8,9 @@
 
 import UIKit
 import YHTool
+import TMSDK
 
-class ApplyWithdrawController: UIViewController {
+class ApplyWithdrawController: TMViewController {
     
     @IBOutlet weak var avaliableWithdraw: UILabel!
     @IBOutlet weak var totalWithdraw: UILabel!
@@ -41,13 +42,13 @@ class ApplyWithdrawController: UIViewController {
     /** 提现账户 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyAccount_URL, params: ["token" : Singleton.shared.token, "page" : "1"], success: { [weak self] (obj: AccountInfo) in
+        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUser.token() ?? "", "page" : "1"], success: { [weak self] (obj: AccountInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.accounts = (obj.data?.result)!
                 self?.setupAccount()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -56,14 +57,14 @@ class ApplyWithdrawController: UIViewController {
     /** 提现 */
     func loadWithdraw() {
         showHUD()
-        getRequest(baseUrl: ApplyWithdraw_URL, params: ["token" : Singleton.shared.token, "price" : textField.text!, "account_id" : accountID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: ApplyWithdraw_URL, params: ["token" : TMHttpUser.token() ?? "", "price" : textField.text!, "account_id" : accountID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "申请成功，等候处理！", completed: {
                     self?.navigationController?.popViewController(animated: true)
                 })
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()

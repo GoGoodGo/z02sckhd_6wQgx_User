@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-public class CartController: UIViewController {
+public class CartController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var amount: UILabel!
@@ -64,7 +65,7 @@ public class CartController: UIViewController {
     /** 购物车 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: Cart_URL, params: ["token" : Singleton.shared.token], success: { [weak self] (obj: CartInfo) in
+        getRequest(baseUrl: Cart_URL, params: ["token" : TMHttpUser.token() ?? ""], success: { [weak self] (obj: CartInfo) in
             self?.hideAllHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -73,7 +74,7 @@ public class CartController: UIViewController {
                 self?.tableView.reloadData()
                 self?.setupState()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.tableView.mj_header.endRefreshing()
@@ -85,13 +86,13 @@ public class CartController: UIViewController {
     func loadQuantity(num: Int, label: UILabel, indexPath: IndexPath) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartQuantity_URL, params: ["token" : Singleton.shared.token, "spec_id" : goods.spec_id, "quantity" : "\(num)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartQuantity_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : goods.spec_id, "quantity" : "\(num)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 label.text = "\(num)"
                 goods.quantity = "\(num)"
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -102,7 +103,7 @@ public class CartController: UIViewController {
     func loadCheck(indexPath: IndexPath, isSelected: Bool) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartCheck_URL, params: ["token" : Singleton.shared.token, "rec_id" :  goods.rec_id, "status" : isSelected ? "1" : "0"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartCheck_URL, params: ["token" : TMHttpUser.token() ?? "", "rec_id" :  goods.rec_id, "status" : isSelected ? "1" : "0"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.checkSuccess(isSelected: isSelected, indexPath: indexPath)
@@ -112,7 +113,7 @@ public class CartController: UIViewController {
                 } else {
                     self?.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
                 }
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -123,13 +124,13 @@ public class CartController: UIViewController {
     func loadAllCheck(section: Int, sender: UIButton) {
         showHUD()
         let store = stores[section]
-        getRequest(baseUrl: CartAllCheck_URL, params: ["token" : Singleton.shared.token, "status" : sender.isSelected ? "1" : "0", "sid" : store.sid], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartAllCheck_URL, params: ["token" : TMHttpUser.token() ?? "", "status" : sender.isSelected ? "1" : "0", "sid" : store.sid], success: { [weak self] (obj: BaseModel) in
             self?.hideAllHUD()
             if "success" == obj.status {
                 self?.updateState(section: section, isSelected: sender.isSelected)
             } else {
                 sender.isSelected = !sender.isSelected
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideAllHUD()
@@ -141,7 +142,7 @@ public class CartController: UIViewController {
     func loadDelete(indexPath: IndexPath) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartDelete_URL, params: ["token" : Singleton.shared.token, "rec_id" : goods.rec_id], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartDelete_URL, params: ["token" : TMHttpUser.token() ?? "", "rec_id" : goods.rec_id], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.stores[indexPath.section].result.remove(at: indexPath.row)
@@ -150,7 +151,7 @@ public class CartController: UIViewController {
                 }
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -263,7 +264,7 @@ public class CartController: UIViewController {
     
     @IBAction func pay() {
         showHUD()
-        getRequest(baseUrl: CartSubmit_URL, params: ["token" : Singleton.shared.token], success: { [weak self] (obj: CartOrderInfo) in
+        getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUser.token() ?? ""], success: { [weak self] (obj: CartOrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.isSubmitOrder = true
@@ -271,7 +272,7 @@ public class CartController: UIViewController {
                 confirmOrder.orderInfo = obj
                 self?.navigationController?.pushViewController(confirmOrder, animated: true)
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()

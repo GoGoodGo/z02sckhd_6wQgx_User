@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-class MyIncomeController: UIViewController {
+class MyIncomeController: TMViewController {
     
     @IBOutlet weak var unsettlement: UILabel!
     @IBOutlet weak var settlement: UILabel!
@@ -40,7 +41,7 @@ class MyIncomeController: UIViewController {
     /** 获取收益 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: Income_URL, params: ["token" : Singleton.shared.token, "type" : "11", "status" : status], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "11", "status" : status], success: { [weak self] (obj: IncomeInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -50,7 +51,7 @@ class MyIncomeController: UIViewController {
                 self?.incomes = (obj.data?.result)!
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.tableView.mj_header.endRefreshing()
@@ -59,13 +60,13 @@ class MyIncomeController: UIViewController {
     }
     
     @objc func loadMore() {
-        getRequest(baseUrl: Income_URL, params: ["token" : Singleton.shared.token, "type" : "11", "status" : status, "page" : "\(incomeData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "11", "status" : status, "page" : "\(incomeData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
             self?.tableView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.incomes += (obj.data?.result)!
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.tableView.mj_footer.endRefreshing()

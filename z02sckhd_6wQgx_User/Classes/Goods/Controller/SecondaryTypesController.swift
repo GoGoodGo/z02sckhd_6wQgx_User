@@ -132,7 +132,7 @@ class SecondaryTypesController: UIViewController {
                 self?.typeCollectionView.reloadData()
                 self?.defaultSelected()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -151,7 +151,7 @@ class SecondaryTypesController: UIViewController {
                 self?.totalPage = (obj.data?.totalpage)!
                 self?.goodsCollectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -167,7 +167,7 @@ class SecondaryTypesController: UIViewController {
                 self?.goodsList += (obj.data?.result)!
                 self?.goodsCollectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()

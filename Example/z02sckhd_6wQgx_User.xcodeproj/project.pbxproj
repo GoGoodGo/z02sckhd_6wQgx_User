@@ -13,6 +13,10 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7B858956627FFD8FD5BF8B91 /* Pods_z02sckhd_6wQgx_User_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FD942274F7C17B2599E8E5 /* Pods_z02sckhd_6wQgx_User_Example.framework */; };
+		83CB90C32153D36F00B968ED /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 83CB90C22153D36F00B968ED /* config.xml */; };
+		83CB90C72153D38400B968ED /* pages in Resources */ = {isa = PBXBuildFile; fileRef = 83CB90C42153D38400B968ED /* pages */; };
+		83CB90C82153D38500B968ED /* tm_src in Resources */ = {isa = PBXBuildFile; fileRef = 83CB90C52153D38400B968ED /* tm_src */; };
+		83CB90C92153D38500B968ED /* TMBaseConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83CB90C62153D38400B968ED /* TMBaseConfig.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,10 @@
 		64B3842AE721963548CFCDED /* Pods-z02sckhd_6wQgx_User_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Example/Pods-z02sckhd_6wQgx_User_Example.release.xcconfig"; sourceTree = "<group>"; };
 		65E7A5C06F30C882E6A3E0E8 /* Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Tests/Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CACC7C0F6A4B78697335A45 /* Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Example/Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		83CB90C22153D36F00B968ED /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		83CB90C42153D38400B968ED /* pages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pages; sourceTree = "<group>"; };
+		83CB90C52153D38400B968ED /* tm_src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tm_src; sourceTree = "<group>"; };
+		83CB90C62153D38400B968ED /* TMBaseConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMBaseConfig.plist; sourceTree = "<group>"; };
 		DFDFCEAAA42919F8C5040EC3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EAA22B3A85FE7721A2E9E841 /* Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Tests/Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				83CB90C22153D36F00B968ED /* config.xml */,
+				83CB90C42153D38400B968ED /* pages */,
+				83CB90C52153D38400B968ED /* tm_src */,
+				83CB90C62153D38400B968ED /* TMBaseConfig.plist */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -256,7 +268,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83CB90C82153D38500B968ED /* tm_src in Resources */,
+				83CB90C32153D36F00B968ED /* config.xml in Resources */,
+				83CB90C72153D38400B968ED /* pages in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				83CB90C92153D38500B968ED /* TMBaseConfig.plist in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

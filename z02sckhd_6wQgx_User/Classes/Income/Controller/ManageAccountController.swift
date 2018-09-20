@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-class ManageAccountController: UIViewController {
+class ManageAccountController: TMViewController {
     
     @IBOutlet weak var option: UIButton!
     @IBOutlet weak var textField: UITextField!
@@ -44,7 +45,7 @@ class ManageAccountController: UIViewController {
     /** 提现账户 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyAccount_URL, params: ["token" : Singleton.shared.token, "page" : "1"], success: { [weak self] (obj: AccountInfo) in
+        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUser.token() ?? "", "page" : "1"], success: { [weak self] (obj: AccountInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -52,7 +53,7 @@ class ManageAccountController: UIViewController {
                 obj.data?.page += 1
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.tableView.mj_header.endRefreshing()
@@ -61,14 +62,14 @@ class ManageAccountController: UIViewController {
     }
     /** 加载更多 */
     @objc func loadMore() {
-        getRequest(baseUrl: MyAccount_URL, params: ["token" : Singleton.shared.token, "page" : "\(accountData?.page ?? 1)"], success: { [weak self] (obj: AccountInfo) in
+        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUser.token() ?? "", "page" : "\(accountData?.page ?? 1)"], success: { [weak self] (obj: AccountInfo) in
             self?.tableView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.accountData?.result += (obj.data?.result)!
                 obj.data?.page += 1
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.tableView.mj_footer.endRefreshing()
@@ -78,12 +79,12 @@ class ManageAccountController: UIViewController {
     /** 新增账户 */
     func loadAdd(number: String) {
         showHUD()
-        getRequest(baseUrl: AddAccount_URL, params: ["token" : Singleton.shared.token, "type" : accountType, "number" : number, "is_default" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddAccount_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : accountType, "number" : number, "is_default" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -92,12 +93,12 @@ class ManageAccountController: UIViewController {
     /** 编辑账户 */
     func loadEdit(number: String) {
         showHUD()
-        getRequest(baseUrl: EditAccount_URL, params: ["token" : Singleton.shared.token, "type" : accountType, "number" : number, "id" : currentID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: EditAccount_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : accountType, "number" : number, "id" : currentID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -106,13 +107,13 @@ class ManageAccountController: UIViewController {
     /** 删除账号 */
     func loadDel(index: Int) {
         showHUD()
-        getRequest(baseUrl: DelAccount_URL, params: ["token" : Singleton.shared.token, "id" : currentID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: DelAccount_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : currentID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.accountData?.result.remove(at: index)
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()

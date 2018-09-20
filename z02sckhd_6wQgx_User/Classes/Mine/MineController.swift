@@ -8,8 +8,10 @@
 
 import UIKit
 import YHTool
+import TMSDK
+import MJRefresh
 
-public class MineController: UIViewController {
+public class MineController: TMViewController {
     
     @IBOutlet weak var imgBtn: UIButton!
     @IBOutlet weak var name: UILabel!
@@ -42,13 +44,6 @@ public class MineController: UIViewController {
         setupUI()
     }
     
-    // MARK: - Callbacks
-    @IBAction func action_userInfo(_ sender: UIButton) {
-        
-        let signInCtrl = SignInController.init(nibName: "SignInController", bundle: getBundle())
-        navigationController?.pushViewController(signInCtrl, animated: true)
-    }
-    
     // MARK: - Private Method
     private func setupUI() {
         
@@ -56,6 +51,22 @@ public class MineController: UIViewController {
         
         tableView.tableFooterView = nil
         tableView.register(UINib.init(nibName: CellName(MineInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MineInfoCell.self))
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
+    }
+    
+    @objc func load() {
+        let user = TMHttpUserInstance()
+        let url = URL.init(string: user.head_pic)
+        imgBtn.kf.setImage(with: url, for: .normal)
+        name.text = user.member_name
+    }
+    
+    // MARK: - Callbacks
+    @IBAction func action_userInfo(_ sender: UIButton) {
+        
+        let signInCtrl = SignInController.init(nibName: "SignInController", bundle: getBundle())
+        navigationController?.pushViewController(signInCtrl, animated: true)
     }
 }
 

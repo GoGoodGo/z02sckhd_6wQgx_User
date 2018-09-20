@@ -8,21 +8,23 @@
 
 import Foundation
 import YHTool
+import TMSDK
 
 let BASE_URL = "http://shop.dktoo.com/lee/"
+//let BASE_URL = TMEngineConfig.instance().domain!
 let IMG_URL = ""
 
 public let getBundle: () -> Bundle = {
     
     let bundle = Bundle.init(for: YHNavigaitonController.self)
-    let url = bundle.url(forResource: (bundle.infoDictionary?["CFBundleName"] as! String), withExtension: "bundle")
+    let url = bundle.url(forResource: ("z02sckhd_6wQgx_User"), withExtension: "bundle")
     return Bundle.init(url: url!)!
 }
 
 public let bundle: (AnyClass) -> Bundle = { any in
     
     let bundle = Bundle.init(for: any)
-    let url = bundle.url(forResource: (bundle.infoDictionary?["CFBundleName"] as! String), withExtension: "bundle")
+    let url = bundle.url(forResource: ("z02sckhd_6wQgx_User"), withExtension: "bundle")
     return Bundle.init(url: url!)!
 }
 

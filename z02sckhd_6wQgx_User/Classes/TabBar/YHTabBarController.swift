@@ -30,14 +30,12 @@ public class YHTabBarController: UITabBarController {
         
         for (index, name) in vcNameList.enumerated() {
             
-            let bundle = Bundle.init(for: type(of: self))
-            let ctrlName = bundle.infoDictionary!["CFBundleExecutable"] as! String + name
+            let bundle = getBundle()
+            let ctrlName = bundle.infoDictionary!["CFBundleName"] as! String + name
             
             var VC: UIViewController? = nil
             if index >= 2 {
-                let url = bundle.url(forResource: "z02sckhd_6wQgx_User", withExtension: "bundle")
-                
-                VC = (NSClassFromString(bundle.infoDictionary!["CFBundleExecutable"] as! String + "." + name) as! UIViewController.Type).init(nibName: name, bundle: Bundle.init(url: url!))
+                VC = (NSClassFromString(bundle.infoDictionary!["CFBundleName"] as! String + "." + name) as! UIViewController.Type).init(nibName: name, bundle: bundle)
             } else {
                 VC = (NSClassFromString(ctrlName) as! UIViewController.Type).init()
             }

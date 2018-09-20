@@ -8,13 +8,14 @@
 
 import UIKit
 import YHTool
+import TMSDK
 
 enum AddressType {
     case add
     case edit
 }
 
-class AddressController: UIViewController {
+class AddressController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var province = ""
@@ -48,13 +49,13 @@ class AddressController: UIViewController {
     /** 加载地址 */
     func load() {
         showHUD()
-        getRequest(baseUrl: Address_URL, params: ["token" : Singleton.shared.token], success: { [weak self] (obj: AddressInfo) in
+        getRequest(baseUrl: Address_URL, params: ["token" : TMHttpUser.token() ?? ""], success: { [weak self] (obj: AddressInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.addresses = obj.data
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -63,7 +64,7 @@ class AddressController: UIViewController {
     /** 新增地址 */
     func addAddress(name: String, phone: String, detial: String) {
         let address = province + " " + city + " " + district
-        let params = ["token" : Singleton.shared.token, "address" : address, "consignee" : name, "tel" : phone, "address_name" : detial]
+        let params = ["token" : TMHttpUser.token() ?? "", "address" : address, "consignee" : name, "tel" : phone, "address_name" : detial]
         showHUD()
         getRequest(baseUrl: AddAddress_URL, params: params, success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
@@ -71,7 +72,7 @@ class AddressController: UIViewController {
                 self?.setAddressView.diss()
                 self?.load()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -80,7 +81,7 @@ class AddressController: UIViewController {
     /** 编辑地址 */
     func editAddress(name: String, phone: String, detial: String) {
         let address = province + " " + city + " " + district
-        let params = ["aid" : aid, "token" : Singleton.shared.token, "address" : address, "consignee" : name, "tel" : phone, "address_name" : detial]
+        let params = ["aid" : aid, "token" : TMHttpUser.token() ?? "", "address" : address, "consignee" : name, "tel" : phone, "address_name" : detial]
         showHUD()
         getRequest(baseUrl: EditAddress_URL, params: params, success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
@@ -88,7 +89,7 @@ class AddressController: UIViewController {
                 self?.setAddressView.diss()
                 self?.load()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -96,13 +97,13 @@ class AddressController: UIViewController {
     }
     /** 删除地址 */
     func delete() {
-        getRequest(baseUrl: DelAddress_URL, params: ["aid" : aid, "token" : Singleton.shared.token], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: DelAddress_URL, params: ["aid" : aid, "token" : TMHttpUser.token() ?? ""], success: { [weak self] (obj: BaseModel) in
             if "success" == obj.status {
                 self?.maskView.diss()
                 self?.addresses.remove(at: (self?.index)!)
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -111,12 +112,12 @@ class AddressController: UIViewController {
     /** 设置默认 */
     func isDefault() {
         showHUD()
-        getRequest(baseUrl: DefaultAddress_URL, params: ["address_id" : aid, "token" : Singleton.shared.token], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: DefaultAddress_URL, params: ["address_id" : aid, "token" : TMHttpUser.token() ?? ""], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()

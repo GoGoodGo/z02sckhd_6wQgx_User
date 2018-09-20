@@ -8,11 +8,11 @@
 
 import UIKit
 import YHTool
-import TMShare
+import TMSDK
 
 public let PayNotificationName = "payNotificationName"
 
-class OnlinePayController: UIViewController {
+class OnlinePayController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var mid = "01"
@@ -50,25 +50,25 @@ class OnlinePayController: UIViewController {
     func loadPay(type: String) {
         showHUD()
         if payWay == "1" {
-            getRequest(baseUrl: OrderPay_URL, params: ["token" : Singleton.shared.token, "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: PayInfo) in
+            getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: PayInfo) in
                 self?.hideHUD()
                 if "success" == obj.status {
                     AlipaySDK.defaultService().payOrder(obj.data, fromScheme: "TianMa_User") { [weak self] (result) in
                         self?.disposeResult(payResult: result!)
                     }
                 } else {
-                    self?.inspect(model: obj)
+                    self?.inspectLogin(model: obj)
                 }
             }) { (error) in
                 self.inspectError()
             }
         } else {
-            getRequest(baseUrl: OrderPay_URL, params: ["token" : Singleton.shared.token, "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: WxPayInfo) in
+            getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: WxPayInfo) in
                 self?.hideHUD()
                 if "success" == obj.status {
                     self?.wechatPay(pay: obj)
                 } else {
-                    self?.inspect(model: obj)
+                    self?.inspectLogin(model: obj)
                 }
             }) { (error) in
                 self.inspectError()
@@ -78,22 +78,22 @@ class OnlinePayController: UIViewController {
     
     // MARK: - WxPay
     private func wechatPay(pay: WxPayInfo) {
-        let request = PayReq()
-        request.partnerId = pay.data?.partnerid
-        request.prepayId = pay.data?.prepayid
-        request.package = pay.data?.package
-        request.nonceStr = pay.data?.noncestr
-        request.timeStamp = (pay.data?.timestamp)!
-        request.sign = pay.data?.sign
+//        let request = PayReq()
+//        request.partnerId = pay.data?.partnerid
+//        request.prepayId = pay.data?.prepayid
+//        request.package = pay.data?.package
+//        request.nonceStr = pay.data?.noncestr
+//        request.timeStamp = (pay.data?.timestamp)!
+//        request.sign = pay.data?.sign
         
-        if !WXApi.isWXAppInstalled() {
-            showAutoHideHUD(message: "还未安装微信, 换支付宝试试？")
-            return
-        } else if !WXApi.isWXAppSupport() {
-            showAutoHideHUD(message: "该微信版本不支持支付, 换支付宝试试！")
-            return
-        }
-        WXApi.send(request)
+//        if !WXApi.isWXAppInstalled() {
+//            showAutoHideHUD(message: "还未安装微信, 换支付宝试试？")
+//            return
+//        } else if !WXApi.isWXAppSupport() {
+//            showAutoHideHUD(message: "该微信版本不支持支付, 换支付宝试试！")
+//            return
+//        }
+//        WXApi.send(request)
     }
     
     // MARK: - Pay Notification

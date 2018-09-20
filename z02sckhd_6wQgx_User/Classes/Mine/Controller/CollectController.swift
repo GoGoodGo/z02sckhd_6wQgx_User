@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-class CollectController: UIViewController {
+class CollectController: TMViewController {
     
     @IBOutlet weak var segmentContent: UIView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
@@ -54,7 +55,7 @@ class CollectController: UIViewController {
     /** 我的收藏 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyCollect_URL, params: ["token" : Singleton.shared.token, "type" : "\(selectedIndex + 1)", "page" : "1"], success: { [weak self] (obj: CollectInfo) in
+        getRequest(baseUrl: MyCollect_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "\(selectedIndex + 1)", "page" : "1"], success: { [weak self] (obj: CollectInfo) in
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             self?.collectInfo?.data?.result.removeAll()
@@ -62,7 +63,7 @@ class CollectController: UIViewController {
                 self?.collectInfo = obj
                 self?.collectInfo?.data?.page += 1
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
             self?.collectionView.reloadData()
         }) { (error) in
@@ -72,13 +73,13 @@ class CollectController: UIViewController {
     }
     /** 加载更多 */
     @objc func loadMore() {
-        getRequest(baseUrl: MyCollect_URL, params: ["token" : Singleton.shared.token, "type" : "\(selectedIndex + 1)", "page" : "\(collectInfo?.data?.page ?? 2)"], success: { [weak self] (obj: CollectInfo) in
+        getRequest(baseUrl: MyCollect_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "\(selectedIndex + 1)", "page" : "\(collectInfo?.data?.page ?? 2)"], success: { [weak self] (obj: CollectInfo) in
             if "success" == obj.status {
                 self?.collectInfo?.data?.page += 1
                 self?.collectInfo?.data?.result += (obj.data?.result)!
                 self?.collectionView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -88,13 +89,13 @@ class CollectController: UIViewController {
     func loadCancel(indexPath: IndexPath) {
         let collect = collectInfo?.data?.result[indexPath.row]
         showHUD()
-        getRequest(baseUrl: CancelCollect_URL, params: ["token" : Singleton.shared.token, "id" : (collect?.rec_id)!], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : (collect?.rec_id)!], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.collectInfo?.data?.result.remove(at: indexPath.row)
                 self?.collectionView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()

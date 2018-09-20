@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-class WithdrawRecordController: UIViewController {
+class WithdrawRecordController: TMViewController {
     
     @IBOutlet weak var unverify: UILabel!
     @IBOutlet weak var verify: UILabel!
@@ -42,7 +43,7 @@ class WithdrawRecordController: UIViewController {
     /** 获取收益 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: Income_URL, params: ["token" : Singleton.shared.token, "type" : "2", "status" : status], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "2", "status" : status], success: { [weak self] (obj: IncomeInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -52,7 +53,7 @@ class WithdrawRecordController: UIViewController {
                 self?.withdraws = (obj.data?.result)!
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -62,13 +63,13 @@ class WithdrawRecordController: UIViewController {
     }
     /** 更多 */
     @objc func loadMore() {
-        getRequest(baseUrl: Income_URL, params: ["token" : Singleton.shared.token, "type" : "2", "status" : status, "page" : "\(withdrawData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "2", "status" : status, "page" : "\(withdrawData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
             self?.tableView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.withdraws += (obj.data?.result)!
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.tableView.mj_footer.endRefreshing()
@@ -78,12 +79,12 @@ class WithdrawRecordController: UIViewController {
     /** 取消提现 */
     func loadCancel(ID: String) {
         showHUD()
-        getRequest(baseUrl: CancelWithdraw_URL, params: ["token" : Singleton.shared.token, "mid" : ID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelWithdraw_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : ID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()

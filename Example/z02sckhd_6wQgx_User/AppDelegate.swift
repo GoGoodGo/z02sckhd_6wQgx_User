@@ -10,7 +10,7 @@ import UIKit
 import z02sckhd_6wQgx_User
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         window?.rootViewController = YHTabBarController()
         window?.makeKeyAndVisible()
         
-        WXApi.registerApp("wx7ba7fbd409123407")
+//        WXApi.registerApp("wx7ba7fbd409123407")
         
         return true
     }
@@ -42,19 +42,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         }
         
         if url.host == "pay" {
-            return WXApi.handleOpen(url, delegate: self)
+//            return WXApi.handleOpen(url, delegate: self)
         }
         
         return true
     }
     
     // MARK: - WXApiDelegate
-    func onResp(_ resp: BaseResp!) {
-        if resp.isKind(of: PayResp.self) {
-            let result = ["errorCode" : "\(resp.errCode)"]
-            payWithResult(result: result)
-        }
-    }
+//    func onResp(_ resp: BaseResp!) {
+//        if resp.isKind(of: PayResp.self) {
+//            let result = ["errorCode" : "\(resp.errCode)"]
+//            payWithResult(result: result)
+//        }
+//    }
     
     /** 处理支付结果 */
     private func payWithResult(result: Dictionary<AnyHashable, Any>) {

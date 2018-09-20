@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-public class IncomeController: UIViewController {
+public class IncomeController: TMViewController {
     
     @IBOutlet weak var withdraw: UILabel!
     @IBOutlet weak var income: UILabel!
@@ -43,14 +44,14 @@ public class IncomeController: UIViewController {
     /** 获取收益 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: Income_URL, params: ["token" : Singleton.shared.token, "type" : "11", "status" : "0"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "11", "status" : "0"], success: { [weak self] (obj: IncomeInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.withdraw.text = "¥\(obj.data?.money ?? "0.00")"
                 self?.income.text = "¥\(obj.data?.ok ?? 0.00)"
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()

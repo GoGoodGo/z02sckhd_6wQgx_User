@@ -8,8 +8,9 @@
 
 import UIKit
 import YHTool
+import TMSDK
 
-class OrderDetialController: UIViewController {
+class OrderDetialController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var orderResult: MyOrderResult?
@@ -34,12 +35,12 @@ class OrderDetialController: UIViewController {
     /** 订单详情 */
     func load() {
         showHUD()
-        getRequest(baseUrl: OrderDetial_URL, params: ["token" : Singleton.shared.token, "mid" : (orderResult?.mid)!], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : (orderResult?.mid)!], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()

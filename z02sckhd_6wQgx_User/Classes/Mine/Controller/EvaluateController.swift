@@ -8,8 +8,9 @@
 
 import UIKit
 import YHTool
+import TMSDK
 
-class EvaluateController: UIViewController {
+class EvaluateController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -49,14 +50,14 @@ class EvaluateController: UIViewController {
     }
     /** 评价 */
     func load() {
-        getRequest(baseUrl: Evaluate_URL, params: ["token" : Singleton.shared.token, "rec_id" : (evaluate?.rec_id)!, "comment" : comment, "Score" : score, "images" : imagesID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: Evaluate_URL, params: ["token" : TMHttpUser.token() ?? "", "rec_id" : (evaluate?.rec_id)!, "comment" : comment, "Score" : score, "images" : imagesID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: obj.msg!, completed: {
                     self?.navigationController?.popViewController(animated: true)
                 })
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()

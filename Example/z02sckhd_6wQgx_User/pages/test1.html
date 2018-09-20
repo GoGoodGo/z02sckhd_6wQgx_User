@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World</title>
+    </head>
+    <body>
+        <h1>首页</h1>
+
+        <br>
+        <input type="button" onclick="buttonClick()" value="以原生窗口方式弹出一个新窗口（test.html）"/>
+        </br>
+        <br/>
+        <br>
+        <input type="button" onclick="buttonClick1()" value="弹出一个原生窗口（Test1ViewController）"/>
+        </br>
+        <br/>
+        <br>
+        <input type="button" onclick="buttonClick2()" value="摄像头照片"/>
+        </br>
+        <br/>
+        <br>
+        <input type="button" onclick="buttonClick3()" value="获取设备信息"/>
+        </br>
+        <br>
+        <input type="button" onclick="buttonClick4()" value="定位开始"/>
+        <input type="button" onclick="buttonClick5()" value="获取位置信息"/>
+        <input type="button" onclick="buttonClick6()" value="定位结束"/>
+        </br>
+        <br>
+        <input type="button" onclick="buttonClick7()" value="WIFI信息"/>
+        </br>
+        <br>
+        <input type="button" onclick="buttonClick8()" value="地图"/>
+        </br>
+        
+        <script type="text/javascript" src="../../tm_src/exec/cordova.js"></script>
+        <script type="text/javascript" src="../../tm_src/exec/cordova_plugins.js"></script>
+        <script type="text/javascript" src="../../tm_src/plugins/tm-plugin-controller/www/tmcontroller.js"></script>
+        <script type="text/javascript" src="../../tm_src/plugins/cordova-plugin-device/www/device.js"></script>
+        <script type="text/javascript" src="../../tm_src/plugins/cordova-plugin-camera/www/Camera.js"></script>
+        <script type="text/javascript" src="../../tm_src/plugins/cordova-plugin-geolocation/www/geolocation.js"></script>
+        <script type="text/javascript" src="../../tm_src/plugins/cordova-plugin-network-information/www/Connection.js"></script>
+        <script type="text/javascript" src="../../tm_src/plugins/cordova.custom.plugins.exitapp/www/ExitApp.js"></script>
+
+        <script type="text/javascript">
+        function buttonClick(){
+            cordova.exec(success, error, "TMController", "presentCtr", [true, "test.html", "pages/cpmp01"]);
+            <!--            cordova.exec(success, error, "TMController", "pushCtr", [true, "test1.html", "pages"]);-->
+            <!--            cordova.exec(success, error, "TMController", "dismissCtr", [true]);-->
+            <!--            cordova.exec(success, error, "TMController", "popCtr", [true]);-->
+        }
+        function buttonClick1(){
+            cordova.exec(success, error, "TMController", "pushToNative", [true, "Comp01ViewController", "param"]);
+        }
+        function buttonClick2(){
+                        navigator.camera.getPicture(function success(msg)
+                                                    {
+                                                    alert("获取到图片，地址为:\n"+msg);
+                                                    }, error, "Camera", "getPicture",{"quality": "50","destinationType": "Camera.DestinationType.FILE_URI"});
+        }
+        function buttonClick3(){
+            device.getInfo(function success1(msg){
+                           alert(msg.version+"\n"+msg.platform+"\n");
+                           }, error);
+<!--            cordova.exec(success(msg), error, "device", "getInfo");-->-->
+        }
+        function buttonClick4(){
+            backgroundGeolocation.start(success,error);
+        }
+        function buttonClick5(){
+            <!--            backgroundGeolocation.getLocations(function success1(msg1){-->
+                                                               <!--                                                        alert("lat:"+msg1.latitude+"\n"-->
+                                                                                                                                 <!--                                                              +"lon:"+msg1.longitude+"\n"-->
+                                                                                                                                 <!--                                                              +"radius:"+msg1.radius+"\n"-->
+                                                                                                                                 <!--                                                              +"time:"+msg1.time+"\n")-->
+                                                               <!--                                                        },error);-->
+                                                               var onSuccess = function(position) {
+                                                                   alert('Latitude: '          + position.coords.latitude          + '\n' +
+                                                                         'Longitude: '         + position.coords.longitude         + '\n' +
+                                                                         'Altitude: '          + position.coords.altitude          + '\n' +
+                                                                         'Accuracy: '          + position.coords.accuracy          + '\n' +
+                                                                         'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                                                                         'Heading: '           + position.coords.heading           + '\n' +
+                                                                         'Speed: '             + position.coords.speed             + '\n' +
+                                                                         'Timestamp: '         + position.timestamp                + '\n');
+                                                               };
+                                                               
+                                                               // onError Callback receives a PositionError object
+                                                               //
+                                                               function onError(error) {
+                                                                   alert('code: '    + error.code    + '\n' +
+                                                                         'message: ' + error.message + '\n');
+                                                               }
+                                                               
+                                                               navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        }
+        function buttonClick6(){
+            backgroundGeolocation.stop(success,error);
+        }
+        function buttonClick7(){
+            function checkConnection() {
+                var networkState = navigator.connection.type;
+                
+                var states = {};
+                states[Connection.UNKNOWN]  = 'Unknown connection';
+                states[Connection.ETHERNET] = 'Ethernet connection';
+                states[Connection.WIFI]     = 'WiFi connection';
+                states[Connection.CELL_2G]  = 'Cell 2G connection';
+                states[Connection.CELL_3G]  = 'Cell 3G connection';
+                states[Connection.CELL_4G]  = 'Cell 4G connection';
+                states[Connection.CELL]     = 'Cell generic connection';
+                states[Connection.NONE]     = 'No network connection';
+                
+                alert('Connection type: ' + states[networkState]);
+            }
+            
+            checkConnection();
+        }
+        function buttonClick8(){
+            <!--            navigator.app.exitApp();-->
+            cordova.exec(success, error, "TMController", "presentCtr", [true, "gdmap.html", "pages"]);
+        }
+        function success(){
+            alert("调用成功");
+        }
+        function error(){
+            alert("调用失败");
+        }
+        </script>
+    </body>
+</html>
+

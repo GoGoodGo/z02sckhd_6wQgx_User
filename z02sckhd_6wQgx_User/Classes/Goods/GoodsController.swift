@@ -53,7 +53,7 @@ public class GoodsController: UIViewController {
                 self?.categorys = obj.data
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -68,7 +68,7 @@ public class GoodsController: UIViewController {
                 self?.recommends = (obj.data?.result)!
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.collectionView.mj_header.endRefreshing()
@@ -89,7 +89,7 @@ public class GoodsController: UIViewController {
                 self?.page += 1
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.collectionView.mj_header.endRefreshing()
@@ -106,7 +106,7 @@ public class GoodsController: UIViewController {
                 self?.page += 1
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.collectionView.mj_footer.endRefreshing()

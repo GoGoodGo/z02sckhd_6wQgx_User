@@ -47,11 +47,6 @@ Pod::Spec.new do |s|
   s.libraries = 'sqlite3.0', 'z', 'c++'
   s.frameworks = 'Security', 'CoreMotion', 'CFNetwork', 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics'
   
-  #s.subspec 'Wxpay' do |pay|
-  #   pay.source_files = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h'
-  #   pay.dependency 'WechatOpenSDK'
-  #end
-  
   s.dependency 'Kingfisher', '~> 4.8.0'
   s.dependency 'Cosmos', '~> 16.0'
   s.dependency 'YHTool', '~> 1.1.4'

@@ -75,7 +75,7 @@ public class HomeController: UIViewController {
     }
     /** 获取首页 */
     func loadHome() {
-        getRequest(baseUrl: Home_URL, params: ["token" : Singleton.shared.token], success: { [weak self] (obj: HomeInfo) in
+        getRequest(baseUrl: Home_URL, params: nil, success: { [weak self] (obj: HomeInfo) in
             if "success" == obj.status {
                 self?.shops = (obj.data?.bestshop)!
                 self?.bannerImgs(banners: (obj.data?.banner)!)
@@ -109,7 +109,7 @@ public class HomeController: UIViewController {
                 self?.auctionGoods = (obj.data?.result)!
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -122,7 +122,7 @@ public class HomeController: UIViewController {
                 self?.groupGoods = (obj.data?.result)!
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -135,7 +135,7 @@ public class HomeController: UIViewController {
                 self?.timelimitGoods = (obj.data?.result)!
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -143,12 +143,12 @@ public class HomeController: UIViewController {
     }
     /** 推荐列表 */
     func loadRecommend() {
-        getRequest(baseUrl: GoodsList_URL, params: ["token" : Singleton.shared.token, "p" : "1", "is_best" : "1"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["p" : "1", "is_best" : "1"], success: { [weak self] (obj: DataInfo) in
             if "success" == obj.status {
                 self?.recommendGoods = (obj.data?.result)!
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -156,13 +156,13 @@ public class HomeController: UIViewController {
     }
     /** 新品列表 */
     func loadNewGoods() {
-        getRequest(baseUrl: GoodsList_URL, params: ["token" : Singleton.shared.token, "sort" : sort, "order" : order, "p" : "1"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1"], success: { [weak self] (obj: DataInfo) in
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.newGoods = (obj.data?.result)!
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()

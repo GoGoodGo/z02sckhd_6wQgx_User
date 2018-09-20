@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-class MyOrderController: UIViewController {
+class MyOrderController: TMViewController {
     
     @IBOutlet weak var segmentContent: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -51,7 +52,7 @@ class MyOrderController: UIViewController {
     /** 我的订单 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyOrder_URL, params: ["token" : Singleton.shared.token, "order_status" : status], success: { [weak self] (obj: MyOrderInfo) in
+        getRequest(baseUrl: MyOrder_URL, params: ["token" : TMHttpUser.token() ?? "", "order_status" : status], success: { [weak self] (obj: MyOrderInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -59,7 +60,7 @@ class MyOrderController: UIViewController {
                 self?.getHeight()
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -70,14 +71,14 @@ class MyOrderController: UIViewController {
     /** 待评价商品 */
     func loadEvaluateGoods() {
         showHUD()
-        getRequest(baseUrl: NotEvaluate_URL, params: ["token" : Singleton.shared.token], success: { [weak self] (obj: NotEvaluateInfo) in
+        getRequest(baseUrl: NotEvaluate_URL, params: ["token" : TMHttpUser.token() ?? ""], success: { [weak self] (obj: NotEvaluateInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.notEvaluates = (obj.data?.result)!
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -97,13 +98,13 @@ class MyOrderController: UIViewController {
     /** 确认收货 */
     func loadReceive(section: Int) {
         showHUD()
-        getRequest(baseUrl: OrderReceive_URL, params: ["token" : Singleton.shared.token, "order_id" : (orderInfo?.result[section]._orders.first?.order_id)!], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderReceive_URL, params: ["token" : TMHttpUser.token() ?? "", "order_id" : (orderInfo?.result[section]._orders.first?.order_id)!], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.orderInfo?.result.remove(at: section)
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -113,13 +114,13 @@ class MyOrderController: UIViewController {
     /** 取消订单 */
     func loadCancel(section: Int) {
         showHUD()
-        getRequest(baseUrl: OrderCancel_URL, params: ["token" : Singleton.shared.token, "mid" : (orderInfo?.result[section].mid)!], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderCancel_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : (orderInfo?.result[section].mid)!], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.orderInfo?.result.remove(at: section)
                 self?.tableView.reloadData()
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()

@@ -8,6 +8,7 @@
 
 import UIKit
 import YHTool
+import TMSDK
 
 enum DetialType {
     case detial
@@ -17,7 +18,7 @@ enum DetialType {
     case auctionSuccess
 }
 
-class GoodsDetialController: UIViewController {
+class GoodsDetialController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var groupbuyView: UIView!
@@ -133,7 +134,7 @@ class GoodsDetialController: UIViewController {
     /** 竞拍详情 */
     func loadAuction() {
         showHUD()
-        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : Singleton.shared.token, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
@@ -143,7 +144,7 @@ class GoodsDetialController: UIViewController {
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -152,7 +153,7 @@ class GoodsDetialController: UIViewController {
     /** 团购详情 */
     func loadGroup() {
         showHUD()
-        getRequest(baseUrl: GroupDetial_URL, params: ["token" : Singleton.shared.token, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: GroupDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
@@ -162,7 +163,7 @@ class GoodsDetialController: UIViewController {
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -171,7 +172,7 @@ class GoodsDetialController: UIViewController {
     /** 秒杀详情 */
     func loadTimelimit() {
         showHUD()
-        getRequest(baseUrl: TimelimitDetial_URL, params: ["token" : Singleton.shared.token, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: TimelimitDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
@@ -179,7 +180,7 @@ class GoodsDetialController: UIViewController {
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -187,12 +188,12 @@ class GoodsDetialController: UIViewController {
     }
     /** 获取评论 */
     func loadComment() {
-        getRequest(baseUrl: GoodsComment_URL, params: ["token" : Singleton.shared.token, "id" : (goodsDetial?.goods_id)!, "page" : "1"], success: { [weak self] (obj: CommentInfo) in
+        getRequest(baseUrl: GoodsComment_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : (goodsDetial?.goods_id)!, "page" : "1"], success: { [weak self] (obj: CommentInfo) in
             if "success" == obj.status {
                 self?.comments = (obj.data?.result)!
                 self?.tableView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -201,12 +202,12 @@ class GoodsDetialController: UIViewController {
     /** 加入购物车 */
     func addCart() {
         showHUD()
-        getRequest(baseUrl: AddCart_URL, params: ["token" : Singleton.shared.token, "spec_id" : specID, "quantity" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCart_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : specID, "quantity" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "加入成功")
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -229,12 +230,12 @@ class GoodsDetialController: UIViewController {
     /** 取消收藏 */
     func cancelCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: CancelCollect_URL, params: ["token" : Singleton.shared.token, "id" : ID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = false
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -298,7 +299,7 @@ class GoodsDetialController: UIViewController {
     func auctionBid() {
         showHUD()
         let price = Float(salesDetial?.store?.new_price ?? "0.00")! + Float(salesDetial?.store?.markups ?? "0.00")!
-        getRequest(baseUrl: AuctionBid_URL, params: ["token" : Singleton.shared.token, "id" : ID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 if "ok" == obj.data {
@@ -308,7 +309,7 @@ class GoodsDetialController: UIViewController {
                     self?.tableView.reloadData()
                 }
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
                 if "over" == obj.data {
                     self?.salesDetial?.store?.is_end = true
                     self?.tableView.reloadData()
@@ -322,12 +323,12 @@ class GoodsDetialController: UIViewController {
     /** 拍卖购买 */
     func auctionBuy() {
         showHUD()
-        getRequest(baseUrl: AuctionBuy_URL, params: ["token" : Singleton.shared.token, "id" : ID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: AuctionBuy_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "2")
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -337,12 +338,12 @@ class GoodsDetialController: UIViewController {
     /** 团购购买 */
     func groupBuy() {
         showHUD()
-        getRequest(baseUrl: GroupBuy_URL, params: ["token" : Singleton.shared.token, "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "1")
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -352,12 +353,12 @@ class GoodsDetialController: UIViewController {
     /** 秒杀购买 */
     func timelimitBuy() {
         showHUD()
-        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : Singleton.shared.token, "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "4")
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -367,12 +368,12 @@ class GoodsDetialController: UIViewController {
     /** 商品购买 */
     func goodsBuy() {
         showHUD()
-        getRequest(baseUrl: Buy_URL, params: ["token" : Singleton.shared.token, "spec_id" : specID, "quantity" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: Buy_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : specID, "quantity" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "5")
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
@@ -381,14 +382,14 @@ class GoodsDetialController: UIViewController {
     }
     /** 提交 */
     func submit(flowType: String) {
-        getRequest(baseUrl: CartSubmit_URL, params: ["token" : Singleton.shared.token, "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
+        getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUser.token() ?? "", "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
             if "success" == obj.status {
                 let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())
                 confirmOrder.flowType = flowType
                 confirmOrder.orderInfo = obj
                 self?.navigationController?.pushViewController(confirmOrder, animated: true)
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
