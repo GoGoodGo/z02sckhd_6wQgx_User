@@ -115,7 +115,7 @@ class GoodsDetialController: UIViewController {
     /** 商品详情 */
     func load() {
         showHUD()
-        getRequest(baseUrl: GoodsDetial_URL, params: ["token" : Singleton.shared.token, "id" : ID], success: { [weak self] (obj: DetialInfo) in
+        getRequest(baseUrl: GoodsDetial_URL, params: ["id" : ID], success: { [weak self] (obj: DetialInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.goodsDetial = obj.data
@@ -124,7 +124,7 @@ class GoodsDetialController: UIViewController {
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?._images)!)
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -215,12 +215,12 @@ class GoodsDetialController: UIViewController {
     /** 收藏 */
     func addCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: AddCollect_URL, params: ["token" : Singleton.shared.token, "id" : ID, "type" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCollect_URL, params: ["token" : "", "id" : ID, "type" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = true
             } else {
-                self?.inspect(model: obj)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()

@@ -81,7 +81,7 @@ public class HomeController: UIViewController {
                 self?.bannerImgs(banners: (obj.data?.banner)!)
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
@@ -95,7 +95,7 @@ public class HomeController: UIViewController {
                 self?.categorys = obj.data
                 self?.collectionView.reloadData()
             } else {
-                self?.showAutoHideHUD(message: obj.msg!)
+                self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.collectionView.mj_header.endRefreshing()

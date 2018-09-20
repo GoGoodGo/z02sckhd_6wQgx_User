@@ -30,14 +30,14 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.swift_version = '4.1'
   s.ios.deployment_target = '9.0'
-
-  s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
+  
+  #s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
   
   s.vendored_frameworks = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework'
   
   s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle'
   
-  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift', 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h', 'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h'
+  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift',  'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h', 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h'
   
   s.resource_bundles = {
       'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.xib', 'z02sckhd_6wQgx_User/Classes/Mine/*.plist', 'z02sckhd_6wQgx_User/Assets/Crop/**/*.png']
@@ -47,17 +47,30 @@ Pod::Spec.new do |s|
   s.libraries = 'sqlite3.0', 'z', 'c++'
   s.frameworks = 'Security', 'CoreMotion', 'CFNetwork', 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics'
   
+  #s.subspec 'Wxpay' do |pay|
+  #   pay.source_files = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h'
+  #   pay.dependency 'WechatOpenSDK'
+  #end
+  
   s.dependency 'Kingfisher', '~> 4.8.0'
   s.dependency 'Cosmos', '~> 16.0'
   s.dependency 'YHTool', '~> 1.1.4'
   
-  s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'MJRefresh', '~> 3.1.12'
+  #s.dependency 'WechatOpenSDK'
   
-  #s.dependency 'TMSDK', '~> 0.0.2-beta.3'
-  #s.dependency 'TMShare', '~> 0.0.2-beta.1'
-  #s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
-  #s.dependency 'TMUserCenter', '~> 0.0.2-beta.1'
+  s.dependency 'TMSDK', '~> 0.0.2-beta.3'
+  s.dependency 'TMShare', '~> 0.0.2-beta.1'
+  s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
+  s.dependency 'TMUserCenter', '~> 0.0.2-beta.1'
+  
+  #s.dependency 'AFNetworking', '~> 2.3'
+  #s.dependency 'SVProgressHUD', '~> 2.0.3'
+  #s.dependency 'UMengAnalytics-NO-IDFA', '~> 4.2.5'
+  #s.dependency 'YYModel', '~> 1.0.4'
+  #s.dependency 'Masonry', '~> 1.1.0'
+  
+  
   
   
   

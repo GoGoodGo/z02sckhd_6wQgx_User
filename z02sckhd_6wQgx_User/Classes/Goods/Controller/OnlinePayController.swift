@@ -8,6 +8,7 @@
 
 import UIKit
 import YHTool
+import TMShare
 
 public let PayNotificationName = "payNotificationName"
 
@@ -22,7 +23,6 @@ class OnlinePayController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.title =  "在线支付"
         
         NotificationCenter.default.addObserver(self, selector: #selector(payResult(notification:)), name: NSNotification.Name(rawValue: PayNotificationName), object: nil)
