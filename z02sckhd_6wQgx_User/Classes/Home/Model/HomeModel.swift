@@ -10,6 +10,34 @@ import Foundation
 import ObjectMapper
 import YHTool
 
+class ShopListInfo: BaseModel {
+    
+    var data: ShopListData?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class ShopListData: Mappable {
+    
+    var totalpage = 1
+    var page = 1
+    var result = [HomeShop]()
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        totalpage <- map["totalpage"]
+        result <- map["result"]
+    }
+}
+
 class HomeInfo: BaseModel {
     
     var data: HomeData?

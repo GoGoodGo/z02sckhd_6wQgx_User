@@ -21,7 +21,14 @@ class MemberCell: UITableViewCell {
     }
     
     // MARK: - Setter
-    
+    var member: Member? {
+        didSet {
+            let url = URL.init(string: (member?.head_pic)!)
+            img.kf.setImage(with: url)
+            name.text = member?.member_name
+            date.text = member?.add_time
+        }
+    }
     override var frame: CGRect {
         didSet {
             let y: CGFloat = 10

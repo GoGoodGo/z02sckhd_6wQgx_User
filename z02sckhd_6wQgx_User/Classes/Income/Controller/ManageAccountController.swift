@@ -56,6 +56,7 @@ class ManageAccountController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.tableView.mj_header.endRefreshing()
             self.inspectError()
         }

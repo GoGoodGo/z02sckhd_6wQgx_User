@@ -54,6 +54,10 @@ public let GoodsComment_URL = BASE_URL + "apigoods/getcomment"
 // 店铺详情
 public let ShopDetial_URL = BASE_URL + "apiuser/shopdetail"
 
+// 店铺列表
+public let ShopList_URL = BASE_URL + "apiuser/shoplist"
+
+
 /** 促销活动 */
 
 // 拍卖列表
@@ -187,13 +191,16 @@ public let OrderPay_URL = BASE_URL + "apipay/orderinfo"
 /** 收益 */
 
 // 我的钱包
-public let Income_URL = BASE_URL + "apiuser/walpublic let"
+public let Income_URL = BASE_URL + "apiuser/wallet"
 
 // 申请提现
 public let ApplyWithdraw_URL = BASE_URL + "apiuser/apptixian"
 
 // 取消提现
 public let CancelWithdraw_URL = BASE_URL + "apiuser/canceltixian"
+
+// 我的会员
+public let MyMember_URL = BASE_URL + "apiuser/myfriend"
 
 
 

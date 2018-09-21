@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import MJRefresh
 import YHTool
+import TMSDK
 
 class MyMemberController: UIViewController {
     
     @IBOutlet weak var segmentContent: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    var members = [Member]()
+    var memberData: MemberData?
     
     let titles = ["一级会员10人", "二级会员8人", "三级会员100人"]
 
@@ -28,9 +33,57 @@ class MyMemberController: UIViewController {
         
         segmentContent.addSubview(segmentView)
         
-        tableView.tableFooterView = nil
         tableView.register(UINib.init(nibName: CellName(MemberCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MemberCell.self))
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+        load()
     }
+    /** 加载会员 */
+    @objc func load() {
+        showHUD()
+        getRequest(baseUrl: MyMember_URL, params: ["token" : TMHttpUser.token() ?? "", "page" : "1"], success: { [weak self] (obj: MyMemberInfo) in
+            self?.hideHUD()
+            self?.tableView.mj_header.endRefreshing()
+            if "success" == obj.status {
+                self?.members = (obj.data?.result)!
+                self?.memberData = obj.data
+                self?.memberData?.page += 1
+                self?.tableView.reloadData()
+            } else {
+                self?.inspectLogin(model: obj)
+            }
+        }) { (error) in
+            self.hideHUD()
+            self.tableView.mj_header.endRefreshing()
+            self.inspectError()
+        }
+    }
+    
+    @objc func loadMore() {
+        getRequest(baseUrl: MyMember_URL, params: ["token" : TMHttpUser.token() ?? "", "page" : "\(memberData?.page)"], success: { [weak self] (obj: MyMemberInfo) in
+            self?.tableView.mj_footer.endRefreshing()
+            if "success" == obj.status {
+                self?.members += (obj.data?.result)!
+                self?.memberData?.page += 1
+                self?.tableView.reloadData()
+            } else {
+                self?.inspectLogin(model: obj)
+            }
+        }) { (error) in
+            self.tableView.mj_footer.endRefreshing()
+            self.inspectError()
+        }
+    }
+    /** Check Footer */
+    func checkFooterState() {
+        tableView.mj_footer.isHidden = (members.count == 0)
+        if (memberData?.page ?? 1) >= (memberData?.totalpage ?? 1) {
+            tableView.mj_footer.endRefreshingWithNoMoreData()
+        } else {
+            tableView.mj_footer.endRefreshing()
+        }
+    }
+    
     // MARK: - Getter
     private lazy var segmentView: YHSegmentView = {
         
@@ -46,13 +99,14 @@ class MyMemberController: UIViewController {
 extension MyMemberController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        checkFooterState()
+        return members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MemberCell.self)) as! MemberCell
-        
+        cell.member = members[indexPath.row]
         
         return cell
     }

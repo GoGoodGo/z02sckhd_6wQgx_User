@@ -10,6 +10,57 @@ import Foundation
 import ObjectMapper
 import YHTool
 
+class MyMemberInfo: BaseModel {
+    
+    var data: MemberData?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class MemberData: Mappable {
+    
+    var result = [Member]()
+    var totalpage = 1
+    var page = 1
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        result <- map["result"]
+        totalpage <- map["totalpage"]
+    }
+}
+
+class Member: Mappable {
+    
+    var user_id = ""
+    var mobile = ""
+    var head_pic = ""
+    var member_name = ""
+    var add_time = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        user_id <- map["user_id"]
+        mobile <- map["mobile"]
+        head_pic <- map["head_pic"]
+        member_name <- map["member_name"]
+        add_time <- map["add_time"]
+    }
+}
+
 class IncomeInfo: BaseModel {
     
     var data: IncomeData?

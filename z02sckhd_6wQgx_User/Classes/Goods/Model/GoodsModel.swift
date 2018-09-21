@@ -234,6 +234,7 @@ class DataInfo: BaseModel {
 class GoodsInfo: Mappable {
     
     var totalpage = 1
+    var page = 1
     var result = [Goods]()
     
     required init?(map: Map) {

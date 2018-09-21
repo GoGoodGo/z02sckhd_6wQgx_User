@@ -192,9 +192,14 @@ public class HomeController: UIViewController {
     
     private func isShowSearchBar(isShow: Bool) {
         let alpha: CGFloat = isShow ? 1 : 0
+        if isShow {
+            searchBtn.isHidden = !isShow
+        }
         UIView.animate(withDuration: 0.2, animations: {
             self.searchBtn.alpha = alpha
-        })
+        }) { (isCompletion) in
+            self.searchBtn.isHidden = (alpha == 0)
+        }
     }
     // MARK: - Callbacks
     @objc private func action_search() {
@@ -255,7 +260,7 @@ public class HomeController: UIViewController {
         let gap: CGFloat = 30
         let btn = UIButton.init(type: .custom)
         btn.frame = CGRect.init(x: gap, y: (NavigationBarH - height - 20) / 2, width: WIDTH - gap * 2, height: height)
-        btn.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        btn.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         btn.setTitle("请输入宝贝名称", for: .normal)
         btn.setImage(getImage(type(of: self), "ico_img_ss"), for: .normal)
         btn.contentHorizontalAlignment = .left
