@@ -423,7 +423,7 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
         if detialType == .auction || detialType == .auctionSuccess {
             return section == 3 || section == 0 ? 1 : section == 1 ? 2 : comments.count
         }
-        return section == 2 ? 1 : section == 1 ? comments.count : detialType == .detial ? 3 : 2
+        return section == 2 ? 1 : section == 1 ? comments.count : detialType == .detial ? 3 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
