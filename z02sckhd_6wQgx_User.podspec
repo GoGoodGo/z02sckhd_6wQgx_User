@@ -54,8 +54,12 @@ Pod::Spec.new do |s|
   s.dependency 'MJRefresh', '~> 3.1.12'
   #s.dependency 'WechatOpenSDK'
   
-  s.dependency 'TMSDK', '~> 0.0.2-beta.3'
-  s.dependency 'TMShare', '~> 0.0.2-beta.1'
+  #s.dependency 'TMSDK', '~> 0.0.2-beta.3'
+  #s.dependency 'TMShare', '~> 0.0.2-beta.1'
+  
+  #s.dependency 'TMSDK', :git => 'https://gitee.com/tmgc/TMSDKSpec.git'
+  #s.dependency 'TMShare', :git => 'https://gitee.com/tmgc/TMShareSpec.git'
+  
   s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
   s.dependency 'TMUserCenter', '~> 0.0.2-beta.1'
   
