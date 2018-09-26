@@ -88,7 +88,7 @@
                                 <action selector="action_updateNum:" destination="iN0-l3-epB" eventType="touchUpInside" id="vVS-2Q-owE"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEj-bS-KVJ">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEj-bS-KVJ">
                             <rect key="frame" x="25" y="0.0" width="30" height="25"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
@@ -132,13 +132,14 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5k-EW-ZaL">
-                    <rect key="frame" x="325" y="10" width="40" height="40"/>
+                    <rect key="frame" x="325" y="0.0" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="x5k-EW-ZaL" secondAttribute="height" id="6fY-HB-p8e"/>
-                        <constraint firstAttribute="height" constant="40" id="V78-bN-WqC"/>
+                        <constraint firstAttribute="height" constant="50" id="V78-bN-WqC"/>
                     </constraints>
-                    <state key="normal" title="X">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="关闭">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="action_close" destination="iN0-l3-epB" eventType="touchUpInside" id="VzP-fO-6Q2"/>
@@ -159,8 +160,8 @@
                 <constraint firstItem="4Yx-9q-NId" firstAttribute="top" secondItem="pbU-rB-aqc" secondAttribute="bottom" constant="10" id="X0y-Gf-pnB"/>
                 <constraint firstItem="pbU-rB-aqc" firstAttribute="top" secondItem="ybd-ZP-iu6" secondAttribute="bottom" constant="10" id="YN2-DP-AzJ"/>
                 <constraint firstItem="Alp-Gk-Rs2" firstAttribute="centerX" secondItem="Wxh-fv-vOf" secondAttribute="centerX" id="eTr-VZ-IXY"/>
-                <constraint firstItem="x5k-EW-ZaL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="gx7-dn-lpb"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x5k-EW-ZaL" secondAttribute="trailing" constant="10" id="hpv-xY-bra"/>
+                <constraint firstItem="x5k-EW-ZaL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gx7-dn-lpb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x5k-EW-ZaL" secondAttribute="trailing" id="hpv-xY-bra"/>
                 <constraint firstItem="Alp-Gk-Rs2" firstAttribute="top" secondItem="Wxh-fv-vOf" secondAttribute="bottom" constant="10" id="o2s-2R-0L3"/>
                 <constraint firstItem="4Yx-9q-NId" firstAttribute="centerX" secondItem="Wxh-fv-vOf" secondAttribute="centerX" id="reh-SZ-GQ0"/>
                 <constraint firstItem="RGh-gu-Wpj" firstAttribute="top" secondItem="Alp-Gk-Rs2" secondAttribute="bottom" constant="8" id="xta-lL-ARo"/>
@@ -171,6 +172,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="buyBtn" destination="4Yx-9q-NId" id="brQ-iR-9e0"/>
                 <outlet property="collectionView" destination="5DZ-1E-MHB" id="EGe-qp-lR5"/>
                 <outlet property="imgView" destination="Wxh-fv-vOf" id="eiZ-Q8-Kso"/>
                 <outlet property="layout" destination="dDQ-bV-qYM" id="FRW-VL-nvk"/>

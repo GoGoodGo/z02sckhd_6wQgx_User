@@ -25,16 +25,16 @@ class SpecificCell: UITableViewCell {
     // MARK: - PrivateMethod
     private func setupUI() {
         
-        layout.itemSize = CGSize.init(width: 70, height: 25)
+        layout.itemSize = CGSize.init(width: (WIDTH - 30) / 3, height: 20)
         
-        collectionView.register(UINib.init(nibName: CellName(GoodsParameterCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(GoodsParameterCell.self))
+        collectionView.register(UINib.init(nibName: CellName(GoodsAttrsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(GoodsAttrsCell.self))
         
         collectionView.delegate = self
         collectionView.dataSource = self
     }
     
     // MARK: - Setter
-    var specs = [GoodsSpec]() {
+    var attrs = [GoodsAttr]() {
         didSet {
             collectionView.reloadData()
         }
@@ -55,14 +55,14 @@ extension SpecificCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     // MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return specs.count
+        return attrs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellName(GoodsParameterCell.self), for: indexPath) as! GoodsParameterCell
-        let spec = specs[indexPath.row]
-        cell.title.setTitle(spec.spec_1 + spec.spec_2, for: .normal)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellName(GoodsAttrsCell.self), for: indexPath) as! GoodsAttrsCell
+        let attr = attrs[indexPath.row]
+        cell.attrs.text = attr.attr_name + "：" + attr.value
         
         return cell
     }

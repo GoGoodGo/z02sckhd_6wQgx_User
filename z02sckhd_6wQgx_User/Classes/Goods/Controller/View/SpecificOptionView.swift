@@ -16,11 +16,13 @@ class SpecificOptionView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     @IBOutlet weak var number: UILabel!
+    @IBOutlet weak var buyBtn: UIButton!
     
     let btnTag = 434
-    var updateNum: ((_ label: UILabel, _ num: Int) -> Void)?
+    var updateNum: ((_ num: Int) -> Void)?
     var pay: ((_ specs: String) -> Void)?
     var selectedItems = [Int : IndexPath]()
+    var specID = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,10 +57,10 @@ class SpecificOptionView: UIView {
         UIView.animate(withDuration: 0.3) {
             self.y = isShow ? HEIGHT / 2 - 120 : HEIGHT
         }
-    }
-    /** 规格 id 拼接 */
-    func getSpecs() {
-        
+        if !isShow {
+            specID = ""
+            selectedItems.removeAll()
+        }
     }
     
     @IBAction func action_updateNum(_ sender: UIButton) {
@@ -75,14 +77,14 @@ class SpecificOptionView: UIView {
             num += 1
         }
         if let click = updateNum {
-            click(number, num)
+            click(num)
         }
+        number.text = "\(num)"
     }
     
     @IBAction func action_pay(_ sender: UIButton) {
         if let click = pay {
-            
-            click("")
+            click(specID)
         }
     }
     
@@ -93,6 +95,10 @@ class SpecificOptionView: UIView {
     // MARK: - Setter
     var goodsDetial: GoodsDetial? {
         didSet {
+            let url = URL.init(string: (goodsDetial?.default_image)!)
+            imgView.kf.setImage(with: url)
+            name.text = goodsDetial?.goods_name
+            price.text = "¥\(goodsDetial?.price ?? "0.00")"
             collectionView.reloadData()
         }
     }
@@ -103,7 +109,8 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
     
     // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1 + ((goodsDetial?.spec_name_2.isEmpty ?? false) ? 0 : 1)
+//        return 1 + ((goodsDetial?.spec_name_2.isEmpty ?? false) ? 0 : 1)
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -114,7 +121,9 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellName(GoodsParameterCell.self), for: indexPath) as! GoodsParameterCell
         let spec = goodsDetial?._specs[indexPath.row]
-        cell.title.setTitle(indexPath.section == 0 ? spec?.spec_1 : spec?.spec_2, for: .normal)
+//        cell.title.setTitle(indexPath.section == 0 ? spec?.spec_1 : spec?.spec_2, for: .normal)
+        cell.title.setTitle((spec?.spec_1)! + (spec?.spec_2)!, for: .normal)
+        
         
         return cell
     }
@@ -122,7 +131,8 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellName(SpecificOptionReusableView.self), for: indexPath) as! SpecificOptionReusableView
-        headerView.title.text = indexPath.row == 0 ? goodsDetial?.spec_name_1 : goodsDetial?.spec_name_2
+//        headerView.title.text = indexPath.row == 0 ? goodsDetial?.spec_name_1 : goodsDetial?.spec_name_2
+        headerView.title.text = "规格"
         
         return headerView
     }
@@ -138,6 +148,7 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
             collectionView.deselectItem(at: itemIndex, animated: true)
         }
         selectedItems[indexPath.section] = indexPath
+        specID = (goodsDetial?._specs[indexPath.row].spec_id)!
     }
     
     

@@ -33,12 +33,15 @@ class GoodsDetialController: TMViewController {
     let bannerHeight: CGFloat = 280
     var ID = ""
     var specID = ""
+    var number = 1
+    var isBuy = false
     var detialType: DetialType = .detial
     
     var goodsDetial: GoodsDetial?
     var salesDetial: SalesDetialData?
     var comments = [Comment]()
     var specs = [GoodsSpec]()
+    var attrs = [GoodsAttr]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,6 +71,7 @@ class GoodsDetialController: TMViewController {
     // MARK: - Private Method
     private func setupUI() {
         footerSetup()
+        callbacksWithSpecificView()
         navigationItem.leftBarButtonItem = UIBarButtonItem.itemBundle(bundle: getBundle(), image: "ico_img_fh1", target: self, action: #selector(action_back))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.itemBundle(bundle: getBundle(), image: "ico_img_fx", target: self, action: #selector(action_share))
@@ -128,6 +132,7 @@ class GoodsDetialController: TMViewController {
             if "success" == obj.status {
                 self?.goodsDetial = obj.data
                 self?.specs = (obj.data?._specs)!
+                self?.attrs = (obj.data?.attr)!
                 self?.collectBtn.isSelected = (obj.data?.collects == "1") ? true : false
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?._images)!)
@@ -148,6 +153,7 @@ class GoodsDetialController: TMViewController {
                 self?.goodsDetial = obj.data?.goods
                 self?.auctionPrice.text = "¥\(Float((obj.data?.store?.price ?? "0.00"))! + Float((obj.data?.store?.markups ?? "0.00"))!)"
                 self?.specs = (obj.data?.goods?._specs_all)!
+                self?.attrs = (obj.data?.goods?.attr)!
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
             } else {
@@ -209,10 +215,12 @@ class GoodsDetialController: TMViewController {
     /** 加入购物车 */
     func addCart() {
         showHUD()
-        getRequest(baseUrl: AddCart_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : specID, "quantity" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCart_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
-                self?.showAutoHideHUD(message: "加入成功")
+                self?.showAutoHideHUD(message: "添加成功！", completed: {
+                    self?.specificOption.isShowOption(isShow: false)
+                })
             } else {
                 self?.inspectLogin(model: obj)
             }
@@ -248,19 +256,33 @@ class GoodsDetialController: TMViewController {
             self.inspectError()
         }
     }
+    /** 显示规格选项 */
+    func showOptionView(isBuy: Bool) {
+        specificOption.buyBtn.setTitle(isBuy ? "立即购买" : "立即添加", for: .normal)
+        specificOption.goodsDetial = goodsDetial
+        specificOption.isShowOption(isShow: true)
+        self.isBuy = isBuy
+    }
     
     // MARK: - Callbacks
     func callbacks(cell: SpecificCell) {
         cell.clickItemBlock = { [weak self] (cell, index) in
-            let spec = self?.specs[index]
-            self?.specID = (spec?.spec_id)!
+//            let spec = self?.specs[index]
+//            self?.specID = (spec?.spec_id)!
         }
     }
     
     func callbacksWithSpecificView() {
-        specificOption.pay = { [weak self] specIDs in
-            self?.specID = specIDs
-            self?.goodsBuy()
+        specificOption.updateNum = { [weak self] num in
+            self?.number = num
+        }
+        specificOption.pay = { [weak self] specID in
+            if specID.isEmpty {
+                self?.showAutoHideHUD(message: "请选择商品规格！")
+            } else {
+                self?.specID = specID
+                (self?.isBuy)! ? self?.goodsBuy() : self?.addCart()
+            }
         }
     }
     
@@ -293,13 +315,13 @@ class GoodsDetialController: TMViewController {
     }
     
     @IBAction func action_add(_ sender: UIButton) {
-        addCart()
+        showOptionView(isBuy: false)
     }
     /** 立即购买 */
     @IBAction func action_buy(_ sender: UIButton) {
         switch detialType {
         case .detial:
-            specificOption.isShowOption(isShow: true)
+            showOptionView(isBuy: true)
         case .auction:
             auctionBid()
         case .groupBuy:
@@ -382,7 +404,7 @@ class GoodsDetialController: TMViewController {
     /** 商品购买 */
     func goodsBuy() {
         showHUD()
-        getRequest(baseUrl: Buy_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : specID, "quantity" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: Buy_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "5")
@@ -469,7 +491,7 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
                     if detialType == .detial && indexPath.row == 1 {
                         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(SpecificCell.self)) as! SpecificCell
                         callbacks(cell: cell)
-                        cell.specs = specs
+                        cell.attrs = attrs
                         
                         return cell
                     } else {

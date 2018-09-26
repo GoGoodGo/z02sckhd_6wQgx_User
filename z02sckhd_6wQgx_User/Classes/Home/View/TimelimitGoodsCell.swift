@@ -17,6 +17,7 @@ class TimelimitGoodsCell: UICollectionViewCell {
     @IBOutlet weak var describe: UILabel!
     @IBOutlet weak var priceType: UILabel!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var days: UILabel!
     @IBOutlet weak var hours: UIButton!
     @IBOutlet weak var minutes: UIButton!
     @IBOutlet weak var seconds: UIButton!
@@ -42,7 +43,9 @@ class TimelimitGoodsCell: UICollectionViewCell {
         let time = Int(endTime)! - currentTime
         if time >= 0 {
             let dateComp = Date.dateFromTimestamp(timestamp: "\(time)")
-            hours.setTitle("\(time / 60 / 60)", for: .normal)
+            let allHours = time / 60 / 60
+            days.text = "\(allHours / 24)天"
+            hours.setTitle("\(allHours % 24)", for: .normal)
             minutes.setTitle("\(dateComp.minute ?? 00)", for: .normal)
             seconds.setTitle("\(dateComp.second ?? 00)", for: .normal)
         }

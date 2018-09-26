@@ -456,6 +456,7 @@ class GoodsDetial: Mappable {
         _images <- map["_images"]
         _specs <- map["_specs"]
         _specs_all <- map["_specs_all"]
+        attr <- map["attr"]
         _statistics <- map["_statistics"]
     }
 }

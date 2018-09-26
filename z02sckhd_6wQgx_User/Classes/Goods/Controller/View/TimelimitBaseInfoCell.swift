@@ -17,6 +17,7 @@ class TimelimitBaseInfoCell: UITableViewCell {
     @IBOutlet weak var priceType: UILabel!
     @IBOutlet weak var discountPrice: UILabel!
     @IBOutlet weak var originalPrice: UILabel!
+    @IBOutlet weak var days: UILabel!
     @IBOutlet weak var hours: UIButton!
     @IBOutlet weak var minutes: UIButton!
     @IBOutlet weak var seconds: UIButton!
@@ -49,6 +50,8 @@ class TimelimitBaseInfoCell: UITableViewCell {
         let time = Int(endTime)! - currentTime
         if time >= 0 {
             let dateComp = Date.dateFromTimestamp(timestamp: "\(time)")
+            let allHours = time / 60 / 60
+            days.text = "\(allHours / 24)天"
             hours.setTitle("\(time / 60 / 60)", for: .normal)
             minutes.setTitle("\(dateComp.minute ?? 00)", for: .normal)
             seconds.setTitle("\(dateComp.second ?? 00)", for: .normal)
