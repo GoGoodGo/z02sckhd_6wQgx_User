@@ -24,8 +24,7 @@
   "resources": "z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle",
   "source_files": [
     "z02sckhd_6wQgx_User/Classes/**/**/**/*.swift",
-    "z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h",
-    "z02sckhd_6wQgx_User/Classes/ThirdParty/*.h"
+    "z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h"
   ],
   "resource_bundles": {
     "z02sckhd_6wQgx_User": [
@@ -63,10 +62,10 @@
       "~> 3.1.12"
     ],
     "TMSDK": [
-      "~> 0.0.2-beta.3"
+
     ],
     "TMShare": [
-      "~> 0.0.2-beta.1"
+      "~> 0.0.2-beta.3"
     ],
     "TMNavigation": [
       "~> 0.0.2-beta.3"

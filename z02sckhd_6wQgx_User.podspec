@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   
   s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle'
   
-  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift',  'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h', 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.h'
+  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift',  'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h'
   
   s.resource_bundles = {
       'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.xib', 'z02sckhd_6wQgx_User/Classes/Mine/*.plist', 'z02sckhd_6wQgx_User/Assets/Crop/**/*.png']
@@ -60,6 +60,8 @@ Pod::Spec.new do |s|
   #s.dependency 'TMSDK', :git => 'https://gitee.com/tmgc/TMSDKSpec.git'
   #s.dependency 'TMShare', :git => 'https://gitee.com/tmgc/TMShareSpec.git'
   
+  s.dependency 'TMSDK'
+  s.dependency 'TMShare', '~> 0.0.2-beta.3'
   s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
   s.dependency 'TMUserCenter', '~> 0.0.2-beta.1'
   

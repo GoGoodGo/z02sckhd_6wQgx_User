@@ -17,6 +17,5 @@
 #import <TMSDK/TMHttpConfig.h>
 #import <TMSDK/TMEngineConfig.h>
 #import <TMSDK/TMDataCache.h>
-#import <TMSDK/TMHttpBase.h>
 
 #endif /* TMSDK_h */

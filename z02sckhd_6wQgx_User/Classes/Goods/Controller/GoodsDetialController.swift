@@ -46,6 +46,13 @@ class GoodsDetialController: TMViewController {
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.isTranslucent = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if detialType == .detial {
+            view.addSubview(specificOption)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -250,11 +257,18 @@ class GoodsDetialController: TMViewController {
         }
     }
     
-    @objc private func action_back() {
+    func callbacksWithSpecificView() {
+        specificOption.pay = { [weak self] specIDs in
+            self?.specID = specIDs
+            self?.goodsBuy()
+        }
+    }
+    
+    @objc func action_back() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func action_share() {
+    @objc func action_share() {
         
     }
     
@@ -285,7 +299,7 @@ class GoodsDetialController: TMViewController {
     @IBAction func action_buy(_ sender: UIButton) {
         switch detialType {
         case .detial:
-            goodsBuy()
+            specificOption.isShowOption(isShow: true)
         case .auction:
             auctionBid()
         case .groupBuy:
@@ -406,7 +420,14 @@ class GoodsDetialController: TMViewController {
         let height: CGFloat = 30
         view.indicatorFrame = CGRect.init(x: WIDTH - width, y: bannerHeight - height, width: width, height: height)
         return view
-    }();
+    }()
+    
+    lazy var specificOption: SpecificOptionView = {
+        
+        let view = SpecificOptionView.specificOption() as! SpecificOptionView
+        view.frame = CGRect.init(x: 0, y: HEIGHT, width: WIDTH, height: HEIGHT / 2 + 120)
+        return view
+    }()
 }
 
 extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {

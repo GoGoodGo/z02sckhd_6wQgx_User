@@ -9,6 +9,7 @@
 import UIKit
 import YHTool
 import TMSDK
+import TMShare
 
 public let PayNotificationName = "payNotificationName"
 

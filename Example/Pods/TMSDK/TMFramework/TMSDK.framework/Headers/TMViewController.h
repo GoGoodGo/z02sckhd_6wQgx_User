@@ -60,18 +60,11 @@
  */
 - (NSDictionary *)paramDict;
 
-/**
- 是否允许横屏，默认为不允许横屏
- */
-@property (nonatomic, assign) BOOL tmAllowLandscape;
-
 - (void)PushRemoteHtmlWithStartPage:(NSString *)startPage Animated:(BOOL)animated;
 - (void)PresentRemoteHtmlWithStartPage:(NSString *)startPage Animated:(BOOL)animated;
 
 - (void)PushLocalHtmlWithStartPage:(NSString *)startPage WwwFolderName:(NSString *)wwwFolderName Animated:(BOOL)animated;
 - (void)PresentLocalHtmlWithStartPage:(NSString *)startPage WwwFolderName:(NSString *)wwwFolderName Animated:(BOOL)animated;
-
-
 @end
 
 @interface TMViewCommandDelegate : CDVCommandDelegateImpl

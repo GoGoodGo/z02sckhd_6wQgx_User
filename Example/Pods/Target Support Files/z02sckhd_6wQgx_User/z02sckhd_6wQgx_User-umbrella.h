@@ -12,9 +12,6 @@
 
 #import "AlipaySDK.h"
 #import "APayAuthInfo.h"
-#import "WechatAuthSDK.h"
-#import "WXApi.h"
-#import "WXApiObject.h"
 
 FOUNDATION_EXPORT double z02sckhd_6wQgx_UserVersionNumber;
 FOUNDATION_EXPORT const unsigned char z02sckhd_6wQgx_UserVersionString[];
