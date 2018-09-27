@@ -60,7 +60,7 @@ Pod::Spec.new do |s|
   #s.dependency 'TMSDK', :git => 'https://gitee.com/tmgc/TMSDKSpec.git'
   #s.dependency 'TMShare', :git => 'https://gitee.com/tmgc/TMShareSpec.git'
   
-  s.dependency 'TMSDK'
+  s.dependency 'TMSDK', '~> 0.0.2-beta.7'
   s.dependency 'TMShare', '~> 0.0.2-beta.3'
   s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
   s.dependency 'TMUserCenter', '~> 0.0.2-beta.1'

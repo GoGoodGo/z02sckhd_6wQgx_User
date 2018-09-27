@@ -21,4 +21,20 @@ class LogisticsGoodsFooter: UIView {
         return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
 
+    
+    // MARK: - Setter
+    var result: MyOrderResult? {
+        didSet {
+            integral.text = "可获得\(result?.give_integral ?? "0")个积分, 可使用\(result?.integral ?? "0")个积分"
+            number.text = "共\(result?.total ?? "0")件商品"
+            amount.text = "¥\(result?.order_amount ?? "0.00")"
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }

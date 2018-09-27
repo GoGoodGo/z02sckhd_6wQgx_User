@@ -16,6 +16,7 @@ class LogisticsController: UIViewController {
     
     var sectionHeaders = [Int : UIView]()
     var sectionFooters = [Int : LogisticsGoodsFooter]()
+    var orderResult: MyOrderResult?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +40,31 @@ class LogisticsController: UIViewController {
         tableView.register(UINib.init(nibName: CellName(LogisticsInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(LogisticsInfoCell.self))
         
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 70, right: 0)
+        
+        load()
+    }
+    
+    /** 获取物流信息 */
+    func load() {
+        showHUD()
+        let order = orderResult?._orders.first
+        getRequest(baseUrl: OrderTraces_URL, params: ["type" : (order?.pack_name ?? ""), "code" : (order?.invoice_no ?? "")], success: { [weak self] (obj: BaseModel) in
+            self?.hideHUD()
+            if "success" == obj.status {
+                
+            } else {
+                self?.inspectLogin(model: obj)
+            }
+        }) { (error) in
+            self.hideHUD()
+            self.inspectError()
+        }
     }
     
     @IBAction func action_backOrder() {
         navigationController?.popViewController(animated: true)
     }
     
-
 }
 
 extension LogisticsController: UITableViewDelegate, UITableViewDataSource {
@@ -57,13 +76,13 @@ extension LogisticsController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return section == 0 ? (orderResult?._orders.first?._goods.count ?? 0) : 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(OrderGoodsCell.self)) as! OrderGoodsCell
-            
+            cell.orderGoods = orderResult?._orders.first?._goods[indexPath.row]
             
             return cell
         } else {
@@ -81,18 +100,13 @@ extension LogisticsController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let header = sectionHeaders[section] {
-            
-            return header
-        }
         if section == 0 {
             let header = LogisticsGoodsHeader.headerView() as! LogisticsGoodsHeader
-            sectionHeaders[section] = header
+            header.orderInfo = orderResult?._orders.first
             
             return header
         } else {
             let header = LogisticsHeader.headerView() as! LogisticsHeader
-            sectionHeaders[section] = header
             
             return header
         }
@@ -100,12 +114,8 @@ extension LogisticsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 1 { return nil }
-        if let footer = sectionFooters[section] {
-            
-            return footer
-        }
         let footer = LogisticsGoodsFooter.footerView() as! LogisticsGoodsFooter
-        sectionFooters[section] = footer
+        footer.result = orderResult
         
         return footer
     }

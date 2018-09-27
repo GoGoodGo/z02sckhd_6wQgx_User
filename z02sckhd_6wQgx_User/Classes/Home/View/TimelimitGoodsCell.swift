@@ -39,8 +39,8 @@ class TimelimitGoodsCell: UICollectionViewCell {
     @objc private func action_timer() {
         
         let currentTime = Int(Date().timeIntervalSince1970)
-        let endTime = Date.timestampFromString(dateStr: (result?.end_time ?? "2018-09-06 20:00:00"), format: "yyyy-MM-dd HH:mm:ss")
-        let time = Int(endTime)! - currentTime
+//        let endTime = Date.timestampFromString(dateStr: (result?.end_time ?? "2018-09-06 20:00:00"), format: "yyyy-MM-dd HH:mm:ss")
+        let time = Int(result?.end_time ?? "\(currentTime)")! - currentTime
         if time >= 0 {
             let dateComp = Date.dateFromTimestamp(timestamp: "\(time)")
             let allHours = time / 60 / 60
@@ -56,23 +56,23 @@ class TimelimitGoodsCell: UICollectionViewCell {
         didSet {
             timer?.fireDate = Date.distantPast
             
-            let url = URL(string: (result?.goods?.default_image)!)
+            let url = URL(string: (result?.default_image ?? ""))
             imgView.kf.setImage(with: url)
-            name.text = result?.goods?.goods_name
-            describe.text = (result?.goods?.spec_name_1)! + (result?.goods?.spec_name_2)!
+            name.text = result?.goods_name
+            describe.text = result?.spec_name
             switch type {
             case .auction:
-                totalBtn.setTitle("\(result?.goods?.goods_number ?? "1")人竞拍", for: .normal)
+                totalBtn.setTitle("\(result?.number ?? "1")人竞拍", for: .normal)
                 priceType.text = "竞拍价"
             case .groupBuy:
-                totalBtn.setTitle("\(result?.goods?.goods_number ?? "1")人参团", for: .normal)
+                totalBtn.setTitle("\(result?.number ?? "1")人参团", for: .normal)
                 priceType.text = "团购价"
             case .timelimit:
-                totalBtn.setTitle("\(result?.goods?.goods_number ?? "1")人秒杀", for: .normal)
+                totalBtn.setTitle("\(result?.number ?? "1")人秒杀", for: .normal)
                 priceType.text = "秒杀价"
             default: break
             }
-            price.text = result?.goods?.price
+            price.text = result?.price
         }
     }
     

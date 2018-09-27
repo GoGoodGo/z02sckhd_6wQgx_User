@@ -74,7 +74,7 @@ class ConfirmOrderController: TMViewController {
     
     @IBAction func action_submitOrder(_ sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: OrderDone_URL, params: ["token" : TMHttpUser.token() ?? "", "flow_type" : flowType, "address_id" : (consignee?.address_id)!], success: { [weak self] (obj: OrderInfo) in
+        getRequest(baseUrl: OrderDone_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType, "address_id" : (consignee?.address_id)!], success: { [weak self] (obj: OrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())

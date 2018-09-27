@@ -36,8 +36,15 @@ class EvaluateSectionHeader: UIView {
     }
     
     // MARK: - Setter
+    var detial: SalesDetialData? {
+        didSet {
+            
+        }
+    }
+    
     var sectionType: SectionType = .evaluate {
         didSet {
+            auctionNum.text = "\(detial?.auctionlog.count ?? 0)人参与竞拍"
             auctionNum.isHidden = sectionType != .auction
             if sectionType == .detial || sectionType == .auction {
                 showAll.isHidden = true

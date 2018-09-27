@@ -53,11 +53,11 @@ class HomeInfo: BaseModel {
 class HomeData: Mappable {
     
     var banner = [HomeBanner]()
-    var category = [Category]()
+    var category = [CategoryInfo]()
     var spike = [SalesResult]()
     var groupbuy = [SalesResult]()
     var auction = [SalesResult]()
-    var isbest = [SalesGoods]()
+    var isbest = [Goods]()
     var bestshop = [HomeShop]()
     
     required init?(map: Map) {

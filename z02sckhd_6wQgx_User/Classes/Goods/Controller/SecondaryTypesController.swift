@@ -99,12 +99,12 @@ class SecondaryTypesController: UIViewController {
         }
         
         if flag % 2 == 1 {
-            sender.setImage(#imageLiteral(resourceName: "ico_img_sxxz"), for: .selected)
-            tempBtn?.setImage(#imageLiteral(resourceName: "ico_img_sx"), for: .normal)
+            sender.setImage(getImage(type(of: self), "ico_img_sxxz"), for: .selected)
+            tempBtn?.setImage(getImage(type(of: self), "ico_img_sx"), for: .normal)
             order = "asc"
         } else {
-            sender.setImage(#imageLiteral(resourceName: "ico_img_jxxz"), for: .selected)
-            tempBtn?.setImage(#imageLiteral(resourceName: "ico_img_jx"), for: .normal)
+            sender.setImage(getImage(type(of: self), "ico_img_jxxz"), for: .selected)
+            tempBtn?.setImage(getImage(type(of: self), "ico_img_jx"), for: .normal)
             order = "desc"
         }
         
@@ -142,7 +142,7 @@ class SecondaryTypesController: UIViewController {
     @objc func load() {
         
         showHUD()
-        params = ["cate_id" : (currentCategory?.id)!, "sid" : "", "sort" : sort, "order" : order, "p" : "\(page)"]
+        params = ["cate_id" : (currentCategory?.id)!, "sort" : sort, "order" : order, "p" : "1"]
         getRequest(baseUrl: GoodsList_URL, params: params, success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             if "success" == obj.status {
@@ -220,6 +220,8 @@ extension SecondaryTypesController: UICollectionViewDelegate, UICollectionViewDa
             load()
         } else {
             let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
+            goodsDetialCtrl.ID = goodsList[indexPath.row].goods_id
+            goodsDetialCtrl.detialType = .detial
             navigationController?.pushViewController(goodsDetialCtrl, animated: true)
         }
     }

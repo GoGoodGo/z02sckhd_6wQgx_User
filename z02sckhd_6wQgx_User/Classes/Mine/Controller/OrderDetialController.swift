@@ -35,7 +35,7 @@ class OrderDetialController: TMViewController {
     /** 订单详情 */
     func load() {
         showHUD()
-        getRequest(baseUrl: OrderDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : (orderResult?.mid)!], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : (orderResult?.mid)!], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.tableView.reloadData()

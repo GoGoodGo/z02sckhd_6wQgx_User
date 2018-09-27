@@ -19,34 +19,37 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
   - Cosmos (16.0.0)
+  - JCore (1.2.2)
+  - JPush (3.1.0):
+    - JCore (~> 1.2.0)
   - Kingfisher (4.8.1)
   - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.15.7)
-  - mob_sharesdk (4.1.4):
-    - mob_sharesdk/ShareSDK (= 4.1.4)
+  - mob_sharesdk (4.2.0):
+    - mob_sharesdk/ShareSDK (= 4.2.0)
     - MOBFoundation
-  - mob_sharesdk/ShareSDK (4.1.4):
+  - mob_sharesdk/ShareSDK (4.2.0):
     - MOBFoundation
-  - mob_sharesdk/ShareSDKExtension (4.1.4):
+  - mob_sharesdk/ShareSDKExtension (4.2.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - mob_sharesdk/ShareSDKPlatforms/Mail (4.1.4):
+  - mob_sharesdk/ShareSDKPlatforms/Mail (4.2.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - mob_sharesdk/ShareSDKPlatforms/QQ (4.1.4):
+  - mob_sharesdk/ShareSDKPlatforms/QQ (4.2.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - mob_sharesdk/ShareSDKPlatforms/SinaWeibo (4.1.4):
+  - mob_sharesdk/ShareSDKPlatforms/SinaWeibo (4.2.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - mob_sharesdk/ShareSDKPlatforms/SMS (4.1.4):
+  - mob_sharesdk/ShareSDKPlatforms/SMS (4.2.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - mob_sharesdk/ShareSDKPlatforms/WeChatFull (4.1.4):
+  - mob_sharesdk/ShareSDKPlatforms/WeChatFull (4.2.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - mob_sharesdk/ShareSDKUI (4.1.4):
+  - mob_sharesdk/ShareSDKUI (4.2.0):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
   - MOBFoundation (3.1.9)
@@ -64,8 +67,9 @@ PODS:
     - SVProgressHUD
     - TMSDK
     - UMengAnalytics-NO-IDFA
-  - TMSDK (0.0.1):
+  - TMSDK (0.0.2-beta.7):
     - AFNetworking
+    - JPush
   - TMShare (0.0.2-beta.3):
     - mob_sharesdk
     - mob_sharesdk/ShareSDKExtension
@@ -97,7 +101,7 @@ PODS:
     - Kingfisher (~> 4.8.0)
     - MJRefresh (~> 3.1.12)
     - TMNavigation (~> 0.0.2-beta.3)
-    - TMSDK
+    - TMSDK (~> 0.0.2-beta.7)
     - TMShare (~> 0.0.2-beta.3)
     - TMUserCenter (~> 0.0.2-beta.1)
     - YHTool (~> 1.1.4)
@@ -111,6 +115,8 @@ SPEC REPOS:
     - Alamofire
     - AlamofireObjectMapper
     - Cosmos
+    - JCore
+    - JPush
     - Kingfisher
     - Masonry
     - MBProgressHUD
@@ -138,11 +144,13 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Cosmos: 7bcee0fa858a9355a214f2a181be5dffcee42c81
+  JCore: f14c0549968a63c22e246a4875aa9d428446f373
+  JPush: 5921e25ad13e0386351079217b009f2039084eac
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  mob_sharesdk: 765cc2fd2fac0a6fd7c3e6c2b10d729ad006c608
+  mob_sharesdk: fc8a9aab921c08e5e88a5b1f36229c6d406a2ff8
   MOBFoundation: 11500153c10d83e4ac341f6ad6301b3998ce6db2
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
@@ -150,12 +158,12 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TMNavigation: d748f37911f69f932f4f9e8fcef683e70f9bae60
-  TMSDK: 85232877f853d546ec180479f883d6f3b4a44ec0
+  TMSDK: 0f00791a5ff2684917b0d6b120013053fa137bff
   TMShare: ca1b4a685ee1ebb5b08c5eb5a921c84d40a5caaf
   TMUserCenter: 939c9769c8ca27761c2d24d4f95d08ea6aa99f38
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   YHTool: 2e6c0e9786f92788fd47f1b3e7277550ddb8ff6a
-  z02sckhd_6wQgx_User: 120ca30bbd052c694d47c57e54baaa86823de697
+  z02sckhd_6wQgx_User: e900e64964a403de93e136e0cbdc8d9ee4ed713b
 
 PODFILE CHECKSUM: 2968b7f3bb23b76f0a86286d931dc9c66bd05d97
 

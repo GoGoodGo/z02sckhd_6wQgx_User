@@ -20,12 +20,20 @@ class WithdrawRecordController: TMViewController {
     var withdrawData: IncomeData?
     var withdraws = [Income]()
     var status = "0"
+    var isApply = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "提现记录"
         setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isApply {
+            load()
+        }
     }
     
     // MARK: - Private Method
@@ -37,19 +45,20 @@ class WithdrawRecordController: TMViewController {
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+        
         load()
     }
     
-    /** 获取收益 */
+    /** 获取提现 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "2", "status" : status], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "2", "status" : status, "page" : "1"], success: { [weak self] (obj: IncomeInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.unverify.text = "¥\(obj.data?.wait ?? 0.00)"
                 self?.verify.text = "¥\(obj.data?.ok ?? 0.00)"
-                self?.withdrawData = obj.data
+                self?.withdrawData?.page += 1
                 self?.withdraws = (obj.data?.result)!
                 self?.tableView.reloadData()
             } else {
@@ -63,7 +72,7 @@ class WithdrawRecordController: TMViewController {
     }
     /** 更多 */
     @objc func loadMore() {
-        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? "", "type" : "2", "status" : status, "page" : "\(withdrawData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "2", "status" : status, "page" : "\(withdrawData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
             self?.tableView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.withdraws += (obj.data?.result)!
@@ -79,15 +88,16 @@ class WithdrawRecordController: TMViewController {
     /** 取消提现 */
     func loadCancel(ID: String) {
         showHUD()
-        getRequest(baseUrl: CancelWithdraw_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : ID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelWithdraw_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : ID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
-                self?.load()
+                self?.tableView.mj_header.beginRefreshing()
             } else {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
+            self.inspectError()
         }
     }
     
@@ -107,6 +117,7 @@ class WithdrawRecordController: TMViewController {
         let applyWithdraw = ApplyWithdrawController.init(nibName: "ApplyWithdrawController", bundle: getBundle())
         applyWithdraw.withdrawData = withdrawData
         navigationController?.pushViewController(applyWithdraw, animated: true)
+        isApply = true
     }
     
     func callbacks(cell: WithdrawRecordCell) {

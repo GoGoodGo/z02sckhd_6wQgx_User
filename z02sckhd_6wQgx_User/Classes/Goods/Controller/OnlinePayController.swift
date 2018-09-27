@@ -51,7 +51,7 @@ class OnlinePayController: TMViewController {
     func loadPay(type: String) {
         showHUD()
         if payWay == "1" {
-            getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: PayInfo) in
+            getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: PayInfo) in
                 self?.hideHUD()
                 if "success" == obj.status {
                     AlipaySDK.defaultService().payOrder(obj.data, fromScheme: "TianMa_User") { [weak self] (result) in
@@ -64,7 +64,7 @@ class OnlinePayController: TMViewController {
                 self.inspectError()
             }
         } else {
-            getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? "", "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: WxPayInfo) in
+            getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: WxPayInfo) in
                 self?.hideHUD()
                 if "success" == obj.status {
                     self?.wechatPay(pay: obj)

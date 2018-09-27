@@ -26,7 +26,7 @@ class RecommendGoodsCell: UICollectionViewCell {
     
     var goods: Goods? {
         didSet {
-            let url = URL(string: (goods?.default_image)!)
+            let url = URL(string: (goods?.default_image ?? ""))
             img.kf.setImage(with: url, placeholder: nil)
             name.text = goods?.goods_name
             describe.text = ""

@@ -26,7 +26,7 @@ class SecondaryTypeCell: UICollectionViewCell {
     // MARK: - Setter
     var category: CategoryInfo? {
         didSet {
-            let url = URL.init(string: (category?.image)!)
+            let url = URL.init(string: (category?.image ?? ""))
             imgView.kf.setImage(with: url, placeholder: nil)
             name.text = category?.name
         }
@@ -37,7 +37,7 @@ class SecondaryTypeCell: UICollectionViewCell {
             
             self.backgroundColor = isSelected ? HexString("#ff5863") : HexString("#f3f4f8")
             name.textColor = isSelected ? UIColor.white : HexString("#9fa5bb")
-            imgView.image = isSelected ? getImage(type(of: self), "ico_img_mz1xz") : getImage(type(of: self), "ico_img_mz1")
+//            imgView.image = isSelected ? getImage(type(of: self), "ico_img_mz1xz") : getImage(type(of: self), "ico_img_mz1")
         }
     }
     

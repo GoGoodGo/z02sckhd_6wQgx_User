@@ -58,7 +58,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbU-rB-aqc" userLabel="numView">
-                    <rect key="frame" x="15" y="328" width="80" height="25"/>
+                    <rect key="frame" x="15" y="323" width="80" height="25"/>
                     <subviews>
                         <button opaque="NO" tag="434" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGf-TQ-uPS">
                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
@@ -112,13 +112,13 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybd-ZP-iu6">
-                    <rect key="frame" x="15" y="301" width="29" height="17"/>
+                    <rect key="frame" x="15" y="296" width="29" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5DZ-1E-MHB">
-                    <rect key="frame" x="15" y="155" width="345" height="136"/>
+                    <rect key="frame" x="15" y="155" width="345" height="131"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dDQ-bV-qYM">
                         <size key="itemSize" width="50" height="50"/>
@@ -157,7 +157,7 @@
                 <constraint firstItem="RGh-gu-Wpj" firstAttribute="centerX" secondItem="Wxh-fv-vOf" secondAttribute="centerX" id="PTG-Fc-HOL"/>
                 <constraint firstItem="Wxh-fv-vOf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="Px7-YV-7fb"/>
                 <constraint firstItem="ybd-ZP-iu6" firstAttribute="top" secondItem="5DZ-1E-MHB" secondAttribute="bottom" constant="10" id="Se6-1t-Q1J"/>
-                <constraint firstItem="4Yx-9q-NId" firstAttribute="top" secondItem="pbU-rB-aqc" secondAttribute="bottom" constant="10" id="X0y-Gf-pnB"/>
+                <constraint firstItem="4Yx-9q-NId" firstAttribute="top" secondItem="pbU-rB-aqc" secondAttribute="bottom" constant="15" id="X0y-Gf-pnB"/>
                 <constraint firstItem="pbU-rB-aqc" firstAttribute="top" secondItem="ybd-ZP-iu6" secondAttribute="bottom" constant="10" id="YN2-DP-AzJ"/>
                 <constraint firstItem="Alp-Gk-Rs2" firstAttribute="centerX" secondItem="Wxh-fv-vOf" secondAttribute="centerX" id="eTr-VZ-IXY"/>
                 <constraint firstItem="x5k-EW-ZaL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gx7-dn-lpb"/>

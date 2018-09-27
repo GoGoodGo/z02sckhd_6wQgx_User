@@ -55,11 +55,13 @@
  */
 @property (nonatomic, copy) NSDictionary *serversConfig;
 
+@property (nonatomic, copy) NSArray *landscapes;
+
 //根据key取各个组件在“TMBaseConfig.plist”中自定义的配置数据
 - (NSDictionary *)featureByName:(NSString *)key;
 
 
 
 + (TMEngineConfig *)instance;
-
++ (instancetype)sharedManager;
 @end

@@ -18,6 +18,7 @@ class NotEvaluateCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     
     var evaluateBlock:((_ cell: NotEvaluateCell, _ goods: NotEvaluateGoods) -> Void)?
+    var index = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,8 +46,9 @@ class NotEvaluateCell: UITableViewCell {
     
     override var frame: CGRect {
         didSet {
-            let y:CGFloat = 10
+            let y: CGFloat = 10
             var tempFrame = frame
+            tempFrame.origin.y -= y
             tempFrame.size.height -= y
             super.frame = tempFrame
         }

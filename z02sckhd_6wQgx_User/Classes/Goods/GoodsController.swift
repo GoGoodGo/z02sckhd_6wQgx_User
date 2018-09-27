@@ -208,7 +208,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
         if indexPath.section == 0 {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellName(GoodsHeaderView.self), for: indexPath) as! GoodsHeaderView
             callbacksHeader(header: headerView)
-            headerView.categorys = categorys
+            headerView.categorys = self.categorys
             
             return headerView
         } else {

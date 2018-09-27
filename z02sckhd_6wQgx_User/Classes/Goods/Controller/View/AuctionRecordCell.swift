@@ -18,13 +18,25 @@ class AuctionRecordCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // MARK: - Setter
+    var log: AuctionLog? {
+        didSet {
+            name.text = (log?.tel ?? "***")
+            date.text = Date.dateWithSeconds(totalSeconds: Double(log?.bid_time ?? "0")!, formatter: "yyyy-MM-dd HH:mm:ss")
+            increase.text = "0.00"
+            auctionPrice.text = "¥\(log?.bid_price ?? "0.00")"
+        }
     }
+    
+    
+    
+    
+    
+    
+    
     
 }

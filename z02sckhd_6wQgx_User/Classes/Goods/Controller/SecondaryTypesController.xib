@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondaryTypesController" customModule="TianMaUser" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondaryTypesController" customModule="z02sckhd_6wQgx_User" customModuleProvider="target">
             <connections>
                 <outlet property="goodsCollectionView" destination="T4c-lO-k3h" id="4aC-VE-8yy"/>
                 <outlet property="goodsLayout" destination="hLj-z4-fWP" id="Utk-qM-rhm"/>
@@ -51,7 +51,7 @@
                                 <constraint firstAttribute="height" constant="1" id="uRK-xy-EQa"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" tag="123" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMT-FK-zqq" customClass="YHButton" customModule="TianMaUser" customModuleProvider="target">
+                        <button opaque="NO" tag="123" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMT-FK-zqq" customClass="YHButton" customModule="YHTool">
                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="49"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="按销量" image="ico_img_jx">
@@ -64,7 +64,7 @@
                                 <action selector="action_sort:" destination="-1" eventType="touchUpInside" id="cNC-ME-3oA"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="124" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAc-Ti-7mp" customClass="YHButton" customModule="TianMaUser" customModuleProvider="target">
+                        <button opaque="NO" tag="124" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAc-Ti-7mp" customClass="YHButton" customModule="YHTool">
                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="49"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="按价格" image="ico_img_jx">

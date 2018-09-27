@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManageAccountController" customModule="TianMaUser" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManageAccountController" customModule="z02sckhd_6wQgx_User" customModuleProvider="target">
             <connections>
                 <outlet property="accountTypeView" destination="Bg7-VK-Jq0" id="lWA-Xu-6D5"/>
                 <outlet property="header" destination="Nlc-rW-gAF" id="2Cq-2h-OTc"/>

@@ -50,7 +50,26 @@ FOUNDATION_EXPORT const unsigned char CordovaVersionString[];
 #import <TMSDK/CDVTimer.h>
 #import <TMSDK/CDVUserAgentUtil.h>
 
+
+//#import <TMSDK/OnePassword.h>
+//#import <TMSDK/UIImage+CropScaleOrientation.h>
+//#import <TMSDK/CDVExif.h>
+//#import <TMSDK/CDVJpegHeaderWriter.h>
+//#import <TMSDK/CDVConnection.h>
+//#import <TMSDK/CDVLocation.h>
+//#import <TMSDK/AudioReceiver.h>
+//#import <TMSDK/CDVDevice.h>
+//#import <TMSDK/CDVFile.h>
+////#import <TMSDK/LocalDataPlugin.h>
+//#import <TMSDK/OnePasswordExtension.h>
+////#import <TMSDK/TMProtocolCustom.h>
+//#import <TMSDK/CDVReachability.h>
+
+
+
+
 #import <TMSDK/TMCommonDefine.h>
 #import <TMSDK/TMViewController.h>
 #import <TMSDK/TMController.h>
+#import <TMSDK/CDVAppDelegate+TMJPush.h>
 

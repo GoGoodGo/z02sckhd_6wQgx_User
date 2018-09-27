@@ -22,6 +22,7 @@ class AuctionBaseInfoCell: UITableViewCell {
     @IBOutlet weak var remaining: UILabel!
     @IBOutlet weak var end: UIButton!
     @IBOutlet weak var timelimit: UIView!
+    @IBOutlet weak var days: UILabel!
     @IBOutlet weak var hours: UIButton!
     @IBOutlet weak var minutes: UIButton!
     @IBOutlet weak var seconds: UIButton!
@@ -60,7 +61,9 @@ class AuctionBaseInfoCell: UITableViewCell {
         var time = Int(endTime)! - currentTime
         if time > 0 {
             let dateComp = Date.dateFromTimestamp(timestamp: "\(time)")
-            hours.setTitle("\(time / 60 / 60)", for: .normal)
+            let allHours = time / 60 / 60
+            days.text = "\(allHours / 24)天"
+            hours.setTitle("\(allHours % 24)", for: .normal)
             minutes.setTitle("\(dateComp.minute ?? 00)", for: .normal)
             seconds.setTitle("\(dateComp.second ?? 00)", for: .normal)
             
@@ -79,7 +82,7 @@ class AuctionBaseInfoCell: UITableViewCell {
         didSet {
             timer?.fireDate = Date.distantPast
             name.text = result?.goods?.goods_name
-            describe.text = (result?.goods?.spec_name_1 ?? "") + (result?.goods?.spec_name_2 ?? "")
+            describe.text = (result?.goods?.defaultspec?.spec_1 ?? "") + (result?.goods?.defaultspec?.spec_2 ?? "")
             
             startPrice.text = "起拍价：¥\(result?.store?.price ?? "0.00")"
             increasePrice.text = "加价：¥\(result?.store?.markups ?? "0.00")"
@@ -101,7 +104,8 @@ extension AuctionBaseInfoCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     // MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return result?.goods?._specs_all.count ?? 0
+//        return result?.goods?._specs_all.count ?? 0
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -146,7 +146,7 @@ class GoodsDetialController: TMViewController {
     /** 竞拍详情 */
     func loadAuction() {
         showHUD()
-        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: AuctionDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
@@ -166,7 +166,7 @@ class GoodsDetialController: TMViewController {
     /** 团购详情 */
     func loadGroup() {
         showHUD()
-        getRequest(baseUrl: GroupDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: GroupDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
@@ -185,7 +185,7 @@ class GoodsDetialController: TMViewController {
     /** 秒杀详情 */
     func loadTimelimit() {
         showHUD()
-        getRequest(baseUrl: TimelimitDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: TimelimitDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
@@ -201,7 +201,7 @@ class GoodsDetialController: TMViewController {
     }
     /** 获取评论 */
     func loadComment() {
-        getRequest(baseUrl: GoodsComment_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : (goodsDetial?.goods_id)!, "page" : "1"], success: { [weak self] (obj: CommentInfo) in
+        getRequest(baseUrl: GoodsComment_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : (goodsDetial?.goods_id)!, "page" : "1"], success: { [weak self] (obj: CommentInfo) in
             if "success" == obj.status {
                 self?.comments = (obj.data?.result)!
                 self?.tableView.reloadData()
@@ -215,7 +215,7 @@ class GoodsDetialController: TMViewController {
     /** 加入购物车 */
     func addCart() {
         showHUD()
-        getRequest(baseUrl: AddCart_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCart_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "添加成功！", completed: {
@@ -231,7 +231,7 @@ class GoodsDetialController: TMViewController {
     /** 收藏 */
     func addCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: AddCollect_URL, params: ["token" : "", "id" : ID, "type" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "type" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = true
@@ -245,7 +245,7 @@ class GoodsDetialController: TMViewController {
     /** 取消收藏 */
     func cancelCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = false
@@ -335,7 +335,7 @@ class GoodsDetialController: TMViewController {
     func auctionBid() {
         showHUD()
         let price = Float(salesDetial?.store?.new_price ?? "0.00")! + Float(salesDetial?.store?.markups ?? "0.00")!
-        getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 if "ok" == obj.data {
@@ -359,7 +359,7 @@ class GoodsDetialController: TMViewController {
     /** 拍卖购买 */
     func auctionBuy() {
         showHUD()
-        getRequest(baseUrl: AuctionBuy_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: AuctionBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "2")
@@ -374,7 +374,7 @@ class GoodsDetialController: TMViewController {
     /** 团购购买 */
     func groupBuy() {
         showHUD()
-        getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "1")
@@ -389,7 +389,7 @@ class GoodsDetialController: TMViewController {
     /** 秒杀购买 */
     func timelimitBuy() {
         showHUD()
-        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "4")
@@ -404,7 +404,7 @@ class GoodsDetialController: TMViewController {
     /** 商品购买 */
     func goodsBuy() {
         showHUD()
-        getRequest(baseUrl: Buy_URL, params: ["token" : TMHttpUser.token() ?? "", "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: Buy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "5")
@@ -418,7 +418,7 @@ class GoodsDetialController: TMViewController {
     }
     /** 提交 */
     func submit(flowType: String) {
-        getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUser.token() ?? "", "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
+        getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
             if "success" == obj.status {
                 let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())
                 confirmOrder.flowType = flowType
@@ -464,7 +464,7 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if detialType == .auction || detialType == .auctionSuccess {
-            return section == 3 || section == 0 ? 1 : section == 1 ? 2 : comments.count
+            return section == 3 || section == 0 ? 1 : section == 1 ? (salesDetial?.auctionlog.count ?? 0) : comments.count
         }
         return section == 2 ? 1 : section == 1 ? comments.count : detialType == .detial ? 3 : 1
     }
@@ -522,6 +522,8 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(AuctionRecordCell.self)) as! AuctionRecordCell
+            cell.log = salesDetial?.auctionlog[indexPath.row]
+            cell.increase.text = "¥\(salesDetial?.store?.markups ?? "0.00")"
             
             return cell
         case 2:
@@ -545,6 +547,7 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
             switch section {
             case 1:
                 if detialType == .auction || detialType == .auctionSuccess {
+                    view.detial = salesDetial
                     view.sectionType = .auction
                 }
             case 3:

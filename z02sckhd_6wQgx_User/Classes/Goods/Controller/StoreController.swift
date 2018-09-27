@@ -70,7 +70,7 @@ class StoreController: TMViewController {
     /** 商铺详情 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: ShopDetial_URL, params: ["token" : TMHttpUser.token() ?? "", "sid" : ID], success: { [weak self] (obj: ShopInfo) in
+        getRequest(baseUrl: ShopDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "sid" : ID], success: { [weak self] (obj: ShopInfo) in
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -90,7 +90,7 @@ class StoreController: TMViewController {
     /** 获取推荐 */
     func loadBest() {
         showHUD()
-        getRequest(baseUrl: GoodsList_URL, params: ["token" : TMHttpUser.token() ?? "", "cate_id" : cateID, "sid" : ID, "p" : "1", "is_best" : "1"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "cate_id" : cateID, "sid" : ID, "p" : "1", "is_best" : "1"], success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.recommends = (obj.data?.result)!
@@ -106,7 +106,7 @@ class StoreController: TMViewController {
     /** 获取新品 */
     func loadNews() {
         showHUD()
-        getRequest(baseUrl: GoodsList_URL, params: ["token" : TMHttpUser.token() ?? "", "sort" : sort, "order" : order, "cate_id" : cateID, "sid" : ID, "p" : "1"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "sort" : sort, "order" : order, "cate_id" : cateID, "sid" : ID, "p" : "1"], success: { [weak self] (obj: DataInfo) in
             self?.hideAllHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -125,7 +125,7 @@ class StoreController: TMViewController {
     }
     /** 获取更多 */
     @objc func loadMoreNews() {
-        getRequest(baseUrl: GoodsList_URL, params: ["token" : TMHttpUser.token() ?? "", "sort" : sort, "order" : order, "cate_id" : cateID, "sid" : ID, "p" : "\(page)"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "sort" : sort, "order" : order, "cate_id" : cateID, "sid" : ID, "p" : "\(page)"], success: { [weak self] (obj: DataInfo) in
             self?.collectionView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.goodsList += (obj.data?.result)!
@@ -142,7 +142,7 @@ class StoreController: TMViewController {
     /** 收藏 */
     func addCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: AddCollect_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID, "type" : "2"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "type" : "2"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = true
@@ -156,7 +156,7 @@ class StoreController: TMViewController {
     /** 取消收藏 */
     func cancelCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? "", "id" : ID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = false

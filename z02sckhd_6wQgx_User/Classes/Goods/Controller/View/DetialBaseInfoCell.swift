@@ -26,7 +26,7 @@ class DetialBaseInfoCell: UITableViewCell {
     var goodsDetial: GoodsDetial? {
         didSet {
             name.text = goodsDetial?.goods_name
-            describe.text = (goodsDetial?.spec_name_1 ?? "") + (goodsDetial?.spec_name_2 ?? "")
+            describe.text = ""
             price.text = "¥" + (goodsDetial?.price ?? "0")
             stock.text = "库存\(goodsDetial?.goods_number ?? "1")件"
             sold.text = "已售\(goodsDetial?.sales ?? "0")件"

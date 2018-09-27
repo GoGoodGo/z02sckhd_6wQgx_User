@@ -38,7 +38,7 @@ class OrderDetialInfoCell: UITableViewCell {
                 message.text = Date.dateWithSeconds(totalSeconds: Double((result?._orders.first?.shipping_time)!)!)
             case 4:
                 title.text = "物流编号"
-                message.text = result?.order_sn
+                message.text = result?._orders.first?.invoice_no
             case 5:
                 title.text = "收货时间"
                 message.text = Date.dateWithSeconds(totalSeconds: Double((result?._orders.first?.confirm_time)!)!)

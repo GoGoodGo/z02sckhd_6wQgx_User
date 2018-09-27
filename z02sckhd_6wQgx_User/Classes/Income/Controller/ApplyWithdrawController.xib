@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ApplyWithdrawController" customModule="TianMaUser" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ApplyWithdrawController" customModule="z02sckhd_6wQgx_User" customModuleProvider="target">
             <connections>
                 <outlet property="account" destination="QNF-ve-PRr" id="haY-u8-kVJ"/>
                 <outlet property="accountView" destination="DVZ-sA-E38" id="VRC-Nm-hvs"/>
@@ -102,7 +102,7 @@
                             <rect key="frame" x="46" y="10" width="314" height="37"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rhh-Tb-hlK">
                             <rect key="frame" x="15" y="57" width="345" height="1"/>

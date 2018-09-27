@@ -257,7 +257,9 @@ class MyOrder: Mappable {
     var best_time = "0"
     var money_paid = ""
     var sign_building = ""
-    var shipping_name = ""
+    var pack_name = "STO"
+    var shipping_name = "申通"
+    var invoice_no = "10000000"
     var order_amount = ""
     var tel = ""
     var consignee = ""
@@ -301,6 +303,8 @@ class MyOrder: Mappable {
         money_paid <- map["money_paid"]
         sign_building <- map["sign_building"]
         shipping_name <- map["shipping_name"]
+        pack_name <- map["pack_name"]
+        invoice_no <- map["invoice_no"]
         order_amount <- map["order_amount"]
         tel <- map["tel"]
         consignee <- map["consignee"]

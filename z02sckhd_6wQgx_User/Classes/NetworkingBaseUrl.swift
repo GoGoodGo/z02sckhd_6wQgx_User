@@ -13,6 +13,7 @@ import TMSDK
 let BASE_URL = "http://shop.dktoo.com/lee/"
 //let BASE_URL = TMEngineConfig.instance().domain!
 let IMG_URL = ""
+let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
 
 public let getBundle: () -> Bundle = {
     
@@ -149,6 +150,9 @@ public let DelAccount_URL = BASE_URL + "apiuser/delaccount"
 
 // 首页
 public let Home_URL = BASE_URL + "apiuser/index"
+
+// 物流信息
+public let OrderTraces_URL = BASE_URL + "apiuser/getOrderTracesByJson"
 
 
 /** 购物车 */

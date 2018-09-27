@@ -263,6 +263,7 @@ class SalesDetialData: Mappable {
     
     var store: SalesStore?
     var goods: GoodsDetial?
+    var auctionlog = [AuctionLog]()
     
     required init?(map: Map) {
         
@@ -271,6 +272,30 @@ class SalesDetialData: Mappable {
     func mapping(map: Map) {
         store <- map["store"]
         goods <- map["goods"]
+        auctionlog <- map["auctionlog"]
+    }
+}
+
+class AuctionLog: Mappable {
+    
+    var id = ""
+    var act_id = ""
+    var tel = ""
+    var bid_user = ""
+    var bid_price = ""
+    var bid_time = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        act_id <- map["act_id"]
+        tel <- map["tel"]
+        bid_user <- map["bid_user"]
+        bid_price <- map["bid_price"]
+        bid_time <- map["bid_time"]
     }
 }
 
@@ -345,7 +370,7 @@ class DetialInfo: BaseModel {
 class GoodsDetial: Mappable {
     
     var give_integral = "" // 获取积分 -1 不送
-    var default_spec = 0 // 规格
+    var default_spec = "" // 规格
     var seo_keys = ""
     var description = ""
     var click_count = 0
@@ -396,6 +421,7 @@ class GoodsDetial: Mappable {
     var _images = [GoodsImage]()
     var _specs = [GoodsSpec]()
     var _specs_all = [GoodsSpec]()
+    var defaultspec: GoodsSpec?
     var attr = [GoodsAttr]()
     var _statistics: SalesStatistics?
     
@@ -456,6 +482,7 @@ class GoodsDetial: Mappable {
         _images <- map["_images"]
         _specs <- map["_specs"]
         _specs_all <- map["_specs_all"]
+        defaultspec <- map["defaultspec"]
         attr <- map["attr"]
         _statistics <- map["_statistics"]
     }

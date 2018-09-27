@@ -97,10 +97,11 @@ class OrderFooterView: UIView {
                 pay.setTitle("立即评价", for: .normal)
                 payRight.constant = -100
             case 4:
-                payRight.constant = -100
-                cancel.isHidden = true
                 pay.isHidden = false
+                cancel.isHidden = false
+                payRight.constant = 15
                 pay.setTitle("已完成", for: .normal)
+                cancel.setTitle("申请退换货", for: .normal)
                 
             default: return
             }

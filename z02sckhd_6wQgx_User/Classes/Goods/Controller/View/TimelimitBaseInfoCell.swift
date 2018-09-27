@@ -52,7 +52,7 @@ class TimelimitBaseInfoCell: UITableViewCell {
             let dateComp = Date.dateFromTimestamp(timestamp: "\(time)")
             let allHours = time / 60 / 60
             days.text = "\(allHours / 24)天"
-            hours.setTitle("\(time / 60 / 60)", for: .normal)
+            hours.setTitle("\(allHours % 24)", for: .normal)
             minutes.setTitle("\(dateComp.minute ?? 00)", for: .normal)
             seconds.setTitle("\(dateComp.second ?? 00)", for: .normal)
         }
@@ -64,16 +64,16 @@ class TimelimitBaseInfoCell: UITableViewCell {
             timer?.fireDate = Date.distantPast
             
             name.text = result?.goods?.goods_name
-            describe.text = (result?.goods?.spec_name_1 ?? "") + (result?.goods?.spec_name_2 ?? "")
+            describe.text = (result?.goods?.defaultspec?.spec_1 ?? "") + (result?.goods?.defaultspec?.spec_2 ?? "")
             switch type {
             case .groupBuy:
                 boughtNum.text = "团购人数：\(result?.store?.num ?? "0")人"
-                remainingNum.text = "满团人数：\(result?.store?.number ?? "0")人"
+                remainingNum.text = "满团人数：\(result?.store?.total ?? "0")人"
                 priceType.text = "起团价"
                 discountPrice.text = "¥\(result?.store?.price ?? "0.00")"
             case .timelimit:
                 boughtNum.text = "秒杀数量：\(result?.store?.num ?? "0")件"
-                remainingNum.text = "剩余数量：\(result?.store?.number ?? "0")件"
+                remainingNum.text = "剩余数量：\(result?.store?.total ?? "0")件"
                 priceType.text = "秒杀价"
                 discountPrice.text = "¥\(result?.store?.price ?? "0.00")"
             default: break

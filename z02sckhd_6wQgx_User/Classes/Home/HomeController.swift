@@ -66,17 +66,25 @@ public class HomeController: UIViewController {
     
     @objc func load() {
         loadHome()
-        loadCategorys()
-        loadAuction()
-        loadGroup()
-        loadTimelimit()
-        loadRecommend()
+//        loadCategorys()
+//        loadAuction()
+//        loadGroup()
+//        loadTimelimit()
+//        loadRecommend()
         loadNewGoods()
     }
     /** 获取首页 */
     func loadHome() {
+        showHUD()
         getRequest(baseUrl: Home_URL, params: nil, success: { [weak self] (obj: HomeInfo) in
+            self?.hideHUD()
+            self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
+                self?.categorys = (obj.data?.category)!
+                self?.auctionGoods = (obj.data?.auction)!
+                self?.groupGoods = (obj.data?.groupbuy)!
+                self?.timelimitGoods = (obj.data?.spike)!
+                self?.recommendGoods = (obj.data?.isbest)!
                 self?.shops = (obj.data?.bestshop)!
                 self?.bannerImgs(banners: (obj.data?.banner)!)
                 self?.collectionView.reloadData()
@@ -84,6 +92,8 @@ public class HomeController: UIViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
+            self.collectionView.mj_header.endRefreshing()
             self.inspectError()
         }
     }
@@ -92,7 +102,7 @@ public class HomeController: UIViewController {
         getRequest(baseUrl: GoodsCategory_URL, params: nil, success: { [weak self] (obj: GoodsCategory) in
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
-                self?.categorys = obj.data
+//                self?.categorys = obj.data
                 self?.collectionView.reloadData()
             } else {
                 self?.inspectLogin(model: obj)
