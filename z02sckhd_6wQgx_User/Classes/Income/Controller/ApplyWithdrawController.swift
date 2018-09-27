@@ -81,6 +81,7 @@ class ApplyWithdrawController: TMViewController {
     }
     
     @IBAction func action_option(_ sender: UIButton) {
+        view.endEditing(true)
         let point = accountView.convert(CGPoint.init(x: sender.frame.minX, y: sender.frame.maxY), to: view)
         pullDownView.frame = CGRect.init(x: point.x, y: point.y, width: 140, height: 0)
         pullDownView.open()
