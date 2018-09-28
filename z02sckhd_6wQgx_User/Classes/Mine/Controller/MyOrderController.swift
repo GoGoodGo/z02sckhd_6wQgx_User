@@ -145,7 +145,12 @@ class MyOrderController: TMViewController {
         orderDetial.orderResult = orderInfo?.result[section]
         navigationController?.pushViewController(orderDetial, animated: true)
     }
-    
+    /** 退换货 */
+    private func returnChangeGoods(seciton: Int) {
+        let returnChange = ReturnChangeController.init(nibName: "ReturnChangeController", bundle: getBundle())
+        returnChange.orderResult = orderInfo?.result[seciton]
+        navigationController?.pushViewController(returnChange, animated: true)
+    }
     // MARK: - Callbacks
     private func callbacks(sectionHeader: OrderHeaderView) {
         sectionHeader.touchBlock = { [weak self] header in
@@ -165,6 +170,9 @@ class MyOrderController: TMViewController {
             default: return
             }
         }
+        sectionFooter.returnBlock = { [weak self] (sender, footer) in
+            self?.returnChangeGoods(seciton: footer.section)
+        }
         sectionFooter.cancelBlock = { [weak self] (sender, footer) in
             switch self?.currentIndex {
             case 0:
@@ -176,6 +184,8 @@ class MyOrderController: TMViewController {
                 let result = self?.orderInfo?.result[footer.section]
                 logisticsCtrl.orderResult = result
                 self?.navigationController?.pushViewController(logisticsCtrl, animated: true)
+            case 4: // 退换货
+                self?.returnChangeGoods(seciton: footer.section)
             default: return
             }
         }

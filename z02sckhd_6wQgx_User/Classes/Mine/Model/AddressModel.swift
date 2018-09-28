@@ -10,6 +10,60 @@ import Foundation
 import ObjectMapper
 import YHTool
 
+class LogisticsInfo: BaseModel {
+    
+    var data: LogisticsData?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class LogisticsData: Mappable {
+    
+    var LogisticCode = ""
+    var ShipperCode = ""
+    var State = ""
+    var Traces = [Trace]()
+    var EBusinessID = ""
+    var Reason = ""
+    var Success = false
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        LogisticCode <- map["LogisticCode"]
+        ShipperCode <- map["ShipperCode"]
+        State <- map["State"]
+        Traces <- map["Traces"]
+        EBusinessID <- map["EBusinessID"]
+        Reason <- map["Reason"]
+        Success <- map["Success"]
+    }
+}
+
+class Trace: Mappable {
+    
+    var AcceptStation = ""
+    var AcceptTime = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        AcceptStation <- map["AcceptStation"]
+        AcceptTime <- map["AcceptTime"]
+    }
+}
+
 class AddressInfo: BaseModel {
     
     var data = [Address]()

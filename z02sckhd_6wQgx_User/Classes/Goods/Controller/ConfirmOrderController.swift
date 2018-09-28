@@ -104,8 +104,6 @@ class ConfirmOrderController: TMViewController {
             store.amount = price + store.pay_fee
         }
     }
-    
-    
 }
 
 extension ConfirmOrderController: UITableViewDelegate, UITableViewDataSource {

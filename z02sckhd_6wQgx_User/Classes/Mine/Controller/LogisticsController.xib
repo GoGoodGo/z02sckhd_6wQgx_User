@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogisticsController" customModule="TianMaUser" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogisticsController" customModule="z02sckhd_6wQgx_User" customModuleProvider="target">
             <connections>
                 <outlet property="back" destination="yZK-rc-8ci" id="edm-BU-khm"/>
                 <outlet property="tableView" destination="0YW-TB-Ugn" id="S12-bw-ViZ"/>
@@ -39,7 +39,7 @@
                                 <constraint firstAttribute="width" constant="100" id="8ra-AS-6i6"/>
                                 <constraint firstAttribute="height" constant="35" id="c0H-e5-KQd"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <state key="normal" title="返回订单">
                                 <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>

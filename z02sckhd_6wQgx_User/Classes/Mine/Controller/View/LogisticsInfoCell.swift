@@ -25,6 +25,13 @@ class LogisticsInfoCell: UITableViewCell {
     }
     
     // MARK: - Setter
+    var trace: Trace? {
+        didSet {
+            date.text = trace?.AcceptTime
+            address.text = trace?.AcceptStation
+        }
+    }
+    
     var total: Int = 0 {
         didSet {
             bottom.isHidden = index == total - 1 ? true : false

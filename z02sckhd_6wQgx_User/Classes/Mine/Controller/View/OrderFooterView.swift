@@ -23,10 +23,12 @@ class OrderFooterView: UIView {
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var pay: UIButton!
+    @IBOutlet weak var returnGoods: UIButton!
     @IBOutlet weak var cancel: UIButton!
     @IBOutlet weak var payRight: NSLayoutConstraint!
     
     var payBlock: ((_ sender: UIButton, _ footer: OrderFooterView) -> Void)?
+    var returnBlock: ((_ sender: UIButton, _ footer: OrderFooterView) -> Void)?
     var cancelBlock: ((_ sender: UIButton, _ footer: OrderFooterView) -> Void)?
     var touchBlock: ((_ footer: OrderFooterView) -> Void)?
     
@@ -36,6 +38,7 @@ class OrderFooterView: UIView {
         super.awakeFromNib()
         
         cancel.layer.borderColor = HexString("#d3d3d3").cgColor
+        returnGoods.layer.borderColor = HexString("#d3d3d3").cgColor
     }
 
     public class func footerView() -> Any? {
@@ -52,6 +55,13 @@ class OrderFooterView: UIView {
     @IBAction func action_pay(_ sender: UIButton) {
         
         if let click = payBlock {
+            click(sender, self)
+        }
+    }
+    
+    @IBAction func action_return(_ sender: UIButton) {
+        
+        if let click = returnBlock {
             click(sender, self)
         }
     }
@@ -88,7 +98,7 @@ class OrderFooterView: UIView {
             case 2:
                 pay.isHidden = false
                 cancel.isHidden = false
-                payRight.constant = 15
+                payRight.constant = 130
                 pay.setTitle("确认收货", for: .normal)
                 cancel.setTitle("查看物流", for: .normal)
             case 3:

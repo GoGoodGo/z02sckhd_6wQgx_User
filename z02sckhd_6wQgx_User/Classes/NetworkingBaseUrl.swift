@@ -10,7 +10,8 @@ import Foundation
 import YHTool
 import TMSDK
 
-let BASE_URL = "http://shop.dktoo.com/lee/"
+//let BASE_URL = "http://shop.dktoo.com/lee/"
+let BASE_URL = "http://shop.dktoo.com/z02sckhd_6wqgx/"
 //let BASE_URL = TMEngineConfig.instance().domain!
 let IMG_URL = ""
 let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
