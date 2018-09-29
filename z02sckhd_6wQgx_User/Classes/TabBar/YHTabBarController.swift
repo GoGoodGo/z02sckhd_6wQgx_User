@@ -31,12 +31,12 @@ public class YHTabBarController: UITabBarController {
         for (index, name) in vcNameList.enumerated() {
             
             let bundle = getBundle()
-            let ctrlName = bundle.infoDictionary!["CFBundleName"] as! String + name
             
             var VC: UIViewController? = nil
             if index >= 2 {
                 VC = (NSClassFromString(bundle.infoDictionary!["CFBundleName"] as! String + "." + name) as! UIViewController.Type).init(nibName: name, bundle: bundle)
             } else {
+                let ctrlName = Bundle.main.infoDictionary!["CFBundleName"] as! String + name
                 VC = (NSClassFromString(ctrlName) as! UIViewController.Type).init()
             }
             
