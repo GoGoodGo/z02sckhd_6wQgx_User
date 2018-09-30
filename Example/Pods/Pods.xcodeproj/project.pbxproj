@@ -419,7 +419,7 @@
 		000000005ED0 /* ico_img_mz1xz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002AD0 /* ico_img_mz1xz@2x.png */; };
 		000000005EE0 /* ico_img_nz1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002AE0 /* ico_img_nz1@2x.png */; };
 		000000005EF0 /* ico_img_nz1xz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002AF0 /* ico_img_nz1xz@2x.png */; };
-		000000005F00 /* ico_img_sc1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002B00 /* ico_img_sc1@2x.png */; };
+		000000005F00 /* ico_img_sc1_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002B00 /* ico_img_sc1_white@2x.png */; };
 		000000005F10 /* ico_img_sx@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002B10 /* ico_img_sx@2x.png */; };
 		000000005F20 /* ico_img_sxxz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002B20 /* ico_img_sxxz@2x.png */; };
 		000000005F30 /* ico_img_ts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002B30 /* ico_img_ts@2x.png */; };
@@ -438,7 +438,7 @@
 		000000006000 /* ico_img_mz1xz@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002C10 /* ico_img_mz1xz@3x.png */; };
 		000000006010 /* ico_img_nz1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002C20 /* ico_img_nz1@3x.png */; };
 		000000006020 /* ico_img_nz1xz@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002C30 /* ico_img_nz1xz@3x.png */; };
-		000000006030 /* ico_img_sc1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002C40 /* ico_img_sc1@3x.png */; };
+		000000006030 /* ico_img_sc1_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002C40 /* ico_img_sc1_white@3x.png */; };
 		000000006040 /* ico_img_sx@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002C50 /* ico_img_sx@3x.png */; };
 		000000006050 /* ico_img_sxxz@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002C60 /* ico_img_sxxz@3x.png */; };
 		000000006060 /* ico_img_ts@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000000002C70 /* ico_img_ts@3x.png */; };
@@ -1576,7 +1576,7 @@
 		000000002AD0 /* ico_img_mz1xz@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_mz1xz@2x.png"; sourceTree = "<group>"; };
 		000000002AE0 /* ico_img_nz1@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_nz1@2x.png"; sourceTree = "<group>"; };
 		000000002AF0 /* ico_img_nz1xz@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_nz1xz@2x.png"; sourceTree = "<group>"; };
-		000000002B00 /* ico_img_sc1@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_sc1@2x.png"; sourceTree = "<group>"; };
+		000000002B00 /* ico_img_sc1_white@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_sc1_white@2x.png"; sourceTree = "<group>"; };
 		000000002B10 /* ico_img_sx@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_sx@2x.png"; sourceTree = "<group>"; };
 		000000002B20 /* ico_img_sxxz@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_sxxz@2x.png"; sourceTree = "<group>"; };
 		000000002B30 /* ico_img_ts@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_ts@2x.png"; sourceTree = "<group>"; };
@@ -1595,7 +1595,7 @@
 		000000002C10 /* ico_img_mz1xz@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_mz1xz@3x.png"; sourceTree = "<group>"; };
 		000000002C20 /* ico_img_nz1@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_nz1@3x.png"; sourceTree = "<group>"; };
 		000000002C30 /* ico_img_nz1xz@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_nz1xz@3x.png"; sourceTree = "<group>"; };
-		000000002C40 /* ico_img_sc1@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_sc1@3x.png"; sourceTree = "<group>"; };
+		000000002C40 /* ico_img_sc1_white@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_sc1_white@3x.png"; sourceTree = "<group>"; };
 		000000002C50 /* ico_img_sx@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_sx@3x.png"; sourceTree = "<group>"; };
 		000000002C60 /* ico_img_sxxz@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_sxxz@3x.png"; sourceTree = "<group>"; };
 		000000002C70 /* ico_img_ts@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "ico_img_ts@3x.png"; sourceTree = "<group>"; };
@@ -3719,7 +3719,7 @@
 				000000002AD0 /* ico_img_mz1xz@2x.png */,
 				000000002AE0 /* ico_img_nz1@2x.png */,
 				000000002AF0 /* ico_img_nz1xz@2x.png */,
-				000000002B00 /* ico_img_sc1@2x.png */,
+				000000002B00 /* ico_img_sc1_white@2x.png */,
 				000000002B10 /* ico_img_sx@2x.png */,
 				000000002B20 /* ico_img_sxxz@2x.png */,
 				000000002B30 /* ico_img_ts@2x.png */,
@@ -3746,7 +3746,7 @@
 				000000002C10 /* ico_img_mz1xz@3x.png */,
 				000000002C20 /* ico_img_nz1@3x.png */,
 				000000002C30 /* ico_img_nz1xz@3x.png */,
-				000000002C40 /* ico_img_sc1@3x.png */,
+				000000002C40 /* ico_img_sc1_white@3x.png */,
 				000000002C50 /* ico_img_sx@3x.png */,
 				000000002C60 /* ico_img_sxxz@3x.png */,
 				000000002C70 /* ico_img_ts@3x.png */,
@@ -5081,9 +5081,9 @@
 				0000000062D0 /* ico_img_return@2x.png in Resources */,
 				0000000063B0 /* ico_img_return@3x.png in Resources */,
 				000000006110 /* ico_img_sc1@2x.png in Resources */,
-				000000005F00 /* ico_img_sc1@2x.png in Resources */,
-				000000006030 /* ico_img_sc1@3x.png in Resources */,
 				0000000061C0 /* ico_img_sc1@3x.png in Resources */,
+				000000005F00 /* ico_img_sc1_white@2x.png in Resources */,
+				000000006030 /* ico_img_sc1_white@3x.png in Resources */,
 				0000000064F0 /* ico_img_sc@2x.png in Resources */,
 				000000006630 /* ico_img_sc@3x.png in Resources */,
 				000000006120 /* ico_img_shdz@2x.png in Resources */,
