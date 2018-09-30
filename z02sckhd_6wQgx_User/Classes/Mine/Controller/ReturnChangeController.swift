@@ -24,11 +24,11 @@ class ReturnChangeController: UIViewController {
     // MARK: - Private Method
     private func setupUI() {
         
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.sectionFooterHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         tableView.estimatedSectionFooterHeight = 50
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
         tableView.register(UINib.init(nibName: CellName(ReturnChangeCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(ReturnChangeCell.self))

@@ -35,7 +35,7 @@ class SpecificOptionView: UIView {
         
         layout.itemSize = CGSize.init(width: 70, height: 25)
         
-        collectionView.register(UINib.init(nibName: CellName(SpecificOptionReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: SpecificOptionReusableView.self))
+        collectionView.register(UINib.init(nibName: CellName(SpecificOptionReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: SpecificOptionReusableView.self))
         collectionView.register(UINib.init(nibName: CellName(GoodsParameterCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(GoodsParameterCell.self))
         
         collectionView.delegate = self

@@ -37,7 +37,7 @@ class AuctionBaseInfoCell: UITableViewCell {
         timer?.fireDate = Date.distantFuture
         
         let loop = RunLoop.current
-        loop.add(timer!, forMode: .commonModes)
+        loop.add(timer!, forMode: RunLoop.Mode.common)
         
         setupUI()
     }

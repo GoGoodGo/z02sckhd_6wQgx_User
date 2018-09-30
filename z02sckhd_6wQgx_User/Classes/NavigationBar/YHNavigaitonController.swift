@@ -24,7 +24,7 @@ public class YHNavigaitonController: UINavigationController {
     
     override public func pushViewController(_ viewController: UIViewController, animated: Bool) {
         
-        if self.childViewControllers.count > 0 {
+        if self.children.count > 0 {
             
             viewController.hidesBottomBarWhenPushed = true
             

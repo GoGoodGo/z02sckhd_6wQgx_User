@@ -76,7 +76,7 @@ class GoodsDetialController: TMViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.itemBundle(bundle: getBundle(), image: "ico_img_fx", target: self, action: #selector(action_share))
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         
         tableView.register(UINib.init(nibName: CellName(DetialBaseInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(DetialBaseInfoCell.self))

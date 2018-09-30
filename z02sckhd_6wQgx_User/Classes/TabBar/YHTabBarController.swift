@@ -25,8 +25,8 @@ public class YHTabBarController: UITabBarController {
     private func setupSubviews() {
         
         let itemAppearance = UITabBarItem.appearance()
-        itemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : HexString("#cccccc")], for: .normal)
-        itemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : HexString("#ff5863")], for: .selected)
+        itemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : HexString("#cccccc")], for: .normal)
+        itemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : HexString("#ff5863")], for: .selected)
         
         for (index, name) in vcNameList.enumerated() {
             
@@ -46,7 +46,7 @@ public class YHTabBarController: UITabBarController {
             let navigationCtrl = YHNavigaitonController.init(rootViewController: VC!)
             navigationCtrl.title = self.titleList[index]
             
-            addChildViewController(navigationCtrl)
+            addChild(navigationCtrl)
         }
         self.setValue(YHTabBar(), forKeyPath: "tabBar")
     }

@@ -255,9 +255,9 @@ public class HomeController: UIViewController {
         view.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
         view.register(UINib.init(nibName: CellName(MerchantCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(MerchantCell.self))
         
-        view.register(HomeHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(HomeHeaderView.self))
-        view.register(UINib.init(nibName: CellName(SectionNormalReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SectionNormalReusableView.self))
-        view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
+        view.register(HomeHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellName(HomeHeaderView.self))
+        view.register(UINib.init(nibName: CellName(SectionNormalReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellName(SectionNormalReusableView.self))
+        view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
         view.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: TabBarH, right: 0)
         view.delegate = self
         view.dataSource = self

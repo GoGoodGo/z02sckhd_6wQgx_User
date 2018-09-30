@@ -42,7 +42,7 @@ class OnlinePayController: TMViewController {
     // MARK: - Private Method
     private func setupUI() {
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         tableView.register(UINib.init(nibName: CellName(OnlinePayOrderInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OnlinePayOrderInfoCell.self))
         tableView.register(UINib.init(nibName: CellName(OnlinePayWayCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OnlinePayWayCell.self))

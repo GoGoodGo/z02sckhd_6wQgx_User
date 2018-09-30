@@ -40,7 +40,7 @@ class EvaluateController: TMViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.item(title: "发表评论", titleColor: HexString("#3363ff"), target: self, action: #selector(publishEvaluate))
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         
         tableView.register(UINib.init(nibName: CellName(EvaluateGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(EvaluateGoodsCell.self))
@@ -74,7 +74,7 @@ class EvaluateController: TMViewController {
     
     func uploadImage(image: UIImage) {
         NetworkingManager.uploadMultipartData(url: UploadFile_URL, multipart: { (formadata) in
-            let imgData = UIImageJPEGRepresentation(image, 1.0)
+            let imgData = image.jpegData(compressionQuality: 1.0)
             let imgPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last?.appending("/\(Date.currentDateStr()).jpeg")
             formadata.append(imgData!, withName: "file", fileName: imgPath!, mimeType: "image/jpeg")
         }, success: { [weak self] (result) in

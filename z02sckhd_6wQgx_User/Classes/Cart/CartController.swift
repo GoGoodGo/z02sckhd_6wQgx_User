@@ -43,11 +43,11 @@ public class CartController: TMViewController {
     // MARK: - Private Method
     private func setupUI() {
         
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.sectionFooterHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         tableView.estimatedSectionFooterHeight = 50
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         tableView.register(UINib.init(nibName: CellName(CartGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(CartGoodsCell.self))
         tableView.allowsMultipleSelection = true
@@ -345,7 +345,7 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
         return [deleteAction];
     }
     
-    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     

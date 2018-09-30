@@ -37,11 +37,11 @@ class ConfirmOrderController: TMViewController {
     // MARK: - Private Method
     private func setupUI() {
         
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.sectionFooterHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 50
         tableView.estimatedSectionFooterHeight = 150
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         tableView.register(UINib.init(nibName: CellName(ConfirmAddressCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(ConfirmAddressCell.self))
         tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderGoodsCell.self))

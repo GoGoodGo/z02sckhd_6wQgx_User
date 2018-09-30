@@ -57,8 +57,8 @@ class StoreController: TMViewController {
         layout.sectionInset = UIEdgeInsets.init(top: gap, left: gap, bottom: gap, right: gap)
         
         collectionView.register(UINib.init(nibName: CellName(RecommendGoodsCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(RecommendGoodsCell.self))
-        collectionView.register(UINib.init(nibName: CellName(SectionHeaderReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: SectionHeaderReusableView.self))
-        collectionView.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: SegmentReusableView.self))
+        collectionView.register(UINib.init(nibName: CellName(SectionHeaderReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: SectionHeaderReusableView.self))
+        collectionView.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: SegmentReusableView.self))
         
         collectionView.delegate = self
         collectionView.dataSource = self
