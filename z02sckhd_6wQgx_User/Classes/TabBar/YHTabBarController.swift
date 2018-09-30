@@ -36,7 +36,7 @@ public class YHTabBarController: UITabBarController {
             if index >= 2 {
                 VC = (NSClassFromString(bundle.infoDictionary!["CFBundleName"] as! String + "." + name) as! UIViewController.Type).init(nibName: name, bundle: bundle)
             } else {
-                let ctrlName = Bundle.main.infoDictionary!["CFBundleName"] as! String + name
+                let ctrlName = bundle.infoDictionary!["CFBundleName"] as! String + name
                 VC = (NSClassFromString(ctrlName) as! UIViewController.Type).init()
             }
             

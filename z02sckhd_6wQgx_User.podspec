@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git', :tag => s.version.to_s }
   
   s.static_framework = true
-  s.swift_version = '4.1'
+  s.swift_version = '4.2'
   s.ios.deployment_target = '9.0'
   
   #s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
@@ -47,9 +47,9 @@ Pod::Spec.new do |s|
   s.libraries = 'sqlite3.0', 'z', 'c++'
   s.frameworks = 'Security', 'CoreMotion', 'CFNetwork', 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics'
   
-  s.dependency 'Kingfisher', '~> 4.8.0'
-  s.dependency 'Cosmos', '~> 16.0'
-  s.dependency 'YHTool', '~> 1.1.4'
+  s.dependency 'Kingfisher'
+  s.dependency 'Cosmos'
+  s.dependency 'YHTool', '~> 1.1.5'
   
   s.dependency 'MJRefresh', '~> 3.1.12'
   #s.dependency 'WechatOpenSDK'
