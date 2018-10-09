@@ -10,6 +10,7 @@ import YHTool
 
 public class YHTabBarController: UITabBarController {
 
+    let vcs = [HomeController(), GoodsController(), CartController(), IncomeController(), MineController()]
     let vcNameList = [".HomeController", ".GoodsController", "CartController", "IncomeController", "MineController"]
     let titleList = ["首页", "商品", "购物车", "收益", "我的"]
     let normalImgList = ["ico_img_indexw", "ico_img_spw", "ico_img_gwcw", "ico_img_wdsyw", "ico_img_wdw"]
