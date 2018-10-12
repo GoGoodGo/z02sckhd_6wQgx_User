@@ -96,7 +96,7 @@ PODS:
     - QBImagePickerController
     - SDWebImage (~> 3.8.0)
     - SwiftyJSON
-  - z02sckhd_6wQgx_User (1.2.0):
+  - z02sckhd_6wQgx_User (1.2.1):
     - Cosmos
     - Kingfisher
     - MJRefresh (~> 3.1.12)
@@ -161,7 +161,7 @@ SPEC CHECKSUMS:
   TMUserCenter: 30d68a85eb404be5075fe8d83504c577306a27aa
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   YHTool: 241ef10a33e259de13e135e3bbd8b53751fcd4f0
-  z02sckhd_6wQgx_User: 2648a998ad596a310a292559819d31c1bd859821
+  z02sckhd_6wQgx_User: 2f72176dd05e3d15bc93320c3d985647386ff534
 
 PODFILE CHECKSUM: 2968b7f3bb23b76f0a86286d931dc9c66bd05d97
 
