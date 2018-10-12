@@ -71,5 +71,5 @@ FOUNDATION_EXPORT const unsigned char CordovaVersionString[];
 #import <TMSDK/TMCommonDefine.h>
 #import <TMSDK/TMViewController.h>
 #import <TMSDK/TMController.h>
-#import <TMSDK/CDVAppDelegate+TMJPush.h>
+
 

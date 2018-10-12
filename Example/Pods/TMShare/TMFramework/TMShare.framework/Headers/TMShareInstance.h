@@ -35,7 +35,10 @@ typedef void(^TMloginComplate)(TMUser *user, BOOL isCancel, NSError *error);
 @class UIViewController;
 @interface TMShareInstance : NSObject
 
-+ (TMShareInstance *)instance;
++ (TMShareInstance *)instance;//建议舍弃
++ (instancetype)sharedManager;
+
+
 //先配置
 - (void)configWith:(id)config;
 /*

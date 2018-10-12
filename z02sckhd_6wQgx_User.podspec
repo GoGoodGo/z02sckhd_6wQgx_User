@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.2.0'
+  s.version          = '1.2.1'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.
@@ -28,11 +28,12 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git', :tag => s.version.to_s }
   
   s.static_framework = true
+  s.requires_arc = true
   s.swift_version = '4.2'
   s.ios.deployment_target = '9.0'
   
   s.xcconfig = {
-      'VALID_ARCHS' => ['arm64', 'x86_64']
+      'VALID_ARCHS' => 'arm64 x86_64',
   }
   
   #s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
@@ -64,10 +65,10 @@ Pod::Spec.new do |s|
   #s.dependency 'TMSDK', :git => 'https://gitee.com/tmgc/TMSDKSpec.git'
   #s.dependency 'TMShare', :git => 'https://gitee.com/tmgc/TMShareSpec.git'
   
-  s.dependency 'TMSDK', '~> 0.0.2-beta.7'
-  s.dependency 'TMShare', '~> 0.0.2-beta.3'
+  #s.dependency 'TMSDK', '~> 0.0.2-beta.7'
+  #s.dependency 'TMShare', '~> 0.0.2-beta.3'
   s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
-  s.dependency 'TMUserCenter', '~> 0.0.2-beta.1'
+  s.dependency 'TMUserCenter', '~> 0.0.2'
   
   #s.dependency 'AFNetworking', '~> 2.3'
   #s.dependency 'SVProgressHUD', '~> 2.0.3'

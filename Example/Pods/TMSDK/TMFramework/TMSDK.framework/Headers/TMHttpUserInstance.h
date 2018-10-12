@@ -31,7 +31,9 @@
 @property (nonatomic, assign) int status;
 
 
+//+ (TMHttpUserInstance *)instance DEPRECATED_MSG_ATTRIBUTE("请使用sharedManager");
 + (TMHttpUserInstance *)instance;
++ (instancetype)sharedManager;
 //销毁数据
 + (void)terminateInstance;
 //持久化数据

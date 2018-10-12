@@ -57,11 +57,11 @@ public class MineController: TMViewController {
     
     @objc func load() {
         
-        let user = TMHttpUserInstance()
+        let user = TMHttpUserInstance.sharedManager()
         let config = TMEngineConfig.instance()
-        let url = URL.init(string: (config?.domain)! + user.head_pic ?? "")
+        let url = URL.init(string: (config?.domain)! + (user?.head_pic ?? ""))
         imgBtn.kf.setImage(with: url, for: .normal)
-        name.text = user.member_name
+        name.text = user?.member_name
     }
     
     // MARK: - Callbacks

@@ -11,7 +11,7 @@
 /**
  *  好友分页信息
  */
-@interface SSEFriendsPaging : MOBFDataModel
+@interface SSDKFriendsPaging : NSObject
 
 /**
  *  前一个游标位置

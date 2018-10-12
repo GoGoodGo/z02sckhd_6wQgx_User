@@ -62,6 +62,7 @@
 
 
 
+//+ (TMEngineConfig *)instance DEPRECATED_MSG_ATTRIBUTE("请使用sharedManager");
 + (TMEngineConfig *)instance;
 + (instancetype)sharedManager;
 @end

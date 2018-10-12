@@ -53,7 +53,7 @@ extern NSString* const CDVLocalNotification CDV_DEPRECATED(4.0, "Functionality r
 extern NSString* const CDVRemoteNotification CDV_DEPRECATED(4.0, "Functionality removed in 4.0, constant will be removed in 5.0");
 extern NSString* const CDVRemoteNotificationError CDV_DEPRECATED(4.0, "Functionality removed in 4.0, constant will be removed in 5.0");
 
-@interface CDVPlugin : NSObject
+@interface CDVPlugin : NSObject {}
 
 @property (nonatomic, readonly, weak) UIView* webView;
 @property (nonatomic, readonly, weak) id <CDVWebViewEngineProtocol> webViewEngine;
