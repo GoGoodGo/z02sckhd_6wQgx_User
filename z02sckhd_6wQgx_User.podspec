@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.2.1'
+  s.version          = '1.2.2'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.
@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
   
   s.dependency 'Kingfisher'
   s.dependency 'Cosmos'
-  s.dependency 'YHTool', '~> 1.1.5'
+  s.dependency 'YHTool', '~> 1.1.6'
   
   s.dependency 'MJRefresh', '~> 3.1.12'
   #s.dependency 'WechatOpenSDK'

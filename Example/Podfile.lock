@@ -24,7 +24,7 @@ PODS:
     - JCore (~> 1.2.0)
   - Kingfisher (4.10.0)
   - Masonry (1.1.0)
-  - MBProgressHUD (0.9.2)
+  - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.15.7)
   - mob_sharesdk (4.1.4):
     - mob_sharesdk/ShareSDK (= 4.1.4)
@@ -55,9 +55,9 @@ PODS:
   - MOBFoundation (3.1.9)
   - ObjectMapper (3.3.0)
   - QBImagePickerController (3.4.0)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
   - TMNavigation (0.0.2):
@@ -88,13 +88,13 @@ PODS:
     - TMSDK
     - TMShare
   - UMengAnalytics-NO-IDFA (4.2.5)
-  - YHTool (1.1.5):
+  - YHTool (1.1.6):
     - Alamofire
-    - AlamofireObjectMapper (~> 5.0)
-    - MBProgressHUD (~> 0.9.2)
-    - ObjectMapper (~> 3.3)
+    - AlamofireObjectMapper
+    - MBProgressHUD
+    - ObjectMapper
     - QBImagePickerController
-    - SDWebImage (~> 3.8.0)
+    - SDWebImage
     - SwiftyJSON
   - z02sckhd_6wQgx_User (1.2.1):
     - Cosmos
@@ -102,7 +102,7 @@ PODS:
     - MJRefresh (~> 3.1.12)
     - TMNavigation (~> 0.0.2-beta.3)
     - TMUserCenter (~> 0.0.2)
-    - YHTool (~> 1.1.5)
+    - YHTool (~> 1.1.6)
 
 DEPENDENCIES:
   - z02sckhd_6wQgx_User (from `../`)
@@ -146,13 +146,13 @@ SPEC CHECKSUMS:
   JPush: 5921e25ad13e0386351079217b009f2039084eac
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   mob_sharesdk: 765cc2fd2fac0a6fd7c3e6c2b10d729ad006c608
   MOBFoundation: 11500153c10d83e4ac341f6ad6301b3998ce6db2
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TMNavigation: b892272c35c82eec529f7cdad2a8b0c493ac1300
@@ -160,8 +160,8 @@ SPEC CHECKSUMS:
   TMShare: 82d2b03f65bbe5c5b8f167d56f1b203521acbedd
   TMUserCenter: 30d68a85eb404be5075fe8d83504c577306a27aa
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
-  YHTool: 241ef10a33e259de13e135e3bbd8b53751fcd4f0
-  z02sckhd_6wQgx_User: 2f72176dd05e3d15bc93320c3d985647386ff534
+  YHTool: 34739e878c101f989d3cb9278564496b3d65f866
+  z02sckhd_6wQgx_User: 052f03fbbb665f23e7ba20b5d5c3fcc3b05d34b3
 
 PODFILE CHECKSUM: 2968b7f3bb23b76f0a86286d931dc9c66bd05d97
 
