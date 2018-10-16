@@ -74,6 +74,9 @@ class ApplyWithdrawController: TMViewController {
     /** 账户设置 */
     func setupAccount() {
         var names = [String]()
+        let defaultAccout = accounts.first
+        account.setTitle(defaultAccout?.number, for: .normal)
+        accountID = defaultAccout?.id ?? ""
         for account in accounts {
             names.append(account.number)
         }
@@ -89,6 +92,9 @@ class ApplyWithdrawController: TMViewController {
     
     @IBAction func action_management() {
         let manageAccount = ManageAccountController.init(nibName: "ManageAccountController", bundle: getBundle())
+        manageAccount.updateAccount = { [weak self] in
+            self?.load()
+        }
         navigationController?.pushViewController(manageAccount, animated: true)
     }
     

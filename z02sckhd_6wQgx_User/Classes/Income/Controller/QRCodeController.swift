@@ -30,8 +30,8 @@ class QRCodeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        self.title = "我的二维码"
+//    apiuser/detail
+        self.title = "我的邀请码"
         setupUI()
     }
     

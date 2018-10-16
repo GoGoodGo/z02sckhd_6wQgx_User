@@ -14,7 +14,7 @@ class IncomeCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     
     let imgs = ["ico_img_ewm", "ico_img_hy", "ico_img_sy", "ico_img_txjl"]
-    let names = ["我的二维码", "我的会员", "我的收益", "提现记录"]
+    let names = ["我的邀请码", "我的会员", "我的收益", "提现记录"]
 
     override func awakeFromNib() {
         super.awakeFromNib()

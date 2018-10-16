@@ -14,6 +14,7 @@ public class HomeController: UIViewController {
     
     var rowHeight: CGFloat = 0
     let gap: CGFloat = 15
+    var headerView: HomeHeaderView?
     var categorys = [CategoryInfo]()
     var auctionGoods = [SalesResult]()
     var groupGoods = [SalesResult]()
@@ -356,6 +357,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
             callbacksHeader(header: headerView)
             headerView.images = banners
             headerView.categorys = categorys
+            self.headerView = headerView
             
             return headerView
         } else if section == 4 {
@@ -373,9 +375,20 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         var height: CGFloat = 60
-        if section == 0 {
-            let header = HomeHeaderView()
-            height += header.bannerHeight + header.getItemHeight() * 2
+        switch section {
+        case 0:
+            height += headerView?.getHeaderHeight(isAution: groupGoods.count != 0) ?? 0
+        case 1:
+            height = groupGoods.count == 0 ? 0 : 60
+        case 2:
+            height = timelimitGoods.count == 0 ? 0 : 60
+        case 3:
+            height = recommendGoods.count == 0 ? 0 : 60
+        case 4:
+            height = newGoods.count == 0 ? 0 : 60
+        case 5:
+            height = shops.count == 0 ? 0 : 60
+        default: height = 0
         }
         return CGSize.init(width: WIDTH, height: height)
     }

@@ -52,14 +52,13 @@ public class CartController: TMViewController {
         tableView.register(UINib.init(nibName: CellName(CartGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(CartGoodsCell.self))
         tableView.allowsMultipleSelection = true
         
-        load()
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
-        
         if #available(iOS 11.0, *) {
             barBottom.constant = 0
         } else {
             barBottom.constant = -TabBarH
         }
+        load()
     }
     
     /** 购物车 */

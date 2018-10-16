@@ -10,9 +10,8 @@ import Foundation
 import YHTool
 import TMSDK
 
-//let BASE_URL = "http://shop.dktoo.com/lee/"
-//let BASE_URL = "http://shop.dktoo.com/z02sckhd_6wqgx/"
-let BASE_URL = TMEngineConfig.instance().domain!
+let BASE_URL = "http://shop.dktoo.com/z02sckhd_6wqgx/"
+//let BASE_URL = TMEngineConfig.instance().domain!
 let IMG_URL = ""
 let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
 
@@ -148,6 +147,9 @@ public let EditAccount_URL = BASE_URL + "apiuser/editaccount"
 
 // 删除账户
 public let DelAccount_URL = BASE_URL + "apiuser/delaccount"
+
+// 设置默认账户
+public let SetDefaultAccount_URL = BASE_URL + "apiuser/default_account"
 
 // 首页
 public let Home_URL = BASE_URL + "apiuser/index"

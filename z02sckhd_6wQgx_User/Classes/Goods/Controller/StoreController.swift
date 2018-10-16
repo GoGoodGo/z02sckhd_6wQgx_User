@@ -34,6 +34,12 @@ class StoreController: TMViewController {
     var goodsList = [Goods]()
     let titles = ["暂无", "暂无", "暂无", "暂无"]
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +53,7 @@ class StoreController: TMViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem.item(title: "搜索", target: self, action: #selector(action_search))
         
         imgView.layer.borderColor = UIColor.white.cgColor
+        imgView.layer.masksToBounds = true
         collect.layer.borderColor = UIColor.white.cgColor
         
         optionView.addSubview(segmentView)
@@ -193,8 +200,8 @@ class StoreController: TMViewController {
     
     // MARK: - Callbacks
     @objc private func action_search() {
-        navigationController?.navigationBar.endEditing(true)
-        
+        let searchCtrl = SearchController.init(nibName: "SearchController", bundle: getBundle())
+        navigationController?.pushViewController(searchCtrl, animated: true)
     }
     
     @IBAction func action_collect(_ sender: UIButton) {

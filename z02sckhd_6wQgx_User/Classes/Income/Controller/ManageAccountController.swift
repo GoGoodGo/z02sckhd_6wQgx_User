@@ -24,12 +24,23 @@ class ManageAccountController: TMViewController {
     var accountData: AccountData?
     var tag = 0 // 操作类型
     var currentID = ""
+    var isUpdate = false
+    var updateAccount: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "提现账户"
         setupUI()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if isUpdate {
+            if let update = updateAccount {
+                update()
+            }
+        }
     }
     
     // MARK: - PrivateMethod
@@ -84,10 +95,12 @@ class ManageAccountController: TMViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
+                self?.isUpdate = true
             } else {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }
@@ -98,14 +111,16 @@ class ManageAccountController: TMViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
+                self?.isUpdate = true
             } else {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }
-    /** 删除账号 */
+    /** 删除账户 */
     func loadDel(index: Int) {
         showHUD()
         getRequest(baseUrl: DelAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : currentID], success: { [weak self] (obj: BaseModel) in
@@ -113,10 +128,28 @@ class ManageAccountController: TMViewController {
             if "success" == obj.status {
                 self?.accountData?.result.remove(at: index)
                 self?.tableView.reloadData()
+                self?.isUpdate = true
             } else {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
+            self.inspectError()
+        }
+    }
+    /** 设置默认账户 */
+    func setDefaultAccount(indexPath: IndexPath?) {
+        showHUD()
+        getRequest(baseUrl: SetDefaultAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : currentID], success: { [weak self] (obj: BaseModel) in
+            self?.hideHUD()
+            if "success" == obj.status {
+                self?.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                self?.isUpdate = true
+            } else {
+                self?.inspectLogin(model: obj)
+            }
+        }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }
@@ -173,8 +206,8 @@ class ManageAccountController: TMViewController {
             self?.currentID = (account?.id)!
             
             switch tag {
-            case 0:
-                self?.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            case 0: // 设置默认
+                self?.setDefaultAccount(indexPath: indexPath)
             case 1:
                 self?.accountType = (account?.type)!
                 self?.option.setTitle(self?.types[Int((account?.type)!)! - 1], for: .normal)

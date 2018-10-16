@@ -172,7 +172,7 @@ class GoodsDetialController: TMViewController {
                 self?.salesDetial = obj.data
                 self?.goodsDetial = obj.data?.goods
                 self?.groupBuyPrice.text = "¥\(obj.data?.store?.price ?? "0.00")"
-                self?.participativeNum.text = "当前已有\(obj.data?.store?.num ?? "0")人参团"
+                self?.participativeNum.text = "当前已有\(obj.data?.store?.number ?? "0")人参团"
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
             } else {
@@ -301,9 +301,16 @@ class GoodsDetialController: TMViewController {
     }
     
     @IBAction func action_service() {
-        let phone = "telprompt://" + (goodsDetial?.phone)!
-        let url = URL.init(string: phone)
-        UIApplication.shared.openURL(url!)
+        if let phone = goodsDetial?.phone {
+            let tel = "telprompt://" + phone
+            let url = URL.init(string: tel)
+            UIApplication.shared.openURL(url!)
+            if phone.isEmpty {
+                showAutoHideHUD(message: "暂无服务号码！")
+            }
+        } else {
+            showAutoHideHUD(message: "暂无服务号码！")
+        }
     }
     
     @IBAction func action_collect(_ sender: UIButton) {

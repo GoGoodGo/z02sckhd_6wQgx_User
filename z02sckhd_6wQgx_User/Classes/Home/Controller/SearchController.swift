@@ -43,7 +43,7 @@ class SearchController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchTextF.becomeFirstResponder()
         setupUI()
     }
     
@@ -275,7 +275,7 @@ extension SearchController: UICollectionViewDelegate, UICollectionViewDataSource
     // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         navigationController?.navigationBar.endEditing(true)
-        
+        load()
         return true
     }
 }

@@ -62,13 +62,13 @@ class TimelimitGoodsCell: UICollectionViewCell {
             describe.text = result?.spec_name
             switch type {
             case .auction:
-                totalBtn.setTitle("\(result?.number ?? "1")人竞拍", for: .normal)
+                totalBtn.setTitle("\(result?.number ?? "0")人竞拍", for: .normal)
                 priceType.text = "竞拍价"
             case .groupBuy:
-                totalBtn.setTitle("\(result?.number ?? "1")人参团", for: .normal)
+                totalBtn.setTitle("\(result?.number ?? "0")人参团", for: .normal)
                 priceType.text = "团购价"
             case .timelimit:
-                totalBtn.setTitle("\(result?.number ?? "1")人秒杀", for: .normal)
+                totalBtn.setTitle("\(result?.number ?? "0")人秒杀", for: .normal)
                 priceType.text = "秒杀价"
             default: break
             }
