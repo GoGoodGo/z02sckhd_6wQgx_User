@@ -31,6 +31,7 @@ class SetupAddressView: UIView {
     var provinceIndex = 0
     var cityIndex = 0
     var cityKey = ""
+    var isUpdate = false
     
     var addressOption: ((_ tag: Int, _ title: String) -> Void)?
     var sure: ((_ name: String, _ phone: String, _ detial: String, _ type: AddressType) -> Void)?
@@ -58,7 +59,13 @@ class SetupAddressView: UIView {
         phoneView.layer.borderColor = HexString("#dbdbdb").cgColor
         detialAddressView.layer.borderColor = HexString("#dbdbdb").cgColor
         
-//        content.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(action_tap)))
+        name.delegate = self
+        phone.delegate = self
+        detailAddress.delegate = self
+        
+//        content.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(action_tapContent)))
+//        self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(action_tap)))
+        
         content.addSubview(pullDownView)
         callbacksPullDown()
     }
@@ -111,7 +118,7 @@ class SetupAddressView: UIView {
         case 0:
             pullDownView.titles = address?.allKeys
         case 1:
-            if cityKey.isEmpty {
+            if isUpdate {
                 cityKey = address?.allKeys[provinceIndex] as! String
             }
             let array = address?.value(forKey: cityKey) as! Array<Any>
@@ -136,7 +143,16 @@ class SetupAddressView: UIView {
         setupPullDown(sender: sender)
     }
     
+    @IBAction func action_tapContent(_ sender: UIButton) {
+        endEditing(true)
+    }
+    
     @objc func action_tap() {
+        diss()
+    }
+    
+    @objc func action_tapContent() {
+        
     }
     
     @IBAction func action_sure() {
@@ -151,6 +167,7 @@ class SetupAddressView: UIView {
             let tag = (self?.currentBtn?.tag)! - (self?.btnTag)!
             if tag == 0 {
                 self?.provinceIndex = index
+                self?.isUpdate = true
             } else if tag == 1 {
                 self?.cityIndex = index
             }
@@ -163,13 +180,12 @@ class SetupAddressView: UIView {
     // MARK: - Setter
     var addressModel: Address? {
         didSet {
-            if addressType == .add { return }
-            name.text = addressModel?.consignee
-            phone.text = addressModel?.tel
-            detailAddress.text = addressModel?.address_name
+            name.text = addressType == .add ? "" : addressModel?.consignee
+            phone.text = addressType == .add ? "" : addressModel?.tel
+            detailAddress.text = addressType == .add ? "" : addressModel?.address_name
             if let regionArr = addressModel?.address.components(separatedBy: " ") {
                 province.setTitle(regionArr.first, for: .normal)
-                cityKey = regionArr.first!
+                cityKey = addressType == .add ? "" : regionArr.first!
                 city.setTitle(regionArr[1], for: .normal)
                 district.setTitle(regionArr.last, for: .normal)
             }
@@ -209,8 +225,15 @@ extension SetupAddressView: UITextFieldDelegate {
         
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        pullDownView.close()
+        return true
+    }
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        endEditing(true)
+        return true
+    }
     
     
     

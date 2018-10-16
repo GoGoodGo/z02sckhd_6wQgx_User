@@ -57,6 +57,7 @@ Pod::Spec.new do |s|
   s.dependency 'YHTool', '~> 1.1.6'
   
   s.dependency 'MJRefresh', '~> 3.1.12'
+  s.dependency 'IQKeyboardManager'
   #s.dependency 'WechatOpenSDK'
   
   #s.dependency 'TMSDK', '~> 0.0.2-beta.3'

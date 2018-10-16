@@ -3673,10 +3673,10 @@
 				000000002AD0 /* OrderDetialFooter.xib */,
 				000000002AE0 /* OrderDetialHeader.xib */,
 				000000002AF0 /* OrderDetialInfoCell.xib */,
-				000000002B00 /* OrderFooterView.xib */,
 				000000002B10 /* OrderHeaderView.xib */,
 				000000002B20 /* ReturnChangeCell.xib */,
 				000000002B30 /* ReturnChangeReasonCell.xib */,
+				000000002B00 /* OrderFooterView.xib */,
 				000000002B40 /* SetupAddressView.xib */,
 				000000002B50 /* StarRatingCell.xib */,
 			);

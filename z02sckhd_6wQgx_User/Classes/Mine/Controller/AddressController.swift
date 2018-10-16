@@ -135,6 +135,7 @@ class AddressController: TMViewController {
     @objc func action_add() {
         setAddressView.show()
         setAddressView.addressType = .add
+        setAddressView.addressModel = addresses.first
     }
     
     private func callbacks(cell: AddressCell) {
@@ -163,6 +164,10 @@ class AddressController: TMViewController {
             self?.delete()
         }
         setAddressView.sure = { [weak self] (name, phone, detial, type) in
+            if name.isEmpty || phone.isEmpty || detial.isEmpty {
+                self?.showAutoHideHUD(message: "请将信息填写完整！")
+                return
+            }
             if type == .add {
                 self?.addAddress(name: name, phone: phone, detial: detial)
             } else {
