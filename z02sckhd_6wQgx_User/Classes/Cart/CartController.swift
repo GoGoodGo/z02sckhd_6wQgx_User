@@ -85,11 +85,14 @@ public class CartController: TMViewController {
     func loadQuantity(num: Int, label: UILabel, indexPath: IndexPath) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartQuantity_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : goods.spec_id, "quantity" : "\(num)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartQuantity_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : goods.spec_id, "quantity" : "\(num)"], success: { [weak self] (obj: CartInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 label.text = "\(num)"
                 goods.quantity = "\(num)"
+                if let amount = obj.data?.amount {
+                    self?.amount.text = String(format: "%.2f", amount)
+                }
             } else {
                 self?.inspectLogin(model: obj)
             }

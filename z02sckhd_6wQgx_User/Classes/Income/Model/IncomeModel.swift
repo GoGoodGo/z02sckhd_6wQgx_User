@@ -10,6 +10,50 @@ import Foundation
 import ObjectMapper
 import YHTool
 
+class UserInfo: BaseModel {
+    
+    var data: User?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class User: Mappable {
+    
+    var user_id = ""
+    var mid = ""
+    var user_money = ""
+    var frozen_money = ""
+    var integral = ""
+    var user_address = ""
+    var add_time = ""
+    var pid = ""
+    var code = ""
+    var tel = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        user_id <- map["user_id"]
+        mid <- map["mid"]
+        user_money <- map["user_money"]
+        frozen_money <- map["frozen_money"]
+        integral <- map["integral"]
+        user_address <- map["user_address"]
+        add_time <- map["add_time"]
+        pid <- map["pid"]
+        code <- map["code"]
+        tel <- map["tel"]
+    }
+}
+
 class MyMemberInfo: BaseModel {
     
     var data: MemberData?

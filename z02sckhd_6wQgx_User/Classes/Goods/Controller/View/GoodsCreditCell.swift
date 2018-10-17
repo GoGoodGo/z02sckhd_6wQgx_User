@@ -17,7 +17,7 @@ class GoodsCreditCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
+        
     }
     
     // MARK: - Setter
@@ -30,7 +30,7 @@ class GoodsCreditCell: UITableViewCell {
     
     override var frame: CGRect {
         didSet {
-            let y: CGFloat = 6
+            let y: CGFloat = 5
             var tempFrame = frame
             tempFrame.origin.y += y
             tempFrame.size.height -= y

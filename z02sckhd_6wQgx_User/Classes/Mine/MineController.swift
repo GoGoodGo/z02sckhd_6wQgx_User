@@ -42,6 +42,7 @@ public class MineController: TMViewController {
         }
         
         setupUI()
+        load()
     }
     
     // MARK: - Private Method

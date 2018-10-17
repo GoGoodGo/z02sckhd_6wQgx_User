@@ -174,11 +174,10 @@ extension ConfirmOrderController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.rowHeight
     }
-
     
-    
-    
-    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollView.endEditing(true)
+    }
     
     
     

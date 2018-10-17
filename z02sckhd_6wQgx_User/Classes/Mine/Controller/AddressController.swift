@@ -58,6 +58,7 @@ class AddressController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }
@@ -75,6 +76,7 @@ class AddressController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }
@@ -92,6 +94,7 @@ class AddressController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }
@@ -106,6 +109,7 @@ class AddressController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }
@@ -120,6 +124,7 @@ class AddressController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }

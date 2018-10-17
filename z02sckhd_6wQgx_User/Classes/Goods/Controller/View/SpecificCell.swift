@@ -36,13 +36,14 @@ class SpecificCell: UITableViewCell {
     // MARK: - Setter
     var attrs = [GoodsAttr]() {
         didSet {
+            collectionView.isHidden = attrs.count == 0
             collectionView.reloadData()
         }
     }
     
     override var frame: CGRect {
         didSet {
-            let y: CGFloat = 6
+            let y: CGFloat = 5
             var tempFrame = frame
             tempFrame.origin.y += y
             tempFrame.size.height -= y

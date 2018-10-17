@@ -582,7 +582,12 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.rowHeight 
+        return tableView.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return (indexPath.section == 0 && indexPath.row == 1 && attrs.count == 0) ? 5 : tableView.rowHeight
     }
     
 }

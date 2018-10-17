@@ -10,11 +10,11 @@ import Foundation
 import YHTool
 import TMSDK
 
-//let BASE_URL = "http://shop.dktoo.com/z02sckhd_6wqgx"
-let BASE_URL = TMEngineConfig.instance().domain!
 let IMG_URL = ""
-//let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
-let TestToken = ""
+let BASE_URL = "http://shop.dktoo.com/z02sckhd_6wqgx"
+let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
+//let BASE_URL = TMEngineConfig.instance().domain!
+//let TestToken = ""
 
 public let getBundle: () -> Bundle = {
     
@@ -94,6 +94,12 @@ public let TimelimitBuy_URL = BASE_URL + "/apispike/buy"
 
 
 /** 我的 */
+
+// 用户信息
+public let UserDetial_URL = BASE_URL + "/apiuser/detail"
+
+// 绑定上级
+public let Binding_URL = BASE_URL + "/apiuser/bind"
 
 // 我的地址
 public let Address_URL = BASE_URL + "/apiuser/myaddress"

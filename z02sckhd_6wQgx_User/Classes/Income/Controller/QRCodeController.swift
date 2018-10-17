@@ -7,39 +7,66 @@
 //
 
 import UIKit
+import TMSDK
+import YHTool
 
-class QRCodeController: UIViewController {
+class QRCodeController: TMViewController {
 
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var qrCode: UIImageView!
     @IBOutlet weak var qrErrorView: UIView!
-    
-    var isAvailableQRCode = false
+    @IBOutlet weak var code: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isAvailableQRCode {
-            navigationController?.navigationBar.barStyle = .black
-            navigationController?.navigationBar.isTranslucent = true
-        } else {
-            navigationController?.navigationBar.barStyle = .default
-            navigationController?.navigationBar.isTranslucent = false
-        }
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//    apiuser/detail
         self.title = "我的邀请码"
         setupUI()
+        loadUserDetial()
     }
     
     // MARK: - Private Method
     private func setupUI() {
         
-        qrErrorView.isHidden = isAvailableQRCode
         img.layer.borderColor = UIColor.white.cgColor
+        
+        let user = TMHttpUserInstance.sharedManager()
+        let config = TMEngineConfig.instance()
+        let url = URL.init(string: (config?.domain)! + (user?.head_pic ?? ""))
+        img.kf.setImage(with: url)
+        name.text = user?.member_name
+    }
+    
+    /** 获取用户信息 */
+    func loadUserDetial() {
+        showHUD()
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: UserInfo) in
+            self?.hideHUD()
+            if "success" == obj.status {
+                self?.isShowError(isShow: false)
+                self?.code.text = obj.data?.code
+            } else {
+                self?.inspectLogin(model: obj)
+            }
+        }) { (error) in
+            self.hideHUD()
+            self.inspectError()
+        }
+    }
+    /** 是否显示推荐码 */
+    func isShowError(isShow: Bool) {
+        qrErrorView.isHidden = !isShow
+//        if !isShow {
+//            navigationController?.navigationBar.barStyle = .black
+//            navigationController?.navigationBar.isTranslucent = true
+//        } else {
+//            navigationController?.navigationBar.barStyle = .default
+//            navigationController?.navigationBar.isTranslucent = false
+//        }
     }
     
     // MARK: - Callbacks
