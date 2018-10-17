@@ -62,6 +62,7 @@ public class MineController: TMViewController {
         let url = URL.init(string: (config?.domain)! + (user?.head_pic ?? ""))
         imgBtn.kf.setImage(with: url, for: .normal)
         name.text = user?.member_name
+        tableView.mj_header.endRefreshing()
     }
     
     // MARK: - Callbacks
@@ -75,7 +76,7 @@ public class MineController: TMViewController {
 extension MineController: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,6 +107,9 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             let collectCtrl = CollectController.init(nibName: "CollectController", bundle: getBundle())
             navigationController?.pushViewController(collectCtrl, animated: true)
+        case 5:
+            let bindingCtrl = BindingController.init(nibName: "BindingController", bundle: getBundle())
+            navigationController?.pushViewController(bindingCtrl, animated: true)
         default: return
         }
     }

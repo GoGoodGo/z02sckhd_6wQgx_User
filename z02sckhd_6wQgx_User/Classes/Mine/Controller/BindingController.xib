@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BindingController" customModule="z02sckhd_6wQgx_User" customModuleProvider="target">
+            <connections>
+                <outlet property="binding" destination="3Jy-aG-nWl" id="e96-dh-TfC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的邀请码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-aG-nWl">
+                    <rect key="frame" x="40" y="320.5" width="255" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="2Zu-6E-4U2"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luW-1j-lUJ">
+                    <rect key="frame" x="305" y="320.5" width="60" height="46"/>
+                    <state key="normal" title="绑定"/>
+                    <connections>
+                        <action selector="action_binding:" destination="-1" eventType="touchUpInside" id="Do2-io-bi3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="luW-1j-lUJ" secondAttribute="trailing" constant="10" id="3Kd-Nq-d1F"/>
+                <constraint firstItem="3Jy-aG-nWl" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="64J-L4-JIc"/>
+                <constraint firstItem="3Jy-aG-nWl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Eot-hA-0DG"/>
+                <constraint firstItem="luW-1j-lUJ" firstAttribute="centerY" secondItem="3Jy-aG-nWl" secondAttribute="centerY" id="d74-4a-Zkb"/>
+                <constraint firstItem="luW-1j-lUJ" firstAttribute="leading" secondItem="3Jy-aG-nWl" secondAttribute="trailing" constant="10" id="mMn-cd-4uV"/>
+                <constraint firstItem="luW-1j-lUJ" firstAttribute="height" secondItem="3Jy-aG-nWl" secondAttribute="height" id="oxD-XG-hak"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3Jy-aG-nWl" secondAttribute="trailing" constant="80" id="zNb-yx-B73"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

@@ -19,6 +19,7 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
   - Cosmos (17.0.0)
+  - IQKeyboardManager (6.2.0)
   - JCore (1.2.2)
   - JPush (3.1.0):
     - JCore (~> 1.2.0)
@@ -96,8 +97,9 @@ PODS:
     - QBImagePickerController
     - SDWebImage
     - SwiftyJSON
-  - z02sckhd_6wQgx_User (1.2.1):
+  - z02sckhd_6wQgx_User (1.2.2):
     - Cosmos
+    - IQKeyboardManager
     - Kingfisher
     - MJRefresh (~> 3.1.12)
     - TMNavigation (~> 0.0.2-beta.3)
@@ -113,6 +115,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireObjectMapper
     - Cosmos
+    - IQKeyboardManager
     - JCore
     - JPush
     - Kingfisher
@@ -142,6 +145,7 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JCore: f14c0549968a63c22e246a4875aa9d428446f373
   JPush: 5921e25ad13e0386351079217b009f2039084eac
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
@@ -161,8 +165,8 @@ SPEC CHECKSUMS:
   TMUserCenter: 30d68a85eb404be5075fe8d83504c577306a27aa
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   YHTool: 34739e878c101f989d3cb9278564496b3d65f866
-  z02sckhd_6wQgx_User: 052f03fbbb665f23e7ba20b5d5c3fcc3b05d34b3
+  z02sckhd_6wQgx_User: 47e4214c8eeff4c0571d4932bd5fc6131729f4bd
 
-PODFILE CHECKSUM: 2968b7f3bb23b76f0a86286d931dc9c66bd05d97
+PODFILE CHECKSUM: f4f68b6b0ddeed61ec0133aaf4f06dbc48efff64
 
 COCOAPODS: 1.5.3
