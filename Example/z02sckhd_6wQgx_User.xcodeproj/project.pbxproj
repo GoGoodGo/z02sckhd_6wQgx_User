@@ -194,6 +194,7 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = ZHV8C9SF94;
 						LastSwiftMigration = 1000;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -461,6 +462,8 @@
 			baseConfigurationReference = 7CACC7C0F6A4B78697335A45 /* Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZHV8C9SF94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = z02sckhd_6wQgx_User/Info.plist;
@@ -473,6 +476,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TM.TianMaUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -482,6 +486,8 @@
 			baseConfigurationReference = 64B3842AE721963548CFCDED /* Pods-z02sckhd_6wQgx_User_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZHV8C9SF94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = z02sckhd_6wQgx_User/Info.plist;
@@ -494,6 +500,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TM.TianMaUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Distribution;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;

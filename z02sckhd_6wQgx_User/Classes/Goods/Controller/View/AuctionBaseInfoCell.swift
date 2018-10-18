@@ -75,6 +75,7 @@ class AuctionBaseInfoCell: UITableViewCell {
         end.isHidden = time > 0
         timelimit.isHidden = time <= 0
         remaining.isHidden = time <= 0
+        days.isHidden = time <= 0
     }
     
     // MARK: - Setter
@@ -86,7 +87,13 @@ class AuctionBaseInfoCell: UITableViewCell {
             
             startPrice.text = "起拍价：¥\(result?.store?.price ?? "0.00")"
             increasePrice.text = "加价：¥\(result?.store?.markups ?? "0.00")"
-            originalPrice.text = "原价：¥\(result?.store?.maxprice ?? "0.00")"
+            var max = "0.0"
+            if let maxprice = result?.store?.maxprice {
+                max = "¥" + maxprice
+            } else {
+                max = "不限"
+            }
+            originalPrice.text = "最高价：" + max
             currentPrice.text = "¥\(result?.store?.new_price ?? "0.00")"
             
             collectionView.reloadData()

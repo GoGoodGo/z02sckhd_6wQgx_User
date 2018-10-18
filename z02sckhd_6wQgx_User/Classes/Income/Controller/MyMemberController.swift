@@ -19,7 +19,7 @@ class MyMemberController: UIViewController {
     var members = [Member]()
     var memberData: MemberData?
     
-    let titles = ["一级会员10人", "二级会员8人", "三级会员100人"]
+    let titles = ["一级会员", "二级会员", "三级会员"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

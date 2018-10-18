@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 import YHTool
 import TMSDK
 
@@ -89,6 +90,11 @@ class GoodsDetialController: TMViewController {
         tableView.register(UINib.init(nibName: CellName(AuctionRecordCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(AuctionRecordCell.self))
         
         tableView.tableHeaderView = carouselView
+        loadDetial()
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(loadDetial))
+    }
+    
+    @objc func loadDetial() {
         switch detialType {
         case .auction:
             loadAuction()
@@ -129,6 +135,7 @@ class GoodsDetialController: TMViewController {
         showHUD()
         getRequest(baseUrl: GoodsDetial_URL, params: ["id" : ID], success: { [weak self] (obj: DetialInfo) in
             self?.hideHUD()
+            self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.goodsDetial = obj.data
                 self?.specs = (obj.data?._specs)!
@@ -140,6 +147,7 @@ class GoodsDetialController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.tableView.mj_header.endRefreshing()
             self.inspectError()
         }
     }
@@ -148,10 +156,11 @@ class GoodsDetialController: TMViewController {
         showHUD()
         getRequest(baseUrl: AuctionDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
+            self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
                 self?.goodsDetial = obj.data?.goods
-                self?.auctionPrice.text = "¥\(Float((obj.data?.store?.price ?? "0.00"))! + Float((obj.data?.store?.markups ?? "0.00"))!)"
+                self?.auctionPrice.text = "¥\(Float((obj.data?.store?.new_price ?? "0.00"))! + Float((obj.data?.store?.markups ?? "0.00"))!)"
                 self?.specs = (obj.data?.goods?._specs_all)!
                 self?.attrs = (obj.data?.goods?.attr)!
                 self?.tableView.reloadData()
@@ -160,6 +169,7 @@ class GoodsDetialController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.tableView.mj_header.endRefreshing()
             self.inspectError()
         }
     }
@@ -168,6 +178,7 @@ class GoodsDetialController: TMViewController {
         showHUD()
         getRequest(baseUrl: GroupDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
+            self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
                 self?.goodsDetial = obj.data?.goods
@@ -179,6 +190,7 @@ class GoodsDetialController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.tableView.mj_header.endRefreshing()
             self.inspectError()
         }
     }
@@ -187,6 +199,7 @@ class GoodsDetialController: TMViewController {
         showHUD()
         getRequest(baseUrl: TimelimitDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
+            self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.salesDetial = obj.data
                 self?.goodsDetial = obj.data?.goods
@@ -196,6 +209,7 @@ class GoodsDetialController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.tableView.mj_header.endRefreshing()
             self.inspectError()
         }
     }

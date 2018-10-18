@@ -62,8 +62,11 @@ class TimelimitGoodsCell: UICollectionViewCell {
             describe.text = result?.spec_name
             switch type {
             case .auction:
-                totalBtn.setTitle("\(result?.number ?? "0")人竞拍", for: .normal)
+                totalBtn.setTitle("\(result?.onum ?? 0)人竞拍", for: .normal)
                 priceType.text = "竞拍价"
+                let price = Float(result?.new_price ?? "0.0")!
+                let markups = Float(result?.markups ?? "0.0")!
+                result?.price = "\(price + markups)"
             case .groupBuy:
                 totalBtn.setTitle("\(result?.number ?? "0")人参团", for: .normal)
                 priceType.text = "团购价"

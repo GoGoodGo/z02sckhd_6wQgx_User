@@ -95,7 +95,7 @@ class SecondaryTypesController: UIViewController {
         if tag == 0 {
             sort = "s.sales"
         } else {
-            sort = "s.price"
+            sort = "g.price"
         }
         
         if flag % 2 == 1 {

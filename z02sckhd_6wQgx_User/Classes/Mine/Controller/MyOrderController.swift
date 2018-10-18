@@ -129,14 +129,16 @@ class MyOrderController: TMViewController {
     }
     /** 计算高度 */
     func getHeight() {
-        for result in (orderInfo?.result)! {
-            let sections = result._orders.count
-            var rows = 0
-            for order in result._orders {
-                rows += order._goods.count
+        if let results = orderInfo?.result {
+            for result in results {
+                let sections = result._orders.count
+                var rows = 0
+                for order in result._orders {
+                    rows += order._goods.count
+                }
+                result.total = "\(rows)"
+                result.cellHeight = CGFloat(sections) * 40 + CGFloat(rows) * HeightPercent(120)
             }
-            result.total = "\(rows)"
-            result.cellHeight = CGFloat(sections) * 40 + CGFloat(rows) * HeightPercent(120)
         }
     }
     /** 订单详情 */

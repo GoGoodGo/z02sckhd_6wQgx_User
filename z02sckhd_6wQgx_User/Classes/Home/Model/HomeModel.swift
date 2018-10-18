@@ -187,7 +187,9 @@ class SalesResult: Mappable {
     var ext_info = ""
     var total = ""
     var number = ""
+    var num = ""
     var price = ""
+    var new_price = ""
     var spec_id = ""
     
     var spec_name = ""
@@ -217,7 +219,9 @@ class SalesResult: Mappable {
         ext_info <- map["ext_info"]
         total <- map["total"]
         number <- map["number"]
+        num <- map["num"]
         price <- map["price"]
+        new_price <- map["new_price"]
         spec_id <- map["spec_id"]
         
         spec_name <- map["spec_name"]
