@@ -16,6 +16,7 @@ class SpecificOptionView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     @IBOutlet weak var number: UILabel!
+    @IBOutlet weak var stock: UILabel!
     @IBOutlet weak var buyBtn: UIButton!
     
     let btnTag = 434
@@ -149,6 +150,7 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
         }
         selectedItems[indexPath.section] = indexPath
         specID = (goodsDetial?._specs[indexPath.row].spec_id)!
+        stock.text = "库存\((goodsDetial?._specs[indexPath.row].stock ?? "0")!)件"
     }
     
     

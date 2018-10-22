@@ -133,12 +133,14 @@ class Seller: Mappable {
 class AuctionBid: BaseModel {
     
     var data = ""
+    var is_top = 0
     
     override func mapping(map: Map) {
         
         status <- map["status"]
         msg <- map["msg"]
         data <- map["data"]
+        is_top <- map["is_top"]
     }
 }
 
@@ -263,6 +265,8 @@ class SalesDetialData: Mappable {
     
     var store: SalesStore?
     var goods: GoodsDetial?
+    var is_top = 0
+    var onum = 0
     var auctionlog = [AuctionLog]()
     
     required init?(map: Map) {
@@ -272,6 +276,8 @@ class SalesDetialData: Mappable {
     func mapping(map: Map) {
         store <- map["store"]
         goods <- map["goods"]
+        is_top <- map["is_top"]
+        onum <- map["onum"]
         auctionlog <- map["auctionlog"]
     }
 }
@@ -569,6 +575,7 @@ class Goods: Mappable {
     var click_count = 0
     var is_best = false
     var sales = "0" // 销量
+    var pay_number = "0" // 付款人数
     var sid = 0 // 商户 id
     var is_promote = false
     var is_hot = false
@@ -619,6 +626,7 @@ class Goods: Mappable {
         click_count <- map["click_count"]
         is_best <- map["is_best"]
         sales <- map["sales"]
+        pay_number <- map["pay_number"]
         sid <- map["sid"]
         is_promote <- map["is_promote"]
         is_hot <- map["is_hot"]

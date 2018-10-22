@@ -30,8 +30,8 @@ class RecommendGoodsCell: UICollectionViewCell {
             img.kf.setImage(with: url, placeholder: nil)
             name.text = goods?.goods_name
             describe.text = ""
-            price.text = "¥" + (goods?.price)!
-            paidTotal.text = (goods?.sales)! + "人付款"
+            price.text = "¥" + (goods?.price ?? "0.00")
+            paidTotal.text = (goods?.pay_number ?? "0") + "人付款"
         }
     }
     

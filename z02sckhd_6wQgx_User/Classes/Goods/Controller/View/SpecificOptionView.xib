@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -145,10 +144,17 @@
                         <action selector="action_close" destination="iN0-l3-epB" eventType="touchUpInside" id="VzP-fO-6Q2"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="库存" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhB-0t-xFW">
+                    <rect key="frame" x="335" y="297" width="25" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Wxh-fv-vOf" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="9cq-6c-dy7"/>
+                <constraint firstItem="UhB-0t-xFW" firstAttribute="centerY" secondItem="ybd-ZP-iu6" secondAttribute="centerY" id="Ar9-gc-rtF"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5DZ-1E-MHB" secondAttribute="trailing" constant="15" id="BEl-Xk-Z71"/>
                 <constraint firstItem="pbU-rB-aqc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="BXc-rk-e10"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4Yx-9q-NId" secondAttribute="bottom" constant="30" id="D3K-hb-BNr"/>
@@ -162,6 +168,7 @@
                 <constraint firstItem="Alp-Gk-Rs2" firstAttribute="centerX" secondItem="Wxh-fv-vOf" secondAttribute="centerX" id="eTr-VZ-IXY"/>
                 <constraint firstItem="x5k-EW-ZaL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gx7-dn-lpb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x5k-EW-ZaL" secondAttribute="trailing" id="hpv-xY-bra"/>
+                <constraint firstItem="UhB-0t-xFW" firstAttribute="trailing" secondItem="5DZ-1E-MHB" secondAttribute="trailing" id="jkf-Eq-1Ys"/>
                 <constraint firstItem="Alp-Gk-Rs2" firstAttribute="top" secondItem="Wxh-fv-vOf" secondAttribute="bottom" constant="10" id="o2s-2R-0L3"/>
                 <constraint firstItem="4Yx-9q-NId" firstAttribute="centerX" secondItem="Wxh-fv-vOf" secondAttribute="centerX" id="reh-SZ-GQ0"/>
                 <constraint firstItem="RGh-gu-Wpj" firstAttribute="top" secondItem="Alp-Gk-Rs2" secondAttribute="bottom" constant="8" id="xta-lL-ARo"/>
@@ -179,6 +186,7 @@
                 <outlet property="name" destination="Alp-Gk-Rs2" id="EEn-3S-6J1"/>
                 <outlet property="number" destination="TEj-bS-KVJ" id="gEW-qY-U0q"/>
                 <outlet property="price" destination="RGh-gu-Wpj" id="qus-Ki-Bd6"/>
+                <outlet property="stock" destination="UhB-0t-xFW" id="VLW-uj-vPG"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="425.5"/>
         </view>

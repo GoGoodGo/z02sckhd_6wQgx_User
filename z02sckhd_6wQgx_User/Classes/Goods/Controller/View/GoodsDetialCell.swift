@@ -24,7 +24,7 @@ class GoodsDetialCell: UITableViewCell {
     // MARK: - Setter
     var detial: String? {
         didSet {
-            webView.loadHTMLString((detial?.replacingOccurrences(of: "<img src=\"", with: "<img width=\(WIDTH - 15) src=\"http://shop.dktoo.com") ?? "暂无"), baseURL: nil)
+            webView.loadHTMLString((detial?.replacingOccurrences(of: "<img src=\"", with: "<img width=\(WIDTH - 15) src=\"\(BASE_URL)") ?? "暂无详情..."), baseURL: nil)
         }
     }
     

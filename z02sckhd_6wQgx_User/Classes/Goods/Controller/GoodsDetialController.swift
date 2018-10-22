@@ -30,6 +30,7 @@ class GoodsDetialController: TMViewController {
     @IBOutlet weak var auctionView: UIView!
     @IBOutlet weak var auctionPrice: UILabel!
     @IBOutlet weak var collectBtn: YHButton!
+    @IBOutlet weak var auctionPay: UIButton!
     
     let bannerHeight: CGFloat = 280
     var ID = ""
@@ -133,7 +134,7 @@ class GoodsDetialController: TMViewController {
     /** 商品详情 */
     func load() {
         showHUD()
-        getRequest(baseUrl: GoodsDetial_URL, params: ["id" : ID], success: { [weak self] (obj: DetialInfo) in
+        getRequest(baseUrl: GoodsDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: DetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -154,7 +155,7 @@ class GoodsDetialController: TMViewController {
     /** 竞拍详情 */
     func loadAuction() {
         showHUD()
-        getRequest(baseUrl: AuctionDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -165,6 +166,9 @@ class GoodsDetialController: TMViewController {
                 self?.attrs = (obj.data?.goods?.attr)!
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
+                if obj.data?.is_top == 1 {
+                    self?.auctionPay.setTitle("立即支付", for: .normal)
+                }
             } else {
                 self?.inspectLogin(model: obj)
             }
@@ -176,7 +180,7 @@ class GoodsDetialController: TMViewController {
     /** 团购详情 */
     func loadGroup() {
         showHUD()
-        getRequest(baseUrl: GroupDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: GroupDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -197,7 +201,7 @@ class GoodsDetialController: TMViewController {
     /** 秒杀详情 */
     func loadTimelimit() {
         showHUD()
-        getRequest(baseUrl: TimelimitDetial_URL, params: ["id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: TimelimitDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -359,6 +363,9 @@ class GoodsDetialController: TMViewController {
         getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
+                if obj.is_top == 1 {
+                    self?.auctionPay.setTitle("立即支付", for: .normal)
+                }
                 if "ok" == obj.data {
                     self?.auctionBuy()
                 } else {

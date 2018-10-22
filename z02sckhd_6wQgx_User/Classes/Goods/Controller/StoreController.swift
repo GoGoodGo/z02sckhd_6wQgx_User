@@ -217,6 +217,10 @@ class StoreController: TMViewController {
             self?.cateID = (self?.shopData?.category[index].id)!
             self?.loadBest()
             self?.loadNews()
+            let indexOne = IndexPath.init(row: 0, section: 1)
+            let attributes = self?.collectionView.layoutAttributesForItem(at: indexOne)
+            let point = CGPoint.init(x: 0, y: (attributes?.frame.origin.y ?? 75) - 75)
+            self?.collectionView.setContentOffset(point, animated: true)
         }
     }
     
