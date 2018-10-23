@@ -40,10 +40,14 @@ class SearchController: UIViewController {
         
         isShowSearchBar(isShow: false)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchTextF.becomeFirstResponder()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchTextF.becomeFirstResponder()
         setupUI()
     }
     

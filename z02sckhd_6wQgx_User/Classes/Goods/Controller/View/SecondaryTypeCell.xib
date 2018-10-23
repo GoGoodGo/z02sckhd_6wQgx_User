@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,11 +20,17 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-XL-6xW">
-                        <rect key="frame" x="0.0" y="0.0" width="45" height="37"/>
+                        <rect key="frame" x="4" y="0.0" width="37" height="37"/>
                         <color key="backgroundColor" red="0.58039215690000001" green="0.67843137249999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Ued-XL-6xW" secondAttribute="height" id="Ub0-xC-UCy"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdG-Xx-sDx">
                         <rect key="frame" x="10" y="37" width="25" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="DkX-hV-Z8I"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.62352941176470589" green="0.6470588235294118" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -33,9 +39,8 @@
             </view>
             <color key="backgroundColor" red="0.95294117647058818" green="0.95686274509803926" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Ued-XL-6xW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AM0-OC-pUO"/>
+                <constraint firstItem="Ued-XL-6xW" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="8LE-kR-EfP"/>
                 <constraint firstItem="Ued-XL-6xW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="L33-Wv-b1A"/>
-                <constraint firstAttribute="trailing" secondItem="Ued-XL-6xW" secondAttribute="trailing" id="McK-8B-TjI"/>
                 <constraint firstItem="VdG-Xx-sDx" firstAttribute="centerX" secondItem="Ued-XL-6xW" secondAttribute="centerX" id="Qot-V0-UPe"/>
                 <constraint firstAttribute="bottom" secondItem="VdG-Xx-sDx" secondAttribute="bottom" constant="5" id="TJy-GU-ooL"/>
                 <constraint firstItem="VdG-Xx-sDx" firstAttribute="top" secondItem="Ued-XL-6xW" secondAttribute="bottom" id="hLi-uu-SMC"/>

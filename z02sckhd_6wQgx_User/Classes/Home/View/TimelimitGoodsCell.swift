@@ -68,10 +68,10 @@ class TimelimitGoodsCell: UICollectionViewCell {
                 let markups = Float(result?.markups ?? "0.0")!
                 result?.price = "\(price + markups)"
             case .groupBuy:
-                totalBtn.setTitle("\(result?.number ?? "0")人参团", for: .normal)
+                totalBtn.setTitle("\(result?.onum ?? 0)人参团", for: .normal)
                 priceType.text = "团购价"
             case .timelimit:
-                totalBtn.setTitle("\(result?.number ?? "0")人秒杀", for: .normal)
+                totalBtn.setTitle("\(result?.onum ?? 0)人秒杀", for: .normal)
                 priceType.text = "秒杀价"
             default: break
             }
