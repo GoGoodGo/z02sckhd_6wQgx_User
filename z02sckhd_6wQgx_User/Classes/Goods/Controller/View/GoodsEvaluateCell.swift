@@ -9,6 +9,11 @@
 import UIKit
 import YHTool
 
+enum EvaluateType {
+    case detial
+    case all
+}
+
 class GoodsEvaluateCell: UITableViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
@@ -19,10 +24,12 @@ class GoodsEvaluateCell: UITableViewCell {
     @IBOutlet weak var collectionViewH: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var reply: UIButton!
+    @IBOutlet weak var top: UIImageView!
+    @IBOutlet weak var bottom: UIImageView!
     
-    let gap: CGFloat = 13
+    let gap: CGFloat = 10
     
-    var clickItemBlock: ((_ cell: GoodsEvaluateCell, _ index: Int) -> Void)?
+    var clickItemBlock: ((_ cell: GoodsEvaluateCell, _ index: Int, _ images: [UIImage]) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +42,7 @@ class GoodsEvaluateCell: UITableViewCell {
         
         let width = (WIDTH - gap * 3 - 30) / 4
         layout.itemSize = CGSize.init(width: width, height: width)
-        collectionViewH.constant = width + gap
+        collectionViewH.constant = width + gap * 2
         
         collectionView.register(UINib.init(nibName: CellName(EvaluateImageCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(EvaluateImageCell.self))
         
@@ -45,6 +52,13 @@ class GoodsEvaluateCell: UITableViewCell {
     }
     
     // MARK: - Setter
+    var type: EvaluateType = .detial {
+        didSet {
+            top.isHidden = type == .detial ? false : true
+            bottom.isHidden = type == .all ? false : true
+        }
+    }
+    
     var comment: Comment? {
         didSet {
             name.text = comment?.member_name
@@ -67,6 +81,9 @@ extension GoodsEvaluateCell: UICollectionViewDelegate, UICollectionViewDataSourc
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellName(EvaluateImageCell.self), for: indexPath) as! EvaluateImageCell
         cell.commentImage = comment?.images[indexPath.row]
+        cell.getImages = { [weak self] image in
+            self?.comment?.getImages.append(image!)
+        }
         
         return cell
     }
@@ -74,7 +91,7 @@ extension GoodsEvaluateCell: UICollectionViewDelegate, UICollectionViewDataSourc
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let click = clickItemBlock {
-            click(self, indexPath.row)
+            click(self, indexPath.row, (comment?.getImages)!)
         }
     }
     

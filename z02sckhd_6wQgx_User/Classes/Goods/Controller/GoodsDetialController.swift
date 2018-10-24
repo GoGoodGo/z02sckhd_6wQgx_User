@@ -571,6 +571,12 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = EvaluateSectionHeader.evaluateHeader() as! EvaluateSectionHeader
+        view.showAllBlock = { [weak self] in
+            let allComments = AllCommentsController.init(nibName: "AllCommentsController", bundle: getBundle())
+            allComments.comments = (self?.comments)!
+            self?.navigationController?.pushViewController(allComments, animated: true)
+        }
+        view.number = comments.count
         if detialType == .auction || detialType == .auctionSuccess {
             switch section {
             case 1:

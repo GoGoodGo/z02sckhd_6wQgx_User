@@ -41,6 +41,7 @@ class CommentData: Mappable {
 class Comment: Mappable {
     
     var images = [CommentImage]()
+    var getImages = [UIImage]()
     var Score = ""
     var user_id = ""
     var head_pic = "" // 暂不显示

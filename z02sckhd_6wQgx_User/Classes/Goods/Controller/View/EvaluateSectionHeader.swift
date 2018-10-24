@@ -42,6 +42,12 @@ class EvaluateSectionHeader: UIView {
         }
     }
     
+    var number = 0 {
+        didSet {
+            showAll.setTitle("查看全部(\(number))", for: .normal)
+        }
+    }
+    
     var sectionType: SectionType = .evaluate {
         didSet {
             auctionNum.text = "\(detial?.auctionlog.count ?? 0)人参与竞拍"

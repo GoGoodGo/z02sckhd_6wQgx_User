@@ -9,6 +9,7 @@
 import UIKit
 import MJRefresh
 import YHTool
+import SetI001
 
 public class HomeController: UIViewController {
     
@@ -31,11 +32,15 @@ public class HomeController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isTranslucent = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(login(notifi:)), name: NSNotification.Name(rawValue: "login"), object: nil)
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         isShowSearchBar(isShow: false)
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -419,7 +424,9 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         } else if section == 4 {
             ID = newGoods[indexPath.row].goods_id
         }
-        
+        if detialType != .detial {
+            if !inspectLogin() { return }
+        }
         let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
         goodsDetialCtrl.ID = ID
         goodsDetialCtrl.detialType = detialType
