@@ -14,6 +14,7 @@ class OrderDetialController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var orderResult: MyOrderResult?
+    var cellType = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,7 @@ extension OrderDetialController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MyOrderCell.self)) as! MyOrderCell
+            cell.cellType = cellType
             cell.orders = (orderResult?._orders)!
             
             return cell

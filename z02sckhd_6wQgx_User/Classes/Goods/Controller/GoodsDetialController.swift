@@ -187,7 +187,7 @@ class GoodsDetialController: TMViewController {
                 self?.salesDetial = obj.data
                 self?.goodsDetial = obj.data?.goods
                 self?.groupBuyPrice.text = "¥\(obj.data?.store?.price ?? "0.00")"
-                self?.participativeNum.text = "当前已有\(obj.data?.store?.number ?? "0")人参团"
+                self?.participativeNum.text = "当前已有\(obj.data?.onum ?? 0)人参团"
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
             } else {

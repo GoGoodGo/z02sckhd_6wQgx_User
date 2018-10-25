@@ -19,10 +19,13 @@ class OrderGoodsCell: UITableViewCell {
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var isCheck: UIButton!
     @IBOutlet weak var imgLeft: NSLayoutConstraint!
+    @IBOutlet weak var returnGoods: UIButton!
     
+    var returnBlock: ((_ cell: OrderGoodsCell) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         
     }
 
@@ -32,7 +35,22 @@ class OrderGoodsCell: UITableViewCell {
         isCheck.isSelected = selected
     }
     
+    /** 退换货 */
+    @IBAction func action_return(_ sender: UIButton) {
+        
+        if let click = returnBlock {
+            click(self)
+        }
+    }
+    
+    
     // MARK: - Setter
+    var cellType = 0 {
+        didSet {
+            returnGoods.isHidden = cellType != 4
+        }
+    }
+    
     var goods: CartGoods? {
         didSet {
             let url = URL.init(string: (goods?.goods_image)!)

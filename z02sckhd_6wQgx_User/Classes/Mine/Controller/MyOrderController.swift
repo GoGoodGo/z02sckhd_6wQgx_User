@@ -16,7 +16,7 @@ class MyOrderController: TMViewController {
     @IBOutlet weak var segmentContent: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    let titles = ["待付款", "待发货", "待收货", "待评价", "已完成", "退换货"]
+    let titles = ["待付款", "待发货", "待收货", "待评价", "已完成"]
     
     var sectionHeaders = [Int : OrderHeaderView]()
     var sectionFooters = [Int : OrderFooterView]()
@@ -144,6 +144,7 @@ class MyOrderController: TMViewController {
     /** 订单详情 */
     private func orderDetial(section: Int) {
         let orderDetial = OrderDetialController.init(nibName: "OrderDetialController", bundle: getBundle())
+        orderDetial.cellType = currentIndex
         orderDetial.orderResult = orderInfo?.result[section]
         navigationController?.pushViewController(orderDetial, animated: true)
     }
@@ -181,13 +182,16 @@ class MyOrderController: TMViewController {
                 self?.alertViewCtrl(message: "确认取消订单？", sureHandler: { (action) in
                     self?.loadCancel(section: footer.section)
                 }, cancelHandler: nil)
+            case 1: // 订单详情
+                self?.orderDetial(section: footer.section)
             case 2: // 查看物流
                 let logisticsCtrl = LogisticsController.init(nibName: "LogisticsController", bundle: getBundle())
                 let result = self?.orderInfo?.result[footer.section]
                 logisticsCtrl.orderResult = result
                 self?.navigationController?.pushViewController(logisticsCtrl, animated: true)
-            case 4: // 退换货
-                self?.returnChangeGoods(seciton: footer.section)
+            case 4: // 订单详情
+//                self?.returnChangeGoods(seciton: footer.section)
+                self?.orderDetial(section: footer.section)
             default: return
             }
         }

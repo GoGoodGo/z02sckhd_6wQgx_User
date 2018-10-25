@@ -21,6 +21,7 @@ class OrderFooterView: UIView {
     
     @IBOutlet weak var integral: UILabel!
     @IBOutlet weak var number: UILabel!
+    @IBOutlet weak var payFree: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var pay: UIButton!
     @IBOutlet weak var returnGoods: UIButton!
@@ -70,20 +71,24 @@ class OrderFooterView: UIView {
         if let click = cancelBlock {
             click(sender, self)
         }
-        
     }
     
     // MARK: - Setter
     var result: MyOrderResult? {
         didSet {
-            integral.text = "可获得\(result?.give_integral ?? "0")个积分, 可使用\(result?.integral ?? "0")个积分"
+            integral.text = ""
+//            integral.text = "可获得\(result?.give_integral ?? "0")个积分, 可使用\(result?.integral ?? "0")个积分"
+            let freight = result?._orders.first?.pay_fee ?? "0.00"
+            let total = Float(result?.order_amount ?? "0.00")! + Float(freight)!
+            payFree.text = "¥\(freight)"
             number.text = "共\(result?.total ?? "0")件商品"
-            amount.text = "¥\(result?.order_amount ?? "0.00")"
+            amount.text = "¥\(total)"
         }
     }
     
     var state: Int = 0 {
         didSet {
+            returnGoods.isHidden = true
             switch state {
             case 0:
                 pay.isHidden = false
@@ -94,24 +99,24 @@ class OrderFooterView: UIView {
             case 1:
                 pay.isHidden = true
                 cancel.isHidden = false
-                cancel.setTitle("提醒发货", for: .normal)
+                cancel.setTitle("订单详情", for: .normal)
             case 2:
                 pay.isHidden = false
                 cancel.isHidden = false
-                payRight.constant = 130
+                payRight.constant = 15
                 pay.setTitle("确认收货", for: .normal)
                 cancel.setTitle("查看物流", for: .normal)
             case 3:
                 cancel.isHidden = true
                 pay.isHidden = false
-                pay.setTitle("立即评价", for: .normal)
                 payRight.constant = -100
+                pay.setTitle("立即评价", for: .normal)
             case 4:
-                pay.isHidden = false
+                pay.isHidden = true
                 cancel.isHidden = false
                 payRight.constant = 15
-                pay.setTitle("已完成", for: .normal)
-                cancel.setTitle("申请退换货", for: .normal)
+//                pay.setTitle("已完成", for: .normal)
+                cancel.setTitle("订单详情", for: .normal)
                 
             default: return
             }

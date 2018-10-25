@@ -13,6 +13,7 @@ class MyOrderCell: UITableViewCell {
     
     @IBOutlet weak var tableView: UITableView!
     var cellType = 0
+    var returnBlock: ((_ cell: MyOrderCell, _ index: Int) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +51,13 @@ extension MyOrderCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(OrderGoodsCell.self)) as! OrderGoodsCell
+        cell.cellType = self.cellType
         cell.orderGoods = orders[indexPath.section]._goods[indexPath.row]
+        cell.returnBlock = { [weak self] cell in
+            if let click = self?.returnBlock {
+                click(self!, indexPath.row)
+            }
+        }
         
         return cell
     }
