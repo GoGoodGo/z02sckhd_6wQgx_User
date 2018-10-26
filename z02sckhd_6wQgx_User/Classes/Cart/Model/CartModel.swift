@@ -128,7 +128,7 @@ class CartStore: Mappable {
     
     var shopname = ""
     var sid = ""
-    var pay_fee: Float = 0
+    var pay_fee: Float = 0.0
     var result = [CartGoods]()
     var totalQuantity = "0"
     var notes = ""

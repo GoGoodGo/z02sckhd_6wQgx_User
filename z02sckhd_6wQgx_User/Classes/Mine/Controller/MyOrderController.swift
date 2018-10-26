@@ -149,9 +149,11 @@ class MyOrderController: TMViewController {
         navigationController?.pushViewController(orderDetial, animated: true)
     }
     /** 退换货 */
-    private func returnChangeGoods(seciton: Int) {
+    private func returnChangeGoods(seciton: Int, indexPath: IndexPath, returnBtn: UIButton) {
         let returnChange = ReturnChangeController.init(nibName: "ReturnChangeController", bundle: getBundle())
         returnChange.orderResult = orderInfo?.result[seciton]
+        returnChange.subIndexPath = indexPath
+        returnChange.returnBtn = returnBtn
         navigationController?.pushViewController(returnChange, animated: true)
     }
     // MARK: - Callbacks
@@ -174,23 +176,28 @@ class MyOrderController: TMViewController {
             }
         }
         sectionFooter.returnBlock = { [weak self] (sender, footer) in
-            self?.returnChangeGoods(seciton: footer.section)
-        }
-        sectionFooter.cancelBlock = { [weak self] (sender, footer) in
             switch self?.currentIndex {
             case 0:
                 self?.alertViewCtrl(message: "确认取消订单？", sureHandler: { (action) in
                     self?.loadCancel(section: footer.section)
                 }, cancelHandler: nil)
-            case 1: // 订单详情
-                self?.orderDetial(section: footer.section)
             case 2: // 查看物流
                 let logisticsCtrl = LogisticsController.init(nibName: "LogisticsController", bundle: getBundle())
                 let result = self?.orderInfo?.result[footer.section]
                 logisticsCtrl.orderResult = result
                 self?.navigationController?.pushViewController(logisticsCtrl, animated: true)
+            default: return
+            }
+        }
+        sectionFooter.cancelBlock = { [weak self] (sender, footer) in
+            switch self?.currentIndex {
+            case 0:
+                self?.orderDetial(section: footer.section)
+            case 1: // 订单详情
+                self?.orderDetial(section: footer.section)
+            case 2:
+                self?.orderDetial(section: footer.section)
             case 4: // 订单详情
-//                self?.returnChangeGoods(seciton: footer.section)
                 self?.orderDetial(section: footer.section)
             default: return
             }
@@ -265,6 +272,9 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MyOrderCell.self)) as! MyOrderCell
             cell.cellType = currentIndex
             cell.orders = (orderInfo?.result[indexPath.section]._orders)!
+            cell.returnBlock = { [weak self] (cell, subIndexPath) in
+                self?.returnChangeGoods(seciton: indexPath.section, indexPath: subIndexPath, returnBtn: cell.returnGoods)
+            }
             
             return cell
         }

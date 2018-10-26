@@ -93,9 +93,11 @@ class OrderFooterView: UIView {
             case 0:
                 pay.isHidden = false
                 cancel.isHidden = false
-                payRight.constant = 15
+                returnGoods.isHidden = false
+                payRight.constant = 130
                 pay.setTitle("立即付款", for: .normal)
-                cancel.setTitle("取消订单", for: .normal)
+                returnGoods.setTitle("取消订单", for: .normal)
+                cancel.setTitle("订单详情", for: .normal)
             case 1:
                 pay.isHidden = true
                 cancel.isHidden = false
@@ -103,9 +105,11 @@ class OrderFooterView: UIView {
             case 2:
                 pay.isHidden = false
                 cancel.isHidden = false
-                payRight.constant = 15
+                returnGoods.isHidden = false
+                payRight.constant = 130
                 pay.setTitle("确认收货", for: .normal)
-                cancel.setTitle("查看物流", for: .normal)
+                returnGoods.setTitle("查看物流", for: .normal)
+                cancel.setTitle("订单详情", for: .normal)
             case 3:
                 cancel.isHidden = true
                 pay.isHidden = false

@@ -269,7 +269,7 @@ class MyOrder: Mappable {
     var parent_id = ""
     var user_id = ""
     var zipcode = ""
-    var shipping_time = "0"
+    var shipping_time = ""
     var email = ""
     var address = ""
     var goods_amount = ""

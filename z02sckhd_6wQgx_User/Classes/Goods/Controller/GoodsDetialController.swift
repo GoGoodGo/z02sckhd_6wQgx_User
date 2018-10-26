@@ -38,6 +38,7 @@ class GoodsDetialController: TMViewController {
     var number = 1
     var isBuy = false
     var detialType: DetialType = .detial
+    var specificH: CGFloat = 0
     
     var goodsDetial: GoodsDetial?
     var salesDetial: SalesDetialData?
@@ -47,21 +48,20 @@ class GoodsDetialController: TMViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if detialType == .detial {
+        if detialType != .auction || detialType != .auctionSuccess {
             view.addSubview(specificOption)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        specificH = detialType == .detial ? 100 : 0
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -237,7 +237,7 @@ class GoodsDetialController: TMViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "添加成功！", completed: {
-                    self?.specificOption.isShowOption(isShow: false)
+                    self?.specificOption.isShowOption(isShow: false, specificGap: (self?.specificH)!)
                 })
             } else {
                 self?.inspectLogin(model: obj)
@@ -277,8 +277,9 @@ class GoodsDetialController: TMViewController {
     /** 显示规格选项 */
     func showOptionView(isBuy: Bool) {
         specificOption.buyBtn.setTitle(isBuy ? "立即购买" : "立即添加", for: .normal)
+        specificOption.limitNum = (salesDetial?.store?.number)!
         specificOption.goodsDetial = goodsDetial
-        specificOption.isShowOption(isShow: true)
+        specificOption.isShowOption(isShow: true, specificGap: specificH)
         self.isBuy = isBuy
     }
     
@@ -295,11 +296,19 @@ class GoodsDetialController: TMViewController {
             self?.number = num
         }
         specificOption.pay = { [weak self] specID in
-            if specID.isEmpty {
-                self?.showAutoHideHUD(message: "请选择商品规格！")
-            } else {
-                self?.specID = specID
-                (self?.isBuy)! ? self?.goodsBuy() : self?.addCart()
+            switch self?.detialType {
+            case .detial?:
+                if specID.isEmpty {
+                    self?.showAutoHideHUD(message: "请选择商品规格！")
+                } else {
+                    self?.specID = specID
+                    (self?.isBuy)! ? self?.goodsBuy() : self?.addCart()
+                }
+            case .groupBuy?:
+                self?.groupBuy()
+            case .timelimit?:
+                self?.timelimitBuy()
+            default: break
             }
         }
     }
@@ -344,22 +353,16 @@ class GoodsDetialController: TMViewController {
     }
     /** 立即购买 */
     @IBAction func action_buy(_ sender: UIButton) {
-        switch detialType {
-        case .detial:
-            showOptionView(isBuy: true)
-        case .auction:
+        if detialType == .auction {
             auctionBid()
-        case .groupBuy:
-            groupBuy()
-        case .timelimit:
-            timelimitBuy()
-        default: break
+        } else {
+            showOptionView(isBuy: true)
         }
     }
     /** 竞争拍卖 */
     func auctionBid() {
         showHUD()
-        let price = Float(salesDetial?.store?.new_price ?? "0.00")! + Float(salesDetial?.store?.markups ?? "0.00")!
+        let price = Float(salesDetial?.store?.new_price ?? "0")! + Float(salesDetial?.store?.markups ?? "0")!
         getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
@@ -402,7 +405,7 @@ class GoodsDetialController: TMViewController {
     /** 团购购买 */
     func groupBuy() {
         showHUD()
-        getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "1")
@@ -417,7 +420,7 @@ class GoodsDetialController: TMViewController {
     /** 秒杀购买 */
     func timelimitBuy() {
         showHUD()
-        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "quantity" : "1"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "4")
@@ -475,7 +478,7 @@ class GoodsDetialController: TMViewController {
     lazy var specificOption: SpecificOptionView = {
         
         let view = SpecificOptionView.specificOption() as! SpecificOptionView
-        view.frame = CGRect.init(x: 0, y: HEIGHT, width: WIDTH, height: HEIGHT / 2 + 120)
+        view.frame = CGRect.init(x: 0, y: HEIGHT, width: WIDTH, height: HEIGHT / 2 + specificH)
         return view
     }()
 }

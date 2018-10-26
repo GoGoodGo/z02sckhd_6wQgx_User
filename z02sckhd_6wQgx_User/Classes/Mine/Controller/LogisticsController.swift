@@ -84,6 +84,7 @@ extension LogisticsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(OrderGoodsCell.self)) as! OrderGoodsCell
+            cell.cellType = 0
             cell.orderGoods = orderResult?._orders.first?._goods[indexPath.row]
             
             return cell

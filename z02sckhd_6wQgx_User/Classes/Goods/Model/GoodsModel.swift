@@ -321,11 +321,11 @@ class SalesStore: Mappable {
     var new_price = "" // 当前价格
     var ext_info = ""
     var total = ""
-    var number = ""
+    var number = "10000"
     var price = ""
     var spec_id = ""
     var spec_name = ""
-    var num = ""
+    var num = "1000"
     var pid = ""
     var markups = ""
     var maxprice = ""

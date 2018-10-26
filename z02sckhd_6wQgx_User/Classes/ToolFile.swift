@@ -22,11 +22,11 @@ extension UIViewController {
     }
     
     func inspectLogin() -> Bool {
-        if TMHttpUserInstance.sharedManager()?.member_id == 0 {
-            let login = SetI001LoginViewController()
-            self.navigationController?.pushViewController(login, animated: true)
-            return false
-        }
+//        if TMHttpUserInstance.sharedManager()?.member_id == 0 {
+//            let login = SetI001LoginViewController()
+//            self.navigationController?.pushViewController(login, animated: true)
+//            return false
+//        }
         return true
     }
     

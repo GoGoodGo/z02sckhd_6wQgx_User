@@ -48,7 +48,7 @@ class ConfirmOrderController: TMViewController {
         tableView.allowsMultipleSelection = true
         
         getConsignee()
-        totalPrice.text = orderInfo?.data?.total?.goods_price_formated
+        totalPrice.text = "¥\((orderInfo?.data?.total?.goods_price ?? 0.00) + (orderInfo?.data?.total?.pay_fee ?? 0.00))"
         integralInfo.text = "可获得\(orderInfo?.data?.total?.give_integral ?? 0)积分, 可使用\(orderInfo?.data?.total?.integral ?? 0)积分"
         updateQuantity()
     }
@@ -80,7 +80,8 @@ class ConfirmOrderController: TMViewController {
                 let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())
                 onlinePay.mid = (obj.data?.order_id)!
                 onlinePay.orderSN = (obj.data?.order_sn)!
-                onlinePay.amount = "\(self?.orderInfo?.data?.total?.goods_price ?? 0.00)"
+                let amount = (self?.orderInfo?.data?.total?.goods_price ?? 0.00)! + (self?.orderInfo?.data?.total?.pay_fee ?? 0.00)!
+                onlinePay.amount = "\(amount)"
                 self?.navigationController?.pushViewController(onlinePay, animated: true)
             } else {
                 self?.inspectLogin(model: obj)

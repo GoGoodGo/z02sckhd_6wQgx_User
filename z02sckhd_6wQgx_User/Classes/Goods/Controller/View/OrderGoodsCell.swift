@@ -20,6 +20,7 @@ class OrderGoodsCell: UITableViewCell {
     @IBOutlet weak var isCheck: UIButton!
     @IBOutlet weak var imgLeft: NSLayoutConstraint!
     @IBOutlet weak var returnGoods: UIButton!
+    @IBOutlet weak var returnGoodsW: NSLayoutConstraint!
     
     var returnBlock: ((_ cell: OrderGoodsCell) -> Void)?
 
@@ -48,6 +49,7 @@ class OrderGoodsCell: UITableViewCell {
     var cellType = 0 {
         didSet {
             returnGoods.isHidden = cellType != 4
+            returnGoodsW.constant = cellType == 4 ? 50 : 0
         }
     }
     
@@ -72,6 +74,7 @@ class OrderGoodsCell: UITableViewCell {
             price.text = "¥\(orderGoods?.goods_price ?? "0.0")"
             number.text = "X\(orderGoods?.goods_numbers ?? "1")"
             color.text = ""
+            returnGoods.isEnabled = orderGoods?.goods_status != "1"
         }
     }
     

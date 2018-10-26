@@ -18,6 +18,7 @@ class BindingController: UIViewController {
         super.viewDidLoad()
         
         self.title = "分销绑定"
+        binding.layer.borderColor = HexString("#e2e2e2").cgColor
     }
     
     func bindingUser(code: String) {

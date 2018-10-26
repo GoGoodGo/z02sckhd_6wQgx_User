@@ -164,6 +164,9 @@ public let Home_URL = BASE_URL + "/z02sckhd_6wqgx/apiuser/index"
 // 物流信息
 public let OrderTraces_URL = BASE_URL + "/z02sckhd_6wqgx/apiuser/getOrderTracesByJson"
 
+// 退换货
+public let ReturnGoods_URL = BASE_URL + "/z02sckhd_6wqgx/apiuser/returngoods"
+
 
 /** 购物车 */
 

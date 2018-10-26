@@ -17,6 +17,7 @@ class SpecificOptionView: UIView {
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var stock: UILabel!
+    @IBOutlet weak var specific: UILabel!
     @IBOutlet weak var buyBtn: UIButton!
     
     let btnTag = 434
@@ -24,6 +25,7 @@ class SpecificOptionView: UIView {
     var pay: ((_ specs: String) -> Void)?
     var selectedItems = [Int : IndexPath]()
     var specID = ""
+    var limitNum = "10000"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,10 +55,15 @@ class SpecificOptionView: UIView {
         return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
     /** 是否显示 */
-    public func isShowOption(isShow: Bool) {
+    public func isShowOption(isShow: Bool, specificGap: CGFloat) {
+        
+        collectionView.isHidden = specificGap == 0
+        stock.isHidden = specificGap == 0
+        specific.isHidden = specificGap != 0
+        
         layer.shadowOffset = CGSize.init(width: 0, height: isShow ? -1 : 0)
         UIView.animate(withDuration: 0.3) {
-            self.y = isShow ? HEIGHT / 2 - 120 : HEIGHT
+            self.y = isShow ? HEIGHT / 2 - specificGap : HEIGHT
         }
         if !isShow {
             specID = ""
@@ -76,6 +83,9 @@ class SpecificOptionView: UIView {
             }
         default:
             num += 1
+            if num > Int(limitNum)! {
+                num = Int(limitNum)!
+            }
         }
         if let click = updateNum {
             click(num)
@@ -90,7 +100,7 @@ class SpecificOptionView: UIView {
     }
     
     @IBAction func action_close() {
-        isShowOption(isShow: false)
+        isShowOption(isShow: false, specificGap: 0)
     }
     
     // MARK: - Setter
@@ -100,6 +110,8 @@ class SpecificOptionView: UIView {
             imgView.kf.setImage(with: url)
             name.text = goodsDetial?.goods_name
             price.text = "¥\(goodsDetial?.price ?? "0.00")"
+            specific.text = (goodsDetial?.defaultspec?.spec_1 ?? "") + (goodsDetial?.defaultspec?.spec_2 ?? "")
+            
             collectionView.reloadData()
         }
     }

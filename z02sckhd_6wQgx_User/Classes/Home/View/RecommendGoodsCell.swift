@@ -31,7 +31,7 @@ class RecommendGoodsCell: UICollectionViewCell {
             name.text = goods?.goods_name
             describe.text = ""
             price.text = "¥" + (goods?.price ?? "0.00")
-            paidTotal.text = (goods?.pay_number ?? "0") + "人付款"
+            paidTotal.text = "销量" + (goods?.pay_number ?? "0")
         }
     }
     
