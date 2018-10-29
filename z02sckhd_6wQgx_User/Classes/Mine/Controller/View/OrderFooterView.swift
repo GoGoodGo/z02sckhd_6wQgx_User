@@ -89,12 +89,13 @@ class OrderFooterView: UIView {
     var state: Int = 0 {
         didSet {
             returnGoods.isHidden = true
+            let btnW = (WIDTH - 45) / 3
             switch state {
             case 0:
                 pay.isHidden = false
                 cancel.isHidden = false
                 returnGoods.isHidden = false
-                payRight.constant = 130
+                payRight.constant = btnW + 30
                 pay.setTitle("立即付款", for: .normal)
                 returnGoods.setTitle("取消订单", for: .normal)
                 cancel.setTitle("订单详情", for: .normal)
@@ -106,7 +107,7 @@ class OrderFooterView: UIView {
                 pay.isHidden = false
                 cancel.isHidden = false
                 returnGoods.isHidden = false
-                payRight.constant = 130
+                payRight.constant = btnW + 30
                 pay.setTitle("确认收货", for: .normal)
                 returnGoods.setTitle("查看物流", for: .normal)
                 cancel.setTitle("订单详情", for: .normal)

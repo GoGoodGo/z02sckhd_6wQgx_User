@@ -14,7 +14,8 @@ class EvaluateController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var evaluate: NotEvaluateGoods?
+    var evaluate: MyOrderGoods?
+    var evaluateBtn: UIButton?
     var selectedRow = 0
     var images = [UIImage]()
     var selectionImage: MultipleImage?
@@ -54,6 +55,7 @@ class EvaluateController: TMViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: obj.msg!, completed: {
+                    self?.evaluateBtn?.isEnabled = false
                     self?.navigationController?.popViewController(animated: true)
                 })
             } else {

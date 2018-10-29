@@ -41,7 +41,7 @@ class EvaluateGoodsCell: UITableViewCell {
     }
     
     // MARK: - Setter
-    var goods: NotEvaluateGoods? {
+    var goods: MyOrderGoods? {
         didSet {
             let url = URL(string: (goods?.goods_image)!)
             img.kf.setImage(with: url)

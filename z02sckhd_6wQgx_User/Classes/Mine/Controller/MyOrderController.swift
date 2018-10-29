@@ -158,6 +158,14 @@ class MyOrderController: TMViewController {
         returnChange.returnBtn = returnBtn
         navigationController?.pushViewController(returnChange, animated: true)
     }
+    /** 立即评价 */
+    private func evaluateGoods(section: Int, indexPath: IndexPath, evaluateBtn: UIButton) {
+        let evaluateCtrl = EvaluateController.init(nibName: "EvaluateController", bundle: getBundle())
+        evaluateCtrl.evaluateBtn = evaluateBtn
+        evaluateCtrl.evaluate = orderInfo?.result[section]._orders[indexPath.section]._goods[indexPath.row]
+        navigationController?.pushViewController(evaluateCtrl, animated: true)
+    }
+    
     // MARK: - Callbacks
     private func callbacks(sectionHeader: OrderHeaderView) {
         sectionHeader.touchBlock = { [weak self] header in
@@ -223,13 +231,14 @@ class MyOrderController: TMViewController {
             self?.load()
         }
     }
-    private func callbacks(cell: NotEvaluateCell) {
-        cell.evaluateBlock = { [weak self] (cell, goods) in
-            let evaluateCtrl = EvaluateController.init(nibName: "EvaluateController", bundle: getBundle())
-            evaluateCtrl.evaluate = goods
-            self?.navigationController?.pushViewController(evaluateCtrl, animated: true)
-        }
-    }
+    /** 立即评价 */
+//    private func callbacks(cell: NotEvaluateCell) {
+//        cell.evaluateBlock = { [weak self] (cell, goods) in
+//            let evaluateCtrl = EvaluateController.init(nibName: "EvaluateController", bundle: getBundle())
+//            evaluateCtrl.evaluate = goods
+//            self?.navigationController?.pushViewController(evaluateCtrl, animated: true)
+//        }
+//    }
     
     // MARK: - Getter
     private lazy var segmentView: YHSegmentView = {
@@ -269,7 +278,11 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
         cell.cellType = currentIndex
         cell.orders = (orderInfo?.result[indexPath.section]._orders)!
         cell.returnBlock = { [weak self] (cell, subIndexPath) in
-            self?.returnChangeGoods(seciton: indexPath.section, indexPath: subIndexPath, returnBtn: cell.returnGoods)
+            if self?.currentIndex == 3 {
+                self?.evaluateGoods(section: indexPath.section, indexPath: subIndexPath, evaluateBtn: cell.returnGoods)
+            } else {
+                self?.returnChangeGoods(seciton: indexPath.section, indexPath: subIndexPath, returnBtn: cell.returnGoods)
+            }
         }
         
         return cell
