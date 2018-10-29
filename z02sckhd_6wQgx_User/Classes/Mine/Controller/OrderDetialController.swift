@@ -32,6 +32,10 @@ class OrderDetialController: TMViewController {
         tableView.estimatedSectionFooterHeight = 50
         tableView.register(UINib.init(nibName: CellName(MyOrderCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MyOrderCell.self))
         tableView.register(UINib.init(nibName: CellName(OrderDetialInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderDetialInfoCell.self))
+        tableView.register(UINib.init(nibName: CellName(ReturnChangeDetialOrderCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(ReturnChangeDetialOrderCell.self))
+        tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 20, right: 0)
+        
+        load()
     }
     /** 订单详情 */
     func load() {
@@ -44,6 +48,7 @@ class OrderDetialController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
             self.inspectError()
         }
     }
@@ -54,11 +59,15 @@ extension OrderDetialController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDataSorce
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 2
+        return cellType == 4 ? 3 : 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? orderResult?._orders.count ?? 1 : 7
+        if section == 1 {
+            return 7
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,10 +78,16 @@ extension OrderDetialController: UITableViewDelegate, UITableViewDataSource {
             cell.orders = (orderResult?._orders)!
             
             return cell
-        } else {
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(OrderDetialInfoCell.self)) as! OrderDetialInfoCell
             cell.result = orderResult
             cell.index = indexPath.row
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellName(ReturnChangeDetialOrderCell.self)) as! ReturnChangeDetialOrderCell
+            cell.cellType = cellType
+            cell.orders = (orderResult?._orders)!
             
             return cell
         }
@@ -84,33 +99,50 @@ extension OrderDetialController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 { return nil }
-        let header = OrderHeaderView.headerView() as! OrderHeaderView
-        header.result = orderResult
-        
-        return header
+        if section == 0 {
+            let header = OrderHeaderView.headerView() as! OrderHeaderView
+            header.result = orderResult
+            
+            return header
+        } else {
+            let header = OrderDetialHeader.headerView() as! OrderDetialHeader
+            header.section = section
+            
+            return header
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == 1 { return nil }
-        let footer = OrderDetialFooter.footerView() as! OrderDetialFooter
-        footer.result = orderResult
-        
-        return footer
+        if section == 0 {
+            let footer = OrderDetialFooter.footerView() as! OrderDetialFooter
+            footer.result = orderResult
+            
+            return footer
+        } else {
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 { return 0 }
         return tableView.sectionHeaderHeight
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
-        return tableView.sectionFooterHeight
+        if section == 0 {
+            return tableView.sectionFooterHeight
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? orderResult?.cellHeight ?? 0 : 50
+        if indexPath.section == 0 {
+            return orderResult?.cellHeight ?? 0
+        } else if indexPath.section == 1 {
+            return 50
+        } else {
+            return orderResult?.detialCellHeight ?? 0
+        }
     }
     
     

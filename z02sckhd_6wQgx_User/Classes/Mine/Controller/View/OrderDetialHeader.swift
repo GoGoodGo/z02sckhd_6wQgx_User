@@ -4,14 +4,12 @@
 //
 //  Created by YH_O on 2018/8/11.
 //  Copyright © 2018 YH. All rights reserved.
-//  可删除
+//
 
 import UIKit
 
 class OrderDetialHeader: UIView {
     
-    @IBOutlet weak var orderID: UILabel!
-    @IBOutlet weak var date: UILabel!
     @IBOutlet weak var title: UILabel!
     
     public class func headerView() -> Any? {
@@ -20,12 +18,24 @@ class OrderDetialHeader: UIView {
     }
     
     // MARK: - Setter
+    var section: Int = 0 {
+        didSet {
+            switch section {
+            case 1:
+                title.text = "交易明细"
+            case 2:
+                title.text = "退换货"
+            default: break
+            }
+        }
+    }
+    
     override var frame: CGRect {
         didSet {
-            let y:CGFloat = 10
+            let y:CGFloat = 10 * CGFloat(section)
             var tempFrame = frame
             tempFrame.origin.y += y
-            tempFrame.size.height -= y
+            tempFrame.size.height -= 0
             super.frame = tempFrame
         }
     }

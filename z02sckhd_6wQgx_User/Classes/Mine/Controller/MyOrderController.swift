@@ -23,6 +23,7 @@ class MyOrderController: TMViewController {
     var orderInfo: MyOrderData?
     var notEvaluates = [NotEvaluateGoods]()
     var status = "11"
+    var evaluateStatus = ""
     
     var currentIndex = 0
     
@@ -52,7 +53,7 @@ class MyOrderController: TMViewController {
     /** 我的订单 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyOrder_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "order_status" : status], success: { [weak self] (obj: MyOrderInfo) in
+        getRequest(baseUrl: MyOrder_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "order_status" : status, "status" : evaluateStatus], success: { [weak self] (obj: MyOrderInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -138,6 +139,7 @@ class MyOrderController: TMViewController {
                 }
                 result.total = "\(rows)"
                 result.cellHeight = CGFloat(sections) * 40 + CGFloat(rows) * HeightPercent(120)
+                result.detialCellHeight = CGFloat(sections) * 40 + CGFloat(rows) * HeightPercent(220)
             }
         }
     }
@@ -190,17 +192,7 @@ class MyOrderController: TMViewController {
             }
         }
         sectionFooter.cancelBlock = { [weak self] (sender, footer) in
-            switch self?.currentIndex {
-            case 0:
-                self?.orderDetial(section: footer.section)
-            case 1: // 订单详情
-                self?.orderDetial(section: footer.section)
-            case 2:
-                self?.orderDetial(section: footer.section)
-            case 4: // 订单详情
-                self?.orderDetial(section: footer.section)
-            default: return
-            }
+            self?.orderDetial(section: footer.section)
         }
         sectionFooter.touchBlock = { [weak self] footer in
             self?.orderDetial(section: sectionFooter.section)
@@ -218,8 +210,10 @@ class MyOrderController: TMViewController {
             case 2:
                 self?.status = "30"
             case 3:
-                self?.loadEvaluateGoods()
-                return
+//                self?.loadEvaluateGoods()
+//                return
+                self?.status = "40"
+                self?.evaluateStatus = "1"
             case 4:
                 self?.status = "40"
             case 5:
@@ -253,31 +247,32 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDataSorce
     func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return currentIndex == 3 ? 1 : (orderInfo?.result.count ?? 0)
+//        return currentIndex == 3 ? 1 : (orderInfo?.result.count ?? 0)
+        return orderInfo?.result.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentIndex == 3 ? notEvaluates.count : 1
+//        return currentIndex == 3 ? notEvaluates.count : 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if currentIndex == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellName(NotEvaluateCell.self)) as! NotEvaluateCell
-            callbacks(cell: cell)
-            cell.evaluate = notEvaluates[indexPath.row]
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MyOrderCell.self)) as! MyOrderCell
-            cell.cellType = currentIndex
-            cell.orders = (orderInfo?.result[indexPath.section]._orders)!
-            cell.returnBlock = { [weak self] (cell, subIndexPath) in
-                self?.returnChangeGoods(seciton: indexPath.section, indexPath: subIndexPath, returnBtn: cell.returnGoods)
-            }
-            
-            return cell
+//        if currentIndex == 3 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: CellName(NotEvaluateCell.self)) as! NotEvaluateCell
+//            callbacks(cell: cell)
+//            cell.evaluate = notEvaluates[indexPath.row]
+//
+//            return cell
+//        } else {
+//        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MyOrderCell.self)) as! MyOrderCell
+        cell.cellType = currentIndex
+        cell.orders = (orderInfo?.result[indexPath.section]._orders)!
+        cell.returnBlock = { [weak self] (cell, subIndexPath) in
+            self?.returnChangeGoods(seciton: indexPath.section, indexPath: subIndexPath, returnBtn: cell.returnGoods)
         }
+        
+        return cell
     }
     
     // MARK: - UITableViewDelegate
@@ -286,9 +281,9 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if currentIndex == 3 {
-            return nil
-        }
+//        if currentIndex == 3 {
+//            return nil
+//        }
         let header = OrderHeaderView.headerView() as! OrderHeaderView
         header.result = orderInfo?.result[section]
         header.section = section
@@ -299,9 +294,9 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 
-        if currentIndex == 3 {
-            return nil
-        }
+//        if currentIndex == 3 {
+//            return nil
+//        }
         let footer = OrderFooterView.footerView() as! OrderFooterView
         footer.state = currentIndex
         footer.result = orderInfo?.result[section]
@@ -322,7 +317,8 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return currentIndex == 3 ? 196 : (orderInfo?.result[indexPath.section].cellHeight ?? 0)
+//        return currentIndex == 3 ? 196 : (orderInfo?.result[indexPath.section].cellHeight ?? 0)
+        return (orderInfo?.result[indexPath.section].cellHeight ?? 0)
     }
     
     

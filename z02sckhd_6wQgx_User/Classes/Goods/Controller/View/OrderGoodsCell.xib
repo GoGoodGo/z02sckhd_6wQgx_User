@@ -74,7 +74,7 @@
                             <color key="titleColor" red="0.98823529409999999" green="0.35294117650000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <state key="disabled">
-                            <color key="titleColor" red="0.98823529409999999" green="0.35294117650000001" blue="0.46900149829999999" alpha="0.60485338184931503" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.98823529409999999" green="0.35294117650000001" blue="0.46900149829999999" alpha="0.5036922089041096" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
                             <action selector="action_return:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="y8E-SO-VGL"/>

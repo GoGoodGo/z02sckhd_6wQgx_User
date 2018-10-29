@@ -109,7 +109,7 @@ extension ReturnChangeController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 { return nil }
         let header = LogisticsGoodsHeader.headerView() as! LogisticsGoodsHeader
-        header.orderInfo = orderResult?._orders.first
+        header.orderInfo = orderResult?._orders[subIndexPath?.section ?? 0]
         
         return header
     }

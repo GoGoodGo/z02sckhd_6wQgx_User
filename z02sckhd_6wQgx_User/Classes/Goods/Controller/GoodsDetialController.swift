@@ -277,7 +277,9 @@ class GoodsDetialController: TMViewController {
     /** 显示规格选项 */
     func showOptionView(isBuy: Bool) {
         specificOption.buyBtn.setTitle(isBuy ? "立即购买" : "立即添加", for: .normal)
-        specificOption.limitNum = (salesDetial?.store?.number)!
+        if detialType != .detial {
+            specificOption.limitNum = (salesDetial?.store?.number)!
+        }
         specificOption.goodsDetial = goodsDetial
         specificOption.isShowOption(isShow: true, specificGap: specificH)
         self.isBuy = isBuy
@@ -362,7 +364,8 @@ class GoodsDetialController: TMViewController {
     /** 竞争拍卖 */
     func auctionBid() {
         showHUD()
-        let price = Float(salesDetial?.store?.new_price ?? "0")! + Float(salesDetial?.store?.markups ?? "0")!
+        let newPrice = salesDetial?.store?.new_price ?? "0.00"
+        let price = Float(newPrice.isEmpty ? "0.00" : newPrice)! + Float(salesDetial?.store?.markups ?? "0")!
         getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {

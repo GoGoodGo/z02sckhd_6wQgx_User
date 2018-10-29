@@ -391,7 +391,7 @@ class GoodsDetial: Mappable {
     var is_new = false
     var is_collect = "0"
     var price = "0"
-    var integral = 0
+    var integral = "0"
     var last_update = ""
     var from = "0"
     var brand = ""

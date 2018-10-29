@@ -217,6 +217,7 @@ class MyOrderResult: Mappable {
     
     var total = "-1"
     var cellHeight: CGFloat = 0
+    var detialCellHeight: CGFloat = 0
     
     required init?(map: Map) {
         
@@ -283,6 +284,7 @@ class MyOrder: Mappable {
     var shopname = ""
     var pay_fee = ""
     var add_time = "0"
+    var deliver_time = "0"
     var order_sn = ""
     
     required init?(map: Map) {
@@ -328,6 +330,7 @@ class MyOrder: Mappable {
         shopname <- map["shopname"]
         pay_fee <- map["pay_fee"]
         add_time <- map["add_time"]
+        deliver_time <- map["deliver_time"]
         order_sn <- map["order_sn"]
     }
 }

@@ -26,7 +26,7 @@ class LogisticsGoodsHeader: UIView {
         didSet {
             name.text = orderInfo?.shopname
             orderID.text = "订单编号：\(orderInfo?.order_sn ?? "0000xxxx")"
-            date.text = "发货时间：\(orderInfo?.shipping_time ?? "暂无")"
+            date.text = "发货时间：\(orderInfo?.deliver_time ?? "暂无")"
         }
     }
     

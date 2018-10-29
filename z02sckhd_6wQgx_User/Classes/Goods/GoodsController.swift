@@ -79,8 +79,8 @@ public class GoodsController: UIViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
-            self.collectionView.mj_header.endRefreshing()
             self.hideHUD()
+            self.collectionView.mj_header.endRefreshing()
             self.inspectError()
         }
         loadNews()

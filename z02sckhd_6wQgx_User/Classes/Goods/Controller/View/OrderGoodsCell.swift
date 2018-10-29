@@ -48,8 +48,9 @@ class OrderGoodsCell: UITableViewCell {
     // MARK: - Setter
     var cellType = 0 {
         didSet {
-            returnGoods.isHidden = cellType != 4
-            returnGoodsW.constant = cellType == 4 ? 50 : 0
+            returnGoods.setTitle(cellType == 3 ? "立即评价" : "退换货", for: .normal)
+            returnGoods.isHidden = (cellType == 3 || cellType == 4) ? false : true
+            returnGoodsW.constant = (cellType == 3 || cellType == 4) ? 50 : 0
         }
     }
     
