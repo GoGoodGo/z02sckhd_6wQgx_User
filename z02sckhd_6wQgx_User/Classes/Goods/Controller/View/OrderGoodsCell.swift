@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import YHTool
 
 class OrderGoodsCell: UITableViewCell {
     
@@ -27,7 +28,7 @@ class OrderGoodsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        returnGoods.layer.borderColor = HexString("#efeff4").cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +51,7 @@ class OrderGoodsCell: UITableViewCell {
         didSet {
             returnGoods.setTitle(cellType == 3 ? "立即评价" : "退换货", for: .normal)
             returnGoods.isHidden = (cellType == 3 || cellType == 4) ? false : true
-            returnGoodsW.constant = (cellType == 3 || cellType == 4) ? 50 : 0
+            returnGoodsW.constant = (cellType == 3 || cellType == 4) ? 60 : 0
         }
     }
     

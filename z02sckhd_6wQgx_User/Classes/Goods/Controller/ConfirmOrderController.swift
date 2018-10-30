@@ -127,6 +127,7 @@ extension ConfirmOrderController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(OrderGoodsCell.self)) as! OrderGoodsCell
+            cell.cellType = -1
             cell.goods = orderInfo?.data?.goods_list?.goods[indexPath.section - 1].result[indexPath.row]
             
             return cell

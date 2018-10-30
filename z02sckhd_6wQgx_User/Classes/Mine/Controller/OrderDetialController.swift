@@ -52,6 +52,23 @@ class OrderDetialController: TMViewController {
             self.inspectError()
         }
     }
+    
+    /** 退换货 */
+    private func returnChangeGoods(seciton: Int, indexPath: IndexPath, returnBtn: UIButton) {
+        let returnChange = ReturnChangeController.init(nibName: "ReturnChangeController", bundle: getBundle())
+        returnChange.orderResult = orderResult
+        returnChange.subIndexPath = indexPath
+        returnChange.returnBtn = returnBtn
+        navigationController?.pushViewController(returnChange, animated: true)
+    }
+    /** 立即评价 */
+    private func evaluateGoods(section: Int, indexPath: IndexPath, evaluateBtn: UIButton) {
+        let evaluateCtrl = EvaluateController.init(nibName: "EvaluateController", bundle: getBundle())
+        evaluateCtrl.evaluateBtn = evaluateBtn
+        evaluateCtrl.evaluate = orderResult?._orders[indexPath.section]._goods[indexPath.row]
+        navigationController?.pushViewController(evaluateCtrl, animated: true)
+    }
+    
 }
 
 extension OrderDetialController: UITableViewDelegate, UITableViewDataSource {
@@ -76,6 +93,13 @@ extension OrderDetialController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MyOrderCell.self)) as! MyOrderCell
             cell.cellType = cellType
             cell.orders = (orderResult?._orders)!
+            cell.returnBlock = { [weak self] (cell, subIndexPath) in
+                if self?.cellType == 3 {
+                    self?.evaluateGoods(section: indexPath.section, indexPath: subIndexPath, evaluateBtn: cell.returnGoods)
+                } else {
+                    self?.returnChangeGoods(seciton: indexPath.section, indexPath: subIndexPath, returnBtn: cell.returnGoods)
+                }
+            }
             
             return cell
         } else if indexPath.section == 1 {

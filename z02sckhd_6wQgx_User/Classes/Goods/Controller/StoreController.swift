@@ -82,6 +82,7 @@ class StoreController: TMViewController {
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.shopData = obj.data
+                self?.name.text = obj.data?.seller?.shopname
                 self?.setupCategory()
                 self?.loadBest()
                 self?.loadNews()
