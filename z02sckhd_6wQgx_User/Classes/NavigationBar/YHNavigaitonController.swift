@@ -14,7 +14,6 @@ public class YHNavigaitonController: UINavigationController {
         super.viewDidLoad()
 
         let navigationBar = UINavigationBar.appearance()
-        navigationBar.barTintColor = .white
         navigationBar.barStyle = .default
         navigationBar.isTranslucent = false
         
