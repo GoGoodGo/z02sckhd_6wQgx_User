@@ -173,6 +173,8 @@ public class HomeController: UIViewController {
     /** 新品列表 */
     func loadNewGoods() {
         getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1"], success: { [weak self] (obj: DataInfo) in
+            self?.hideHUD()
+            self?.hideAllHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
                 self?.newGoods = (obj.data?.result)!
@@ -181,6 +183,8 @@ public class HomeController: UIViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
+            self.hideAllHUD()
             self.inspectError()
         }
     }
