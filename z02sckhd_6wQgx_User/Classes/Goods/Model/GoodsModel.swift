@@ -49,6 +49,9 @@ class Comment: Mappable {
     var comment = ""
     var member_name = ""
     var add_time = ""
+    var reply_time = ""
+    var reply_status = ""
+    var reply_comment = ""
     
     required init?(map: Map) {
         
@@ -63,6 +66,9 @@ class Comment: Mappable {
         comment <- map["comment"]
         member_name <- map["member_name"]
         add_time <- map["add_time"]
+        reply_time <- map["reply_time"]
+        reply_status <- map["reply_status"]
+        reply_comment <- map["reply_comment"]
     }
 }
 

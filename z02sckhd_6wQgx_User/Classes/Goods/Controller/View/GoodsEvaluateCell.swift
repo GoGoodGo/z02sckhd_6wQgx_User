@@ -24,6 +24,7 @@ class GoodsEvaluateCell: UITableViewCell {
     @IBOutlet weak var collectionViewH: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var reply: UIButton!
+    @IBOutlet weak var replyH: NSLayoutConstraint!
     @IBOutlet weak var top: UIImageView!
     @IBOutlet weak var bottom: UIImageView!
     
@@ -59,11 +60,19 @@ class GoodsEvaluateCell: UITableViewCell {
         }
     }
     
+    func getHeight() {
+        let size = comment?.reply_comment.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - 40, height: 120))
+        replyH.constant = (size?.height ?? 0)
+    }
+    
     var comment: Comment? {
         didSet {
             name.text = comment?.member_name
             date.text = comment?.add_time
             evaluate.text = comment?.comment
+            reply.isHidden = comment?.reply_status == "0"
+            reply.setTitle("掌柜回复：" + (comment?.reply_comment ?? ""), for: .normal)
+            getHeight()
             collectionView.reloadData()
         }
     }
