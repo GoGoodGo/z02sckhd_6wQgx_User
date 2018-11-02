@@ -72,11 +72,6 @@ public class HomeController: UIViewController {
     
     @objc func load() {
         loadHome()
-//        loadCategorys()
-//        loadAuction()
-//        loadGroup()
-//        loadTimelimit()
-//        loadRecommend()
         loadNewGoods()
     }
     /** 获取首页 */
@@ -103,73 +98,7 @@ public class HomeController: UIViewController {
             self.inspectError()
         }
     }
-    /** 获取分类 */
-    func loadCategorys() {
-        getRequest(baseUrl: GoodsCategory_URL, params: nil, success: { [weak self] (obj: GoodsCategory) in
-            self?.collectionView.mj_header.endRefreshing()
-            if "success" == obj.status {
-//                self?.categorys = obj.data
-                self?.collectionView.reloadData()
-            } else {
-                self?.inspectLogin(model: obj)
-            }
-        }) { (error) in
-            self.collectionView.mj_header.endRefreshing()
-            self.inspectError()
-        }
-    }
-    /** 拍卖列表 */
-    func loadAuction() {
-        getRequest(baseUrl: GoodsAuction_URL, params: nil, success: { [weak self] (obj: SalesInfo) in
-            if "success" == obj.status {
-                self?.auctionGoods = (obj.data?.result)!
-                self?.collectionView.reloadData()
-            } else {
-                self?.inspectLogin(model: obj)
-            }
-        }) { (error) in
-            self.inspectError()
-        }
-    }
-    /** 团购列表 */
-    func loadGroup() {
-        getRequest(baseUrl: GoodsGroup_URL, params: nil, success: { [weak self] (obj: SalesInfo) in
-            if "success" == obj.status {
-                self?.groupGoods = (obj.data?.result)!
-                self?.collectionView.reloadData()
-            } else {
-                self?.inspectLogin(model: obj)
-            }
-        }) { (error) in
-            self.inspectError()
-        }
-    }
-    /** 秒杀列表 */
-    func loadTimelimit() {
-        getRequest(baseUrl: GoodsTimelimit_URL, params: nil, success: { [weak self] (obj: SalesInfo) in
-            if "success" == obj.status {
-                self?.timelimitGoods = (obj.data?.result)!
-                self?.collectionView.reloadData()
-            } else {
-                self?.inspectLogin(model: obj)
-            }
-        }) { (error) in
-            self.inspectError()
-        }
-    }
-    /** 推荐列表 */
-    func loadRecommend() {
-        getRequest(baseUrl: GoodsList_URL, params: ["p" : "1", "is_best" : "1"], success: { [weak self] (obj: DataInfo) in
-            if "success" == obj.status {
-                self?.recommendGoods = (obj.data?.result)!
-                self?.collectionView.reloadData()
-            } else {
-                self?.inspectLogin(model: obj)
-            }
-        }) { (error) in
-            self.inspectError()
-        }
-    }
+   
     /** 新品列表 */
     func loadNewGoods() {
         getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1"], success: { [weak self] (obj: DataInfo) in
@@ -386,18 +315,18 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         var height: CGFloat = 60
         switch section {
         case 0:
-            height += headerView?.getHeaderHeight(isAution: groupGoods.count != 0) ?? 0
+            height += headerView?.getHeaderHeight(isAution: groupGoods.count != 0) ?? 0.0
         case 1:
-            height = groupGoods.count == 0 ? 0 : 60
+            height = groupGoods.count == 0 ? 0.0 : 60
         case 2:
-            height = timelimitGoods.count == 0 ? 0 : 60
+            height = timelimitGoods.count == 0 ? 0.0 : 60
         case 3:
-            height = recommendGoods.count == 0 ? 0 : 60
+            height = recommendGoods.count == 0 ? 0.0 : 60
         case 4:
-            height = newGoods.count == 0 ? 0 : 60
+            height = newGoods.count == 0 ? 0.0 : 60
         case 5:
-            height = shops.count == 0 ? 0 : 60
-        default: height = 0
+            height = shops.count == 0 ? 0.0 : 60
+        default: height = 0.0
         }
         return CGSize.init(width: WIDTH, height: height)
     }

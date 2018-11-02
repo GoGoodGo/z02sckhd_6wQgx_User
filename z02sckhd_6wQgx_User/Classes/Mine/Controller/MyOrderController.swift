@@ -134,12 +134,17 @@ class MyOrderController: TMViewController {
             for result in results {
                 let sections = result._orders.count
                 var rows = 0
+                var allRowsH: CGFloat = 0.00
                 for order in result._orders {
                     rows += order._goods.count
+                    for goods in order._goods {
+                        let size = goods.returninfo?.reply.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - WidthPercent(120), height: 400))
+                        allRowsH = HeightPercent(190) + (size?.height ?? 0)
+                    }
                 }
                 result.total = "\(rows)"
                 result.cellHeight = CGFloat(sections) * 40 + CGFloat(rows) * HeightPercent(120)
-                result.detialCellHeight = CGFloat(sections) * 40 + CGFloat(rows) * HeightPercent(220)
+                result.detialCellHeight = CGFloat(sections) * 40 + allRowsH
             }
         }
     }
@@ -218,8 +223,6 @@ class MyOrderController: TMViewController {
             case 2:
                 self?.status = "30"
             case 3:
-//                self?.loadEvaluateGoods()
-//                return
                 self?.status = "40"
                 self?.evaluateStatus = "1"
             case 4:
@@ -231,14 +234,6 @@ class MyOrderController: TMViewController {
             self?.load()
         }
     }
-    /** 立即评价 */
-//    private func callbacks(cell: NotEvaluateCell) {
-//        cell.evaluateBlock = { [weak self] (cell, goods) in
-//            let evaluateCtrl = EvaluateController.init(nibName: "EvaluateController", bundle: getBundle())
-//            evaluateCtrl.evaluate = goods
-//            self?.navigationController?.pushViewController(evaluateCtrl, animated: true)
-//        }
-//    }
     
     // MARK: - Getter
     private lazy var segmentView: YHSegmentView = {
@@ -256,24 +251,14 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDataSorce
     func numberOfSections(in tableView: UITableView) -> Int {
-//        return currentIndex == 3 ? 1 : (orderInfo?.result.count ?? 0)
         return orderInfo?.result.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return currentIndex == 3 ? notEvaluates.count : 1
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if currentIndex == 3 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: CellName(NotEvaluateCell.self)) as! NotEvaluateCell
-//            callbacks(cell: cell)
-//            cell.evaluate = notEvaluates[indexPath.row]
-//
-//            return cell
-//        } else {
-//        }
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(MyOrderCell.self)) as! MyOrderCell
         cell.cellType = currentIndex
         cell.orders = (orderInfo?.result[indexPath.section]._orders)!
@@ -294,9 +279,7 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if currentIndex == 3 {
-//            return nil
-//        }
+
         let header = OrderHeaderView.headerView() as! OrderHeaderView
         header.result = orderInfo?.result[section]
         header.section = section
@@ -307,9 +290,6 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 
-//        if currentIndex == 3 {
-//            return nil
-//        }
         let footer = OrderFooterView.footerView() as! OrderFooterView
         footer.state = currentIndex
         footer.result = orderInfo?.result[section]
@@ -330,7 +310,6 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return currentIndex == 3 ? 196 : (orderInfo?.result[indexPath.section].cellHeight ?? 0)
         return (orderInfo?.result[indexPath.section].cellHeight ?? 0)
     }
     

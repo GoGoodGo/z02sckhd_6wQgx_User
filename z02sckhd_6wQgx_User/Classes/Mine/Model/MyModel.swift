@@ -372,6 +372,10 @@ class MyOrderGoods: Mappable {
     var add_time = ""
     var send_number = ""
     var status = ""
+    var reply_time = ""
+    var reply_comment = ""
+    var reply_status = ""
+    var returninfo: ReturnInfo?
     
     required init?(map: Map) {
         
@@ -414,9 +418,50 @@ class MyOrderGoods: Mappable {
         add_time <- map["add_time"]
         send_number <- map["send_number"]
         status <- map["status"]
+        reply_time <- map["reply_time"]
+        reply_comment <- map["reply_comment"]
+        reply_comment <- map["reply_comment"]
+        returninfo <- map["returninfo"]
     }
 }
 
+class ReturnInfo: Mappable {
+    
+    var id = ""
+    var rec_id = ""
+    var order_id = ""
+    var goods_id = ""
+    var type = ""
+    var reson = "0"
+    var desc = ""
+    var status = ""
+    var user_id = ""
+    var reply = ""
+    var add_time = ""
+    var replytime = ""
+    var sid = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        id <- map["id"]
+        rec_id <- map["rec_id"]
+        order_id <- map["order_id"]
+        goods_id <- map["goods_id"]
+        type <- map["type"]
+        reson <- map["reson"]
+        desc <- map["desc"]
+        status <- map["status"]
+        user_id <- map["user_id"]
+        reply <- map["reply"]
+        add_time <- map["add_time"]
+        replytime <- map["replytime"]
+        sid <- map["sid"]
+    }
+}
 
 
 
