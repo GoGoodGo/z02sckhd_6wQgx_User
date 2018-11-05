@@ -78,11 +78,11 @@ class OrderFooterView: UIView {
         didSet {
             integral.text = ""
 //            integral.text = "可获得\(result?.give_integral ?? "0")个积分, 可使用\(result?.integral ?? "0")个积分"
-            let freight = result?._orders.first?.pay_fee ?? "0.00"
-            let total = Float(result?.order_amount ?? "0.00")! + Float(freight)!
-            payFree.text = "¥\(freight)"
+//            let freight = result?._orders.first?.pay_fee ?? "0.00"
+//            let total = Float(result?.order_amount ?? "0.00")! + Float(freight)!
+            payFree.text = "¥\(result?.pay_fee ?? "0.00")"
             number.text = "共\(result?.total ?? "0")件商品"
-            amount.text = "¥\(total)"
+            amount.text = "¥\(result?.order_amount ?? "0.00")"
         }
     }
     

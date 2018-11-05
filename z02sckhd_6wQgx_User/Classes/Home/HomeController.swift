@@ -312,21 +312,22 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let sectionH: CGFloat = 60
         var height: CGFloat = 60
         switch section {
         case 0:
-            height += headerView?.getHeaderHeight(isAution: groupGoods.count != 0) ?? 0.0
+            height += headerView?.getHeaderHeight(isAution: auctionGoods.count != 0) ?? 0.0
         case 1:
-            height = groupGoods.count == 0 ? 0.0 : 60
+            height = groupGoods.count == 0 ? 0.0 : sectionH
         case 2:
-            height = timelimitGoods.count == 0 ? 0.0 : 60
+            height = timelimitGoods.count == 0 ? 0.0 : sectionH
         case 3:
-            height = recommendGoods.count == 0 ? 0.0 : 60
+            height = recommendGoods.count == 0 ? 0.0 : sectionH
         case 4:
-            height = newGoods.count == 0 ? 0.0 : 60
+            height = newGoods.count == 0 ? 0.0 : sectionH
         case 5:
-            height = shops.count == 0 ? 0.0 : 60
-        default: height = 0.0
+            height = shops.count == 0 ? 0.0 : sectionH
+        default: height = 0.01
         }
         return CGSize.init(width: WIDTH, height: height)
     }

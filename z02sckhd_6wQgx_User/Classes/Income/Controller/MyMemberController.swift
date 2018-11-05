@@ -31,7 +31,7 @@ class MyMemberController: UIViewController {
     // MARK: - Private Method
     private func setupUI() {
         
-        segmentContent.addSubview(segmentView)
+//        segmentContent.addSubview(segmentView)
         
         tableView.register(UINib.init(nibName: CellName(MemberCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MemberCell.self))
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
@@ -119,7 +119,7 @@ extension MyMemberController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 80
+        return 60
     }
     
     

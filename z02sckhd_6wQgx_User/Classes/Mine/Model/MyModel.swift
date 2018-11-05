@@ -210,6 +210,7 @@ class MyOrderResult: Mappable {
     var user_id = ""
     var integral = ""
     var order_amount = ""
+    var pay_fee = ""
     var tel = ""
     var is_pay = ""
     var add_time = "0"
@@ -238,6 +239,7 @@ class MyOrderResult: Mappable {
         user_id <- map["user_id"]
         integral <- map["integral"]
         order_amount <- map["order_amount"]
+        pay_fee <- map["pay_fee"]
         tel <- map["tel"]
         is_pay <- map["is_pay"]
         add_time <- map["add_time"]

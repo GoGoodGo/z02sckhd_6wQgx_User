@@ -44,6 +44,7 @@ class HomeHeaderView: UICollectionReusableView {
     public func getHeaderHeight(isAution: Bool) -> CGFloat {
         imgView.isHidden = !isAution
         separatorLine.isHidden = !isAution
+        separator.isHidden = !isAution
         if isAution {
             return bannerHeight + getItemHeight() * 2
         } else {

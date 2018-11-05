@@ -10,7 +10,6 @@ import UIKit
 
 class MemberCell: UITableViewCell {
     
-    @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var date: UILabel!
     
@@ -23,8 +22,8 @@ class MemberCell: UITableViewCell {
     // MARK: - Setter
     var member: Member? {
         didSet {
-            let url = URL.init(string: (member?.head_pic)!)
-            img.kf.setImage(with: url)
+//            let url = URL.init(string: (member?.head_pic)!)
+//            img.kf.setImage(with: url)
             name.text = member?.member_name
             date.text = member?.add_time
         }
