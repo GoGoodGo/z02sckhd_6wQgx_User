@@ -145,7 +145,7 @@ public class GoodsController: UIViewController {
     private func callbacksSegment(header: SegmentReusableView) {
         header.clickItem = { [weak self] index in
             if index == 0 {
-                self?.order = "asc"
+                self?.order = ""
             } else {
                 self?.sort = "s.sales"
             }
