@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.2.8'
+  s.version          = '1.3.0'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   
   s.xcconfig = {
-      'VALID_ARCHS' => 'arm64 x86_64',
+      'VALID_ARCHS' => 'arm64, x86_64',
   }
   
   #s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
