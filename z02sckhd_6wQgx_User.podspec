@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.3.1'
+  s.version          = '1.3.2'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.
@@ -60,14 +60,6 @@ Pod::Spec.new do |s|
   s.dependency 'IQKeyboardManager'
   #s.dependency 'WechatOpenSDK'
   
-  #s.dependency 'TMSDK', '~> 0.0.2-beta.3'
-  #s.dependency 'TMShare', '~> 0.0.2-beta.1'
-  
-  #s.dependency 'TMSDK', :git => 'https://gitee.com/tmgc/TMSDKSpec.git'
-  #s.dependency 'TMShare', :git => 'https://gitee.com/tmgc/TMShareSpec.git'
-  
-  #s.dependency 'TMSDK', '~> 0.0.2-beta.7'
-  #s.dependency 'TMShare', '~> 0.0.2-beta.3'
   s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
   s.dependency 'TMUserCenter', '~> 0.0.2'
   

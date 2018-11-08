@@ -34,23 +34,18 @@
 		24FD942274F7C17B2599E8E5 /* Pods_z02sckhd_6wQgx_User_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_z02sckhd_6wQgx_User_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAA95E6CA9B3994999CFF14 /* z02sckhd_6wQgx_User.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = z02sckhd_6wQgx_User.podspec; path = ../z02sckhd_6wQgx_User.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5B40E9DF9AB5FE04187C7C26 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		5B6813F2ED6D0D97086B6F3C /* Pods_z02sckhd_6wQgx_User_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_z02sckhd_6wQgx_User_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* z02sckhd_6wQgx_User_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = z02sckhd_6wQgx_User_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		64B3842AE721963548CFCDED /* Pods-z02sckhd_6wQgx_User_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Example/Pods-z02sckhd_6wQgx_User_Example.release.xcconfig"; sourceTree = "<group>"; };
-		65E7A5C06F30C882E6A3E0E8 /* Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Tests/Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CACC7C0F6A4B78697335A45 /* Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Example/Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		83CB90C22153D36F00B968ED /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		83CB90C42153D38400B968ED /* pages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pages; sourceTree = "<group>"; };
 		83CB90C52153D38400B968ED /* tm_src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tm_src; sourceTree = "<group>"; };
 		83CB90C62153D38400B968ED /* TMBaseConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMBaseConfig.plist; sourceTree = "<group>"; };
 		DFDFCEAAA42919F8C5040EC3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		EAA22B3A85FE7721A2E9E841 /* Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Tests/Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +65,6 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for z02sckhd_6wQgx_User */,
-				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				E65B1D0758BE105E213CF974 /* Pods */,
 				F6EFA9CA3E5B00C9F44FC3F7 /* Frameworks */,
@@ -109,23 +103,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,8 +118,6 @@
 			children = (
 				7CACC7C0F6A4B78697335A45 /* Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig */,
 				64B3842AE721963548CFCDED /* Pods-z02sckhd_6wQgx_User_Example.release.xcconfig */,
-				65E7A5C06F30C882E6A3E0E8 /* Pods-z02sckhd_6wQgx_User_Tests.debug.xcconfig */,
-				EAA22B3A85FE7721A2E9E841 /* Pods-z02sckhd_6wQgx_User_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -151,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				24FD942274F7C17B2599E8E5 /* Pods_z02sckhd_6wQgx_User_Example.framework */,
-				5B6813F2ED6D0D97086B6F3C /* Pods_z02sckhd_6wQgx_User_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -465,7 +439,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZHV8C9SF94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = z02sckhd_6wQgx_User/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -492,7 +466,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZHV8C9SF94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = z02sckhd_6wQgx_User/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

@@ -35,8 +35,8 @@ class GoodsTypesCell: UICollectionViewCell {
     
     var index: Int = 0 {
         didSet {
-            imageView.image = getImage(type(of: self), images[index])
-            titleLabel.text = names[index]
+//            imageView.image = getImage(type(of: self), images[index])
+//            titleLabel.text = names[index]
         }
     }
     
