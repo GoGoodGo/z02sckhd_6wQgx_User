@@ -32,9 +32,9 @@ Pod::Spec.new do |s|
   s.swift_version = '4.2'
   s.ios.deployment_target = '9.0'
   
-  #s.xcconfig = {
-  #   'VALID_ARCHS' => 'arm64, x86_64',
-  #}
+  s.xcconfig = {
+     'VALID_ARCHS' => 'arm64, x86_64',
+  }
   
   #s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
   
