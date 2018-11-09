@@ -293,7 +293,7 @@ extension StoreController: UICollectionViewDelegate, UICollectionViewDataSource,
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-        goodsDetialCtrl.ID = indexPath.section == 0 ? recommends[indexPath.row].goods_id : goodsList[indexPath.row].goods_id
+        goodsDetialCtrl.goodsID = indexPath.section == 0 ? recommends[indexPath.row].goods_id : goodsList[indexPath.row].goods_id
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }
     

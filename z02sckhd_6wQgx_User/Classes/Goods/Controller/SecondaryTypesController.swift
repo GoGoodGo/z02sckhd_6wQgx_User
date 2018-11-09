@@ -220,7 +220,7 @@ extension SecondaryTypesController: UICollectionViewDelegate, UICollectionViewDa
             load()
         } else {
             let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-            goodsDetialCtrl.ID = goodsList[indexPath.row].goods_id
+            goodsDetialCtrl.goodsID = goodsList[indexPath.row].goods_id
             goodsDetialCtrl.detialType = .detial
             navigationController?.pushViewController(goodsDetialCtrl, animated: true)
         }

@@ -33,7 +33,7 @@ class GoodsDetialController: TMViewController {
     @IBOutlet weak var auctionPay: UIButton!
     
     let bannerHeight: CGFloat = 280
-    var ID = ""
+    var goodsID = ""
     var specID = ""
     var number = 1
     var isBuy = false
@@ -134,7 +134,7 @@ class GoodsDetialController: TMViewController {
     /** 商品详情 */
     func load() {
         showHUD()
-        getRequest(baseUrl: GoodsDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: DetialInfo) in
+        getRequest(baseUrl: GoodsDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID], success: { [weak self] (obj: DetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -155,7 +155,7 @@ class GoodsDetialController: TMViewController {
     /** 竞拍详情 */
     func loadAuction() {
         showHUD()
-        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -180,7 +180,7 @@ class GoodsDetialController: TMViewController {
     /** 团购详情 */
     func loadGroup() {
         showHUD()
-        getRequest(baseUrl: GroupDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: GroupDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -201,7 +201,7 @@ class GoodsDetialController: TMViewController {
     /** 秒杀详情 */
     func loadTimelimit() {
         showHUD()
-        getRequest(baseUrl: TimelimitDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: TimelimitDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -249,7 +249,7 @@ class GoodsDetialController: TMViewController {
     /** 收藏 */
     func addCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: AddCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "type" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "type" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = true
@@ -263,7 +263,7 @@ class GoodsDetialController: TMViewController {
     /** 取消收藏 */
     func cancelCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = false
@@ -366,7 +366,7 @@ class GoodsDetialController: TMViewController {
         showHUD()
         let newPrice = salesDetial?.store?.new_price ?? "0.00"
         let price = Float(newPrice.isEmpty ? "0.00" : newPrice)! + Float(salesDetial?.store?.markups ?? "0")!
-        getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 if obj.is_top == 1 {
@@ -393,7 +393,7 @@ class GoodsDetialController: TMViewController {
     /** 拍卖购买 */
     func auctionBuy() {
         showHUD()
-        getRequest(baseUrl: AuctionBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: AuctionBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "2")
@@ -408,7 +408,7 @@ class GoodsDetialController: TMViewController {
     /** 团购购买 */
     func groupBuy() {
         showHUD()
-        getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "1")
@@ -423,7 +423,7 @@ class GoodsDetialController: TMViewController {
     /** 秒杀购买 */
     func timelimitBuy() {
         showHUD()
-        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : ID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "4")

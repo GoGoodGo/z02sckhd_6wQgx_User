@@ -257,7 +257,7 @@ extension SearchController: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if currentIndex == 0 {
             let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-            goodsDetialCtrl.ID = goods[indexPath.row].goods_id
+            goodsDetialCtrl.goodsID = goods[indexPath.row].goods_id
             goodsDetialCtrl.detialType = .detial
             navigationController?.pushViewController(goodsDetialCtrl, animated: true)
         } else {

@@ -362,7 +362,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
             if !inspectLogin() { return }
         }
         let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-        goodsDetialCtrl.ID = ID
+        goodsDetialCtrl.goodsID = ID
         goodsDetialCtrl.detialType = detialType
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }

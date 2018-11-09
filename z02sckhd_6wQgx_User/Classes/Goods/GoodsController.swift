@@ -241,7 +241,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
         
         let goods = indexPath.section == 0 ? recommends[indexPath.row] : goodsList[indexPath.row]
         let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-        goodsDetialCtrl.ID = goods.goods_id
+        goodsDetialCtrl.goodsID = goods.goods_id
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }
     
