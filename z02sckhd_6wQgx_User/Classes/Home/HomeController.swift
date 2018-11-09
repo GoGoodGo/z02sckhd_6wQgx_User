@@ -34,7 +34,6 @@ public class HomeController: TMViewController {
         navigationController?.navigationBar.isTranslucent = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(login(notifi:)), name: NSNotification.Name(rawValue: "login"), object: nil)
-        load()
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
@@ -67,6 +66,7 @@ public class HomeController: TMViewController {
         view.addSubview(collectionView)
         
         navigationController?.navigationBar.addSubview(searchBtn)
+        load()
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
     }
     

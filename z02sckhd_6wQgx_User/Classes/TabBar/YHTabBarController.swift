@@ -46,7 +46,7 @@ public class YHTabBarController: UITabBarController {
             VC?.tabBarItem.title = self.titleList[index]
             VC?.tabBarItem.image = getImage(type(of: self), normalImgList[index])
             VC?.tabBarItem.selectedImage = getImage(type(of: self), selectedImgList[index])?.withRenderingMode(.alwaysOriginal)
-            let navigationCtrl = UINavigationController.init(rootViewController: VC!)
+            let navigationCtrl = YHNavigaitonController.init(rootViewController: VC!)
             navigationCtrl.title = self.titleList[index]
             
             addChild(navigationCtrl)
