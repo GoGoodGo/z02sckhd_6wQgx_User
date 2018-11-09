@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-class SecondaryTypesController: UIViewController {
+class SecondaryTypesController: TMViewController {
     
     @IBOutlet weak var typeLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var typeCollectionView: UICollectionView!

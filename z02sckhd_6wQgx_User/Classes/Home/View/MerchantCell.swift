@@ -30,7 +30,8 @@ class MerchantCell: UICollectionViewCell {
             imgView.kf.setImage(with: url)
             nameLabel.text = shop?.shopname
             rateLabel.text = ""
-            salesLabel.text = "销量\(shop?.sales ?? 0)件"
+//            salesLabel.text = "销量\(shop?.sales ?? 0)件"
+            salesLabel.text = ""
             totalLabel.text = "共\(shop?.total ?? 0)件宝贝"
         }
     }

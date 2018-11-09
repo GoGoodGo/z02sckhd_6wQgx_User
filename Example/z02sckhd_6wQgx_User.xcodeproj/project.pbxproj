@@ -454,7 +454,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SWIFT_VERSION = 4.2;
-				VALID_ARCHS = "arm64 x86_64";
+				VALID_ARCHS = "$(inherited)";
 			};
 			name = Debug;
 		};
@@ -481,7 +481,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = Distribution;
 				SWIFT_VERSION = 4.2;
-				VALID_ARCHS = "arm64 x86_64";
+				VALID_ARCHS = "$(inherited)";
 			};
 			name = Release;
 		};

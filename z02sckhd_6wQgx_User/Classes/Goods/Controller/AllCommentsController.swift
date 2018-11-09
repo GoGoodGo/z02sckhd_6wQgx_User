@@ -7,8 +7,9 @@
 
 import UIKit
 import YHTool
+import TMSDK
 
-class AllCommentsController: UIViewController {
+class AllCommentsController: TMViewController {
 
     @IBOutlet weak var tableView: UITableView!
     

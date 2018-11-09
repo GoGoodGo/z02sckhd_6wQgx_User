@@ -11,7 +11,7 @@ import MJRefresh
 import YHTool
 import SetI001
 
-public class HomeController: UIViewController {
+public class HomeController: TMViewController {
     
     var rowHeight: CGFloat = 0
     let gap: CGFloat = 15

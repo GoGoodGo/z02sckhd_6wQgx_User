@@ -9,8 +9,9 @@
 import UIKit
 import MJRefresh
 import YHTool
+import TMSDK
 
-public class GoodsController: UIViewController {
+public class GoodsController: TMViewController {
     
     let gap: CGFloat = 15
     
