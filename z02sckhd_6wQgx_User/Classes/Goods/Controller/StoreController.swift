@@ -177,7 +177,7 @@ class StoreController: TMViewController {
     }
     /** 设置分类及初始化数据 */
     func setupCategory() {
-        cateID = (shopData?.category.first?.id)!
+        cateID = "\((shopData?.category.first?.id)!)"
         collect.isSelected = ((shopData?.seller?.is_collect) != 0)
         let url = URL(string: (shopData?.seller?.logo)!)
         imgView.kf.setImage(with: url)
@@ -215,7 +215,7 @@ class StoreController: TMViewController {
     
     func callbacksSegmentView() {
         segmentView.clickItemBlock = { [weak self] index in
-            self?.cateID = (self?.shopData?.category[index].id)!
+            self?.cateID = "\((self?.shopData?.category[index].id)!)"
             self?.loadBest()
             self?.loadNews()
             let indexOne = IndexPath.init(row: 0, section: 1)
@@ -293,7 +293,7 @@ extension StoreController: UICollectionViewDelegate, UICollectionViewDataSource,
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-        goodsDetialCtrl.goodsID = indexPath.section == 0 ? recommends[indexPath.row].goods_id : goodsList[indexPath.row].goods_id
+        goodsDetialCtrl.goodsID = indexPath.section == 0 ? "\(recommends[indexPath.row].goods_id)" : "\(goodsList[indexPath.row].goods_id)"
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }
     

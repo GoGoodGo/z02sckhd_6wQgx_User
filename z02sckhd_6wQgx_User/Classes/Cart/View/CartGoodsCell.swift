@@ -61,7 +61,7 @@ class CartGoodsCell: UITableViewCell {
             name.text = goods?.goods_name
             parameter.text = goods?.specification
             price.text = "¥\(goods?.price ?? "0.0")"
-            number.text = goods?.quantity
+            number.text = "\(goods?.quantity ?? 0)"
             color.text = ""
         }
     }

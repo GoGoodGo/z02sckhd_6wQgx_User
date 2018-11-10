@@ -115,7 +115,7 @@ extension PaySuccessController: UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-        goodsDetialCtrl.goodsID = recommendGoods[indexPath.row].goods_id
+        goodsDetialCtrl.goodsID = "\(recommendGoods[indexPath.row].goods_id)"
         goodsDetialCtrl.detialType = .detial
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }

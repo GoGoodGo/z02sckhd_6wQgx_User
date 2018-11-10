@@ -48,7 +48,7 @@ class ConfirmOrderController: TMViewController {
         tableView.allowsMultipleSelection = true
         
         getConsignee()
-        totalPrice.text = "¥\((orderInfo?.data?.total?.goods_price ?? 0.00) + (orderInfo?.data?.total?.pay_fee ?? 0.00))"
+        totalPrice.text = "¥\((orderInfo?.data?.total?.goods_price ?? 0.00) + Float(orderInfo?.data?.total?.pay_fee ?? "0.00")!)"
         integralInfo.text = "可获得\(orderInfo?.data?.total?.give_integral ?? 0)积分, 可使用\(orderInfo?.data?.total?.integral ?? 0)积分"
         updateQuantity()
     }
@@ -64,7 +64,7 @@ class ConfirmOrderController: TMViewController {
     /** 获取默认收件人 */
     func getConsignee() {
         for address in (orderInfo?.data?.consignee_default)! {
-            if address.is_default == "1" {
+            if address.is_default {
                 consignee = address
                 return
             }
@@ -74,13 +74,13 @@ class ConfirmOrderController: TMViewController {
     
     @IBAction func action_submitOrder(_ sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: OrderDone_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType, "address_id" : (consignee?.address_id)!], success: { [weak self] (obj: OrderInfo) in
+        getRequest(baseUrl: OrderDone_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType, "address_id" : "\((consignee?.address_id)!)"], success: { [weak self] (obj: OrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())
                 onlinePay.mid = (obj.data?.order_id)!
                 onlinePay.orderSN = (obj.data?.order_sn)!
-                let amount = (self?.orderInfo?.data?.total?.goods_price ?? 0.00)! + (self?.orderInfo?.data?.total?.pay_fee ?? 0.00)!
+                let amount = (self?.orderInfo?.data?.total?.goods_price ?? 0.00)! + (Float((self?.orderInfo?.data?.total?.pay_fee ?? "0.00")!) ?? 0.00)!
                 onlinePay.amount = "\(amount)"
                 self?.navigationController?.pushViewController(onlinePay, animated: true)
             } else {
@@ -98,11 +98,11 @@ class ConfirmOrderController: TMViewController {
             var quantity = 0
             var price: Float = 0.0
             for goods in store.result {
-                quantity += Int(goods.quantity)!
-                price += Float(goods.quantity)! * Float(goods.price)!
+                quantity += goods.quantity
+                price += Float(goods.quantity) * Float(goods.price)!
             }
             store.totalQuantity = "\(quantity)"
-            store.amount = price + store.pay_fee
+            store.amount = price + (Float(store.pay_fee) ?? 0.00)
         }
     }
 }

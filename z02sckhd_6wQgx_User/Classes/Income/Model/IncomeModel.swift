@@ -123,7 +123,7 @@ class IncomeData: Mappable {
     var result = [Income]()
     var totalpage = 1
     var page = 1
-    var wait: CGFloat = 0.00
+    var wait: Float = 0.00
     var ok: Float = 0.00
     
     required init?(map: Map) {
@@ -143,12 +143,12 @@ class IncomeData: Mappable {
 
 class Income: Mappable {
     
-    var id = ""
+    var id = 0
     var order_id = ""
-    var type = "11"
-    var uid = ""
+    var type = 0
+    var uid = 0
     var price = "0.00"
-    var status = ""
+    var status = 0
     
     var bank = ""
     var content = ""
@@ -158,9 +158,9 @@ class Income: Mappable {
     var add_time = ""
     var sign = ""
     var edit_time = ""
-    var way = "1"
-    var is_show = ""
-    var form = ""
+    var way = 0
+    var is_show = false
+    var form = 0
     
     required init?(map: Map) {
         
@@ -220,12 +220,12 @@ class AccountData: Mappable {
 
 class Account: Mappable {
     
-    var id = ""
-    var user_id = ""
-    var type = "1"
+    var id = 0
+    var user_id = 0
+    var type = 0
     var number = ""
-    var is_default = "0"
-    var add_time = ""
+    var is_default = false
+    var add_time = 0
     
     required init?(map: Map) {
         

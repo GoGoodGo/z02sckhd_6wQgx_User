@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeController" customModule="z02sckhd_6wQgx_User" customModuleProvider="target">
             <connections>
                 <outlet property="code" destination="Lx7-F7-Cio" id="YUP-Id-n0U"/>
+                <outlet property="headTop" destination="5Yb-z5-taF" id="usd-oU-YvR"/>
                 <outlet property="img" destination="YaC-cz-t88" id="9ey-DP-Fcx"/>
                 <outlet property="name" destination="XF1-Sx-atJ" id="pld-DG-LKL"/>
                 <outlet property="qrErrorView" destination="8m4-t3-86p" id="YJt-bE-152"/>

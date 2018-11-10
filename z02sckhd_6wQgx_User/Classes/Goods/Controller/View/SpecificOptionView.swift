@@ -161,8 +161,8 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
             collectionView.deselectItem(at: itemIndex, animated: true)
         }
         selectedItems[indexPath.section] = indexPath
-        specID = (goodsDetial?._specs[indexPath.row].spec_id)!
-        stock.text = "库存\((goodsDetial?._specs[indexPath.row].stock ?? "0")!)件"
+        specID = "\((goodsDetial?._specs[indexPath.row].spec_id)!)"
+        stock.text = "库存\((goodsDetial?._specs[indexPath.row].stock ?? 0)!)件"
     }
     
     

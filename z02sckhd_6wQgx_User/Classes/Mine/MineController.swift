@@ -49,6 +49,7 @@ public class MineController: TMViewController {
     private func setupUI() {
         
         imgBtn.layer.borderColor = UIColor.white.cgColor
+        imgBtn.layer.masksToBounds = true
         
         tableView.tableFooterView = nil
         tableView.register(UINib.init(nibName: CellName(MineInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MineInfoCell.self))

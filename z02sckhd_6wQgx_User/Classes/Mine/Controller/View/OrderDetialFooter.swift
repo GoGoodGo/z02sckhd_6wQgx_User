@@ -25,10 +25,10 @@ class OrderDetialFooter: UIView {
 //            integral.text = "可获得\(result?.give_integral ?? "0")个积分, 可使用\(result?.integral ?? "0")个积分"
             integral.text = ""
             let freight = result?._orders.first?.pay_fee ?? "0.00"
-            let total = Float(result?.order_amount ?? "0.00")! + Float(freight)!
+//            let total = Float(result?.order_amount ?? "0.00")! + Float(freight)!
             payFree.text = "¥\(freight)"
             number.text = "共\(result?.total ?? "0")件商品"
-            price.text = "¥\(total)"
+            price.text = "¥\(result?.order_amount ?? "0.00")"
         }
     }
     

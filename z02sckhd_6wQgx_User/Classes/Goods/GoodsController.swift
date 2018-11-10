@@ -138,7 +138,7 @@ public class GoodsController: TMViewController {
         header.clickItemBlock = { [weak self] index in
             let category = self?.categorys[index]
             let typeCtrl = SecondaryTypesController.init(nibName: "SecondaryTypesController", bundle: getBundle())
-            typeCtrl.pID = (category?.id)!
+            typeCtrl.pID = "\((category?.id)!)"
             self?.navigationController?.pushViewController(typeCtrl, animated: true)
         }
     }
@@ -146,7 +146,8 @@ public class GoodsController: TMViewController {
     private func callbacksSegment(header: SegmentReusableView) {
         header.clickItem = { [weak self] index in
             if index == 0 {
-                self?.order = ""
+                self?.sort = ""
+                self?.order = "desc"
             } else {
                 self?.sort = "s.sales"
             }
@@ -242,7 +243,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
         
         let goods = indexPath.section == 0 ? recommends[indexPath.row] : goodsList[indexPath.row]
         let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-        goodsDetialCtrl.goodsID = goods.goods_id
+        goodsDetialCtrl.goodsID = "\(goods.goods_id)"
         navigationController?.pushViewController(goodsDetialCtrl, animated: true)
     }
     

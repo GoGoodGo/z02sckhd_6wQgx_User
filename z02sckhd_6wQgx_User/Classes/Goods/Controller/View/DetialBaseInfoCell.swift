@@ -28,8 +28,8 @@ class DetialBaseInfoCell: UITableViewCell {
             name.text = goodsDetial?.goods_name
             describe.text = ""
             price.text = "¥" + (goodsDetial?.price ?? "0")
-            stock.text = "库存\(goodsDetial?.goods_number ?? "1")件"
-            sold.text = "已售\(goodsDetial?.sales ?? "0")件"
+            stock.text = "库存\(goodsDetial?.goods_number ?? 1)件"
+            sold.text = "已售\(goodsDetial?.sales ?? 0)件"
         }
     }
     

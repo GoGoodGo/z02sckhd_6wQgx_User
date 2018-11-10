@@ -147,7 +147,7 @@ class AddressController: TMViewController {
         cell.addressSet = { [weak self] (tag, selectedCell) in
             let indexPath = self?.tableView.indexPath(for: selectedCell)
             let address = self?.addresses[(indexPath?.row)!]
-            self?.aid = (address?.address_id)!
+            self?.aid = "\((address?.address_id)!)"
             self?.index = (indexPath?.row)!
             switch tag {
             case 0:

@@ -34,6 +34,9 @@ public class HomeController: TMViewController {
         navigationController?.navigationBar.isTranslucent = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(login(notifi:)), name: NSNotification.Name(rawValue: "login"), object: nil)
+        
+//        http://review.360tianma.com
+//        http://shop.dktoo.com
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
@@ -161,7 +164,8 @@ public class HomeController: TMViewController {
     private func callbacksSegment(header: SegmentReusableView) {
         header.clickItem = { [weak self] index in
             if index == 0 {
-                self?.order = ""
+                self?.sort = ""
+                self?.order = "desc"
             } else {
                 self?.sort = "s.sales"
             }
@@ -173,7 +177,7 @@ public class HomeController: TMViewController {
         header.clickItemBlock = { [weak self] index in
             let category = self?.categorys[index]
             let typeCtrl = SecondaryTypesController.init(nibName: "SecondaryTypesController", bundle: getBundle())
-            typeCtrl.pID = (category?.id)!
+            typeCtrl.pID = "\((category?.id)!)"
             self?.navigationController?.pushViewController(typeCtrl, animated: true)
         }
     }
@@ -341,22 +345,22 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         var detialType: DetialType = .detial
         if section == 5 {
             let storeCtrl = StoreController.init(nibName: "StoreController", bundle: getBundle())
-            storeCtrl.ID = shops[indexPath.row].id
+            storeCtrl.ID = "\(shops[indexPath.row].id)"
             navigationController?.pushViewController(storeCtrl, animated: true)
             return
         } else if section == 0 {
-            ID = auctionGoods[indexPath.row].act_id
+            ID = "\(auctionGoods[indexPath.row].act_id)"
             detialType = .auction
         } else if section == 1 {
-            ID = groupGoods[indexPath.row].act_id
+            ID = "\(groupGoods[indexPath.row].act_id)"
             detialType = .groupBuy
         } else if section == 2 {
-            ID = timelimitGoods[indexPath.row].act_id
+            ID = "\(timelimitGoods[indexPath.row].act_id)"
             detialType = .timelimit
         } else if section == 3 {
-            ID = recommendGoods[indexPath.row].goods_id
+            ID = "\(recommendGoods[indexPath.row].goods_id)"
         } else if section == 4 {
-            ID = newGoods[indexPath.row].goods_id
+            ID = "\(newGoods[indexPath.row].goods_id)"
         }
         if detialType != .detial {
             if !inspectLogin() { return }

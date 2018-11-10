@@ -42,15 +42,15 @@ class Comment: Mappable {
     
     var images = [CommentImage]()
     var getImages = [UIImage]()
-    var Score = ""
-    var user_id = ""
+    var Score = 0
+    var user_id = 0
     var head_pic = "" // 暂不显示
-    var goods_id = ""
+    var goods_id = 0
     var comment = ""
     var member_name = ""
     var add_time = ""
     var reply_time = ""
-    var reply_status = ""
+    var reply_status = 0
     var reply_comment = ""
     
     required init?(map: Map) {
@@ -118,7 +118,7 @@ class ShopData: Mappable {
 
 class Seller: Mappable {
     
-    var id = ""
+    var id = 0
     var shopname = ""
     var banner = ""
     var logo = ""
@@ -314,29 +314,29 @@ class AuctionLog: Mappable {
 
 class SalesStore: Mappable {
     
-    var act_id = ""
-    var act_type = ""
-    var goods_id = ""
+    var act_id = 0
+    var act_type = 0
+    var goods_id = 0
     var goods_name = ""
     var start_time = ""
     var end_time = ""
-    var is_finished = ""
+    var is_finished = 0
     
     var is_end = false // 是否结束
     
     var new_price = "" // 当前价格
     var ext_info = ""
-    var total = ""
-    var number = "10000"
-    var price = ""
-    var spec_id = ""
+    var total = 0
+    var number = 10000
+    var price = "0.00"
+    var spec_id = 0
     var spec_name = ""
-    var num = "1000"
-    var pid = ""
-    var markups = ""
-    var maxprice = ""
-    var sid = ""
-    var type = ""
+    var num = 1000
+    var pid = 0
+    var markups = "0.00"
+    var maxprice = "0.00"
+    var sid = 0
+    var type = 0
     
     required init?(map: Map) {
         
@@ -382,51 +382,51 @@ class DetialInfo: BaseModel {
 
 class GoodsDetial: Mappable {
     
-    var give_integral = "" // 获取积分 -1 不送
-    var default_spec = "" // 规格
+    var give_integral = 0 // 获取积分 -1 不送
+    var default_spec = 0 // 规格
     var seo_keys = ""
     var description = ""
     var click_count = 0
-    var sales = "0" // 销量
-    var sid = "" // 商户 id
+    var sales = 0 // 销量
+    var sid = 0 // 商户 id
     var is_shipping = false
     var is_best = false
     var is_promote = false
     var is_hot = false
     var is_del = false
     var is_new = false
-    var is_collect = "0"
-    var price = "0"
-    var integral = "0"
-    var last_update = ""
+    var is_collect = 0
+    var price = "0.00"
+    var integral = 0
+    var last_update = 0
     var from = "0"
     var brand = ""
-    var collects = "0"
+    var collects = 0
     var views = 0
-    var goods_weight: CGFloat = 0
-    var cost_price = ""
-    var promote_start_date = ""
+    var goods_weight = "0.00"
+    var cost_price = "0.00"
+    var promote_start_date = 0
     var rank_integral = ""
     var goods_name = ""
     var spec_name_1 = "颜色"
     var spec_name_2 = "尺码"
     var promote_end_date = ""
     var seo_desc = ""
-    var comments = ""
+    var comments = 0
     var spec_qty = 0
-    var goods_id = ""
+    var goods_id = 0
     var goods_sn = ""
-    var promote_price = "0.0"
+    var promote_price = "0.00"
     var cate_id = 0 // 商品分类
     var sort = 0
     var carts = 0
-    var goods_number = "1"
-    var market_price: CGFloat = 0
+    var goods_number = 0
+    var market_price = "0.00"
     var default_image = "" // 默认封面
     var orders = 0
     var goods_type = 0
     var is_check = false
-    var add_time = ""
+    var add_time = 0
     var status = false //是否下架
     var cate_name = ""
     var phone = ""
@@ -503,12 +503,12 @@ class GoodsDetial: Mappable {
 
 class GoodsImage: Mappable {
     
-    var id = ""
-    var gid = ""
-    var fid = ""
+    var id = 0
+    var gid = 0
+    var fid = 0
     var url = ""
     var thumb = ""
-    var sort = ""
+    var sort = 0
     
     required init?(map: Map) {
         
@@ -527,13 +527,13 @@ class GoodsImage: Mappable {
 
 class GoodsSpec: Mappable {
     
-    var spec_id = ""
-    var goods_id = ""
+    var spec_id = 0
+    var goods_id = 0
     var spec_1 = ""
     var spec_2 = ""
     var color_rgb = ""
-    var price = ""
-    var stock = ""
+    var price = "0.00"
+    var stock = 0
     var sku = ""
     
     required init?(map: Map) {
@@ -555,7 +555,7 @@ class GoodsSpec: Mappable {
 
 class GoodsAttr: Mappable {
     
-    var aid = ""
+    var aid = 0
     var value = ""
     var attr_name = ""
     
@@ -581,43 +581,43 @@ class Goods: Mappable {
     var description = ""
     var click_count = 0
     var is_best = false
-    var sales = "0" // 销量
-    var pay_number = "0" // 付款人数
+    var sales = 0 // 销量
+    var pay_number = 0 // 付款人数
     var sid = 0 // 商户 id
     var is_promote = false
     var is_hot = false
-    var price = "0"
     var integral = 0
-    var last_update = ""
+    var last_update = 0
     var from = "0"
     var brand = ""
     var collects = 0
     var views = 0
-    var goods_weight: CGFloat = 0
-    var cost_price: CGFloat = 0
-    var promote_start_date = ""
+    var goods_weight = "0.00"
+    var price = "0.00"
+    var cost_price = "0.00"
+    var market_price = "0.00"
+    var promote_price = "0.00"
+    var promote_start_date = 0
+    var promote_end_date = 0
     var rank_integral = -1
     var goods_name = ""
     var spec_name_1 = "颜色"
     var spec_name_2 = "尺码"
-    var promote_end_date = ""
     var seo_desc = ""
-    var comments = ""
+    var comments = 0
     var is_new = false
     var spec_qty = 0
-    var goods_id = ""
+    var goods_id = 0
     var goods_sn = ""
-    var promote_price: CGFloat = 0
     var cate_id = 0 // 商品分类
     var sort = 0
     var carts = 0
     var goods_number = 1
-    var market_price: CGFloat = 0
     var default_image = "" // 默认封面
     var orders = 0
     var goods_type = 0
     var is_check = false
-    var add_time = ""
+    var add_time = 0
     var status = false //是否下架
     
     required init?(map: Map) {

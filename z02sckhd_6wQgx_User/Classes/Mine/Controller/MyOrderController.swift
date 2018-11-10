@@ -91,7 +91,7 @@ class MyOrderController: TMViewController {
     func loadPay(section: Int) {
         
         let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())
-        onlinePay.mid = (orderInfo?.result[section].mid)!
+        onlinePay.mid = "\((orderInfo?.result[section].mid)!)"
         onlinePay.orderSN = (orderInfo?.result[section].order_sn)!
         onlinePay.amount = (orderInfo?.result[section].order_amount)!
         navigationController?.pushViewController(onlinePay, animated: true)
@@ -99,7 +99,7 @@ class MyOrderController: TMViewController {
     /** 确认收货 */
     func loadReceive(section: Int) {
         showHUD()
-        getRequest(baseUrl: OrderReceive_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "order_id" : (orderInfo?.result[section]._orders.first?.order_id)!], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderReceive_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "order_id" : "\((orderInfo?.result[section]._orders.first?.order_id)!)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.orderInfo?.result.remove(at: section)
@@ -115,7 +115,7 @@ class MyOrderController: TMViewController {
     /** 取消订单 */
     func loadCancel(section: Int) {
         showHUD()
-        getRequest(baseUrl: OrderCancel_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : (orderInfo?.result[section].mid)!], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderCancel_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : "\((orderInfo?.result[section].mid)!)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.orderInfo?.result.remove(at: section)

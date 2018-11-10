@@ -51,7 +51,8 @@ class AddressCell: UITableViewCell {
             name.text = addressModel?.consignee
             phone.text = addressModel?.tel
             address.text = addressModel?.address
-            updateDefaultAnimail(isDefault: (addressModel?.is_default)! == "1" ? true : false)
+//            updateDefaultAnimail(isDefault: (addressModel?.is_default)! == "1" ? true : false)
+            updateDefaultAnimail(isDefault: addressModel?.is_default ?? false)
         }
     }
     

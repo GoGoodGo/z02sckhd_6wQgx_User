@@ -26,10 +26,10 @@ class OrderDetialInfoCell: UITableViewCell {
             switch index {
             case 0:
                 title.text = "创建时间"
-                message.text = result?.add_time
+                message.text = convertTime(time: Double(result?.add_time ?? 0))
             case 1:
                 title.text = "支付时间"
-                message.text = result?.pay_time
+                message.text = convertTime(time: Double(result?.add_time ?? 0))
             case 2:
                 title.text = "交易流水号"
                 message.text = result?.order_sn
@@ -47,6 +47,10 @@ class OrderDetialInfoCell: UITableViewCell {
                 message.text = result?._orders.first?.evaluation_time == "0" ? "" : result?._orders.first?.evaluation_time
             }
         }
+    }
+    
+    func convertTime(time: Double) -> String {
+        return time == 0 ? "" : Date.dateWithSeconds(totalSeconds: time)
     }
     
     func convertTime(time: String?) -> String {

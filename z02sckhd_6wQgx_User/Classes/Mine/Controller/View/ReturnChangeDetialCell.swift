@@ -33,7 +33,7 @@ class ReturnChangeDetialCell: UITableViewCell {
             name.text = orderGoods?.goods_name
             parameter.text = orderGoods?.goods_attr
             price.text = "¥\(orderGoods?.goods_price ?? "0.0")"
-            number.text = "X\(orderGoods?.goods_numbers ?? "1")"
+            number.text = "X\(orderGoods?.goods_numbers ?? 1)"
             type.text = (orderGoods?.returninfo?.type == "1" ? "退货" : "换货")
             reason.text = orderGoods?.returninfo?.reson
             isAgree.text = (orderGoods?.returninfo?.status == "1" ? "同意" : "拒绝")

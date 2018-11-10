@@ -23,8 +23,8 @@ class GoodsCreditCell: UITableViewCell {
     // MARK: - Setter
     var goodsDetial: GoodsDetial? {
         didSet {
-            available.text = goodsDetial?.give_integral == "-1" ? "0" : goodsDetial?.give_integral
-            useable.text = goodsDetial?.integral == "-1" ? "0" : goodsDetial?.integral
+            available.text = goodsDetial?.give_integral == -1 ? "0" : "\(goodsDetial?.give_integral)"
+            useable.text = goodsDetial?.integral == -1 ? "0" : "\(goodsDetial?.give_integral)"
         }
     }
     

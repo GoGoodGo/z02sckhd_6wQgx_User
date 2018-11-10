@@ -52,7 +52,7 @@ class WithdrawAccountCell: UITableViewCell {
         didSet {
             name.text = account?.number
 //            setDefaultAnimail(isDefault: account?.is_default == "1" ? true : false)
-            img.image = getImage(type(of: self), accountTypes[Int((account?.type)!)! - 1])
+            img.image = getImage(type(of: self), accountTypes[(account?.type)! - 1])
         }
     }
     

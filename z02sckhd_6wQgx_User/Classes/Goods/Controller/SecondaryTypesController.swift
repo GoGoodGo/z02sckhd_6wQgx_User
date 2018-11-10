@@ -143,7 +143,7 @@ class SecondaryTypesController: TMViewController {
     @objc func load() {
         
         showHUD()
-        params = ["cate_id" : currentCategory?.id ?? "0", "sort" : sort, "order" : order, "p" : "1"]
+        params = ["cate_id" : "\(currentCategory?.id ?? 0)", "sort" : sort, "order" : order, "p" : "1"]
         getRequest(baseUrl: GoodsList_URL, params: params, success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             if "success" == obj.status {
@@ -161,7 +161,7 @@ class SecondaryTypesController: TMViewController {
     }
     /** 获取更多 */
     @objc func loadMore() {
-        params = ["cate_id" : currentCategory?.id ?? "0", "sid" : (currentCategory?.sid)!, "sort" : sort, "order" : order, "p" : "\(page)"]
+        params = ["cate_id" : "\(currentCategory?.id ?? 0)", "sid" : "\(currentCategory?.sid ?? 0)", "sort" : sort, "order" : order, "p" : "\(page)"]
         getRequest(baseUrl: GoodsList_URL, params: params, success: { [weak self] (obj: DataInfo) in
             if "success" == obj.status {
                 self?.page += 1
@@ -221,7 +221,7 @@ extension SecondaryTypesController: UICollectionViewDelegate, UICollectionViewDa
             load()
         } else {
             let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-            goodsDetialCtrl.goodsID = goodsList[indexPath.row].goods_id
+            goodsDetialCtrl.goodsID = "\(goodsList[indexPath.row].goods_id)"
             goodsDetialCtrl.detialType = .detial
             navigationController?.pushViewController(goodsDetialCtrl, animated: true)
         }

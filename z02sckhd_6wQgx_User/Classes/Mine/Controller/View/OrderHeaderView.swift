@@ -32,7 +32,7 @@ class OrderHeaderView: UIView {
     var result: MyOrderResult? {
         didSet {
             orderID.text = "订单编号: \(result?.order_sn ?? "00000001")"
-            let seconds: TimeInterval = Double((result?.add_time)!)!
+            let seconds: TimeInterval = Double((result?.add_time)!)
             date.text = "创建时间: \(Date.dateWithSeconds(totalSeconds: seconds, formatter: "yyyy-MM-dd"))"
         }
     }

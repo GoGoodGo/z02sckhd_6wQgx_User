@@ -42,7 +42,7 @@ class WithdrawRecordCell: UITableViewCell {
             name.text = withdraw?.content
             money.text = "¥\(withdraw?.price ?? "0.00")"
             date.text = withdraw?.add_time
-            withdrawWay(way: (withdraw?.way)!)
+            withdrawWay(way: "\((withdraw?.way)!)")
         }
     }
     

@@ -60,9 +60,10 @@ class GoodsEvaluateCell: UITableViewCell {
         }
     }
     
-    func getHeight() {
-        let size = comment?.reply_comment.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - 40, height: 120))
-        replyH.constant = (size?.height ?? 0)
+    func getReplyHeight() {
+        reply.isHidden = comment?.reply_status == 0
+        let size = comment?.reply_comment.textSize(font: UIFont.systemFont(ofSize: 14), maxSize: CGSize.init(width: WIDTH - 40, height: 120))
+        replyH.constant = comment?.reply_status == 0 ? 0 : (size?.height ?? 0.0)
     }
     
     var comment: Comment? {
@@ -70,9 +71,8 @@ class GoodsEvaluateCell: UITableViewCell {
             name.text = comment?.member_name
             date.text = comment?.add_time
             evaluate.text = comment?.comment
-            reply.isHidden = comment?.reply_status == "0"
+            getReplyHeight()
             reply.setTitle("掌柜回复：" + (comment?.reply_comment ?? ""), for: .normal)
-            getHeight()
             collectionView.reloadData()
         }
     }

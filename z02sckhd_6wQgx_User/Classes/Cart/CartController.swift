@@ -85,11 +85,11 @@ public class CartController: TMViewController {
     func loadQuantity(num: Int, label: UILabel, indexPath: IndexPath) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartQuantity_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : goods.spec_id, "quantity" : "\(num)"], success: { [weak self] (obj: CartInfo) in
+        getRequest(baseUrl: CartQuantity_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : "\(goods.spec_id)", "quantity" : "\(num)"], success: { [weak self] (obj: CartInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 label.text = "\(num)"
-                goods.quantity = "\(num)"
+                goods.quantity = num
                 if let amount = obj.data?.amount {
                     self?.amount.text = String(format: "%.2f", amount)
                 }
@@ -105,7 +105,7 @@ public class CartController: TMViewController {
     func loadCheck(indexPath: IndexPath, isSelected: Bool) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartCheck_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "rec_id" :  goods.rec_id, "status" : isSelected ? "1" : "0"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartCheck_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "rec_id" : "\(goods.rec_id)", "status" : isSelected ? "1" : "0"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.checkSuccess(isSelected: isSelected, indexPath: indexPath)
@@ -126,7 +126,7 @@ public class CartController: TMViewController {
     func loadAllCheck(section: Int, sender: UIButton) {
         showHUD()
         let store = stores[section]
-        getRequest(baseUrl: CartAllCheck_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "status" : sender.isSelected ? "1" : "0", "sid" : store.sid], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartAllCheck_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "status" : sender.isSelected ? "1" : "0", "sid" : "\(store.sid)"], success: { [weak self] (obj: BaseModel) in
             self?.hideAllHUD()
             if "success" == obj.status {
                 self?.updateState(section: section, isSelected: sender.isSelected)
@@ -144,7 +144,7 @@ public class CartController: TMViewController {
     func loadDelete(indexPath: IndexPath) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartDelete_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "rec_id" : goods.rec_id], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartDelete_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "rec_id" : "\(goods.rec_id)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.stores[indexPath.section].result.remove(at: indexPath.row)
@@ -183,7 +183,7 @@ public class CartController: TMViewController {
         for (section, store) in stores.enumerated() {
             for (row, goods) in store.result.enumerated() {
                 let indexPath = IndexPath.init(row: row, section: section)
-                if goods.is_shipping == "1" {
+                if goods.is_shipping != 0 {
                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
                     checkSuccess(isSelected: true, indexPath: indexPath)
                 }
@@ -221,22 +221,22 @@ public class CartController: TMViewController {
         let store = stores[indexPath.section]
         
         let quantity = goods.quantity
-        var give = Int(goods.give_integral)!
-        var usable = Int(goods.integral)!
+        var give = goods.give_integral
+        var usable = goods.integral
         if give < 0 { give = 0 }
         if usable < 0 { usable = 0 }
         
         if isSelected {
-            store.amount += Float(goods.price)! * Float(quantity)!
-            store.give += Int(goods.quantity)! * give
-            store.usable += Int(quantity)! * usable
+            store.amount += Float(goods.price)! * Float(quantity)
+            store.give += quantity * give
+            store.usable += quantity * usable
         } else {
-            store.amount -= Float(goods.price)! * Float(quantity)!
-            store.give -= Int(quantity)! * give
-            store.usable -= Int(quantity)! * usable
+            store.amount -= Float(goods.price)! * Float(quantity)
+            store.give -= quantity * give
+            store.usable -= quantity * usable
         }
         sectionFooters[indexPath.section]?.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
-        currentAmount = 0
+        currentAmount = 0.00
         for s in stores {
             currentAmount += s.amount
         }
@@ -368,7 +368,8 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
         
         let store = stores[section]
         let footer = CartSectionFooter.sectionFooter() as! CartSectionFooter
-        footer.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
+//        footer.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
+        footer.title.text = ""
         sectionFooters[section] = footer
         
         return footer

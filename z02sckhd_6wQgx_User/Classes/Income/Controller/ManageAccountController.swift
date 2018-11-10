@@ -203,14 +203,14 @@ class ManageAccountController: TMViewController {
             let indexPath = self?.tableView.indexPath(for: cell)
             self?.tag = tag
             let account = self?.accountData?.result[(indexPath?.row)!]
-            self?.currentID = (account?.id)!
+            self?.currentID = "\((account?.id)!)"
             
             switch tag {
             case 0: // 设置默认
                 self?.setDefaultAccount(indexPath: indexPath)
             case 1:
-                self?.accountType = (account?.type)!
-                self?.option.setTitle(self?.types[Int((account?.type)!)! - 1], for: .normal)
+                self?.accountType = "\((account?.type)!)"
+                self?.option.setTitle(self?.types[(account?.type)! - 1], for: .normal)
                 self?.textField.text = account?.number
                 self?.tableView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
             case 2:
@@ -250,7 +250,7 @@ extension ManageAccountController: UITableViewDelegate, UITableViewDataSource {
         callbacks(cell: cell)
         let account = accountData?.result[indexPath.row]
         cell.account = account
-        if account?.is_default == "1" {
+        if account?.is_default ?? false {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
         

@@ -78,12 +78,12 @@ class AddressInfo: BaseModel {
 
 class Address: Mappable {
     
-    var address_id = ""
+    var address_id = 0
     var address_name = ""
-    var user_id = ""
+    var user_id = 0
     var consignee = ""
     var email = ""
-    var region_id = ""
+    var region_id = 0
     var address = ""
     var zipcode = ""
     var tel = ""
@@ -91,7 +91,7 @@ class Address: Mappable {
     var sign_building = ""
     var point_lng = ""
     var point_lat = ""
-    var is_default = "0"
+    var is_default = false
     var best_time = ""
     
     required init?(map: Map) {

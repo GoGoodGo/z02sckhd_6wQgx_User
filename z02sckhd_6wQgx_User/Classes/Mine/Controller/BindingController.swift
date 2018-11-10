@@ -12,12 +12,14 @@ import YHTool
 class BindingController: UIViewController {
     
     @IBOutlet weak var binding: UITextField!
+    @IBOutlet weak var bindingTop: NSLayoutConstraint!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "分销绑定"
+        bindingTop.constant = HeightPercent(180)
         binding.layer.borderColor = HexString("#e2e2e2").cgColor
     }
     

@@ -62,7 +62,7 @@ class OrderGoodsCell: UITableViewCell {
             name.text = goods?.goods_name
             parameter.text = goods?.specification
             price.text = "¥\(goods?.price ?? "0.0")"
-            number.text = "X\(goods?.quantity ?? "1")"
+            number.text = "X\(goods?.quantity ?? 1)"
             color.text = ""
         }
     }
@@ -74,11 +74,11 @@ class OrderGoodsCell: UITableViewCell {
             name.text = orderGoods?.goods_name
             parameter.text = orderGoods?.goods_attr
             price.text = "¥\(orderGoods?.goods_price ?? "0.0")"
-            number.text = "X\(orderGoods?.goods_numbers ?? "1")"
+            number.text = "X\(orderGoods?.goods_numbers ?? 1)"
             if cellType == 3 {
-                returnGoods.isEnabled = orderGoods?.evaluation_status != "1"
+                returnGoods.isEnabled = orderGoods?.evaluation_status != 1
             } else if cellType == 4 {
-                returnGoods.isEnabled = orderGoods?.goods_status != "1"
+                returnGoods.isEnabled = orderGoods?.goods_status != 1
             }
             color.text = ""
         }

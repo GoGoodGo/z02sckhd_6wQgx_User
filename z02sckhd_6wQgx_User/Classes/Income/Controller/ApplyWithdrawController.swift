@@ -76,7 +76,7 @@ class ApplyWithdrawController: TMViewController {
         var names = [String]()
         let defaultAccout = accounts.first
         account.setTitle(defaultAccout?.number, for: .normal)
-        accountID = defaultAccout?.id ?? ""
+        accountID = "\(defaultAccout?.id ?? 0)"
         for account in accounts {
             names.append(account.number)
         }
@@ -106,7 +106,7 @@ class ApplyWithdrawController: TMViewController {
         pullDownView.selectedRowBlock = { [weak self] (title, index) in
             self?.account.setTitle(title, for: .normal)
             let account = self?.accounts[index]
-            self?.accountID = (account?.id)!
+            self?.accountID = "\((account?.id)!)"
         }
     }
     

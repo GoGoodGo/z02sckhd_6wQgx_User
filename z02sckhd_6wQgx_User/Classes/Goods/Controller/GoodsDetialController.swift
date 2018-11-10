@@ -141,7 +141,7 @@ class GoodsDetialController: TMViewController {
                 self?.goodsDetial = obj.data
                 self?.specs = (obj.data?._specs)!
                 self?.attrs = (obj.data?.attr)!
-                self?.collectBtn.isSelected = (obj.data?.collects == "1") ? true : false
+                self?.collectBtn.isSelected = (obj.data?.collects == 1) ? true : false
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?._images)!)
             } else {
@@ -219,7 +219,7 @@ class GoodsDetialController: TMViewController {
     }
     /** 获取评论 */
     func loadComment() {
-        getRequest(baseUrl: GoodsComment_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : (goodsDetial?.goods_id)!, "page" : "1"], success: { [weak self] (obj: CommentInfo) in
+        getRequest(baseUrl: GoodsComment_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : "\(goodsDetial?.goods_id ?? 0)", "page" : "1"], success: { [weak self] (obj: CommentInfo) in
             if "success" == obj.status {
                 self?.comments = (obj.data?.result)!
                 self?.tableView.reloadData()
@@ -278,7 +278,7 @@ class GoodsDetialController: TMViewController {
     func showOptionView(isBuy: Bool) {
         specificOption.buyBtn.setTitle(isBuy ? "立即购买" : "立即添加", for: .normal)
         if detialType != .detial {
-            specificOption.limitNum = (salesDetial?.store?.number)!
+            specificOption.limitNum = "\((salesDetial?.store?.number)!)"
         }
         specificOption.goodsDetial = goodsDetial
         specificOption.isShowOption(isShow: true, specificGap: specificH)
@@ -325,7 +325,7 @@ class GoodsDetialController: TMViewController {
     
     @IBAction func action_store() {
         let storeCtrl = StoreController.init(nibName: "StoreController", bundle: getBundle())
-        storeCtrl.ID = (goodsDetial?.sid)!
+        storeCtrl.ID = "\((goodsDetial?.sid)!)"
         navigationController?.pushViewController(storeCtrl, animated: true)
     }
     

@@ -77,15 +77,15 @@ class HomeData: Mappable {
 
 class HomeBanner: Mappable {
     
-    var id = ""
+    var id = 0
     var name = ""
     var type = ""
-    var position = ""
+    var position = 0
     var url = ""
     var content = ""
-    var start_time = ""
-    var close_time = ""
-    var status = ""
+    var start_time = 0
+    var close_time = 0
+    var status = 0
     var litpic = ""
     
     required init?(map: Map) {
@@ -108,8 +108,8 @@ class HomeBanner: Mappable {
 
 class Category: Mappable {
     
-    var id = ""
-    var pid = ""
+    var id = 0
+    var pid = 0
     var image = ""
     var name = ""
     
@@ -127,7 +127,7 @@ class Category: Mappable {
 
 class HomeShop: Mappable {
     
-    var id = ""
+    var id = 0
     var shopname = ""
     var banner = ""
     var logo = ""
@@ -177,27 +177,27 @@ class SalesData: Mappable {
 
 class SalesResult: Mappable {
     
-    var act_id = ""
-    var act_type = ""
-    var goods_id = ""
+    var act_id = 0
+    var act_type = 0
+    var goods_id = 0
     var goods_name = ""
     var start_time = ""
     var end_time = ""
-    var is_finished = ""
+    var is_finished = 0
     var ext_info = ""
-    var total = ""
-    var number = ""
-    var num = ""
+    var total = 0
+    var number = 0
+    var num = 0
     var price = ""
     var new_price = ""
-    var spec_id = ""
+    var spec_id = 0
     
     var spec_name = ""
-    var pid = ""
+    var pid = 0
     var markups = ""
     var maxprice = ""
-    var sid = ""
-    var type = ""
+    var sid = 0
+    var type = 0
     var default_image = ""
     var goods: SalesGoods?
     var surplus = 0
@@ -407,13 +407,13 @@ class SalesImage: Mappable {
 
 class SalesStatistics: Mappable {
     
-    var goods_id = ""
-    var views = ""
-    var collects = ""
-    var carts = ""
-    var orders = ""
-    var sales = ""
-    var comments = ""
+    var goods_id = 0
+    var views = 0
+    var collects = 0
+    var carts = 0
+    var orders = 0
+    var sales = 0
+    var comments = 0
     
     required init?(map: Map) {
         
@@ -450,12 +450,12 @@ class CategoryInfo: Mappable {
     var filter_attr = ""
     var grade = 0
     var name = ""
-    var pid = ""
-    var id = ""
+    var pid = 0
+    var id = 0
     var sort = ""
     var desc = ""
     var status = false
-    var sid = ""
+    var sid = 0
     
     required init?(map: Map) {
         

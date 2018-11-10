@@ -73,15 +73,15 @@ class CartStoreList: Mappable {
 class CartTotal: Mappable {
     
     var give_integral = 0
-    var my_integral = "0"
-    var my_money = "0"
+    var my_integral = 0
+    var my_money = 0
     var surplus = 0
-    var pay_fee: Float = 0.00
+    var pay_fee = "0.00"
     var goods_price: Float = 0.00
     var is_integral_pay = 0
     var integral = 0
     var market_price = 0
-    var goods_price_formated = ""
+    var goods_price_formated = "0.00"
     var integral_money = 0
     
     required init?(map: Map) {
@@ -106,7 +106,7 @@ class CartTotal: Mappable {
 
 class Cart: Mappable {
     
-    var amount: Float = 0.00
+    var amount = "0.00"
     var quantity = 1
     var pay_fee = 0
     var goods = [CartStore]()
@@ -127,13 +127,13 @@ class Cart: Mappable {
 class CartStore: Mappable {
     
     var shopname = ""
-    var sid = ""
-    var pay_fee: Float = 0.0
+    var sid = 0
+    var pay_fee = "0.00"
     var result = [CartGoods]()
     var totalQuantity = "0"
     var notes = ""
     var isSelected = false
-    var amount: Float = 0.0
+    var amount: Float = 0
     var usable = 0 // 可使用
     var give = 0 // 可获得
     
@@ -153,22 +153,22 @@ class CartStore: Mappable {
 class CartGoods: Mappable {
     
     var goods_name = ""
-    var give_integral = ""
-    var quantity = "1"
-    var is_shipping = "0"
+    var give_integral = -1
+    var quantity = 0
+    var is_shipping = 0
     var session_id = ""
-    var goods_id = ""
+    var goods_id = 0
     var specification = ""
-    var rec_id = ""
-    var sid = ""
-    var income = ""
+    var rec_id = 0
+    var sid = 0
+    var income = "0.00"
     var goods_image = ""
-    var rec_type = ""
-    var user_id = ""
-    var spec_id = ""
+    var rec_type = 0
+    var user_id = 0
+    var spec_id = 0
     var price = "0.00"
-    var integral = ""
-    var market_price = 0
+    var integral = 0
+    var market_price = "0.00"
     
     required init?(map: Map) {
         

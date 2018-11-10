@@ -16,6 +16,7 @@ class QRCodeController: TMViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var qrErrorView: UIView!
     @IBOutlet weak var code: UILabel!
+    @IBOutlet weak var headTop: NSLayoutConstraint!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,6 +33,7 @@ class QRCodeController: TMViewController {
     // MARK: - Private Method
     private func setupUI() {
         
+        headTop.constant = HeightPercent(150)
         img.layer.borderColor = UIColor.white.cgColor
         
         let user = TMHttpUserInstance.sharedManager()

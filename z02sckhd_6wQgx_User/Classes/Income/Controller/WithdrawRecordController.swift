@@ -122,7 +122,7 @@ class WithdrawRecordController: TMViewController {
     
     func callbacks(cell: WithdrawRecordCell) {
         cell.cancelBlock = { [weak self] (cell, withdraw) in
-            self?.loadCancel(ID: withdraw.id)
+            self?.loadCancel(ID: "\(withdraw.id)")
         }
     }
     

@@ -89,7 +89,7 @@ class CollectController: TMViewController {
     func loadCancel(indexPath: IndexPath) {
         let collect = collectInfo?.data?.result[indexPath.row]
         showHUD()
-        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : (collect?.rec_id)!], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : "\((collect?.rec_id)!)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.collectInfo?.data?.result.remove(at: indexPath.row)
@@ -119,7 +119,7 @@ class CollectController: TMViewController {
     func siftData() {
         let result = collectInfo?.data?.result
         for collect in result! {
-            if collect.type == "1" {
+            if collect.type == 1 {
                 goods.append(collect)
             } else {
                 stores.append(collect)

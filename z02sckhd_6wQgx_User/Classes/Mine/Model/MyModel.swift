@@ -132,17 +132,17 @@ class CollectData: Mappable {
 
 class Collect: Mappable {
     
-    var rec_id = ""
-    var type = "1"
-    var user_id = ""
-    var goods_id = ""
-    var add_time = ""
-    var is_attention = "0"
+    var rec_id = 0
+    var type = 0
+    var user_id = 0
+    var goods_id = 0
+    var add_time = 0
+    var is_attention = false
     var default_image = ""
     var goods_name = ""
     var shopname = ""
     var banner = ""
-    var price = "0"
+    var price = "0.00"
     var spec = ""
     
     required init?(map: Map) {
@@ -197,23 +197,23 @@ class MyOrderData: Mappable {
 
 class MyOrderResult: Mappable {
     
-    var mid = ""
-    var extension_id = ""
-    var give_integral = ""
+    var mid = 0
+    var give_integral = 0
+    var integral = 0
     var consignee = ""
     var address = ""
     var address_name = ""
     var _orders = [MyOrder]()
-    var pay_time = "0"
+    var pay_time = 0
     var pay_way = ""
+    var extension_id = 0
     var extension_code = ""
-    var user_id = ""
-    var integral = ""
+    var user_id = 0
     var order_amount = ""
     var pay_fee = ""
     var tel = ""
-    var is_pay = ""
-    var add_time = "0"
+    var is_pay = false
+    var add_time = 0
     var order_sn = ""
     
     var total = "-1"
@@ -249,13 +249,13 @@ class MyOrderResult: Mappable {
 
 class MyOrder: Mappable {
     
-    var shipping_id = ""
-    var order_id = ""
+    var shipping_id = 0
+    var order_id = 0
     var referer = ""
     var pay_note = ""
-    var bonus = ""
+    var bonus = "0.00"
     var reson = ""
-    var pid = ""
+    var pid = 0
     var order_status = ""
     var best_time = "0"
     var money_paid = ""
@@ -263,10 +263,10 @@ class MyOrder: Mappable {
     var pack_name = "STO"
     var shipping_name = "申通"
     var invoice_no = "10000000"
-    var order_amount = ""
+    var order_amount = "0.00"
     var tel = ""
     var consignee = ""
-    var integral_money = ""
+    var integral_money = "0.00"
     var _goods = [MyOrderGoods]()
     
     var parent_id = ""
@@ -339,44 +339,44 @@ class MyOrder: Mappable {
 
 class MyOrderGoods: Mappable {
     
-    var income = ""
-    var goods_price = ""
-    var evaluation_status = ""
-    var is_real = ""
-    var goods_numbers = ""
+    var income = "0.00"
+    var goods_price = "0.00"
+    var evaluation_status = 0
+    var is_real = false
+    var goods_numbers = 0
     var goods_attr = ""
-    var type = ""
-    var rid = ""
-    var userid = ""
-    var point = ""
-    var sid = ""
+    var type = 0
+    var rid = 0
+    var userid = 0
+    var point = "0.00"
+    var sid = 0
     var number = ""
     var extension_code = ""
-    var total = ""
-    var product_id = ""
-    var goods_status = ""
+    var total = "0.00"
+    var product_id = 0
+    var goods_status = 0
     
     var goods_name = ""
     var images = ""
-    var evaluation_time = ""
-    var goods_id = ""
+    var evaluation_time = 0
+    var goods_id = 0
     var goods_sn = ""
-    var rec_id = ""
+    var rec_id = 0
     var goods_attr_id = ""
-    var is_show = ""
-    var Score = ""
+    var is_show = false
+    var Score = 0
     var goods_image = ""
-    var is_gift = ""
+    var is_gift = false
     var parent_id = ""
-    var market_price = ""
+    var market_price = "0.00"
     var comment = ""
-    var order_id = ""
-    var add_time = ""
-    var send_number = ""
-    var status = ""
-    var reply_time = ""
+    var order_id = 0
+    var add_time = 0
+    var send_number = 0
+    var status = 0
+    var reply_time = 0
     var reply_comment = ""
-    var reply_status = ""
+    var reply_status = 0
     var returninfo: ReturnInfo?
     
     required init?(map: Map) {
