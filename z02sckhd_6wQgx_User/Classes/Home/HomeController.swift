@@ -92,6 +92,9 @@ public class HomeController: TMViewController {
                 self?.shops = (obj.data?.bestshop)!
                 self?.bannerImgs(banners: (obj.data?.banner)!)
                 self?.collectionView.reloadData()
+                self?.collectionView.performBatchUpdates({
+                    self?.collectionView.setCollectionViewLayout((self?.layout)!, animated: true)
+                }, completion: nil)
             } else {
                 self?.inspectLogin(model: obj)
             }
@@ -297,9 +300,9 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         if section == 0 {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellName(HomeHeaderView.self), for: indexPath) as! HomeHeaderView
             callbacksHeader(header: headerView)
+            self.headerView = headerView
             headerView.images = banners
             headerView.categorys = categorys
-            self.headerView = headerView
             
             return headerView
         } else if section == 4 {

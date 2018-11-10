@@ -369,21 +369,17 @@ class GoodsDetialController: TMViewController {
         getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
-                if obj.is_top == 1 {
+                if obj.data?.is_top == 1 {
+                    self?.salesDetial?.store?.is_end = true
                     self?.auctionPay.setTitle("立即支付", for: .normal)
-                }
-                if "ok" == obj.data {
                     self?.auctionBuy()
+                    self?.tableView.reloadData()
                 } else {
-                    self?.salesDetial?.store?.new_price = obj.data
+                    self?.salesDetial?.store?.new_price = "\(obj.data?.bid_price)"
                     self?.tableView.reloadData()
                 }
             } else {
                 self?.inspectLogin(model: obj)
-                if "over" == obj.data {
-                    self?.salesDetial?.store?.is_end = true
-                    self?.tableView.reloadData()
-                }
             }
         }) { (error) in
             self.hideHUD()

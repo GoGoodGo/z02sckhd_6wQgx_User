@@ -54,7 +54,7 @@ class OnlinePayController: TMViewController {
             getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: PayInfo) in
                 self?.hideHUD()
                 if "success" == obj.status {
-                    AlipaySDK.defaultService().payOrder(obj.data, fromScheme: "TianMa_User") { [weak self] (result) in
+                    AlipaySDK.defaultService().payOrder(obj.data, fromScheme: "tmYHUser") { [weak self] (result) in
                         self?.disposeResult(payResult: result!)
                     }
                 } else {
@@ -99,7 +99,7 @@ class OnlinePayController: TMViewController {
     
     // MARK: - Pay Notification
     @objc private func payResult(notification: Notification) {
-        if payWay == "0" {
+        if payWay == "1" {
             disposeResult(payResult: notification.userInfo!)
         } else {
             disposeWxPayResult(payResult: notification.userInfo!)

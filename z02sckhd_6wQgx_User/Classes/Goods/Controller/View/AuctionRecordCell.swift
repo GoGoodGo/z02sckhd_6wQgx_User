@@ -26,7 +26,7 @@ class AuctionRecordCell: UITableViewCell {
     var log: AuctionLog? {
         didSet {
             name.text = (log?.tel ?? "***")
-            date.text = Date.dateWithSeconds(totalSeconds: Double(log?.bid_time ?? "0")!, formatter: "yyyy-MM-dd HH:mm:ss")
+            date.text = Date.dateWithSeconds(totalSeconds: Double(log?.bid_time ?? 0), formatter: "yyyy-MM-dd HH:mm:ss")
             increase.text = "0.00"
             auctionPrice.text = "¥\(log?.bid_price ?? "0.00")"
         }

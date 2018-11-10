@@ -46,15 +46,19 @@ class HomeHeaderView: UICollectionReusableView {
         separatorLine.isHidden = !isAution
         separator.isHidden = !isAution
         if isAution {
-            return bannerHeight + getItemHeight() * 2
+            return bannerHeight + getItemHeight() * (categorys.count > 4 ? 2 : 1)
         } else {
-            return bannerHeight + getItemHeight() * 2 - 50
+            return bannerHeight + getItemHeight() * (categorys.count > 4 ? 2 : 1) - 80
         }
     }
     
     // MARK: - Setter
     var categorys = [CategoryInfo]() {
         didSet {
+            collectionView.height = getItemHeight() * (categorys.count > 4 ? 2 : 1)
+            separator.y = collectionView.frame.maxY
+            imgView.y = separator.frame.maxY
+            separatorLine.y = imgView.frame.maxY
             collectionView.reloadData()
         }
     }

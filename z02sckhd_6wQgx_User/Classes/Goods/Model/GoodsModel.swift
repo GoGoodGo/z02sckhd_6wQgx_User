@@ -139,15 +139,37 @@ class Seller: Mappable {
 
 class AuctionBid: BaseModel {
     
-    var data = ""
-    var is_top = 0
+    var data: AuctionData?
     
     override func mapping(map: Map) {
         
         status <- map["status"]
         msg <- map["msg"]
         data <- map["data"]
+    }
+}
+
+class AuctionData: Mappable {
+    
+    var act_id = ""
+    var is_top = 0
+    var tel = ""
+    var bid_user = 0
+    var bid_time = 0
+    var bid_price = 0
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
         is_top <- map["is_top"]
+        act_id <- map["act_id"]
+        tel <- map["tel"]
+        bid_user <- map["bid_user"]
+        bid_time <- map["bid_time"]
+        bid_price <- map["bid_price"]
     }
 }
 
@@ -291,12 +313,12 @@ class SalesDetialData: Mappable {
 
 class AuctionLog: Mappable {
     
-    var id = ""
-    var act_id = ""
+    var id = 0
+    var act_id = 0
     var tel = ""
     var bid_user = ""
     var bid_price = ""
-    var bid_time = ""
+    var bid_time = 0
     
     required init?(map: Map) {
         

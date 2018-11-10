@@ -38,9 +38,17 @@ class GoodsHeaderView: UICollectionReusableView {
         return getItemWidth() * scale
     }
     
+    public func getHeaderHeight() -> CGFloat {
+        return getItemHeight() * (categorys.count > 4 ? 2 : 1)
+    }
+    
     // MARK: - Setter
     var categorys = [CategoryInfo]() {
         didSet {
+            collectionView.height = getItemHeight() * (categorys.count > 4 ? 2 : 1)
+            separator.y = collectionView.frame.maxY
+            imgView.y = separator.frame.maxY
+            separatorLine.y = imgView.frame.maxY
             collectionView.reloadData()
         }
     }

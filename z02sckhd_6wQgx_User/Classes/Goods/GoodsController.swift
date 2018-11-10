@@ -17,6 +17,7 @@ public class GoodsController: TMViewController {
     
     var rowHeight: CGFloat = 0
     var goodsInfo: GoodsInfo?
+    var headerView: GoodsHeaderView?
     var goodsList = [Goods]()
     var recommends = [Goods]()
     var categorys = [CategoryInfo]()
@@ -180,14 +181,6 @@ public class GoodsController: TMViewController {
         view.backgroundColor = UIColor.white
         return view
     }()
-    
-    private lazy var headerView: GoodsHeaderView = {
-        
-        let view = GoodsHeaderView()
-        view.frame = CGRect.init(x: 0, y: 0, width: WIDTH, height: view.getItemHeight() * 2)
-        return view
-    }()
-    
 }
 
 
@@ -218,6 +211,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
         if indexPath.section == 0 {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellName(GoodsHeaderView.self), for: indexPath) as! GoodsHeaderView
             callbacksHeader(header: headerView)
+            self.headerView = headerView
             headerView.categorys = self.categorys
             
             return headerView
@@ -232,8 +226,7 @@ extension GoodsController: UICollectionViewDelegate, UICollectionViewDataSource,
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         var height: CGFloat = 60
         if section == 0 {
-            let header = GoodsHeaderView()
-            height += header.getItemHeight() * 2
+            height += headerView?.getHeaderHeight() ?? 0.00
         }
         return CGSize.init(width: WIDTH, height: height)
     }
