@@ -63,7 +63,7 @@ class SpecificOptionView: UIView {
         
         layer.shadowOffset = CGSize.init(width: 0, height: isShow ? -1 : 0)
         UIView.animate(withDuration: 0.3) {
-            self.y = isShow ? HEIGHT / 2 - specificGap : HEIGHT
+            self.y = isShow ? HEIGHT / 2 - specificGap - NavigationBarH : HEIGHT
         }
         if !isShow {
             specID = ""

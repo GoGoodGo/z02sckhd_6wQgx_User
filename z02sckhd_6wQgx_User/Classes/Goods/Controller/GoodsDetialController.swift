@@ -375,7 +375,7 @@ class GoodsDetialController: TMViewController {
                     self?.auctionBuy()
                     self?.tableView.reloadData()
                 } else {
-                    self?.salesDetial?.store?.new_price = "\(obj.data?.bid_price)"
+                    self?.salesDetial?.store?.new_price = "\((obj.data?.bid_price ?? 0)!)"
                     self?.tableView.reloadData()
                 }
             } else {
