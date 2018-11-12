@@ -29,6 +29,7 @@ class GoodsEvaluateCell: UITableViewCell {
     @IBOutlet weak var bottom: UIImageView!
     
     let gap: CGFloat = 10
+    var itemW: CGFloat = 0.00
     
     var clickItemBlock: ((_ cell: GoodsEvaluateCell, _ index: Int, _ images: [UIImage]) -> Void)?
 
@@ -41,10 +42,9 @@ class GoodsEvaluateCell: UITableViewCell {
     // MARK: - PrivateMethod
     private func setupUI() {
         
-        let width = (WIDTH - gap * 3 - 30) / 4
-        layout.itemSize = CGSize.init(width: width, height: width)
-        collectionViewH.constant = width + gap * 2
-        
+        itemW = (WIDTH - gap * 3 - 30) / 4
+        layout.itemSize = CGSize.init(width: itemW, height: itemW)
+        collectionViewH.constant = 0
         collectionView.register(UINib.init(nibName: CellName(EvaluateImageCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(EvaluateImageCell.self))
         
         collectionView.contentInset = UIEdgeInsets.init(top: gap, left: 0, bottom: 0, right: 0)
@@ -73,7 +73,11 @@ class GoodsEvaluateCell: UITableViewCell {
             evaluate.text = comment?.comment
             getReplyHeight()
             reply.setTitle("掌柜回复：" + (comment?.reply_comment ?? ""), for: .normal)
+            collectionViewH.constant = (comment?.images.count ?? 0) > 0 ? itemW + gap * 2 : 0
             collectionView.reloadData()
+            collectionView.performBatchUpdates({
+                self.collectionView.setCollectionViewLayout((self.layout)!, animated: true)
+            }, completion: nil)
         }
     }
     

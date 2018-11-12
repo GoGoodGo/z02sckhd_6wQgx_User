@@ -29,7 +29,7 @@ class OrderDetialInfoCell: UITableViewCell {
                 message.text = convertTime(time: Double(result?.add_time ?? 0))
             case 1:
                 title.text = "支付时间"
-                message.text = convertTime(time: Double(result?.add_time ?? 0))
+                message.text = convertTime(time: Double(result?.pay_time ?? 0))
             case 2:
                 title.text = "交易流水号"
                 message.text = result?.order_sn

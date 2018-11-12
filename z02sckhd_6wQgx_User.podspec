@@ -37,7 +37,6 @@ Pod::Spec.new do |s|
   }
   
   #s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
-  
   s.vendored_frameworks = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework'
   
   s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle'
@@ -48,7 +47,6 @@ Pod::Spec.new do |s|
       'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.xib', 'z02sckhd_6wQgx_User/Classes/Mine/*.plist', 'z02sckhd_6wQgx_User/Assets/Crop/**/*.png']
   }
   
-  # s.public_header_files = 'Pod/Classes/**/*.h'
   s.libraries = 'sqlite3.0', 'z', 'c++'
   s.frameworks = 'Security', 'CoreMotion', 'CFNetwork', 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics'
   
@@ -62,12 +60,6 @@ Pod::Spec.new do |s|
   
   s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
   s.dependency 'TMUserCenter', '~> 0.0.2'
-  
-  #s.dependency 'AFNetworking', '~> 2.3'
-  #s.dependency 'SVProgressHUD', '~> 2.0.3'
-  #s.dependency 'UMengAnalytics-NO-IDFA', '~> 4.2.5'
-  #s.dependency 'YYModel', '~> 1.0.4'
-  #s.dependency 'Masonry', '~> 1.1.0'
   
   
   

@@ -71,7 +71,11 @@ class EvaluateController: TMViewController {
         showHUD()
         flag = 0
         imagesID = ""
-        uploadImage(image: images[flag])
+        if images.count > 0 {
+            uploadImage(image: images[flag])
+        } else {
+            load()
+        }
     }
     
     func uploadImage(image: UIImage) {

@@ -1,6 +1,7 @@
 platform :ios, "9.0"
 use_frameworks!
 inhibit_all_warnings!
+use_modular_headers!
 
 install! 'cocoapods', :deterministic_uuids => false
 
@@ -9,7 +10,6 @@ target 'z02sckhd_6wQgx_User_Example' do
 
 #  target 'z02sckhd_6wQgx_User_Tests' do
     inherit! :search_paths
-    
     
 #  end
 end

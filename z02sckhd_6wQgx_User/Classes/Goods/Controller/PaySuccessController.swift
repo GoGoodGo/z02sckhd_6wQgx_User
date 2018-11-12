@@ -88,7 +88,8 @@ class PaySuccessController: UIViewController {
     
     // MARK: - Callbacks
     @IBAction func action_checkOrder() {
-        
+        let orderCtrl = MyOrderController.init(nibName: "MyOrderController", bundle: getBundle())
+        navigationController?.pushViewController(orderCtrl, animated: true)
     }
     
     @IBAction func action_backHome() {
