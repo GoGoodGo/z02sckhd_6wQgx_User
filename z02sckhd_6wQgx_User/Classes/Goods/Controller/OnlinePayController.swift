@@ -109,16 +109,18 @@ class OnlinePayController: TMViewController {
     /** 支付宝支付结果处理 */
     func disposeResult(payResult: Dictionary<AnyHashable, Any>) {
         let resultStatus = payResult["resultStatus"] as! String
-        if Int(resultStatus) == 9000 {
+        if resultStatus == "9000" {
             paySuccess()
-        } else if Int(resultStatus) == 8000 {
+        } else if resultStatus == "8000" {
             showAutoHideHUD(message: "处理中...")
-        } else if Int(resultStatus) == 4000 {
+        } else if resultStatus == "4000" {
             showAutoHideHUD(message: "订单支付失败！")
-        } else if Int(resultStatus) == 6001 {
+        } else if resultStatus == "6001" {
             showAutoHideHUD(message: "您已取消支付!")
-        } else if Int(resultStatus) == 6002 {
+        } else if resultStatus == "6002" {
             showAutoHideHUD(message: "网络连接错误！")
+        } else {
+            showAutoHideHUD(message: "返回结果有错误！")
         }
     }
     

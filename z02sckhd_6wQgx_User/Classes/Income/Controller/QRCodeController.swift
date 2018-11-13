@@ -35,6 +35,7 @@ class QRCodeController: TMViewController {
         
         headTop.constant = HeightPercent(150)
         img.layer.borderColor = UIColor.white.cgColor
+        img.layer.masksToBounds = true
         
         let user = TMHttpUserInstance.sharedManager()
         let config = TMEngineConfig.instance()

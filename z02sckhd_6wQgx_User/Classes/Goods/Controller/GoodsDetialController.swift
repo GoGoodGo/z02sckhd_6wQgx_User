@@ -380,6 +380,7 @@ class GoodsDetialController: TMViewController {
                 }
             } else {
                 self?.inspectLogin(model: obj)
+                self?.loadAuction()
             }
         }) { (error) in
             self.hideHUD()
