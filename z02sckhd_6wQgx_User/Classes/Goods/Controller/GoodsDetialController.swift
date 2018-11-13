@@ -323,9 +323,9 @@ class GoodsDetialController: TMViewController {
     @objc func action_share() {
         TMShareInstance.sharedManager()?.showShare("", thumbUrl: goodsDetial?.default_image, title: goodsDetial?.goods_name, descr: "下载APP更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
             if let shareError = error {
-                self?.showAutoHideHUD(message: "分享失败: \(error?.localizedDescription)!")
+                self?.showAutoHideHUD(message: "分享失败")
             } else {
-                self?.showAutoHideHUD(message: "分享成功: \(data)！")
+                self?.showAutoHideHUD(message: "分享成功")
             }
         })
     }

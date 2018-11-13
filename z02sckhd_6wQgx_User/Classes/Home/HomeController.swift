@@ -71,7 +71,7 @@ public class HomeController: TMViewController {
         navigationController?.navigationBar.addSubview(searchBtn)
         load()
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
-        collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: NavigationBarH, right: 0)
+        collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: NavigationBarH + 40, right: 0)
     }
     
     @objc func load() {

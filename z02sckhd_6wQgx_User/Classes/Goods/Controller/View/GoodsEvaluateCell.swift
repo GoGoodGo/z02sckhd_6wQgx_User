@@ -62,8 +62,8 @@ class GoodsEvaluateCell: UITableViewCell {
     
     func getReplyHeight() {
         reply.isHidden = comment?.reply_status == 0
-        let size = comment?.reply_comment.textSize(font: UIFont.systemFont(ofSize: 14), maxSize: CGSize.init(width: WIDTH - 40, height: 120))
-        replyH.constant = comment?.reply_status == 0 ? 0 : (size?.height ?? 0.0)
+        let size = comment?.reply_comment.textSize(font: UIFont.systemFont(ofSize: 14), maxSize: CGSize.init(width: WIDTH - 50, height: 120))
+        replyH.constant = comment?.reply_status == 0 ? 0 : (size?.height ?? 0.0) + 10
     }
     
     var comment: Comment? {
