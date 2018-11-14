@@ -68,7 +68,7 @@ class AuctionBaseInfoCell: UITableViewCell {
             seconds.setTitle("\(dateComp.second ?? 00)", for: .normal)
             
         }
-        if (result?.store?.is_end ?? false) || time <= 0 {
+        if (result?.store?.is_finished == 1) || time <= 0 {
             time = 0
             timer?.fireDate = Date.distantFuture
         }

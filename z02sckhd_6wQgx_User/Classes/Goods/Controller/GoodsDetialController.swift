@@ -132,6 +132,18 @@ class GoodsDetialController: TMViewController {
         carouselView.imgURLArr = banners
         loadComment()
     }
+    /** 竞拍结果处理 */
+    private func auctionResult() {
+        auctionPrice.text = "¥\(Float((salesDetial?.store?.new_price ?? "0.00"))! + Float((salesDetial?.store?.markups ?? "0.00"))!)"
+        if salesDetial?.is_top == 1 {
+            auctionPay.setTitle("立即支付", for: .normal)
+            auctionPrice.text = "¥\(salesDetial?.store?.new_price)"
+        } else if salesDetial?.store?.is_finished == 1 {
+            auctionPay.isEnabled = false
+            auctionPrice.text = "¥\(salesDetial?.store?.new_price)"
+        }
+        tableView.reloadData()
+    }
     /** 商品详情 */
     func load() {
         showHUD()
@@ -162,14 +174,10 @@ class GoodsDetialController: TMViewController {
             if "success" == obj.status {
                 self?.salesDetial = obj.data
                 self?.goodsDetial = obj.data?.goods
-                self?.auctionPrice.text = "¥\(Float((obj.data?.store?.new_price ?? "0.00"))! + Float((obj.data?.store?.markups ?? "0.00"))!)"
                 self?.specs = (obj.data?.goods?._specs_all)!
                 self?.attrs = (obj.data?.goods?.attr)!
-                self?.tableView.reloadData()
+                self?.auctionResult()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
-                if obj.data?.is_top == 1 {
-                    self?.auctionPay.setTitle("立即支付", for: .normal)
-                }
             } else {
                 self?.inspectLogin(model: obj)
             }
@@ -321,7 +329,7 @@ class GoodsDetialController: TMViewController {
     }
     
     @objc func action_share() {
-        TMShareInstance.sharedManager()?.showShare("", thumbUrl: goodsDetial?.default_image, title: goodsDetial?.goods_name, descr: "下载APP更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
+        TMShareInstance.sharedManager()?.showShare("https://www.360tianma.com", thumbUrl: "", title: goodsDetial?.goods_name, descr: "下载APP得更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
             if let shareError = error {
                 self?.showAutoHideHUD(message: "分享失败")
             } else {
@@ -370,6 +378,10 @@ class GoodsDetialController: TMViewController {
     }
     /** 竞争拍卖 */
     func auctionBid() {
+        if salesDetial?.is_top == 1 {
+            auctionBuy()
+            return
+        }
         showHUD()
         let newPrice = salesDetial?.store?.new_price ?? "0.00"
         let price = Float(newPrice.isEmpty ? "0.00" : newPrice)! + Float(salesDetial?.store?.markups ?? "0")!
@@ -377,18 +389,12 @@ class GoodsDetialController: TMViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 if obj.data?.is_top == 1 {
-                    self?.salesDetial?.store?.is_end = true
-                    self?.auctionPay.setTitle("立即支付", for: .normal)
                     self?.auctionBuy()
-                    self?.tableView.reloadData()
-                } else {
-                    self?.salesDetial?.store?.new_price = "\((obj.data?.bid_price ?? 0)!)"
-                    self?.tableView.reloadData()
                 }
             } else {
                 self?.inspectLogin(model: obj)
-                self?.loadAuction()
             }
+            self?.loadAuction()
         }) { (error) in
             self.hideHUD()
             self.inspectError()

@@ -149,6 +149,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWj-0g-YnC">
+                                <rect key="frame" x="98" y="97" width="80" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Bc4-vI-X3R"/>
+                                    <constraint firstAttribute="width" constant="80" id="ZtT-VC-H8A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <state key="normal" title="竞拍结束">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -165,7 +177,9 @@
                             <constraint firstItem="d82-mn-9yD" firstAttribute="top" secondItem="mPG-5I-dEN" secondAttribute="bottom" id="PhJ-Gj-lc6"/>
                             <constraint firstItem="mPG-5I-dEN" firstAttribute="top" secondItem="Mtt-CA-Cey" secondAttribute="bottom" id="QCv-fz-SVj"/>
                             <constraint firstItem="anQ-jr-M41" firstAttribute="top" secondItem="d82-mn-9yD" secondAttribute="bottom" id="QFl-qX-c3b"/>
+                            <constraint firstItem="wWj-0g-YnC" firstAttribute="bottom" secondItem="anQ-jr-M41" secondAttribute="bottom" id="ROF-G8-fGX"/>
                             <constraint firstItem="xc8-HT-iJ2" firstAttribute="leading" secondItem="mPG-5I-dEN" secondAttribute="leading" id="SXC-al-zzU"/>
+                            <constraint firstAttribute="trailing" secondItem="wWj-0g-YnC" secondAttribute="trailing" id="Shh-LJ-WYo"/>
                             <constraint firstItem="xc8-HT-iJ2" firstAttribute="centerY" secondItem="d82-mn-9yD" secondAttribute="centerY" constant="2" id="Z2l-dQ-qAc"/>
                             <constraint firstItem="d82-mn-9yD" firstAttribute="leading" secondItem="xc8-HT-iJ2" secondAttribute="trailing" id="Zur-ps-QH2"/>
                             <constraint firstItem="Mtt-CA-Cey" firstAttribute="height" secondItem="osh-xE-vpF" secondAttribute="height" multiplier="1/4" id="hUe-1q-0Rk"/>
@@ -191,16 +205,19 @@
             <connections>
                 <outlet property="days" destination="dCb-BD-Ftt" id="jVS-Fz-lJT"/>
                 <outlet property="describe" destination="mPG-5I-dEN" id="frW-vx-3xQ"/>
+                <outlet property="end" destination="wWj-0g-YnC" id="KY8-3I-6QQ"/>
                 <outlet property="hours" destination="LNb-mT-Mqu" id="V8X-YQ-qQZ"/>
                 <outlet property="imgView" destination="X8t-9Y-iHT" id="7o6-ow-BFU"/>
                 <outlet property="minutes" destination="SHr-ez-Saj" id="mrc-2b-w73"/>
                 <outlet property="name" destination="Mtt-CA-Cey" id="TLE-PQ-uQc"/>
                 <outlet property="price" destination="d82-mn-9yD" id="c8r-p6-DfH"/>
                 <outlet property="priceType" destination="xc8-HT-iJ2" id="9Ff-IA-33T"/>
+                <outlet property="remaining" destination="anQ-jr-M41" id="wUv-nx-mEE"/>
                 <outlet property="seconds" destination="Ek8-LU-sZM" id="ajT-PE-Yfx"/>
+                <outlet property="timelimit" destination="uaI-EI-oeV" id="1CC-b8-I8x"/>
                 <outlet property="totalBtn" destination="2bN-R1-lFR" id="gs9-l7-6nD"/>
             </connections>
-            <point key="canvasLocation" x="98" y="193.5"/>
+            <point key="canvasLocation" x="97.599999999999994" y="192.95352323838082"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -21,6 +21,9 @@ class TimelimitGoodsCell: UICollectionViewCell {
     @IBOutlet weak var hours: UIButton!
     @IBOutlet weak var minutes: UIButton!
     @IBOutlet weak var seconds: UIButton!
+    @IBOutlet weak var remaining: UILabel!
+    @IBOutlet weak var timelimit: UIView!
+    @IBOutlet weak var end: UIButton!
     
     var timer: Timer?
     var type: DetialType = .detial
@@ -40,7 +43,7 @@ class TimelimitGoodsCell: UICollectionViewCell {
         
         let currentTime = Int(Date().timeIntervalSince1970)
 //        let endTime = Date.timestampFromString(dateStr: (result?.end_time ?? "2018-09-06 20:00:00"), format: "yyyy-MM-dd HH:mm:ss")
-        let time = Int(result?.end_time ?? "\(currentTime)")! - currentTime
+        var time = Int(result?.end_time ?? "\(currentTime)")! - currentTime
         if time >= 0 {
             let dateComp = Date.dateFromTimestamp(timestamp: "\(time)")
             let allHours = time / 60 / 60
@@ -48,7 +51,14 @@ class TimelimitGoodsCell: UICollectionViewCell {
             hours.setTitle("\(allHours % 24)", for: .normal)
             minutes.setTitle("\(dateComp.minute ?? 00)", for: .normal)
             seconds.setTitle("\(dateComp.second ?? 00)", for: .normal)
+        } else if result?.is_finished == 1 {
+            time = 0
+            timer?.fireDate = Date.distantFuture
         }
+        end.isHidden = time > 0
+        timelimit.isHidden = time <= 0
+        remaining.isHidden = time <= 0
+        days.isHidden = time <= 0
     }
     
     // MARK: - Setter
