@@ -339,6 +339,10 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         return CGSize.init(width: WIDTH, height: height)
     }
     
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize.init(width: 0, height: 0)
+    }
+    
     // MARK: - UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         isShowSearchBar(isShow: false)

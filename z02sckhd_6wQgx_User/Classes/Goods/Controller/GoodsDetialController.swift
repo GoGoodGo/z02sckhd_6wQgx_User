@@ -167,8 +167,9 @@ class GoodsDetialController: TMViewController {
     }
     /** 竞拍详情 */
     func loadAuction() {
+        let form = TMHttpUserInstance.sharedManager()?.member_id == 0 ? "100" : ""
         showHUD()
-        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "form" : form], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
