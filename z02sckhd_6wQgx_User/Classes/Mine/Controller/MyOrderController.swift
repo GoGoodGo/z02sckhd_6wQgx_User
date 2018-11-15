@@ -215,6 +215,7 @@ class MyOrderController: TMViewController {
     private func segmentCallbacks() {
         segmentView.clickItemBlock = { [weak self] (index) in
             self?.currentIndex = index
+            self?.evaluateStatus = ""
             switch index {
             case 0:
                 self?.status = "11"
