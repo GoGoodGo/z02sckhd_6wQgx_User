@@ -34,10 +34,13 @@ class ReturnChangeDetialCell: UITableViewCell {
             parameter.text = orderGoods?.goods_attr
             price.text = "¥\(orderGoods?.goods_price ?? "0.0")"
             number.text = "X\(orderGoods?.goods_numbers ?? 1)"
-            type.text = (orderGoods?.returninfo?.type == "1" ? "退货" : "换货")
-            reason.text = orderGoods?.returninfo?.reson
-            isAgree.text = (orderGoods?.returninfo?.status == "1" ? "同意" : "拒绝")
-            opinion.text = orderGoods?.returninfo?.reply
+            if orderGoods?.goods_status == 1 {
+                type.text = (orderGoods?.returninfo?.type == 1 ? "退货" : "换货")
+                reason.text = orderGoods?.returninfo?.reson
+                let status = orderGoods?.returninfo?.status ?? 0
+                isAgree.text = status == 1 ? "同意" : status == 0 ? "待处理" : "拒绝"
+                opinion.text = orderGoods?.returninfo?.reply
+            }
             color.text = ""
         }
     }

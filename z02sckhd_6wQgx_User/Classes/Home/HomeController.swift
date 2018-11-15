@@ -71,7 +71,6 @@ public class HomeController: TMViewController {
         navigationController?.navigationBar.addSubview(searchBtn)
         load()
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
-        collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: NavigationBarH + 40, right: 0)
     }
     
     @objc func load() {
@@ -205,7 +204,7 @@ public class HomeController: TMViewController {
         view.register(HomeHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellName(HomeHeaderView.self))
         view.register(UINib.init(nibName: CellName(SectionNormalReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellName(SectionNormalReusableView.self))
         view.register(UINib.init(nibName: CellName(SegmentReusableView.self), bundle: getBundle()), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellName(SegmentReusableView.self))
-        view.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: TabBarH, right: 0)
+        view.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: TabBarH + NavigationBarH, right: 0)
         view.delegate = self
         view.dataSource = self
         view.backgroundColor = UIColor.white
@@ -365,9 +364,6 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
             ID = "\(recommendGoods[indexPath.row].goods_id)"
         } else if section == 4 {
             ID = "\(newGoods[indexPath.row].goods_id)"
-        }
-        if detialType != .detial {
-            if !inspectLogin() { return }
         }
         let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
         goodsDetialCtrl.goodsID = ID

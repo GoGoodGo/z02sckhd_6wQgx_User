@@ -64,7 +64,7 @@ class ConfirmOrderController: TMViewController {
     /** 获取默认收件人 */
     func getConsignee() {
         for address in (orderInfo?.data?.consignee_default)! {
-            if address.is_default {
+            if address.is_default == "1" {
                 consignee = address
                 return
             }

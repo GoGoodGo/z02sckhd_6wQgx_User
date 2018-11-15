@@ -131,7 +131,7 @@ extension ReturnChangeController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
 //        return tableView.sectionFooterHeight
-        return 0
+        return 10.0
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

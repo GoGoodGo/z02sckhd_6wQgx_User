@@ -429,19 +429,19 @@ class MyOrderGoods: Mappable {
 
 class ReturnInfo: Mappable {
     
-    var id = ""
-    var rec_id = ""
-    var order_id = ""
-    var goods_id = ""
-    var type = ""
+    var id = 0
+    var rec_id = 0
+    var order_id = 0
+    var goods_id = 0
+    var type = 0
     var reson = "0"
     var desc = ""
-    var status = ""
-    var user_id = ""
+    var status = 0
+    var user_id = 0
     var reply = ""
     var add_time = ""
     var replytime = ""
-    var sid = ""
+    var sid = 0
     
     required init?(map: Map) {
         

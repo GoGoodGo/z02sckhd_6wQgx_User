@@ -62,7 +62,6 @@ extension ReturnChangeDetialOrderCell: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(ReturnChangeDetialCell.self)) as! ReturnChangeDetialCell
         cell.orderGoods = orders[indexPath.section]._goods[indexPath.row]
         
-        
         return cell
     }
     

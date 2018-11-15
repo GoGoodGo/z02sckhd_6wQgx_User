@@ -154,7 +154,7 @@ class GoodsDetialController: TMViewController {
                 self?.goodsDetial = obj.data
                 self?.specs = (obj.data?._specs)!
                 self?.attrs = (obj.data?.attr)!
-                self?.collectBtn.isSelected = (obj.data?.collects == 1) ? true : false
+                self?.collectBtn.isSelected = (obj.data?.is_collect == 1) ? true : false
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?._images)!)
             } else {
@@ -358,6 +358,7 @@ class GoodsDetialController: TMViewController {
     }
     
     @IBAction func action_collect(_ sender: UIButton) {
+        if !inspectLogin() { return }
         if sender.isSelected {
             cancelCollect(sender: sender)
         } else {
@@ -366,10 +367,12 @@ class GoodsDetialController: TMViewController {
     }
     
     @IBAction func action_add(_ sender: UIButton) {
+        if !inspectLogin() { return }
         showOptionView(isBuy: false)
     }
     /** 立即购买 */
     @IBAction func action_buy(_ sender: UIButton) {
+        if !inspectLogin() { return }
         if detialType == .auction {
             auctionBid()
         } else {

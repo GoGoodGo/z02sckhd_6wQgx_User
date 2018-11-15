@@ -12,7 +12,6 @@ import YHTool
 class LogisticsController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var back: UIButton!
     
     var sectionHeaders = [Int : UIView]()
     var sectionFooters = [Int : LogisticsGoodsFooter]()
@@ -29,8 +28,6 @@ class LogisticsController: UIViewController {
     // MARK: - Private Method
     private func setupUI() {
         
-        back.layer.borderColor = HexString("#d3d3d3").cgColor
-        
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.sectionFooterHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
@@ -39,8 +36,6 @@ class LogisticsController: UIViewController {
         tableView.estimatedRowHeight = 200
         tableView.register(UINib.init(nibName: CellName(OrderGoodsCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderGoodsCell.self))
         tableView.register(UINib.init(nibName: CellName(LogisticsInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(LogisticsInfoCell.self))
-        
-        tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 70, right: 0)
         
         load()
     }
@@ -61,10 +56,6 @@ class LogisticsController: UIViewController {
             self.hideHUD()
             self.inspectError()
         }
-    }
-    
-    @IBAction func action_backOrder() {
-        navigationController?.popViewController(animated: true)
     }
     
 }

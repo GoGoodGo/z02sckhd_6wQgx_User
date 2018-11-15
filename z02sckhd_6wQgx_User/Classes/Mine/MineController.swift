@@ -70,8 +70,8 @@ public class MineController: TMViewController {
     // MARK: - Callbacks
     @IBAction func action_userInfo(_ sender: UIButton) {
         
-        let signInCtrl = SignInController.init(nibName: "SignInController", bundle: getBundle())
-        navigationController?.pushViewController(signInCtrl, animated: true)
+//        let signInCtrl = SignInController.init(nibName: "SignInController", bundle: getBundle())
+//        navigationController?.pushViewController(signInCtrl, animated: true)
     }
 }
 

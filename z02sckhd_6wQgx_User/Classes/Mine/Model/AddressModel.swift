@@ -91,7 +91,7 @@ class Address: Mappable {
     var sign_building = ""
     var point_lng = ""
     var point_lat = ""
-    var is_default = false
+    var is_default = ""
     var best_time = ""
     
     required init?(map: Map) {
