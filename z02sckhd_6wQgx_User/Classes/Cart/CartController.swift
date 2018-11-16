@@ -328,6 +328,10 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - UITableViewDelegate
+    public func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        load()
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         loadCheck(indexPath: indexPath, isSelected: true)
@@ -368,11 +372,10 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
         
         let store = stores[section]
         let footer = CartSectionFooter.sectionFooter() as! CartSectionFooter
-//        footer.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
-        footer.title.text = ""
+        footer.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
         sectionFooters[section] = footer
         
-        return footer
+        return nil
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

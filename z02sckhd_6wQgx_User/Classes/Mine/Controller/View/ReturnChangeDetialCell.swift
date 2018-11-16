@@ -36,7 +36,12 @@ class ReturnChangeDetialCell: UITableViewCell {
             number.text = "X\(orderGoods?.goods_numbers ?? 1)"
             if orderGoods?.goods_status == 1 {
                 type.text = (orderGoods?.returninfo?.type == 1 ? "退货" : "换货")
-                reason.text = orderGoods?.returninfo?.reson
+                
+                let str = (orderGoods?.returninfo?.reson ?? "") + "\n" + (orderGoods?.returninfo?.desc ?? "")
+                let attriReason = NSMutableAttributedString.init(string: str)
+                attriReason.addAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], range: NSRange.init(location: 0, length: (orderGoods?.returninfo?.reson ?? "").count))
+                reason.attributedText = attriReason
+                
                 let status = orderGoods?.returninfo?.status ?? 0
                 isAgree.text = status == 1 ? "同意" : status == 0 ? "待处理" : "拒绝"
                 opinion.text = orderGoods?.returninfo?.reply

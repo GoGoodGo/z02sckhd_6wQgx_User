@@ -72,8 +72,11 @@ class GoodsEvaluateCell: UITableViewCell {
             date.text = comment?.add_time
             evaluate.text = comment?.comment
             getReplyHeight()
-            let attriStr = NSAttributedString.init(string: "掌柜回复：" + (comment?.reply_comment ?? ""))
+            
+            let attriStr = NSMutableAttributedString.init(string: "掌柜回复：" + (comment?.reply_comment ?? ""))
+            attriStr.addAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], range: NSRange.init(location: 0, length: 5))
             reply.setAttributedTitle(attriStr, for: .normal)
+            
             collectionViewH.constant = (comment?.images.count ?? 0) > 0 ? itemW + gap * 2 : 0
             collectionView.reloadData()
             collectionView.performBatchUpdates({
@@ -96,7 +99,9 @@ extension GoodsEvaluateCell: UICollectionViewDelegate, UICollectionViewDataSourc
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellName(EvaluateImageCell.self), for: indexPath) as! EvaluateImageCell
         cell.commentImage = comment?.images[indexPath.row]
         cell.getImages = { [weak self] image in
-            self?.comment?.getImages.append(image!)
+            if (self?.comment?.getImages.count ?? 0) < (self?.comment?.images.count ?? 0) {
+                self?.comment?.getImages.append(image!)
+            }
         }
         
         return cell

@@ -446,7 +446,7 @@ class ReturnInfo: Mappable {
     var order_id = 0
     var goods_id = 0
     var type = 0
-    var reson = "0"
+    var reson = ""
     var desc = ""
     var status = 0
     var user_id = 0

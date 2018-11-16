@@ -138,8 +138,9 @@ class MyOrderController: TMViewController {
                 for order in result._orders {
                     rows += order._goods.count
                     for goods in order._goods {
-                        let size = goods.returninfo?.reply.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - WidthPercent(120), height: 400))
-                        allRowsH = HeightPercent(190) + (size?.height ?? 0)
+                        let replySize = goods.returninfo?.reply.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - WidthPercent(100), height: HEIGHT))
+                        let reasonSize = goods.returninfo?.desc.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - WidthPercent(100), height: HEIGHT))
+                        allRowsH = HeightPercent(180) + (replySize?.height ?? 0.00) + (reasonSize?.height ?? 0.00)
                     }
                 }
                 result.total = "\(rows)"

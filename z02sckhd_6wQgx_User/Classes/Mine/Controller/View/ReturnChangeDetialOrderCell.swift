@@ -90,7 +90,8 @@ extension ReturnChangeDetialOrderCell: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let goods = orders[indexPath.section]._goods[indexPath.row]
-        let size = goods.returninfo?.reply.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - 100, height: 400))
-        return HeightPercent(190) + (size?.height ?? 0)
+        let replySize = goods.returninfo?.reply.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - WidthPercent(100), height: HEIGHT))
+        let reasonSize = goods.returninfo?.desc.textSize(font: UIFont.systemFont(ofSize: 12), maxSize: CGSize.init(width: WIDTH - WidthPercent(100), height: HEIGHT))
+        return HeightPercent(180) + (replySize?.height ?? 0.00) + (reasonSize?.height ?? 0.00)
     }
 }
