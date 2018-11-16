@@ -72,7 +72,8 @@ class GoodsEvaluateCell: UITableViewCell {
             date.text = comment?.add_time
             evaluate.text = comment?.comment
             getReplyHeight()
-            reply.setTitle("掌柜回复：" + (comment?.reply_comment ?? ""), for: .normal)
+            let attriStr = NSAttributedString.init(string: "掌柜回复：" + (comment?.reply_comment ?? ""))
+            reply.setAttributedTitle(attriStr, for: .normal)
             collectionViewH.constant = (comment?.images.count ?? 0) > 0 ? itemW + gap * 2 : 0
             collectionView.reloadData()
             collectionView.performBatchUpdates({

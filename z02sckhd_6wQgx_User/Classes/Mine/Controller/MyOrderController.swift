@@ -228,8 +228,6 @@ class MyOrderController: TMViewController {
                 self?.evaluateStatus = "1"
             case 4:
                 self?.status = "40"
-            case 5:
-                self?.status = "50"
             default: break
             }
             self?.load()

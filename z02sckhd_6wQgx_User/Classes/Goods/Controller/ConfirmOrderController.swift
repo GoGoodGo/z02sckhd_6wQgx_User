@@ -189,9 +189,3 @@ extension ConfirmOrderController: UITableViewDelegate, UITableViewDataSource {
 
 
 
-
-
-
-
-
-

@@ -43,7 +43,7 @@ class SpecificCell: UITableViewCell {
     
     override var frame: CGRect {
         didSet {
-            let y: CGFloat = 5
+            let y: CGFloat = attrs.count == 0 ? 0 : 10
             var tempFrame = frame
             tempFrame.origin.y += y
             tempFrame.size.height -= y

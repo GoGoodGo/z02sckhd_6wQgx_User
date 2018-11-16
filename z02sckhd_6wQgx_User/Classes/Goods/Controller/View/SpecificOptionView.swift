@@ -25,7 +25,7 @@ class SpecificOptionView: UIView {
     var pay: ((_ specs: String) -> Void)?
     var selectedItems = [Int : IndexPath]()
     var specID = ""
-    var limitNum = "10000"
+    var limitNum = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -109,7 +109,11 @@ class SpecificOptionView: UIView {
             let url = URL.init(string: (goodsDetial?.default_image)!)
             imgView.kf.setImage(with: url)
             name.text = goodsDetial?.goods_name
-            price.text = "¥\(goodsDetial?.price ?? "0.00")"
+            if !limitNum.isEmpty {
+                price.text = "¥\(goodsDetial?.discount_price ?? "0.00")"
+            } else {
+                price.text = "¥\(goodsDetial?.price ?? "0.00")"
+            }
             specific.text = (goodsDetial?.defaultspec?.spec_1 ?? "") + (goodsDetial?.defaultspec?.spec_2 ?? "")
             
             collectionView.reloadData()

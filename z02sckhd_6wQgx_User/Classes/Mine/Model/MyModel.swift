@@ -195,6 +195,18 @@ class MyOrderData: Mappable {
     }
 }
 
+class OrderDetial: BaseModel {
+    
+    var data: MyOrderResult?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
 class MyOrderResult: Mappable {
     
     var mid = 0

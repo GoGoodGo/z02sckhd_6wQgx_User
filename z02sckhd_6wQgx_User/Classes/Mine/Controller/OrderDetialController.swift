@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 import YHTool
 import TMSDK
 
@@ -14,6 +15,9 @@ class OrderDetialController: TMViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var orderResult: MyOrderResult?
+    var goodsCellH: CGFloat = 0
+    var replyCellH: CGFloat = 0
+    var goodsTotal = "0"
     var cellType = 0
 
     override func viewDidLoad() {
@@ -34,21 +38,28 @@ class OrderDetialController: TMViewController {
         tableView.register(UINib.init(nibName: CellName(OrderDetialInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OrderDetialInfoCell.self))
         tableView.register(UINib.init(nibName: CellName(ReturnChangeDetialOrderCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(ReturnChangeDetialOrderCell.self))
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 20, right: 0)
-        
+        goodsCellH = orderResult?.cellHeight ?? 0.00
+        replyCellH = orderResult?.detialCellHeight ?? 0.00
+        goodsTotal = orderResult?.total ?? "0"
         load()
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
     }
     /** 订单详情 */
-    func load() {
+    @objc func load() {
         showHUD()
-        getRequest(baseUrl: OrderDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : "\((orderResult?.mid)!)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : "\((orderResult?.mid)!)"], success: { [weak self] (obj: OrderDetial) in
             self?.hideHUD()
+            self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
+                self?.orderResult = obj.data
+                self?.orderResult?.total = (self?.goodsTotal)!
                 self?.tableView.reloadData()
             } else {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.hideHUD()
+            self.tableView.mj_header.endRefreshing()
             self.inspectError()
         }
     }
@@ -161,11 +172,11 @@ extension OrderDetialController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return orderResult?.cellHeight ?? 0
+            return goodsCellH
         } else if indexPath.section == 1 {
             return 50
         } else {
-            return orderResult?.detialCellHeight ?? 0
+            return replyCellH
         }
     }
     

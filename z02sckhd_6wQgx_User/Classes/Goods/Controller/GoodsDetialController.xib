@@ -65,6 +65,13 @@
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edN-Xa-Q07" userLabel="group price view">
                             <rect key="frame" x="155" y="0.0" width="110" height="50"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cfZ-NX-IHL">
+                                    <rect key="frame" x="0.0" y="0.0" width="110" height="1"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="vRb-Qv-hRz"/>
+                                    </constraints>
+                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 17000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpL-jI-e8J">
                                     <rect key="frame" x="12" y="5" width="86.5" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
@@ -82,7 +89,10 @@
                             <constraints>
                                 <constraint firstItem="IpL-jI-e8J" firstAttribute="top" secondItem="edN-Xa-Q07" secondAttribute="top" constant="5" id="8bM-39-hYy"/>
                                 <constraint firstItem="JWg-wl-XVc" firstAttribute="centerX" secondItem="IpL-jI-e8J" secondAttribute="centerX" id="A8t-ly-oY9"/>
+                                <constraint firstAttribute="trailing" secondItem="cfZ-NX-IHL" secondAttribute="trailing" id="KYY-gl-TIz"/>
                                 <constraint firstItem="IpL-jI-e8J" firstAttribute="centerX" secondItem="edN-Xa-Q07" secondAttribute="centerX" id="biL-LG-gOz"/>
+                                <constraint firstItem="cfZ-NX-IHL" firstAttribute="leading" secondItem="edN-Xa-Q07" secondAttribute="leading" id="hBh-QB-hWc"/>
+                                <constraint firstItem="cfZ-NX-IHL" firstAttribute="top" secondItem="edN-Xa-Q07" secondAttribute="top" id="hdz-IP-FKr"/>
                                 <constraint firstAttribute="bottom" secondItem="JWg-wl-XVc" secondAttribute="bottom" constant="5" id="s2a-Y8-HTC"/>
                             </constraints>
                         </view>
@@ -198,6 +208,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NgK-re-dHn" userLabel="bar2">
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qd5-ME-LAq">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="y7y-z5-Oki"/>
+                            </constraints>
+                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="竞拍价格：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKS-Rf-KRt">
                             <rect key="frame" x="15" y="18" width="61.5" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -230,10 +247,13 @@
                         <constraint firstItem="rla-wc-iRy" firstAttribute="top" secondItem="NgK-re-dHn" secondAttribute="top" id="0uB-6t-dng"/>
                         <constraint firstItem="ddN-ak-ng9" firstAttribute="centerY" secondItem="mKS-Rf-KRt" secondAttribute="centerY" id="BAh-rR-So1"/>
                         <constraint firstAttribute="trailing" secondItem="rla-wc-iRy" secondAttribute="trailing" id="Ccm-3Q-TIY"/>
+                        <constraint firstItem="Qd5-ME-LAq" firstAttribute="top" secondItem="NgK-re-dHn" secondAttribute="top" id="Hb4-QH-usI"/>
                         <constraint firstItem="mKS-Rf-KRt" firstAttribute="leading" secondItem="NgK-re-dHn" secondAttribute="leading" constant="15" id="Osb-vW-ZBK"/>
                         <constraint firstItem="rla-wc-iRy" firstAttribute="width" secondItem="NgK-re-dHn" secondAttribute="width" multiplier="1/3" id="bd6-g0-rkZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Qd5-ME-LAq" secondAttribute="trailing" id="fSK-gC-EXQ"/>
                         <constraint firstAttribute="bottom" secondItem="rla-wc-iRy" secondAttribute="bottom" id="g0o-dp-C2p"/>
                         <constraint firstItem="mKS-Rf-KRt" firstAttribute="centerY" secondItem="NgK-re-dHn" secondAttribute="centerY" id="sbW-Vh-ZAV"/>
+                        <constraint firstItem="Qd5-ME-LAq" firstAttribute="leading" secondItem="NgK-re-dHn" secondAttribute="leading" id="sgZ-OS-QEN"/>
                         <constraint firstItem="ddN-ak-ng9" firstAttribute="leading" secondItem="mKS-Rf-KRt" secondAttribute="trailing" id="slb-bG-YsX"/>
                     </constraints>
                 </view>
@@ -253,7 +273,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XlQ-Ta-vhd" secondAttribute="bottom" id="t8b-fN-soC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="33.5" y="60.5"/>
+            <point key="canvasLocation" x="32.799999999999997" y="59.820089955022496"/>
         </view>
     </objects>
     <resources>

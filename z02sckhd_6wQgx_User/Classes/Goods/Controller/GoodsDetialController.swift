@@ -63,6 +63,7 @@ class GoodsDetialController: TMViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         specificH = detialType == .detial ? 100 : 0
+        collectBtn.isHidden = detialType != .detial
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -196,6 +197,7 @@ class GoodsDetialController: TMViewController {
             if "success" == obj.status {
                 self?.salesDetial = obj.data
                 self?.goodsDetial = obj.data?.goods
+                self?.goodsDetial?.discount_price = obj.data?.store?.price ?? "0.00"
                 self?.groupBuyPrice.text = "¥\(obj.data?.store?.price ?? "0.00")"
                 self?.participativeNum.text = "当前已有\(obj.data?.onum ?? 0)人参团"
                 self?.tableView.reloadData()
@@ -217,6 +219,7 @@ class GoodsDetialController: TMViewController {
             if "success" == obj.status {
                 self?.salesDetial = obj.data
                 self?.goodsDetial = obj.data?.goods
+                self?.goodsDetial?.discount_price = obj.data?.store?.price ?? "0.00"
                 self?.tableView.reloadData()
                 self?.bannerImgs(images: (obj.data?.goods?._images)!)
             } else {
@@ -635,7 +638,7 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return (indexPath.section == 0 && indexPath.row == 1 && attrs.count == 0) ? 5 : tableView.rowHeight
+        return (indexPath.section == 0 && indexPath.row == 1 && attrs.count == 0) ? 0 : tableView.rowHeight
     }
     
 }

@@ -31,6 +31,8 @@ class PaySuccessController: UIViewController {
     // MARK: - Private Method
     private func setupUI() {
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem.itemBundle(bundle: getBundle(), image: "ico_img_jt", target: self, action: #selector(action_back))
+        
         checkOrder.layer.borderColor = HexString("#d3d3d3").cgColor
         layout.sectionInset = UIEdgeInsets.init(top: gap, left: gap, bottom: gap, right: gap)
         let width = (WIDTH - gap * 3) / 2
@@ -87,6 +89,15 @@ class PaySuccessController: UIViewController {
     }
     
     // MARK: - Callbacks
+    @objc func action_back() {
+        let count = navigationController?.viewControllers.count
+        if let controller = navigationController?.viewControllers[(count ?? 4) - 4] {
+            navigationController?.popToViewController(controller, animated: false)
+        } else {
+            navigationController?.popToViewController((navigationController?.viewControllers[1])!, animated: false)
+        }
+    }
+    
     @IBAction func action_checkOrder() {
         let orderCtrl = MyOrderController.init(nibName: "MyOrderController", bundle: getBundle())
         navigationController?.pushViewController(orderCtrl, animated: true)
