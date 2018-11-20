@@ -34,9 +34,6 @@ public class HomeController: TMViewController {
         navigationController?.navigationBar.isTranslucent = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(login(notifi:)), name: NSNotification.Name(rawValue: "login"), object: nil)
-        
-//        http://review.360tianma.com
-//        http://shop.dktoo.com
     }
     
     override public func viewWillDisappear(_ animated: Bool) {

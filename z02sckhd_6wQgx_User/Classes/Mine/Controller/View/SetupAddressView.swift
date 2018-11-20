@@ -112,6 +112,7 @@ class SetupAddressView: UIView {
     
     // MARK: - Callbacks
     @IBAction func action_option(_ sender: UIButton) {
+        self.endEditing(true)
         let tag = sender.tag - btnTag
         currentBtn = sender
         switch tag {

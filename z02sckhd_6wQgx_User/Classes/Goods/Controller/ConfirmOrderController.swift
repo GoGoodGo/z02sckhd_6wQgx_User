@@ -63,18 +63,24 @@ class ConfirmOrderController: TMViewController {
     }
     /** 获取默认收件人 */
     func getConsignee() {
-        for address in (orderInfo?.data?.consignee_default)! {
-            if address.is_default == "1" {
-                consignee = address
-                return
+        if let defaultAddress = orderInfo?.data?.consignee_default {
+            for address in defaultAddress {
+                if address.is_default == "1" {
+                    consignee = address
+                    return
+                }
             }
+            consignee = defaultAddress.first
         }
-        consignee = orderInfo?.data?.consignee_default.first
     }
     
     @IBAction func action_submitOrder(_ sender: UIButton) {
+        guard let addressID = consignee?.address_id else {
+            showAutoHideHUD(message: "请选择收货地址！")
+            return
+        }
         showHUD()
-        getRequest(baseUrl: OrderDone_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType, "address_id" : "\((consignee?.address_id)!)"], success: { [weak self] (obj: OrderInfo) in
+        getRequest(baseUrl: OrderDone_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType, "address_id" : "\(addressID)"], success: { [weak self] (obj: OrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())
