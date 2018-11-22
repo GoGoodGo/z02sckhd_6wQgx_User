@@ -25,7 +25,7 @@ class SpecificOptionView: UIView {
     var pay: ((_ specs: String) -> Void)?
     var selectedItems = [Int : IndexPath]()
     var specID = ""
-    var limitNum = ""
+    var limitNum = "999"
     
     override func awakeFromNib() {
         super.awakeFromNib()

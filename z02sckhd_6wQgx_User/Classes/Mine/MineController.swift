@@ -63,7 +63,9 @@ public class MineController: TMViewController {
         let config = TMEngineConfig.instance()
         let url = URL.init(string: (config?.domain)! + (user?.head_pic ?? ""))
         imgBtn.kf.setImage(with: url, for: .normal)
-        name.text = user?.member_name
+        if let nickname = user?.member_nickname {
+            name.text = nickname.isEmpty ? user?.mobile : nickname
+        }
         tableView.mj_header.endRefreshing()
     }
     

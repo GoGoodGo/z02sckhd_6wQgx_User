@@ -24,14 +24,14 @@ class UserInfo: BaseModel {
 
 class User: Mappable {
     
-    var user_id = ""
-    var mid = ""
+    var user_id = 0
+    var mid = 0
     var user_money = ""
     var frozen_money = ""
-    var integral = ""
-    var user_address = ""
-    var add_time = ""
-    var pid = ""
+    var integral = 0
+    var user_address = 0
+    var add_time = 0
+    var pid = 0
     var code = ""
     var tel = ""
     
