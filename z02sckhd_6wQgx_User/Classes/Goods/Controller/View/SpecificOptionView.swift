@@ -22,10 +22,11 @@ class SpecificOptionView: UIView {
     
     let btnTag = 434
     var updateNum: ((_ num: Int) -> Void)?
-    var pay: ((_ specs: String) -> Void)?
+    var pay: ((_ specs: String, _ num: Int) -> Void)?
     var selectedItems = [Int : IndexPath]()
     var specID = ""
-    var limitNum = "999"
+    var limitNum = ""
+    var goodsNum = 1
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,6 +68,8 @@ class SpecificOptionView: UIView {
         }
         if !isShow {
             specID = ""
+            goodsNum = 1
+            number.text = "\(goodsNum)"
             selectedItems.removeAll()
         }
     }
@@ -74,28 +77,27 @@ class SpecificOptionView: UIView {
     @IBAction func action_updateNum(_ sender: UIButton) {
         
         let tag = sender.tag - btnTag
-        var num = Int(number.text!)!
+        goodsNum = Int(number.text!)!
         switch tag {
         case 0:
-            num -= 1
-            if num <= 1 {
-                num = 1
+            goodsNum -= 1
+            if goodsNum <= 1 {
+                goodsNum = 1
             }
         default:
-            num += 1
-            if num > Int(limitNum)! {
-                num = Int(limitNum)!
+            goodsNum += 1
+            if !limitNum.isEmpty {
+                if goodsNum > Int(limitNum)! {
+                    goodsNum = Int(limitNum)!
+                }
             }
         }
-        if let click = updateNum {
-            click(num)
-        }
-        number.text = "\(num)"
+        number.text = "\(goodsNum)"
     }
     
     @IBAction func action_pay(_ sender: UIButton) {
         if let click = pay {
-            click(specID)
+            click(specID, goodsNum)
         }
     }
     
@@ -109,11 +111,7 @@ class SpecificOptionView: UIView {
             let url = URL.init(string: (goodsDetial?.default_image)!)
             imgView.kf.setImage(with: url)
             name.text = goodsDetial?.goods_name
-            if !limitNum.isEmpty {
-                price.text = "¥\(goodsDetial?.discount_price ?? "0.00")"
-            } else {
-                price.text = "¥\(goodsDetial?.price ?? "0.00")"
-            }
+            price.text = (goodsDetial?.discount_price.isEmpty ?? false) ? "¥\(goodsDetial?.price ?? "0.00")" : "¥\(goodsDetial?.discount_price ?? "0.00")"
             specific.text = (goodsDetial?.defaultspec?.spec_1 ?? "") + (goodsDetial?.defaultspec?.spec_2 ?? "")
             
             collectionView.reloadData()
@@ -166,7 +164,14 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
         }
         selectedItems[indexPath.section] = indexPath
         specID = "\((goodsDetial?._specs[indexPath.row].spec_id)!)"
-        stock.text = "库存\((goodsDetial?._specs[indexPath.row].stock ?? 0)!)件"
+        let goodsStock = goodsDetial?._specs[indexPath.row].stock ?? 0
+        
+        if goodsStock < Int(number.text ?? "0")! {
+            number.text = "\(goodsStock)"
+            goodsNum = goodsStock
+        }
+        stock.text = "库存\(goodsStock)件"
+        limitNum = "\(goodsStock)"
     }
     
     

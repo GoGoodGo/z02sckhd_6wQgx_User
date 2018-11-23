@@ -38,6 +38,7 @@ class CartOrder: Mappable {
     
     var total: CartTotal?
     var goods_list: CartStoreList?
+    var order_amount = ""
     var consignee_default = [Address]()
     
     required init?(map: Map) {
@@ -48,13 +49,14 @@ class CartOrder: Mappable {
         
         total <- map["total"]
         goods_list <- map["goods_list"]
+        order_amount <- map["order_amount"]
         consignee_default <- map["consignee_default"]
     }
 }
 
 class CartStoreList: Mappable {
     
-    var amount = 0
+    var amount = "0.00"
     var quantity = 1
     var goods = [CartStore]()
     
@@ -77,7 +79,7 @@ class CartTotal: Mappable {
     var my_money = 0
     var surplus = 0
     var pay_fee = "0.00"
-    var goods_price: Float = 0.00
+    var goods_price = "0.00"
     var is_integral_pay = 0
     var integral = 0
     var market_price = 0

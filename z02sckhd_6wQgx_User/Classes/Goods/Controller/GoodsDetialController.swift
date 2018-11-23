@@ -307,10 +307,8 @@ class GoodsDetialController: TMViewController {
     }
     
     func callbacksWithSpecificView() {
-        specificOption.updateNum = { [weak self] num in
+        specificOption.pay = { [weak self] (specID, num) in
             self?.number = num
-        }
-        specificOption.pay = { [weak self] specID in
             switch self?.detialType {
             case .detial?:
                 if specID.isEmpty {

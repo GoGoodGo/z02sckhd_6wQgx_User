@@ -48,7 +48,7 @@ class ConfirmOrderController: TMViewController {
         tableView.allowsMultipleSelection = true
         
         getConsignee()
-        totalPrice.text = "¥\((orderInfo?.data?.total?.goods_price ?? 0.00) + Float(orderInfo?.data?.total?.pay_fee ?? "0.00")!)"
+        totalPrice.text = "¥\(orderInfo?.data?.order_amount ?? "0.00")"
         integralInfo.text = "可获得\(orderInfo?.data?.total?.give_integral ?? 0)积分, 可使用\(orderInfo?.data?.total?.integral ?? 0)积分"
         updateQuantity()
     }
@@ -86,8 +86,7 @@ class ConfirmOrderController: TMViewController {
                 let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())
                 onlinePay.mid = (obj.data?.order_id)!
                 onlinePay.orderSN = (obj.data?.order_sn)!
-                let amount = (self?.orderInfo?.data?.total?.goods_price ?? 0.00)! + (Float((self?.orderInfo?.data?.total?.pay_fee ?? "0.00")!) ?? 0.00)!
-                onlinePay.amount = "\(amount)"
+                onlinePay.amount = "\(self?.orderInfo?.data?.order_amount ?? "0.00")"
                 self?.navigationController?.pushViewController(onlinePay, animated: true)
             } else {
                 self?.inspectLogin(model: obj)
@@ -97,7 +96,7 @@ class ConfirmOrderController: TMViewController {
         }
     }
     
-    /** 商品数量 */
+    /** 商品数量及总价 */
     func updateQuantity() {
         guard let stores = orderInfo?.data?.goods_list?.goods else { return }
         for store in stores {
