@@ -32,7 +32,7 @@ class BindingController: UIViewController {
         getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: UserInfo) in
             self?.hideHUD()
             if "success" == obj.status {
-                if obj.data?.pid == 0 {
+                if obj.data?.pid != 0 {
                     self?.binding.isEnabled = false
                     self?.bindingBtn.isEnabled = false
                 }
