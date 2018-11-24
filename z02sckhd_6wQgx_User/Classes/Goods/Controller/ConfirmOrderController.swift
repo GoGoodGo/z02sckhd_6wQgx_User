@@ -163,6 +163,7 @@ extension ConfirmOrderController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 0 { return nil }
         let footer = OrderSectionFooter.footer() as! OrderSectionFooter
+        footer.amount = orderInfo?.data?.goods_list?.amount ?? "0.00"
         footer.store = orderInfo?.data?.goods_list?.goods[section - 1]
         
         return footer

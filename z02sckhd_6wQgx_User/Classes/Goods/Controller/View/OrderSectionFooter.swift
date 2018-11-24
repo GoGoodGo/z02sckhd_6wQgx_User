@@ -14,7 +14,7 @@ class OrderSectionFooter: UIView {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var totalNum: UILabel!
     @IBOutlet weak var totoalPrice: UILabel!
-    
+    var amount = "0.00"
 
     // MARK: - XIB View
     public class func footer() -> Any? {
@@ -33,7 +33,8 @@ class OrderSectionFooter: UIView {
         didSet {
             totalNum.text = "共\(store?.totalQuantity ?? "0")件商品"
             expressPrice.text = "¥\(store?.pay_fee ?? "0.00")"
-            totoalPrice.text = "¥\((store?.amount ?? 0.00))"
+//            totoalPrice.text = "¥\((store?.amount ?? 0.00))"
+            totoalPrice.text = amount
         }
     }
 
