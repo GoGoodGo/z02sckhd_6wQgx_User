@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.5.4'
+  s.version          = '1.5.5'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.

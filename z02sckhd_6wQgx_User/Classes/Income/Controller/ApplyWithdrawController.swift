@@ -32,6 +32,7 @@ class ApplyWithdrawController: TMViewController {
     // MARK: - Private Method
     private func setupUI() {
         
+        textField.delegate = self
         view.addSubview(pullDownView)
         callbacksPullDown()
         avaliableWithdraw.text = "¥\(withdrawData?.money ?? "0.00")"
@@ -122,9 +123,26 @@ class ApplyWithdrawController: TMViewController {
         view.layer.shadowOffset = CGSize.init(width: 1, height: 1)
         return view
     }()
-    
-    
-    
-    
+}
 
+extension ApplyWithdrawController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let text = textField.text! + string
+        if let money = Float(text) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let money = Float(textField.text!) {
+            textField.text = String.init(format: "%.2f", money)
+        }
+        return true
+    }
+    
+    
 }
