@@ -11,6 +11,7 @@ import YHTool
 
 class BindingController: UIViewController {
     
+    @IBOutlet weak var bindingLabel: UILabel!
     @IBOutlet weak var binding: UITextField!
     @IBOutlet weak var bindingBtn: UIButton!
     @IBOutlet weak var bindingTop: NSLayoutConstraint!
@@ -33,6 +34,8 @@ class BindingController: UIViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 if obj.data?.pid != 0 {
+                    self?.bindingLabel.text = "您已绑定\(obj.data?.pidname)"
+                    self?.binding.text = obj.data?.pidcode
                     self?.binding.isEnabled = false
                     self?.bindingBtn.isEnabled = false
                 }

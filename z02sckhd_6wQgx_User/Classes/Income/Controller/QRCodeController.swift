@@ -39,7 +39,8 @@ class QRCodeController: TMViewController {
         
         let user = TMHttpUserInstance.sharedManager()
         let config = TMEngineConfig.instance()
-        let url = URL.init(string: (config?.domain)! + (user?.head_pic ?? ""))
+        let head_pic = user?.head_pic ?? ""
+        let url = URL.init(string: head_pic.contains("://") ? "" : (config?.domain)! + head_pic)
         img.kf.setImage(with: url)
         name.text = user?.member_name
     }

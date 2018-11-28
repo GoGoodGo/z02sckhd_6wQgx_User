@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="binding" destination="3Jy-aG-nWl" id="e96-dh-TfC"/>
                 <outlet property="bindingBtn" destination="luW-1j-lUJ" id="si7-0C-qEX"/>
+                <outlet property="bindingLabel" destination="M2K-qe-zlt" id="Wj0-u1-NBZ"/>
                 <outlet property="bindingTop" destination="NFf-aX-qHO" id="of3-YF-hpR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

@@ -32,6 +32,8 @@ class User: Mappable {
     var user_address = 0
     var add_time = 0
     var pid = 0
+    var pidcode = ""
+    var pidname = ""
     var code = ""
     var tel = ""
     
@@ -49,6 +51,8 @@ class User: Mappable {
         user_address <- map["user_address"]
         add_time <- map["add_time"]
         pid <- map["pid"]
+        pidcode <- map["pidcode"]
+        pidname <- map["pidname"]
         code <- map["code"]
         tel <- map["tel"]
     }
