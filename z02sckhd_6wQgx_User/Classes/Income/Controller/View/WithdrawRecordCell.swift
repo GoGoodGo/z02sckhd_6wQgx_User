@@ -32,7 +32,9 @@ class WithdrawRecordCell: UITableViewCell {
     // MARK: - Callbacks
     @IBAction func action_cancel(_ sender: UIButton) {
         if let click = cancelBlock {
-            click(self, withdraw!)
+            if withdraw?.status == 0 {
+                click(self, withdraw!)
+            }
         }
     }
     
@@ -42,17 +44,27 @@ class WithdrawRecordCell: UITableViewCell {
             name.text = withdraw?.content
             money.text = "¥\(withdraw?.price ?? "0.00")"
             date.text = withdraw?.add_time
-            withdrawWay(way: "\((withdraw?.way)!)")
+            withdrawWay(way: withdraw?.way ?? 0)
+            switch withdraw?.status {
+            case 0:
+                cancel.setTitle("撤销申请", for: .normal)
+            case 1:
+                cancel.setTitle("审核通过", for: .normal)
+            case 2:
+                cancel.setTitle("已拒绝", for: .normal)
+                cancel.setTitleColor(UIColor.red, for: .normal)
+            default: break
+            }
         }
     }
     
-    func withdrawWay(way: String) {
+    func withdrawWay(way: Int) {
         switch way {
-        case "0":
+        case 1:
             img.image = getImage(type(of: self), "ico_img_zfb")
-        case "1":
+        case 2:
             img.image = getImage(type(of: self), "ico_img_wx")
-        case "2":
+        case 3:
             img.image = getImage(type(of: self), "ico_img_yl")
         default:
             break

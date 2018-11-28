@@ -117,7 +117,7 @@ class ApplyWithdrawController: TMViewController {
         let view = YHPullDownView.init()
         view.frame = CGRect.init(x: 0, y: 0, width: 100, height: 0)
         view.isSelectedCancel = true
-        view.titles = ["支付宝", "微信"]
+        view.titles = []
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.6
         view.layer.shadowOffset = CGSize.init(width: 1, height: 1)
