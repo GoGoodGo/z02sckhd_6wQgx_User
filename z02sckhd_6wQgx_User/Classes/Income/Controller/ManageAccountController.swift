@@ -20,7 +20,7 @@ class ManageAccountController: TMViewController {
     @IBOutlet weak var accountTypeView: UIView!
     
     var accountType = "" // 账户类型
-    var types = ["支付宝", "微信"]
+    var types = ["支付宝", "微信", "银联"]
     var accountData: AccountData?
     var tag = 0 // 操作类型
     var currentID = ""

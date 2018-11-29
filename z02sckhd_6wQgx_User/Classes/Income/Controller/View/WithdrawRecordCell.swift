@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import YHTool
 
 enum WithdrawWay {
     case aliPay
@@ -48,8 +49,10 @@ class WithdrawRecordCell: UITableViewCell {
             switch withdraw?.status {
             case 0:
                 cancel.setTitle("撤销申请", for: .normal)
+                cancel.setTitleColor(HexString("#1182ff"), for: .normal)
             case 1:
                 cancel.setTitle("审核通过", for: .normal)
+                cancel.setTitleColor(HexString("#1182ff"), for: .normal)
             case 2:
                 cancel.setTitle("已拒绝", for: .normal)
                 cancel.setTitleColor(UIColor.red, for: .normal)

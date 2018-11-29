@@ -34,7 +34,7 @@ class BindingController: UIViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 if obj.data?.pid != 0 {
-                    self?.bindingLabel.text = "您已绑定\(obj.data?.pidname)"
+                    self?.bindingLabel.text = "您已绑定\(obj.data?.pidname ?? "")"
                     self?.binding.text = obj.data?.pidcode
                     self?.binding.isEnabled = false
                     self?.bindingBtn.isEnabled = false
