@@ -127,8 +127,8 @@ class IncomeData: Mappable {
     var result = [Income]()
     var totalpage = 1
     var page = 1
-    var wait: Float = 0.00
-    var ok: Float = 0.00
+    var wait = ""
+    var ok = ""
     
     required init?(map: Map) {
         

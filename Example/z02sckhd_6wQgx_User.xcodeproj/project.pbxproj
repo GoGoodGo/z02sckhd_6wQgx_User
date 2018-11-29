@@ -214,7 +214,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Example/Pods-z02sckhd_6wQgx_User_Example-resources.sh",
-				"${PODS_ROOT}/TMNavigation/TMFramework/TMNavigation.bundle",
 				"${PODS_ROOT}/TMShare/TMFramework/TMShare.bundle",
 				"${PODS_ROOT}/TMUserCenter/TMFramework/SetI001.bundle",
 				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Required/ShareSDK.bundle",
@@ -225,7 +224,6 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TMNavigation.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TMShare.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SetI001.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDK.bundle",

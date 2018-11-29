@@ -50,9 +50,8 @@ public class IncomeController: TMViewController {
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
-//                let withdraw = Float((obj.data?.money ?? "0.00")!)! - (obj.data?.ok ?? 0.00)
-                self?.withdraw.text = "¥\(obj.data?.wait ?? 0.00)"
-                self?.income.text = "¥\(obj.data?.ok ?? 0.00)"
+                self?.withdraw.text = "¥\(obj.data?.wait ?? "0.00")"
+                self?.income.text = "¥\(obj.data?.ok ?? "0.00")"
                 self?.incomeData = obj.data
             } else {
                 self?.inspectLogin(model: obj)

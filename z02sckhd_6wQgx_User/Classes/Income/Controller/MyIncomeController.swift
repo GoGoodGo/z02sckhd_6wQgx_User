@@ -45,8 +45,8 @@ class MyIncomeController: TMViewController {
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
-                self?.unsettlement.text = "¥\(obj.data?.wait ?? 0)"
-                self?.settlement.text = "¥\(obj.data?.ok ?? 0)"
+                self?.unsettlement.text = "¥\(obj.data?.wait ?? "0.00")"
+                self?.settlement.text = "¥\(obj.data?.ok ?? "0.00")"
                 self?.incomeData = obj.data
                 self?.incomeData?.page += 1
                 self?.incomes = (obj.data?.result)!

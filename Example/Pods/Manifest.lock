@@ -61,13 +61,6 @@ PODS:
   - SDWebImage/Core (4.4.2)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
-  - TMNavigation (0.0.2):
-    - AFNetworking
-    - Masonry
-    - SDWebImage
-    - SVProgressHUD
-    - TMSDK
-    - UMengAnalytics-NO-IDFA
   - TMSDK (0.0.2):
     - AFNetworking
     - JPush
@@ -88,7 +81,6 @@ PODS:
     - SVProgressHUD
     - TMSDK
     - TMShare
-  - UMengAnalytics-NO-IDFA (4.2.5)
   - YHTool (1.1.6):
     - Alamofire
     - AlamofireObjectMapper
@@ -97,13 +89,12 @@ PODS:
     - QBImagePickerController
     - SDWebImage
     - SwiftyJSON
-  - z02sckhd_6wQgx_User (1.4.2):
+  - z02sckhd_6wQgx_User (1.5.6):
     - Cosmos
     - IQKeyboardManager
     - Kingfisher
     - MJRefresh (~> 3.1.12)
-    - TMNavigation (~> 0.0.2-beta.3)
-    - TMUserCenter (~> 0.0.2)
+    - TMUserCenter
     - YHTool (~> 1.1.6)
 
 DEPENDENCIES:
@@ -129,11 +120,9 @@ SPEC REPOS:
     - SDWebImage
     - SVProgressHUD
     - SwiftyJSON
-    - TMNavigation
     - TMSDK
     - TMShare
     - TMUserCenter
-    - UMengAnalytics-NO-IDFA
     - YHTool
 
 EXTERNAL SOURCES:
@@ -159,13 +148,11 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  TMNavigation: b892272c35c82eec529f7cdad2a8b0c493ac1300
   TMSDK: abd0981f654577762c1afb5a4c01f3e1228bd836
   TMShare: 82d2b03f65bbe5c5b8f167d56f1b203521acbedd
   TMUserCenter: 30d68a85eb404be5075fe8d83504c577306a27aa
-  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   YHTool: 34739e878c101f989d3cb9278564496b3d65f866
-  z02sckhd_6wQgx_User: 9ffbb74898f9edc5cac25baf68fe04a92b729998
+  z02sckhd_6wQgx_User: dbfa747c654699a428e7b20dc7025067fce21669
 
 PODFILE CHECKSUM: 29c6eb257930fca757fc24da80a6a079449fa0db
 

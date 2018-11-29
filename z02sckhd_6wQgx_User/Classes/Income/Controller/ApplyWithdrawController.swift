@@ -36,7 +36,7 @@ class ApplyWithdrawController: TMViewController {
         view.addSubview(pullDownView)
         callbacksPullDown()
         avaliableWithdraw.text = "¥\(withdrawData?.money ?? "0.00")"
-        totalWithdraw.text = "¥\(withdrawData?.ok ?? 0.00)"
+        totalWithdraw.text = "¥\(withdrawData?.ok ?? "0.00")"
         
         load()
     }

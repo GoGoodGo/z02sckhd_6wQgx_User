@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.5.5'
+  s.version          = '1.5.6'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.
@@ -58,8 +58,7 @@ Pod::Spec.new do |s|
   s.dependency 'IQKeyboardManager'
   #s.dependency 'WechatOpenSDK'
   
-  s.dependency 'TMNavigation', '~> 0.0.2-beta.3'
-  s.dependency 'TMUserCenter', '~> 0.0.2'
+  s.dependency 'TMUserCenter'
   
   
   

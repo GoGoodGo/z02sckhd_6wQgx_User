@@ -56,8 +56,8 @@ class WithdrawRecordController: TMViewController {
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
-                self?.unverify.text = "¥\(obj.data?.wait ?? 0.00)"
-                self?.verify.text = "¥\(obj.data?.ok ?? 0.00)"
+                self?.unverify.text = "¥\(obj.data?.wait ?? "0.00")"
+                self?.verify.text = "¥\(obj.data?.ok ?? "0.00")"
                 self?.withdrawData?.page += 1
                 self?.withdraws = (obj.data?.result)!
                 self?.tableView.reloadData()
