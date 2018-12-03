@@ -61,7 +61,7 @@ class MyIncomeController: TMViewController {
     }
     
     @objc func loadMore() {
-        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "11", "status" : status, "page" : "\(incomeData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "11", "status" : status, "page" : "\(incomeData?.page ?? 1)", "from" : "1"], success: { [weak self] (obj: IncomeInfo) in
             self?.tableView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.incomeData = obj.data
