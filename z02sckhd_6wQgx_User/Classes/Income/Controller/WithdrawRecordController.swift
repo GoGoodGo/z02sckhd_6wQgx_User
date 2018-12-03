@@ -115,7 +115,6 @@ class WithdrawRecordController: TMViewController {
     @objc func action_withdraw() {
         
         let applyWithdraw = ApplyWithdrawController.init(nibName: "ApplyWithdrawController", bundle: getBundle())
-        applyWithdraw.withdrawData = withdrawData
         navigationController?.pushViewController(applyWithdraw, animated: true)
         isApply = true
     }

@@ -18,7 +18,6 @@ class ApplyWithdrawController: TMViewController {
     @IBOutlet weak var account: UIButton!
     @IBOutlet weak var accountView: UIView!
     
-    var withdrawData: IncomeData?
     var accounts = [Account]()
     var accountID = ""
 
@@ -35,13 +34,37 @@ class ApplyWithdrawController: TMViewController {
         textField.delegate = self
         view.addSubview(pullDownView)
         callbacksPullDown()
-        avaliableWithdraw.text = "¥\(withdrawData?.money ?? "0.00")"
-        totalWithdraw.text = "¥\(withdrawData?.ok ?? "0.00")"
         
         load()
+        loadAccount()
+        loadUserDetial()
+    }
+    /** 获取用户信息 */
+    func loadUserDetial() {
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: UserInfo) in
+            if "success" == obj.status {
+                self?.avaliableWithdraw.text = "¥\(obj.data?.user_money ?? "0.00")"
+            } else {
+                self?.inspectLogin(model: obj)
+            }
+        }) { (error) in
+            self.inspectError()
+        }
+    }
+    /** 获取提现收益 */
+    func load() {
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "2"], success: { [weak self] (obj: IncomeInfo) in
+            if "success" == obj.status {
+                self?.totalWithdraw.text = "¥\(obj.data?.ok ?? "0.00")"
+            } else {
+                self?.inspectLogin(model: obj)
+            }
+        }) { (error) in
+            self.inspectError()
+        }
     }
     /** 提现账户 */
-    @objc func load() {
+    func loadAccount() {
         showHUD()
         getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "page" : "1"], success: { [weak self] (obj: AccountInfo) in
             self?.hideHUD()
@@ -94,7 +117,7 @@ class ApplyWithdrawController: TMViewController {
     @IBAction func action_management() {
         let manageAccount = ManageAccountController.init(nibName: "ManageAccountController", bundle: getBundle())
         manageAccount.updateAccount = { [weak self] in
-            self?.load()
+            self?.loadAccount()
         }
         navigationController?.pushViewController(manageAccount, animated: true)
     }
