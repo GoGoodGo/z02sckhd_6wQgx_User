@@ -8,6 +8,7 @@
 
 import UIKit
 import z02sckhd_6wQgx_User
+import TMPaySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,28 +23,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = YHTabBarController()
         window?.makeKeyAndVisible()
         
-//        WXApi.registerApp("wx7ba7fbd409123407")
+//        WXApi.registerApp("wxf5434529e3d5f55c")
         
         return true
     }
     
     /** Pay */
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if url.host == "safepay" {
-            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
-                self.payWithResult(result: result!)
-            })
-        }
         
-        if url.host == "platformapi" {
-            AlipaySDK.defaultService().processAuthResult(url, standbyCallback: { (result) in
-                self.payWithResult(result: result!)
-            })
-        }
+        TMPayUtils.sharedInstance().tm_handlePayResult(withOpen: url, options: ["key" : "value"])
         
-        if url.host == "pay" {
+//        if url.host == "safepay" {
+//            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
+//                self.payWithResult(result: result!)
+//            })
+//        }
+//        if url.host == "platformapi" {
+//            AlipaySDK.defaultService().processAuthResult(url, standbyCallback: { (result) in
+//                self.payWithResult(result: result!)
+//            })
+//        }
+//        if url.host == "pay" {
 //            return WXApi.handleOpen(url, delegate: self)
-        }
+//        }
         
         return true
     }

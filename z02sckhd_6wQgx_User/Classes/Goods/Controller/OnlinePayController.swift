@@ -10,6 +10,9 @@ import UIKit
 import YHTool
 import TMSDK
 import TMShare
+import TMPaySDK
+import Alamofire
+import SwiftyJSON
 
 public let PayNotificationName = "payNotificationName"
 
@@ -21,6 +24,7 @@ class OnlinePayController: TMViewController {
     var amount = "0.00"
     var currentDate = "0"
     var payWay = "1"
+    var platforms = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +35,6 @@ class OnlinePayController: TMViewController {
         setupUI()
     }
     
-    // MARK: - Callbacks
-    private func callbacks(cell: OnlinePayWayCell) {
-        cell.pay = { [weak self] type in
-            self?.payWay = type
-            self?.loadPay(type: type)
-        }
-    }
-    
     // MARK: - Private Method
     private func setupUI() {
         
@@ -46,7 +42,24 @@ class OnlinePayController: TMViewController {
         tableView.estimatedRowHeight = 200
         tableView.register(UINib.init(nibName: CellName(OnlinePayOrderInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OnlinePayOrderInfoCell.self))
         tableView.register(UINib.init(nibName: CellName(OnlinePayWayCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(OnlinePayWayCell.self))
+        
+        TMPayUtils.sharedInstance().tm_getPayPlatform { [weak self] (platforms, errorInfo) in
+            self?.platforms = platforms as! [Int]
+        }
     }
+    
+    // MARK: - Callbacks
+    private func callbacks(cell: OnlinePayWayCell) {
+        cell.pay = { [weak self] type in
+            self?.payWay = type
+            if (self?.platforms.contains(Int(type)!))! {
+                self?.loadPay(type: type)
+            } else {
+                self?.showAutoHideHUD(message: "未安装微信，换支付宝试试？")
+            }
+        }
+    }
+    
     /** 订单支付 */
     func loadPay(type: String) {
         showHUD()
@@ -54,9 +67,9 @@ class OnlinePayController: TMViewController {
             getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: PayInfo) in
                 self?.hideHUD()
                 if "success" == obj.status {
-                    AlipaySDK.defaultService().payOrder(obj.data, fromScheme: "tmYHUser") { [weak self] (result) in
-                        self?.disposeResult(payResult: result!)
-                    }
+                    TMPayUtils.sharedInstance().tm_pay(withOrderData: obj.data, type: .aliPay, payFinish: { (status, data, message) in
+                        self?.disposeTMPayResult(status: status, message: message)
+                    })
                 } else {
                     self?.inspectLogin(model: obj)
                 }
@@ -64,15 +77,24 @@ class OnlinePayController: TMViewController {
                 self.inspectError()
             }
         } else {
-            getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: WxPayInfo) in
+            Alamofire.request(OrderPay_URL, method: .get, parameters: ["token" : TMHttpUser.token() ?? TestToken, "mid" : mid, "type" : type, "form" : "1"]).responseJSON { [weak self] (response) in
                 self?.hideHUD()
-                if "success" == obj.status {
-                    self?.wechatPay(pay: obj)
-                } else {
-                    self?.inspectLogin(model: obj)
+                guard response.result.isSuccess else {
+                    self?.inspectError()
+                    return
                 }
-            }) { (error) in
-                self.inspectError()
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    let status = json["status"].stringValue
+                    if "success" == status {
+                        let wxPayDict = json["data"].dictionaryObject
+                        TMPayUtils.sharedInstance().tm_pay(withOrderData: wxPayDict, type: .weChat, payFinish: { (status, data, message) in
+                            self?.disposeTMPayResult(status: status, message: message)
+                        })
+                    } else {
+                        self?.showAutoHideHUD(message: json["msg"].stringValue)
+                    }
+                }
             }
         }
     }
@@ -103,6 +125,18 @@ class OnlinePayController: TMViewController {
             disposeResult(payResult: notification.userInfo!)
         } else {
             disposeWxPayResult(payResult: notification.userInfo!)
+        }
+    }
+    /** TM 支付结果处理 */
+    private func disposeTMPayResult(status: TMPayStatus, message: String?) {
+        switch status {
+        case .success:
+            paySuccess()
+        case .fail:
+            showAutoHideHUD(message: "订单支付失败！")
+        case .noKnow:
+            showAutoHideHUD(message: message ?? "未知错误！")
+        default: break
         }
     }
     

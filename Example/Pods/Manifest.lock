@@ -18,6 +18,7 @@ PODS:
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
+  - AlipaySDK-iOS (15.5.7)
   - Cosmos (17.0.0)
   - IQKeyboardManager (6.2.0)
   - JCore (1.2.2)
@@ -61,6 +62,9 @@ PODS:
   - SDWebImage/Core (4.4.2)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
+  - TMPaySDK (0.0.7):
+    - AlipaySDK-iOS
+    - TMShare
   - TMSDK (0.0.2):
     - AFNetworking
     - JPush
@@ -89,11 +93,12 @@ PODS:
     - QBImagePickerController
     - SDWebImage
     - SwiftyJSON
-  - z02sckhd_6wQgx_User (1.5.6):
+  - z02sckhd_6wQgx_User (1.5.7):
     - Cosmos
     - IQKeyboardManager
     - Kingfisher
     - MJRefresh (~> 3.1.12)
+    - TMPaySDK
     - TMUserCenter
     - YHTool (~> 1.1.6)
 
@@ -105,6 +110,7 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - AlamofireObjectMapper
+    - AlipaySDK-iOS
     - Cosmos
     - IQKeyboardManager
     - JCore
@@ -120,6 +126,7 @@ SPEC REPOS:
     - SDWebImage
     - SVProgressHUD
     - SwiftyJSON
+    - TMPaySDK
     - TMSDK
     - TMShare
     - TMUserCenter
@@ -133,6 +140,7 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  AlipaySDK-iOS: 8c31776663d52ec1e1fabb0c2b452c21be1cf8e4
   Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JCore: f14c0549968a63c22e246a4875aa9d428446f373
@@ -148,11 +156,12 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  TMPaySDK: e710fe05fb108d5fd257603b76b4e1a08832924f
   TMSDK: abd0981f654577762c1afb5a4c01f3e1228bd836
   TMShare: 82d2b03f65bbe5c5b8f167d56f1b203521acbedd
   TMUserCenter: 30d68a85eb404be5075fe8d83504c577306a27aa
   YHTool: 34739e878c101f989d3cb9278564496b3d65f866
-  z02sckhd_6wQgx_User: dbfa747c654699a428e7b20dc7025067fce21669
+  z02sckhd_6wQgx_User: 9d046eab54270ac34b5c5a9fe22034fbfe9984a5
 
 PODFILE CHECKSUM: 29c6eb257930fca757fc24da80a6a079449fa0db
 

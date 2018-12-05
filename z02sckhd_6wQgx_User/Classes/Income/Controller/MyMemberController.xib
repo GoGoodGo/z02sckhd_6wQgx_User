@@ -30,7 +30,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GEX-Dj-io7">
-                    <rect key="frame" x="0.0" y="21" width="375" height="646"/>
+                    <rect key="frame" x="0.0" y="31" width="375" height="636"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="zDJ-Y2-LjT"/>
@@ -43,7 +43,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GEX-Dj-io7" secondAttribute="bottom" id="0Y1-lO-ETG"/>
                 <constraint firstItem="GEX-Dj-io7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LOa-Ge-SIP"/>
                 <constraint firstItem="NvA-le-xfA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="1" id="c4z-M8-pQy"/>
-                <constraint firstItem="GEX-Dj-io7" firstAttribute="top" secondItem="NvA-le-xfA" secondAttribute="bottom" id="j7w-Cc-2bZ"/>
+                <constraint firstItem="GEX-Dj-io7" firstAttribute="top" secondItem="NvA-le-xfA" secondAttribute="bottom" constant="10" id="j7w-Cc-2bZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GEX-Dj-io7" secondAttribute="trailing" id="rse-5U-5mB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NvA-le-xfA" secondAttribute="trailing" id="szk-st-hRe"/>
                 <constraint firstItem="NvA-le-xfA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wnq-Wr-Dhi"/>

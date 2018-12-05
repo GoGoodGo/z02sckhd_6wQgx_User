@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.5.7'
+  s.version          = '1.5.8'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.
@@ -37,11 +37,11 @@ Pod::Spec.new do |s|
   }
   
   #s.vendored_libraries = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.a'
-  s.vendored_frameworks = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework'
+  #s.vendored_frameworks = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework'
   
-  s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle'
+  #s.resource = 'z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle'
   
-  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift',  'z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h'
+  s.source_files = 'z02sckhd_6wQgx_User/Classes/**/**/**/*.swift'
   
   s.resource_bundles = {
       'z02sckhd_6wQgx_User' => ['z02sckhd_6wQgx_User/Classes/**/**/**/*.xib', 'z02sckhd_6wQgx_User/Classes/Mine/*.plist', 'z02sckhd_6wQgx_User/Assets/Crop/**/*.png']
@@ -56,9 +56,9 @@ Pod::Spec.new do |s|
   
   s.dependency 'MJRefresh', '~> 3.1.12'
   s.dependency 'IQKeyboardManager'
-  #s.dependency 'WechatOpenSDK'
   
   s.dependency 'TMUserCenter'
+  s.dependency 'TMPaySDK'
   
   
   

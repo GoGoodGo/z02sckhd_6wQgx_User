@@ -1,6 +1,6 @@
 {
   "name": "z02sckhd_6wQgx_User",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "summary": "TM User.",
   "description": "TM User framework",
   "homepage": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git",
-    "tag": "1.5.6"
+    "tag": "1.5.7"
   },
   "static_framework": true,
   "requires_arc": true,
@@ -24,12 +24,7 @@
   "xcconfig": {
     "VALID_ARCHS": "arm64 x86_64"
   },
-  "vendored_frameworks": "z02sckhd_6wQgx_User/Classes/ThirdParty/*.framework",
-  "resources": "z02sckhd_6wQgx_User/Classes/ThirdParty/*.bundle",
-  "source_files": [
-    "z02sckhd_6wQgx_User/Classes/**/**/**/*.swift",
-    "z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.framework/Headers/*.h"
-  ],
+  "source_files": "z02sckhd_6wQgx_User/Classes/**/**/**/*.swift",
   "resource_bundles": {
     "z02sckhd_6wQgx_User": [
       "z02sckhd_6wQgx_User/Classes/**/**/**/*.xib",
@@ -69,6 +64,9 @@
 
     ],
     "TMUserCenter": [
+
+    ],
+    "TMPaySDK": [
 
     ]
   }

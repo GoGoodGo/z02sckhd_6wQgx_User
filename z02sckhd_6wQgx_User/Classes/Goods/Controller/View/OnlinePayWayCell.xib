@@ -80,7 +80,7 @@
                             <constraint firstAttribute="trailing" secondItem="0cU-oN-TdT" secondAttribute="trailing" constant="15" id="u32-fl-k9f"/>
                         </constraints>
                     </view>
-                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ymt-Vm-lRV">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ymt-Vm-lRV">
                         <rect key="frame" x="0.0" y="121" width="377" height="60"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emr-aP-Uap">

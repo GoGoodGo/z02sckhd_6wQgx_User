@@ -91,7 +91,7 @@ public class CartController: TMViewController {
                 label.text = "\(num)"
                 goods.quantity = num
                 if let amount = obj.data?.amount {
-                    self?.amount.text = String(format: "%.2f", amount)
+                    self?.amount.text = amount
                 }
             } else {
                 self?.inspectLogin(model: obj)

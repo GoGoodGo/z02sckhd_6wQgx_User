@@ -30,10 +30,10 @@ class MemberCell: UITableViewCell {
     }
     override var frame: CGRect {
         didSet {
-            let y: CGFloat = 10
+            let y: CGFloat = 1
             var tempFrame = frame
             tempFrame.origin.y += y
-            tempFrame.size.height -= 1
+            tempFrame.size.height -= y
             super.frame = tempFrame
         }
     }

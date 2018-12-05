@@ -92,21 +92,21 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_ROOT}/AlipaySDK-iOS/AlipaySDK.bundle"
   install_resource "${PODS_ROOT}/TMShare/TMFramework/TMShare.bundle"
   install_resource "${PODS_ROOT}/TMUserCenter/TMFramework/SetI001.bundle"
   install_resource "${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Required/ShareSDK.bundle"
   install_resource "${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle"
   install_resource "${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle"
-  install_resource "${PODS_ROOT}/../../z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/z02sckhd_6wQgx_User/z02sckhd_6wQgx_User.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_ROOT}/AlipaySDK-iOS/AlipaySDK.bundle"
   install_resource "${PODS_ROOT}/TMShare/TMFramework/TMShare.bundle"
   install_resource "${PODS_ROOT}/TMUserCenter/TMFramework/SetI001.bundle"
   install_resource "${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Required/ShareSDK.bundle"
   install_resource "${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle"
   install_resource "${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle"
-  install_resource "${PODS_ROOT}/../../z02sckhd_6wQgx_User/Classes/ThirdParty/AlipaySDK.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/z02sckhd_6wQgx_User/z02sckhd_6wQgx_User.bundle"
 fi
 
