@@ -168,6 +168,9 @@ class AddressController: TMViewController {
         maskView.sureDelete = { [weak self] in
             self?.delete()
         }
+        setAddressView.hint = { [weak self] message in
+            self?.showAutoHideHUD(message: message)
+        }
         setAddressView.sure = { [weak self] (name, phone, detial, type) in
             if name.isEmpty || phone.isEmpty || detial.isEmpty {
                 self?.showAutoHideHUD(message: "请将信息填写完整！")

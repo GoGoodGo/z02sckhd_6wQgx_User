@@ -226,6 +226,35 @@ extension SetupAddressView: UITextFieldDelegate {
         
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == " " {
+            if let block = hint {
+                block("不能输入空格！")
+            }
+            return false
+        }
+        
+        if textField == phone && range.location >= 11 {
+            let index = textField.text?.index((textField.text?.startIndex)!, offsetBy: 11)
+            textField.text = textField.text?.substring(to: index!)
+            if let block = hint {
+                block("手机号码长度不正确！")
+            }
+            return false
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == phone && !(phone.text?.isValidateMobile())! {
+            if let block = hint {
+                block("手机号格式错误！")
+            }
+        }
+        
+        return true
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         pullDownView.close()
         return true

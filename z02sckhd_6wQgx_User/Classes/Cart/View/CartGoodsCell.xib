@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,11 +60,11 @@
                         <color key="textColor" red="1" green="0.31372549020000001" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bF-ZZ-I1J">
-                        <rect key="frame" x="301" y="48.5" width="80" height="25"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bF-ZZ-I1J" userLabel="quantityView">
+                        <rect key="frame" x="291" y="46" width="90" height="30"/>
                         <subviews>
                             <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j3-K3-pwU">
-                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1j3-K3-pwU" secondAttribute="height" id="lW8-cL-L5b"/>
@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="112" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-bu-Sr9">
-                                <rect key="frame" x="55" y="0.0" width="25" height="25"/>
+                                <rect key="frame" x="60" y="0.0" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fdg-bu-Sr9" secondAttribute="height" id="qSi-C9-35g"/>
@@ -92,7 +92,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z90-82-cWh">
-                                <rect key="frame" x="25" y="0.0" width="30" height="25"/>
+                                <rect key="frame" x="30" y="0.0" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -107,9 +107,9 @@
                             <constraint firstAttribute="bottom" secondItem="fdg-bu-Sr9" secondAttribute="bottom" id="d4f-kv-fun"/>
                             <constraint firstItem="1j3-K3-pwU" firstAttribute="top" secondItem="4bF-ZZ-I1J" secondAttribute="top" id="d7i-gm-cx3"/>
                             <constraint firstItem="1j3-K3-pwU" firstAttribute="leading" secondItem="4bF-ZZ-I1J" secondAttribute="leading" id="dcM-mv-kSW"/>
-                            <constraint firstAttribute="width" constant="80" id="nAD-uS-Dlt"/>
+                            <constraint firstAttribute="width" constant="90" id="nAD-uS-Dlt"/>
                             <constraint firstItem="fdg-bu-Sr9" firstAttribute="top" secondItem="4bF-ZZ-I1J" secondAttribute="top" id="uGu-gg-FBB"/>
-                            <constraint firstAttribute="height" constant="25" id="wtc-zk-ppK"/>
+                            <constraint firstAttribute="height" constant="30" id="wtc-zk-ppK"/>
                             <constraint firstAttribute="bottom" secondItem="1j3-K3-pwU" secondAttribute="bottom" id="xSJ-2Q-DvH"/>
                             <constraint firstItem="z90-82-cWh" firstAttribute="top" secondItem="4bF-ZZ-I1J" secondAttribute="top" id="yLl-8r-UcX"/>
                         </constraints>

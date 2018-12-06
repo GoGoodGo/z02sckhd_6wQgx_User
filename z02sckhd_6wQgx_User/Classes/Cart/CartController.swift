@@ -59,11 +59,11 @@ public class CartController: TMViewController {
             barBottom.constant = -TabBarH
         }
         load()
+        showHUD()
     }
     
     /** 购物车 */
     @objc func load() {
-        showHUD()
         getRequest(baseUrl: Cart_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: CartInfo) in
             self?.hideAllHUD()
             self?.tableView.mj_header.endRefreshing()
@@ -85,9 +85,13 @@ public class CartController: TMViewController {
     func loadQuantity(num: Int, label: UILabel, indexPath: IndexPath) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
+        let store = stores[indexPath.section]
         getRequest(baseUrl: CartQuantity_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : "\(goods.spec_id)", "quantity" : "\(num)"], success: { [weak self] (obj: CartInfo) in
             self?.hideHUD()
             if "success" == obj.status {
+                if goods.is_shipping != 0 {
+                    store.amount += Float(num - goods.quantity) * Float(goods.price)!
+                }
                 label.text = "\(num)"
                 goods.quantity = num
                 if let amount = obj.data?.amount {
@@ -108,6 +112,7 @@ public class CartController: TMViewController {
         getRequest(baseUrl: CartCheck_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "rec_id" : "\(goods.rec_id)", "status" : isSelected ? "1" : "0"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
+                goods.is_shipping = isSelected ? 1 : 0
                 self?.checkSuccess(isSelected: isSelected, indexPath: indexPath)
             } else {
                 if isSelected {
@@ -235,12 +240,14 @@ public class CartController: TMViewController {
             store.give -= quantity * give
             store.usable -= quantity * usable
         }
-        sectionFooters[indexPath.section]?.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
+//        sectionFooters[indexPath.section]?.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
+        sectionFooters[indexPath.section]?.title.text = ""
+        
         currentAmount = 0.00
         for s in stores {
             currentAmount += s.amount
         }
-        amount.text = String(format: "%.2f", currentAmount)
+        amount.text = String(format: "%.2f", fabsf(currentAmount))
     }
     
     /** 更新选中所有按钮状态 */
@@ -303,7 +310,6 @@ public class CartController: TMViewController {
             selectedAll.isSelected = isSelectedAll
         }
     }
-    
 }
 
 extension CartController: UITableViewDelegate, UITableViewDataSource {
@@ -372,10 +378,11 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
         
         let store = stores[section]
         let footer = CartSectionFooter.sectionFooter() as! CartSectionFooter
-        footer.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
+//        footer.title.text = "可获得\(store.give)个积分，可使用\(store.usable)个积分"
+        footer.title.text = ""
         sectionFooters[section] = footer
         
-        return nil
+        return footer
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
