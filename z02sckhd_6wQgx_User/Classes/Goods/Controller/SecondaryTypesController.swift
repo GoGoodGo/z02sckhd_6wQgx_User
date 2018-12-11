@@ -125,11 +125,14 @@ class SecondaryTypesController: TMViewController {
     }
     /** 获取子分类列表 */
     func loadCategorys() {
-        let params = ["pid" : pID]
+        let params = ["pid" : pID == "0" ? "-1" : pID]
         getRequest(baseUrl: GoodsCategory_URL, params: params, success: { [weak self] (obj: GoodsCategory) in
             if "success" == obj.status {
                 self?.categorys = obj.data
-                if obj.data.count <= 0 { return }
+                if obj.data.count <= 0 {
+                    self?.load()
+                    return
+                }
                 self?.typeCollectionView.reloadData()
                 self?.defaultSelected()
             } else {
@@ -143,7 +146,7 @@ class SecondaryTypesController: TMViewController {
     @objc func load() {
         
         showHUD()
-        params = ["cate_id" : "\(currentCategory?.id ?? 0)", "sort" : sort, "order" : order, "p" : "1"]
+        params = ["cate_id" : "\(currentCategory?.id ?? Int(pID)!)", "sort" : sort, "order" : order, "p" : "1"]
         getRequest(baseUrl: GoodsList_URL, params: params, success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             if "success" == obj.status {

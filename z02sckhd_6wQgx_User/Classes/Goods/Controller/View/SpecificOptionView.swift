@@ -162,6 +162,11 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
         if let itemIndex = selectedItems[indexPath.section] {
             collectionView.deselectItem(at: itemIndex, animated: true)
         }
+        
+        if (goodsDetial?.discount_price.isEmpty ?? false) {
+            price.text = goodsDetial?._specs[indexPath.row].price
+        }
+        
         selectedItems[indexPath.section] = indexPath
         specID = "\((goodsDetial?._specs[indexPath.row].spec_id)!)"
         let goodsStock = goodsDetial?._specs[indexPath.row].stock ?? 0
