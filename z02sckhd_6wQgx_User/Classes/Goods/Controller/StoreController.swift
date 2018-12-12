@@ -85,7 +85,7 @@ class StoreController: TMViewController {
                 self?.name.text = obj.data?.seller?.shopname
                 self?.setupCategory()
                 self?.loadBest()
-                self?.loadNews()
+                self?.loadNews(Completed: nil)
             } else {
                 self?.inspectLogin(model: obj)
             }
@@ -112,7 +112,7 @@ class StoreController: TMViewController {
         }
     }
     /** 获取新品 */
-    func loadNews() {
+    func loadNews(Completed: (() -> Void)?) {
         showHUD()
         getRequest(baseUrl: GoodsList_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "sort" : sort, "order" : order, "cate_id" : cateID, "sid" : ID, "p" : "1"], success: { [weak self] (obj: DataInfo) in
             self?.hideAllHUD()
@@ -122,6 +122,9 @@ class StoreController: TMViewController {
                 self?.totalPage = (obj.data?.totalpage)!
                 self?.page += 1
                 self?.collectionView.reloadData()
+                if let block = Completed {
+                    block()
+                }
             } else {
                 self?.inspectLogin(model: obj)
             }
@@ -217,11 +220,14 @@ class StoreController: TMViewController {
         segmentView.clickItemBlock = { [weak self] index in
             self?.cateID = "\((self?.shopData?.category[index].id)!)"
             self?.loadBest()
-            self?.loadNews()
-            let indexOne = IndexPath.init(row: 0, section: 1)
-            let attributes = self?.collectionView.layoutAttributesForItem(at: indexOne)
-            let point = CGPoint.init(x: 0, y: (attributes?.frame.origin.y ?? 75) - 75)
-            self?.collectionView.setContentOffset(point, animated: true)
+            self?.loadNews(Completed: {
+                if (self?.goodsList.count)! > 0 {
+                    let indexOne = IndexPath.init(row: 0, section: 1)
+                    let attributes = self?.collectionView.layoutAttributesForItem(at: indexOne)
+                    let point = CGPoint.init(x: 0, y: (attributes?.frame.origin.y ?? 75) - 75)
+                    self?.collectionView.setContentOffset(point, animated: true)
+                }
+            })
         }
     }
     
@@ -232,7 +238,7 @@ class StoreController: TMViewController {
             } else {
                 self?.sort = "s.sales"
             }
-            self?.loadNews()
+            self?.loadNews(Completed: nil)
         }
     }
     
