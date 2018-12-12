@@ -322,9 +322,9 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         case 0:
             height += headerView?.getHeaderHeight(isAution: auctionGoods.count != 0) ?? 0.0
         case 1:
-            height = groupGoods.count == 0 ? 0.0 : sectionH
+            height = groupGoods.count == 0 ? -35.0 : sectionH
         case 2:
-            height = timelimitGoods.count == 0 ? 0.0 : sectionH
+            height = timelimitGoods.count == 0 ? -35.0 : sectionH
         case 3:
             height = recommendGoods.count == 0 ? 0.0 : sectionH
         case 4:

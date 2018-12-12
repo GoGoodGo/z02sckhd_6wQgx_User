@@ -48,7 +48,7 @@ class HomeHeaderView: UICollectionReusableView {
         if isAution {
             return bannerHeight + getItemHeight() * (categorys.count > 4 ? 2 : 1)
         } else {
-            return bannerHeight + getItemHeight() * (categorys.count > 4 ? 2 : 1) - 80
+            return bannerHeight + getItemHeight() * (categorys.count > 4 ? 2 : 1) - 60
         }
     }
     

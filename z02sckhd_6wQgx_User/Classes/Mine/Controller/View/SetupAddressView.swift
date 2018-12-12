@@ -122,6 +122,7 @@ class SetupAddressView: UIView {
             if isUpdate {
                 cityKey = address?.allKeys[provinceIndex] as! String
             }
+            if cityKey.isEmpty { pullDownView.close(); return }
             let array = address?.value(forKey: cityKey) as! Array<Any>
             let city = array.first as! Dictionary<String, Array<String>>
             var titles = [String]()
@@ -213,6 +214,7 @@ class SetupAddressView: UIView {
         let view = YHPullDownView.init()
         view.frame = CGRect.init(x: 0, y: 0, width: 100, height: 0)
         view.isSelectedCancel = true
+        view.showRow = 3
         view.titles = ["请选择省市"]
         return view
     }()
