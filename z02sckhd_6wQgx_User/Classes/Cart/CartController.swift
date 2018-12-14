@@ -21,7 +21,6 @@ public class CartController: TMViewController {
     var cart: Cart?
     var stores = [CartStore]()
     var currentAmount: Float = 0.0
-    var isSubmitOrder = false // 是否提交订单
     
     var sectionHeaders = [Int : CartSectionHeader]()
     var sectionFooters = [Int : CartSectionFooter]()
@@ -35,9 +34,7 @@ public class CartController: TMViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isSubmitOrder {
-            load()
-        }
+        tableView.mj_header.beginRefreshing()
     }
     
     // MARK: - Private Method
@@ -276,7 +273,6 @@ public class CartController: TMViewController {
         getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: CartOrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
-                self?.isSubmitOrder = true
                 let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())
                 confirmOrder.orderInfo = obj
                 self?.navigationController?.pushViewController(confirmOrder, animated: true)
