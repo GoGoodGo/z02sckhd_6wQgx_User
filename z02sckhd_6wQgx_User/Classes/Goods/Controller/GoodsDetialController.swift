@@ -138,10 +138,10 @@ class GoodsDetialController: TMViewController {
         auctionPrice.text = "¥\(Float((salesDetial?.store?.new_price ?? "0.00"))! + Float((salesDetial?.store?.markups ?? "0.00"))!)"
         if salesDetial?.is_top == 1 {
             auctionPay.setTitle("立即支付", for: .normal)
-            auctionPrice.text = "¥\(salesDetial?.store?.new_price)"
+            auctionPrice.text = "¥\((salesDetial?.store?.new_price ?? "0.00")!)"
         } else if salesDetial?.store?.is_finished == 1 {
             auctionPay.isEnabled = false
-            auctionPrice.text = "¥\(salesDetial?.store?.new_price)"
+            auctionPrice.text = "¥\((salesDetial?.store?.new_price ?? "0.00")!)"
         }
         tableView.reloadData()
     }
