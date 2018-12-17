@@ -27,6 +27,7 @@ class SpecificOptionView: UIView {
     var specID = ""
     var limitNum = ""
     var goodsNum = 1
+    var selectedIndexPath: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -115,6 +116,11 @@ class SpecificOptionView: UIView {
             specific.text = (goodsDetial?.defaultspec?.spec_1 ?? "") + (goodsDetial?.defaultspec?.spec_2 ?? "")
             
             collectionView.reloadData()
+            if goodsDetial?._specs.count ?? 0 > 0 {
+                selectedIndexPath = IndexPath.init(row: 0, section: 0)
+                collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
+                specID = "\((goodsDetial?._specs.first?.spec_id)!)"
+            }
         }
     }
     
@@ -158,10 +164,17 @@ extension SpecificOptionView: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     // MARK: - UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let itemIndex = selectedItems[indexPath.section] {
-            collectionView.deselectItem(at: itemIndex, animated: true)
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        if selectedIndexPath == indexPath {
+            return false
         }
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        collectionView.deselectItem(at: selectedIndexPath!, animated: true)
+        selectedIndexPath = indexPath
         
         if (goodsDetial?.discount_price.isEmpty ?? false) {
             price.text = goodsDetial?._specs[indexPath.row].price

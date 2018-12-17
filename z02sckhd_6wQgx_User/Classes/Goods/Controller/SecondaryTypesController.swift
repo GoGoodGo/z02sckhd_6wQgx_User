@@ -151,8 +151,12 @@ class SecondaryTypesController: TMViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 self?.page += 1
-                self?.goodsList = (obj.data?.result)!
-                self?.totalPage = (obj.data?.totalpage)!
+                if let data = obj.data {
+                    self?.goodsList = data.result
+                    self?.totalPage = (obj.data?.totalpage)!
+                } else {
+                    self?.goodsList.removeAll()
+                }
                 self?.goodsCollectionView.reloadData()
             } else {
                 self?.inspectLogin(model: obj)
@@ -168,7 +172,9 @@ class SecondaryTypesController: TMViewController {
         getRequest(baseUrl: GoodsList_URL, params: params, success: { [weak self] (obj: DataInfo) in
             if "success" == obj.status {
                 self?.page += 1
-                self?.goodsList += (obj.data?.result)!
+                if let data = obj.data {
+                    self?.goodsList += data.result
+                }
                 self?.goodsCollectionView.reloadData()
             } else {
                 self?.inspectLogin(model: obj)

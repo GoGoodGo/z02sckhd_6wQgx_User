@@ -66,6 +66,9 @@ public class IncomeController: TMViewController {
     // MARK: - Callbacks
     @IBAction func action_withdraw() {
         let applyWithdraw = ApplyWithdrawController.init(nibName: "ApplyWithdrawController", bundle: getBundle())
+        applyWithdraw.completedBlock = { [weak self] in
+            self?.tableView.mj_header.beginRefreshing()
+        }
         navigationController?.pushViewController(applyWithdraw, animated: true)
     }
     
@@ -106,6 +109,9 @@ extension IncomeController: UITableViewDelegate, UITableViewDataSource {
         case 3:
             let withdraw = WithdrawRecordController.init(nibName: "WithdrawRecordController", bundle: getBundle())
             withdraw.withdrawData = incomeData
+            withdraw.withdrawCompleted = { [weak self] in
+                self?.tableView.mj_header.beginRefreshing()
+            }
             navigationController?.pushViewController(withdraw, animated: true)
         default: return
         }

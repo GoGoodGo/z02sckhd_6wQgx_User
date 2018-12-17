@@ -62,7 +62,7 @@ public class MineController: TMViewController {
         let user = TMHttpUserInstance.sharedManager()
         let config = TMEngineConfig.instance()
         let head_pic = user?.head_pic ?? ""
-        let url = URL.init(string: head_pic.contains("://") ? "" : (config?.domain)! + head_pic)
+        let url = URL.init(string: (head_pic.contains("://") ? "" : (config?.domain)!) + head_pic)
         imgBtn.kf.setImage(with: url, for: .normal)
         if let nickname = user?.member_nickname {
             name.text = nickname.isEmpty ? user?.mobile : nickname

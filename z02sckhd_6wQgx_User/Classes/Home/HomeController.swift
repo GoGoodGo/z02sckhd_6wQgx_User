@@ -38,14 +38,16 @@ public class HomeController: TMViewController {
     
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        isShowSearchBar(isShow: false)
+        navigationController?.navigationBar.isHidden = false
+//        isShowSearchBar(isShow: false)
         
         NotificationCenter.default.removeObserver(self)
     }
     
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        isShowSearchBar(isShow: true)
+        navigationController?.navigationBar.isHidden = true
+//        isShowSearchBar(isShow: true)
     }
 
     override public func viewDidLoad() {
@@ -65,7 +67,7 @@ public class HomeController: TMViewController {
         
         view.addSubview(collectionView)
         
-        navigationController?.navigationBar.addSubview(searchBtn)
+//        navigationController?.navigationBar.addSubview(searchBtn)
         load()
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
     }
@@ -156,7 +158,7 @@ public class HomeController: TMViewController {
     // MARK: - Callbacks
     @objc private func action_search() {
         
-        isShowSearchBar(isShow: false)
+//        isShowSearchBar(isShow: false)
         let searchCtrl = SearchController.init(nibName: "SearchController", bundle: getBundle())
         navigationController?.pushViewController(searchCtrl, animated: true)
     }
@@ -212,7 +214,8 @@ public class HomeController: TMViewController {
         let height: CGFloat = 30
         let gap: CGFloat = 30
         let btn = UIButton.init(type: .custom)
-        btn.frame = CGRect.init(x: gap, y: (NavigationBarH - height - 20) / 2, width: WIDTH - gap * 2, height: height)
+//        btn.frame = CGRect.init(x: gap, y: (NavigationBarH - height - 20) / 2, width: WIDTH - gap * 2, height: height)
+        btn.frame = CGRect.init(x: gap, y: height - 2, width: WIDTH - gap * 2, height: height)
         btn.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         btn.setTitle("请输入宝贝名称", for: .normal)
         btn.setImage(getImage(type(of: self), "ico_img_ss"), for: .normal)
@@ -300,6 +303,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
             self.headerView = headerView
             headerView.images = banners
             headerView.categorys = categorys
+            headerView.addSubview(searchBtn)
             
             return headerView
         } else if section == 4 {
@@ -342,7 +346,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     // MARK: - UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        isShowSearchBar(isShow: false)
+//        isShowSearchBar(isShow: false)
         
         let section = indexPath.section
         var ID = ""

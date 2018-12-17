@@ -20,20 +20,13 @@ class WithdrawRecordController: TMViewController {
     var withdrawData: IncomeData?
     var withdraws = [Income]()
     var status = "0"
-    var isApply = false
+    var withdrawCompleted: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "提现记录"
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if isApply {
-            load()
-        }
     }
     
     // MARK: - Private Method
@@ -115,8 +108,13 @@ class WithdrawRecordController: TMViewController {
     @objc func action_withdraw() {
         
         let applyWithdraw = ApplyWithdrawController.init(nibName: "ApplyWithdrawController", bundle: getBundle())
+        applyWithdraw.completedBlock = { [weak self] in
+            self?.load()
+            if let block = self?.withdrawCompleted {
+                block()
+            }
+        }
         navigationController?.pushViewController(applyWithdraw, animated: true)
-        isApply = true
     }
     
     func callbacks(cell: WithdrawRecordCell) {

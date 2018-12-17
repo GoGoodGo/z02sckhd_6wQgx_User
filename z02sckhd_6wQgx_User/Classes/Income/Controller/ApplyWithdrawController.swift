@@ -20,6 +20,7 @@ class ApplyWithdrawController: TMViewController {
     
     var accounts = [Account]()
     var accountID = ""
+    var completedBlock: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,12 +81,19 @@ class ApplyWithdrawController: TMViewController {
     }
     /** 提现 */
     func loadWithdraw() {
+        if Float(textField.text!)! == 0.00 {
+            showAutoHideHUD(message: "请输入大于0的金额！")
+            return
+        }
         showHUD()
         getRequest(baseUrl: ApplyWithdraw_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "price" : textField.text!, "account_id" : accountID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "申请成功，等候处理！", completed: {
                     self?.navigationController?.popViewController(animated: true)
+                    if let block = self?.completedBlock {
+                        block()
+                    }
                 })
             } else {
                 self?.inspectLogin(model: obj)
