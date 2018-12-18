@@ -68,7 +68,7 @@ class TimelimitBaseInfoCell: UITableViewCell {
             switch type {
             case .groupBuy:
                 remainingNum.text = ""
-                boughtNum.text = "团购人数：\(result?.store?.num ?? 0)人"
+                boughtNum.text = "剩余数量：\(result?.store?.num ?? 0)件"
                 priceType.text = "团购价"
                 discountPrice.text = "¥\(result?.store?.price ?? "0.00")"
             case .timelimit:
