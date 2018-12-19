@@ -144,6 +144,8 @@ class Collect: Mappable {
     var banner = ""
     var price = "0.00"
     var spec = ""
+    var total = 0
+    var pay_number = 0
     
     required init?(map: Map) {
         
@@ -163,6 +165,8 @@ class Collect: Mappable {
         banner <- map["banner"]
         price <- map["price"]
         spec <- map["spec"]
+        total <- map["total"]
+        pay_number <- map["pay_number"]
     }
 }
 

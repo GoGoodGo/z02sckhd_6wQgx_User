@@ -24,6 +24,12 @@ class CollectController: TMViewController {
     
     let gap: CGFloat = 15
     
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barStyle = .default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -194,7 +200,17 @@ extension CollectController: UICollectionViewDelegate, UICollectionViewDataSourc
     
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let id = collectInfo?.data?.result[indexPath.row].goods_id
+        if selectedIndex == 0 {
+            let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
+            goodsDetialCtrl.goodsID = "\(id ?? 0)"
+            goodsDetialCtrl.detialType = .detial
+            navigationController?.pushViewController(goodsDetialCtrl, animated: true)
+        } else {
+            let storeCtrl = StoreController.init(nibName: "StoreController", bundle: getBundle())
+            storeCtrl.ID = "\(id ?? 0)"
+            navigationController?.pushViewController(storeCtrl, animated: true)
+        }
     }
     
     

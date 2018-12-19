@@ -45,6 +45,10 @@ class CollectStoreCell: UICollectionViewCell {
             let url = URL.init(string: (collect?.banner)!)
             img.kf.setImage(with: url, placeholder: nil)
             name.text = collect?.shopname
+            rate.text = " "
+//            sales.text = "销量\(collect?.pay_number ?? 0)件"
+            sales.text = " "
+            total.text = "共\(collect?.total ?? 0)件宝贝"
         }
     }
     
