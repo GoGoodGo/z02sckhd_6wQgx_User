@@ -48,6 +48,7 @@ class CollectGoodsCell: UICollectionViewCell {
             describe.text = " "
             price.text = "¥ \(collect?.price ?? "0.00")"
 //            payNumber.text = "\(collect?.pay_number ?? 0)人付款"
+            payNumber.text = " "
         }
     }
     
