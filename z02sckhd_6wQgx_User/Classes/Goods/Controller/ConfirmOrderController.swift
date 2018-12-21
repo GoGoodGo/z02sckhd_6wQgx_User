@@ -20,6 +20,7 @@ class ConfirmOrderController: TMViewController {
     var orderInfo: CartOrderInfo?
     var consignee: Address?
     var flowType = ""
+    var payNote = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,7 +81,7 @@ class ConfirmOrderController: TMViewController {
             return
         }
         showHUD()
-        getRequest(baseUrl: OrderDone_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType, "address_id" : "\(addressID)"], success: { [weak self] (obj: OrderInfo) in
+        getRequest(baseUrl: OrderDone_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType, "address_id" : "\(addressID)", "pay_note" : payNote], success: { [weak self] (obj: OrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 let onlinePay = OnlinePayController.init(nibName: "OnlinePayController", bundle: getBundle())
@@ -163,6 +164,9 @@ extension ConfirmOrderController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 0 { return nil }
         let footer = OrderSectionFooter.footer() as! OrderSectionFooter
+        footer.payNoteBlock = { [weak self] note in
+            self?.payNote = note
+        }
         footer.amount = orderInfo?.data?.goods_list?.amount ?? "0.00"
         footer.store = orderInfo?.data?.goods_list?.goods[section - 1]
         

@@ -50,7 +50,7 @@ class AddressCell: UITableViewCell {
         didSet {
             name.text = addressModel?.consignee
             phone.text = addressModel?.tel
-            address.text = addressModel?.address
+            address.text = (addressModel?.address ?? "") + (addressModel?.address_name ?? "")
             updateDefaultAnimail(isDefault: (addressModel?.is_default)! == "1" ? true : false)
 //            updateDefaultAnimail(isDefault: addressModel?.is_default ?? false)
         }

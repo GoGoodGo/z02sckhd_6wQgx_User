@@ -15,6 +15,7 @@ class OrderSectionFooter: UIView {
     @IBOutlet weak var totalNum: UILabel!
     @IBOutlet weak var totoalPrice: UILabel!
     var amount = "0.00"
+    var payNoteBlock: ((_ note: String) -> Void)?
 
     // MARK: - XIB View
     public class func footer() -> Any? {
@@ -44,6 +45,9 @@ extension OrderSectionFooter: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         store?.notes = textField.text!
+        if let block = payNoteBlock {
+            block(textField.text!)
+        }
     }
     
 }
