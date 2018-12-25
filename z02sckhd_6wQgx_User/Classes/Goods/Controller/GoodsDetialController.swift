@@ -292,7 +292,7 @@ class GoodsDetialController: TMViewController {
     }
     /** 分享地址 */
     func getShareUrl() {
-        getRequest(baseUrl: Share_URL, params: nil, success: { [weak self] (obj: ShareUrl) in
+        getRequest(baseUrl: Share_URL, params: ["from" : "1"], success: { [weak self] (obj: ShareUrl) in
             if "success" == obj.status {
                 self?.shareUrl = obj.data
             } else {
