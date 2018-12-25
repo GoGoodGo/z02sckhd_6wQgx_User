@@ -10,6 +10,18 @@ import Foundation
 import ObjectMapper
 import YHTool
 
+class ShareUrl: BaseModel {
+    
+    var data = ""
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
 class CommentInfo: BaseModel {
     
     var data: CommentData?

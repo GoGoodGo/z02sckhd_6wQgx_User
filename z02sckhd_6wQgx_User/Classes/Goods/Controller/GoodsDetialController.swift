@@ -40,6 +40,7 @@ class GoodsDetialController: TMViewController {
     var isBuy = false
     var detialType: DetialType = .detial
     var specificH: CGFloat = 0
+    var shareUrl = ""
     
     var goodsDetial: GoodsDetial?
     var salesDetial: SalesDetialData?
@@ -95,6 +96,7 @@ class GoodsDetialController: TMViewController {
         tableView.tableHeaderView = carouselView
         loadDetial()
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(loadDetial))
+        getShareUrl()
     }
     
     @objc func loadDetial() {
@@ -284,6 +286,19 @@ class GoodsDetialController: TMViewController {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
+            self.hideHUD()
+            self.inspectError()
+        }
+    }
+    /** 分享地址 */
+    func getShareUrl() {
+        getRequest(baseUrl: Share_URL, params: nil, success: { [weak self] (obj: ShareUrl) in
+            if "success" == obj.status {
+                self?.shareUrl = obj.data
+            } else {
+                self?.inspectLogin(model: obj)
+            }
+        }) { (error) in
             self.inspectError()
         }
     }
@@ -331,7 +346,11 @@ class GoodsDetialController: TMViewController {
     }
     
     @objc func action_share() {
-        TMShareInstance.sharedManager()?.showShare("https://www.360tianma.com", thumbUrl: "", title: goodsDetial?.goods_name, descr: "下载APP得更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
+        if shareUrl.isEmpty {
+            showAutoHideHUD(message: "对不起，暂时还不能分享哦！")
+            return
+        }
+        TMShareInstance.sharedManager()?.showShare(shareUrl, thumbUrl: "", title: goodsDetial?.goods_name, descr: "下载APP得更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
             if let shareError = error {
                 self?.showAutoHideHUD(message: "分享失败")
             } else {

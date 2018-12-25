@@ -13,8 +13,8 @@ import TMSDK
 let IMG_URL = ""
 //let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
 
-let BASE_URL = TMEngineConfig.instance().domain!
-//let BASE_URL = "http://shop.dktoo.com"
+//let BASE_URL = TMEngineConfig.instance().domain!
+let BASE_URL = "http://shop.dktoo.com"
 let TestToken = ""
 
 public let getBundle: () -> Bundle = {
@@ -122,6 +122,9 @@ public let AddCollect_URL = BASE_URL + "/z02sckhd_6wqgx/apiuser/addcollect"
 
 // 取消收藏
 public let CancelCollect_URL = BASE_URL + "/z02sckhd_6wqgx/apiuser/delcollect"
+
+// 分享地址
+public let Share_URL = BASE_URL + "/z02sckhd_6wqgx/api/payset"
 
 // 我的收藏
 public let MyCollect_URL = BASE_URL + "/z02sckhd_6wqgx/apiuser/collection"
