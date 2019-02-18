@@ -59,7 +59,8 @@ Pod::Spec.new do |s|
   
   s.dependency 'TMUserCenter'
   s.dependency 'TMPaySDK'
-  
+  s.dependency 'RongCloudIM/IMLib', '~> 2.8.3'
+  s.dependency 'RongCloudIM/IMKit', '~> 2.8.3'
   
   
   

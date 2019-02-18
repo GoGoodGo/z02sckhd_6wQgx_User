@@ -57,6 +57,9 @@ PODS:
   - MOBFoundation (3.1.9)
   - ObjectMapper (3.3.0)
   - QBImagePickerController (3.4.0)
+  - RongCloudIM/IMKit (2.8.32):
+    - RongCloudIM/IMLib
+  - RongCloudIM/IMLib (2.8.32)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -93,11 +96,13 @@ PODS:
     - QBImagePickerController
     - SDWebImage
     - SwiftyJSON
-  - z02sckhd_6wQgx_User (1.5.7):
+  - z02sckhd_6wQgx_User (1.7.1):
     - Cosmos
     - IQKeyboardManager
     - Kingfisher
     - MJRefresh (~> 3.1.12)
+    - RongCloudIM/IMKit (~> 2.8.3)
+    - RongCloudIM/IMLib (~> 2.8.3)
     - TMPaySDK
     - TMUserCenter
     - YHTool (~> 1.1.6)
@@ -123,6 +128,7 @@ SPEC REPOS:
     - MOBFoundation
     - ObjectMapper
     - QBImagePickerController
+    - RongCloudIM
     - SDWebImage
     - SVProgressHUD
     - SwiftyJSON
@@ -153,6 +159,7 @@ SPEC CHECKSUMS:
   MOBFoundation: 11500153c10d83e4ac341f6ad6301b3998ce6db2
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
+  RongCloudIM: 48bfc2fcb8d7cae8ce1e19cb5fb26d6d90616375
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
@@ -161,7 +168,7 @@ SPEC CHECKSUMS:
   TMShare: 82d2b03f65bbe5c5b8f167d56f1b203521acbedd
   TMUserCenter: 30d68a85eb404be5075fe8d83504c577306a27aa
   YHTool: 34739e878c101f989d3cb9278564496b3d65f866
-  z02sckhd_6wQgx_User: 9d046eab54270ac34b5c5a9fe22034fbfe9984a5
+  z02sckhd_6wQgx_User: 0411211095f03edf29a4793b8aef0a27fe6946e5
 
 PODFILE CHECKSUM: 29c6eb257930fca757fc24da80a6a079449fa0db
 

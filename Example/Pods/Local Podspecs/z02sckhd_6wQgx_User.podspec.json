@@ -1,6 +1,6 @@
 {
   "name": "z02sckhd_6wQgx_User",
-  "version": "1.5.7",
+  "version": "1.7.1",
   "summary": "TM User.",
   "description": "TM User framework",
   "homepage": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git",
-    "tag": "1.5.7"
+    "tag": "1.7.1"
   },
   "static_framework": true,
   "requires_arc": true,
@@ -68,6 +68,12 @@
     ],
     "TMPaySDK": [
 
+    ],
+    "RongCloudIM/IMLib": [
+      "~> 2.8.3"
+    ],
+    "RongCloudIM/IMKit": [
+      "~> 2.8.3"
     ]
   }
 }
