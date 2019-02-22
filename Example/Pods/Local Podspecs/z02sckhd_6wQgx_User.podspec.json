@@ -70,10 +70,10 @@
 
     ],
     "RongCloudIM/IMLib": [
-      "~> 2.8.3"
+
     ],
     "RongCloudIM/IMKit": [
-      "~> 2.8.3"
+
     ]
   }
 }
