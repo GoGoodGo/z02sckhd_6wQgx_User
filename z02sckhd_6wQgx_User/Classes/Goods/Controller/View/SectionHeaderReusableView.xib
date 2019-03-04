@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="SectionHeaderReusableView" customModule="TianMaUser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MzI-vc-hVf">
+                    <rect key="frame" x="0.0" y="90" width="320" height="10"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="DDC-vb-gyS"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7X4-aO-Mqm">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_img_tbtj" translatesAutoresizingMaskIntoConstraints="NO" id="9jh-Eu-Oxq">
+                    <rect key="frame" x="71.5" y="100" width="177" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="kUH-3u-im4"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="7X4-aO-Mqm" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="943-7G-wAj"/>
+                <constraint firstItem="9jh-Eu-Oxq" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="Cc6-d5-0FJ"/>
+                <constraint firstItem="MzI-vc-hVf" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="LsX-Ul-2dA"/>
+                <constraint firstItem="7X4-aO-Mqm" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="P4e-8o-1MF"/>
+                <constraint firstItem="MzI-vc-hVf" firstAttribute="top" secondItem="7X4-aO-Mqm" secondAttribute="bottom" id="Pd7-Me-lTm"/>
+                <constraint firstItem="MzI-vc-hVf" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="dA8-sC-fgd"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="9jh-Eu-Oxq" secondAttribute="bottom" id="rI4-wC-MPb"/>
+                <constraint firstItem="9jh-Eu-Oxq" firstAttribute="top" secondItem="MzI-vc-hVf" secondAttribute="bottom" id="wsm-fo-5cp"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="7X4-aO-Mqm" secondAttribute="trailing" id="xaX-oz-WSr"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="bannerContent" destination="7X4-aO-Mqm" id="pzf-1j-N2f"/>
+                <outlet property="imgView" destination="9jh-Eu-Oxq" id="abu-pn-PUP"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="104"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="ico_img_tbtj" width="177" height="50"/>
+    </resources>
+</document>

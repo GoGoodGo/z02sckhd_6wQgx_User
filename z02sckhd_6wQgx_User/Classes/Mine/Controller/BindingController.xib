@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BindingController" customModule="z02sckhd_6wQgx_User" customModuleProvider="target">
+            <connections>
+                <outlet property="QRcode" destination="MBY-2N-2cJ" id="Lwp-QR-Gwq"/>
+                <outlet property="binding" destination="3Jy-aG-nWl" id="e96-dh-TfC"/>
+                <outlet property="bindingBtn" destination="luW-1j-lUJ" id="si7-0C-qEX"/>
+                <outlet property="bindingLabel" destination="M2K-qe-zlt" id="Wj0-u1-NBZ"/>
+                <outlet property="bindingTop" destination="NFf-aX-qHO" id="of3-YF-hpR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_fx_bg_.png" translatesAutoresizingMaskIntoConstraints="NO" id="QEl-4k-VIA">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-aG-nWl">
+                    <rect key="frame" x="60" y="292" width="255" height="50"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.90373501712328763" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="dRb-TO-Ghh"/>
+                    </constraints>
+                    <color key="textColor" red="0.92941176470588238" green="0.30588235294117649" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的邀请码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2K-qe-zlt">
+                    <rect key="frame" x="141.5" y="120" width="92" height="22"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luW-1j-lUJ">
+                    <rect key="frame" x="60" y="372" width="255" height="50"/>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.32156862745098036" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <state key="normal" title="绑定">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="disabled" title="已绑定">
+                        <color key="titleColor" white="1" alpha="0.59864619006849318" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="action_binding:" destination="-1" eventType="touchUpInside" id="Do2-io-bi3"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBY-2N-2cJ">
+                    <rect key="frame" x="127.5" y="157" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="E9a-ok-jGQ"/>
+                        <constraint firstAttribute="height" constant="120" id="ObG-gU-Prr"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="MBY-2N-2cJ" firstAttribute="centerX" secondItem="M2K-qe-zlt" secondAttribute="centerX" id="GkF-Dq-2g4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3Jy-aG-nWl" secondAttribute="trailing" constant="60" id="Mtx-qd-91J"/>
+                <constraint firstItem="M2K-qe-zlt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="NFf-aX-qHO"/>
+                <constraint firstItem="MBY-2N-2cJ" firstAttribute="top" secondItem="M2K-qe-zlt" secondAttribute="bottom" constant="15" id="PjP-Mw-H7c"/>
+                <constraint firstItem="luW-1j-lUJ" firstAttribute="leading" secondItem="3Jy-aG-nWl" secondAttribute="leading" id="Sfq-pG-Ge8"/>
+                <constraint firstItem="luW-1j-lUJ" firstAttribute="height" secondItem="3Jy-aG-nWl" secondAttribute="height" id="VGr-2B-DZ4"/>
+                <constraint firstItem="QEl-4k-VIA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Xwy-1W-aq3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QEl-4k-VIA" secondAttribute="trailing" id="d4Q-ZH-6TL"/>
+                <constraint firstItem="M2K-qe-zlt" firstAttribute="centerX" secondItem="QEl-4k-VIA" secondAttribute="centerX" id="dv4-yR-1yj"/>
+                <constraint firstItem="3Jy-aG-nWl" firstAttribute="top" secondItem="M2K-qe-zlt" secondAttribute="bottom" constant="150" id="mfn-5I-9Es"/>
+                <constraint firstItem="luW-1j-lUJ" firstAttribute="top" secondItem="3Jy-aG-nWl" secondAttribute="bottom" constant="30" id="oma-76-pEE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QEl-4k-VIA" secondAttribute="bottom" id="pov-C4-eBa"/>
+                <constraint firstItem="3Jy-aG-nWl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="60" id="sfO-4O-cMu"/>
+                <constraint firstItem="luW-1j-lUJ" firstAttribute="trailing" secondItem="3Jy-aG-nWl" secondAttribute="trailing" id="yvt-qZ-qsK"/>
+                <constraint firstItem="QEl-4k-VIA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zrK-vG-Tk6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_fx_bg_.png" width="375" height="603"/>
+    </resources>
+</document>
