@@ -532,22 +532,18 @@ class GoodsDetialController: TMViewController {
         getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
             if "success" == obj.status {
            
-                if self?.goodsDetial?.grade == 1{
+                if self?.goodsDetial?.grade == 1 {
                    let confirmOrder = XuNiConfirmOrderViewController.init(nibName: "XuNiConfirmOrderViewController", bundle: getBundle())
                     confirmOrder.flowType = flowType
                     confirmOrder.orderInfo = obj
                     self?.navigationController?.pushViewController(confirmOrder, animated: true)
-                }
-                else{
+                } else {
                     let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())
                     confirmOrder.flowType = flowType
                     confirmOrder.orderInfo = obj
                     self?.navigationController?.pushViewController(confirmOrder, animated: true)
                 }
                 
-                
-            
-             
             } else {
                 self?.inspectLogin(model: obj)
             }

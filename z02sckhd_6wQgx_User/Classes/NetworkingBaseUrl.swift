@@ -11,12 +11,13 @@ import YHTool
 import TMSDK
 
 let IMG_URL = ""
-//let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
+let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
+//let TestToken = ""
 
-let BASE_URL = TMEngineConfig.instance().domain!
+//let BASE_URL = TMEngineConfig.instance().domain!
 //let BASE_URL = "http://shop.dktoo.com"
-//let BASE_URL = "https://www.sixgrid.cn"
-let TestToken = ""
+let BASE_URL = "https://www.sixgrid.cn"
+
 
 public let getBundle: () -> Bundle = {
     
