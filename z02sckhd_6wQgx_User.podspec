@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'z02sckhd_6wQgx_User'
-  s.version          = '1.7.1'
+  s.version          = '1.7.2'
   s.summary          = 'TM User.'
 
 # This description is used to generate tags and improve search results.
@@ -61,7 +61,8 @@ Pod::Spec.new do |s|
   s.dependency 'TMPaySDK'
   s.dependency 'RongCloudIM/IMLib'
   s.dependency 'RongCloudIM/IMKit'
-  
+  s.dependency 'SnapKit'
+
   
   
   

@@ -20,7 +20,7 @@ class RecommendGoodsCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+//        self.paidTotal.backgroundColor = UIColor.red
         
     }
     
@@ -32,7 +32,7 @@ class RecommendGoodsCell: UICollectionViewCell {
             describe.text = ""
             price.text = "¥" + (goods?.price ?? "0.00")
 //            paidTotal.text = "销量" + (goods?.pay_number ?? "0")
-            paidTotal.text = ""
+            paidTotal.text = " 可返现\(goods?.back_price ?? 0)元 "
         }
     }
     

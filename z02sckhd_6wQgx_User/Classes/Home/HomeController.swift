@@ -10,6 +10,7 @@ import UIKit
 import MJRefresh
 import YHTool
 import SetI001
+import RongIMKit
 
 public class HomeController: TMViewController {
     
@@ -24,7 +25,8 @@ public class HomeController: TMViewController {
     var newGoods = [Goods]()
     var shops = [HomeShop]()
     var banners = [String]()
-    
+    var banner_Models = [HomeBanner]()
+
     var sort = ""
     var order = ""
     
@@ -60,7 +62,39 @@ public class HomeController: TMViewController {
         }
         
         setupUI()
+        self.loadUserDetial()
     }
+    
+    func loginRongYun(str:String){
+        RCIM.shared()?.connect(withToken: str, success: { (userId) in
+            print("登录成功-----token:\(userId ?? "")")
+           
+//            self.showAutoHideHUD(message: "融云链接成功")
+
+            
+        }, error: { (status) in
+//            self.showAutoHideHUD(message: "融云链接失败")
+
+        }, tokenIncorrect: {
+//            self.showAutoHideHUD(message: "融云链接失败")
+
+        })
+    }
+    //
+    
+    func loadUserDetial() {
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: UserInfo) in
+            if "success" == obj.status {
+//                Singleton.shared.rongyun_token =
+                self?.loginRongYun(str: (obj.data?.rongyun_token)!)
+
+            }
+        }) { (error) in
+            self.inspectError()
+        }
+    }
+    
+    
     
     // MARK: - Private Method
     private func setupUI() {
@@ -79,7 +113,7 @@ public class HomeController: TMViewController {
     /** 获取首页 */
     func loadHome() {
         showHUD()
-        getRequest(baseUrl: Home_URL, params: nil, success: { [weak self] (obj: HomeInfo) in
+        getRequest(baseUrl: Home_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: HomeInfo) in
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -106,7 +140,7 @@ public class HomeController: TMViewController {
    
     /** 新品列表 */
     func loadNewGoods() {
-        getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1","token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             self?.hideAllHUD()
             self?.collectionView.mj_header.endRefreshing()
@@ -128,6 +162,7 @@ public class HomeController: TMViewController {
         for banner in banners {
             images.append(banner.litpic)
         }
+        self.banner_Models = banners
         self.banners = images
     }
     /** 获取行高 */
@@ -300,6 +335,17 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         if section == 0 {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellName(HomeHeaderView.self), for: indexPath) as! HomeHeaderView
             callbacksHeader(header: headerView)
+            headerView.top_clickItemBlock = {[weak self](index) in
+                if self?.banner_Models[index].type == "goods" {
+                    let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
+                    goodsDetialCtrl.goodsID = (self?.banner_Models[index].url)!
+                    goodsDetialCtrl.detialType = DetialType.detial
+                    self?.navigationController?.pushViewController(goodsDetialCtrl, animated: true)
+                }
+                else{
+                    print("链接")
+                }
+            }
             self.headerView = headerView
             headerView.images = banners
             headerView.categorys = categorys

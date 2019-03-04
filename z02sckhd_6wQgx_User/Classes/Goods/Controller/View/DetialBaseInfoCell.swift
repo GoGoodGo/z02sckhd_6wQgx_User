@@ -16,7 +16,10 @@ class DetialBaseInfoCell: UITableViewCell {
     @IBOutlet weak var stock: UILabel!
     @IBOutlet weak var sold: UILabel!
     
-
+    @IBOutlet weak var returnMoneyLabel: UILabel!
+    
+    @IBOutlet weak var returnGoodsLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -30,6 +33,22 @@ class DetialBaseInfoCell: UITableViewCell {
             price.text = "¥" + (goodsDetial?.price ?? "0")
             stock.text = "库存\(goodsDetial?.goods_number ?? 1)件"
             sold.text = "已售\(goodsDetial?.sales ?? 0)件"
+            
+            if goodsDetial?.is_return == 1 {
+                self.returnMoneyLabel.isHidden = false
+                self.returnMoneyLabel.text = "  可退货  "
+                self.returnGoodsLabel.isHidden = false
+                self.returnGoodsLabel.text = " 可返现\(goodsDetial?.back_price ?? 0)元 "
+            }
+            else{
+                self.returnMoneyLabel.isHidden = false
+                self.returnMoneyLabel.text = " 可返现\(goodsDetial?.back_price ?? 0)元 "
+                self.returnGoodsLabel.isHidden = true
+                
+            }
+         
+            
+            
         }
     }
     

@@ -63,6 +63,7 @@ PODS:
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - SnapKit (4.2.0)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
   - TMPaySDK (0.0.7):
@@ -103,6 +104,7 @@ PODS:
     - MJRefresh (~> 3.1.12)
     - RongCloudIM/IMKit
     - RongCloudIM/IMLib
+    - SnapKit
     - TMPaySDK
     - TMUserCenter
     - YHTool (~> 1.1.6)
@@ -130,6 +132,7 @@ SPEC REPOS:
     - QBImagePickerController
     - RongCloudIM
     - SDWebImage
+    - SnapKit
     - SVProgressHUD
     - SwiftyJSON
     - TMPaySDK
@@ -161,6 +164,7 @@ SPEC CHECKSUMS:
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   RongCloudIM: 47f5424e04e8455fcd69a5bf2942ec4c0425be30
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TMPaySDK: e710fe05fb108d5fd257603b76b4e1a08832924f
@@ -168,8 +172,8 @@ SPEC CHECKSUMS:
   TMShare: 82d2b03f65bbe5c5b8f167d56f1b203521acbedd
   TMUserCenter: 30d68a85eb404be5075fe8d83504c577306a27aa
   YHTool: 34739e878c101f989d3cb9278564496b3d65f866
-  z02sckhd_6wQgx_User: ee187a1a102674945d05960f9da6581157b13062
+  z02sckhd_6wQgx_User: 8ea99a7a2e892c2b2563dca651bc2a9dfd66b0a2
 
 PODFILE CHECKSUM: 29c6eb257930fca757fc24da80a6a079449fa0db
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.0.beta.1

@@ -32,6 +32,7 @@ class User: Mappable {
     var user_address = 0
     var add_time = 0
     var pid = 0
+    var rongyun_token = ""
     var pidcode = ""
     var pidname = ""
     var code = ""
@@ -45,6 +46,7 @@ class User: Mappable {
         
         user_id <- map["user_id"]
         mid <- map["mid"]
+        rongyun_token <- map["rongyun_token"]
         user_money <- map["user_money"]
         frozen_money <- map["frozen_money"]
         integral <- map["integral"]

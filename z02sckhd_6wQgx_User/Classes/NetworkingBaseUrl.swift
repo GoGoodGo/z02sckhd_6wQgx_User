@@ -15,6 +15,7 @@ let IMG_URL = ""
 
 let BASE_URL = TMEngineConfig.instance().domain!
 //let BASE_URL = "http://shop.dktoo.com"
+//let BASE_URL = "https://www.sixgrid.cn"
 let TestToken = ""
 
 public let getBundle: () -> Bundle = {

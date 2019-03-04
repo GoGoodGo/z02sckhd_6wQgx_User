@@ -71,7 +71,7 @@ public class GoodsController: TMViewController {
     }
     /** 获取推荐商品 */
     @objc func loadBest() {
-        getRequest(baseUrl: GoodsList_URL, params: ["p" : "1", "is_best" : "1"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["p" : "1", "is_best" : "1","token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -90,7 +90,7 @@ public class GoodsController: TMViewController {
     /** 获取新品列表 */
     @objc func loadNews() {
         showHUD()
-        getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1","token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {

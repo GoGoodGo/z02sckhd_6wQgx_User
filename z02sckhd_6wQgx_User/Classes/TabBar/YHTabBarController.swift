@@ -59,10 +59,10 @@ extension YHTabBarController: UITabBarControllerDelegate {
     
     public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController == tabBarController.viewControllers?[2] || viewController == tabBarController.viewControllers?[3] || viewController == tabBarController.viewControllers?[4] {
-            if TMHttpUserInstance.sharedManager()?.member_id == 0 {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "login"), object: self, userInfo: nil)
-                return false
-            }
+//            if TMHttpUserInstance.sharedManager()?.member_id == 0 {
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "login"), object: self, userInfo: nil)
+//                return false
+//            }
         }
         return true
     }

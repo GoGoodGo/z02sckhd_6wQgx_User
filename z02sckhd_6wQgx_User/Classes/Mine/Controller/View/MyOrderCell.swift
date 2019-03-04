@@ -51,8 +51,8 @@ extension MyOrderCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(OrderGoodsCell.self)) as! OrderGoodsCell
-        cell.cellType = self.cellType
         cell.orderGoods = orders[indexPath.section]._goods[indexPath.row]
+        cell.cellType = self.cellType
         cell.returnBlock = { [weak self] cell in
             if let click = self?.returnBlock {
                 click(cell, indexPath)

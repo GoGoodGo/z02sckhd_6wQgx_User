@@ -40,7 +40,8 @@ class CartOrder: Mappable {
     var goods_list: CartStoreList?
     var order_amount = ""
     var consignee_default = [Address]()
-    
+    var from = [FormModel]()
+
     required init?(map: Map) {
         
     }
@@ -51,6 +52,8 @@ class CartOrder: Mappable {
         goods_list <- map["goods_list"]
         order_amount <- map["order_amount"]
         consignee_default <- map["consignee_default"]
+        from <- map["from"]
+
     }
 }
 
@@ -103,6 +106,26 @@ class CartTotal: Mappable {
         market_price <- map["market_price"]
         goods_price_formated <- map["goods_price_formated"]
         integral_money <- map["integral_money"]
+    }
+}
+
+class FormModel: Mappable {
+    
+    var id = 0
+    var pid = 0
+    var name = ""
+    var sort = 0
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        id <- map["id"]
+        pid <- map["pid"]
+        name <- map["name"]
+        sort <- map["sort"]
     }
 }
 
@@ -162,6 +185,7 @@ class CartGoods: Mappable {
     var goods_id = 0
     var specification = ""
     var rec_id = 0
+    var is_return = 0
     var sid = 0
     var income = "0.00"
     var goods_image = ""
@@ -181,6 +205,7 @@ class CartGoods: Mappable {
         goods_name <- map["goods_name"]
         give_integral <- map["give_integral"]
         quantity <- map["quantity"]
+        is_return <- map["is_return"]
         is_shipping <- map["is_shipping"]
         session_id <- map["session_id"]
         goods_id <- map["goods_id"]

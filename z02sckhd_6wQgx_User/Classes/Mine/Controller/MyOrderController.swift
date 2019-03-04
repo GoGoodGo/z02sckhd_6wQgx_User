@@ -291,8 +291,8 @@ extension MyOrderController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 
         let footer = OrderFooterView.footerView() as! OrderFooterView
-        footer.state = currentIndex
         footer.result = orderInfo?.result[section]
+        footer.state = currentIndex
         footer.section = section
         callbacks(sectionFooter: footer)
         

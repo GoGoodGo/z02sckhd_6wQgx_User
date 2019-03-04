@@ -282,6 +282,7 @@ class MyOrder: Mappable {
     var order_amount = "0.00"
     var tel = ""
     var consignee = ""
+    var grade = 0
     var integral_money = "0.00"
     var _goods = [MyOrderGoods]()
     
@@ -315,6 +316,7 @@ class MyOrder: Mappable {
         order_id <- map["order_id"]
         referer <- map["referer"]
         pay_note <- map["pay_note"]
+        grade <- map["grade"]
         bonus <- map["bonus"]
         reson <- map["reson"]
         pid <- map["pid"]
@@ -366,6 +368,7 @@ class MyOrderGoods: Mappable {
     var userid = 0
     var point = "0.00"
     var sid = 0
+    var is_return = 0
     var number = ""
     var extension_code = ""
     var total = "0.00"
@@ -407,6 +410,7 @@ class MyOrderGoods: Mappable {
         is_real <- map["is_real"]
         goods_numbers <- map["goods_numbers"]
         goods_attr <- map["goods_attr"]
+        is_return <- map["is_return"]
         type <- map["type"]
         rid <- map["rid"]
         userid <- map["userid"]

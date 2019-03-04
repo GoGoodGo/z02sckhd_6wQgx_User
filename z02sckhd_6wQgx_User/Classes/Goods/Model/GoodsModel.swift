@@ -431,6 +431,7 @@ class GoodsDetial: Mappable {
     var is_new = false
     var is_collect = 0
     var price = "0.00"
+    var back_price = 0.0
     var discount_price = ""
     var integral = 0
     var last_update = 0
@@ -461,6 +462,9 @@ class GoodsDetial: Mappable {
     var orders = 0
     var goods_type = 0
     var is_check = false
+    var is_return = 0
+    var is_receive = 0
+    var grade = 0
     var add_time = 0
     var status = false //是否下架
     var cate_name = ""
@@ -481,12 +485,14 @@ class GoodsDetial: Mappable {
         give_integral <- map["give_integral"]
         default_spec <- map["default_spec"]
         seo_keys <- map["seo_keys"]
+        back_price <- map["back_price"]
         is_shipping <- map["is_shipping"]
         description <- map["description"]
         click_count <- map["click_count"]
         is_best <- map["is_best"]
         sales <- map["sales"]
         sid <- map["sid"]
+        grade <- map["grade"]
         is_promote <- map["is_promote"]
         is_hot <- map["is_hot"]
         is_del <- map["is_del"]
@@ -509,6 +515,9 @@ class GoodsDetial: Mappable {
         seo_desc <- map["seo_desc"]
         comments <- map["comments"]
         is_new <- map["is_new"]
+        is_return <- map["is_return"]
+        is_receive <- map["is_receive"]
+
         spec_qty <- map["spec_qty"]
         goods_id <- map["goods_id"]
         goods_sn <- map["goods_sn"]
@@ -644,6 +653,7 @@ class Goods: Mappable {
     var spec_qty = 0
     var goods_id = 0
     var goods_sn = ""
+    var back_price = 0.00
     var cate_id = 0 // 商品分类
     var sort = 0
     var carts = 0
@@ -678,6 +688,8 @@ class Goods: Mappable {
         from <- map["from"]
         brand <- map["brand"]
         collects <- map["collects"]
+        back_price <- map["back_price"]
+
         views <- map["views"]
         goods_weight <- map["goods_weight"]
         cost_price <- map["cost_price"]

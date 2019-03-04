@@ -104,13 +104,25 @@ class OrderFooterView: UIView {
                 cancel.isHidden = false
                 cancel.setTitle("订单详情", for: .normal)
             case 2:
-                pay.isHidden = false
-                cancel.isHidden = false
-                returnGoods.isHidden = false
-                payRight.constant = btnW + 30
-                pay.setTitle("确认收货", for: .normal)
-                returnGoods.setTitle("查看物流", for: .normal)
-                cancel.setTitle("订单详情", for: .normal)
+                if result?._orders[0].grade == 1{
+                    pay.isHidden = false
+                    cancel.isHidden = false
+//                    returnGoods.isHidden = false
+//                    payRight.constant = btnW + 30
+                    pay.setTitle("确认收货", for: .normal)
+//                    returnGoods.setTitle("查看物流", for: .normal)
+                    cancel.setTitle("订单详情", for: .normal)
+                }
+                else{
+                    pay.isHidden = false
+                    cancel.isHidden = false
+                    returnGoods.isHidden = false
+                    payRight.constant = btnW + 30
+                    pay.setTitle("确认收货", for: .normal)
+                    returnGoods.setTitle("查看物流", for: .normal)
+                    cancel.setTitle("订单详情", for: .normal)
+                }
+            
             case 3:
                 pay.isHidden = true
                 cancel.isHidden = false

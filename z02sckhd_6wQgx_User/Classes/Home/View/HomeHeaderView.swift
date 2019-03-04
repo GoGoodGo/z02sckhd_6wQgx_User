@@ -13,7 +13,8 @@ class HomeHeaderView: UICollectionReusableView {
     
     let bannerHeight: CGFloat = 200
     var clickItemBlock: ((_ index: Int) -> Void)?
-    
+    var top_clickItemBlock: ((_ index: Int) -> Void)?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -77,6 +78,11 @@ class HomeHeaderView: UICollectionReusableView {
         let width: CGFloat = CGFloat((Banners()?.count)! * 20)
         let height: CGFloat = 30
         view.indicatorFrame = CGRect.init(x: WIDTH - width, y: bannerHeight - height, width: width, height: height)
+        view.tapImgBlock = {[weak self](index) in
+            if let click = self?.top_clickItemBlock {
+                click(index)
+            }
+        }
         return view
     }();
     

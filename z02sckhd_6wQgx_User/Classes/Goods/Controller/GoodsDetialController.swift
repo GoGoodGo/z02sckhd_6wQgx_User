@@ -11,13 +11,16 @@ import MJRefresh
 import YHTool
 import TMSDK
 import TMShare
+import RongIMKit
 
 enum DetialType {
+    
     case detial
     case timelimit
     case groupBuy
     case auction
     case auctionSuccess
+    
 }
 
 class GoodsDetialController: TMViewController {
@@ -39,6 +42,7 @@ class GoodsDetialController: TMViewController {
     var number = 1
     var isBuy = false
     var detialType: DetialType = .detial
+
     var specificH: CGFloat = 0
     var shareUrl = ""
     
@@ -159,6 +163,9 @@ class GoodsDetialController: TMViewController {
                 self?.attrs = (obj.data?.attr)!
                 self?.collectBtn.isSelected = (obj.data?.is_collect == 1) ? true : false
                 self?.tableView.reloadData()
+                if self?.goodsDetial?.grade == 1{
+                    self?.addCartBtn.isHidden = true
+                }
                 self?.bannerImgs(images: (obj.data?._images)!)
             } else {
                 self?.inspectLogin(model: obj)
@@ -350,7 +357,7 @@ class GoodsDetialController: TMViewController {
             showAutoHideHUD(message: "对不起，暂时还不能分享哦！")
             return
         }
-        TMShareInstance.sharedManager()?.showShare(shareUrl, thumbUrl: "", title: goodsDetial?.goods_name, descr: "下载APP得更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
+        TMShareInstance.sharedManager()?.showShare("https://www.sixgrid.cn/z02sckhd_6wqgx/apigoods/h5/id/\(self.goodsID)", thumbUrl: "", title: goodsDetial?.goods_name, descr: "下载APP得更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
             if let shareError = error {
                 self?.showAutoHideHUD(message: "分享失败")
             } else {
@@ -360,22 +367,43 @@ class GoodsDetialController: TMViewController {
     }
     
     @IBAction func action_store() {
+        
         let storeCtrl = StoreController.init(nibName: "StoreController", bundle: getBundle())
         storeCtrl.ID = "\((goodsDetial?.sid)!)"
         navigationController?.pushViewController(storeCtrl, animated: true)
+        
     }
     
     @IBAction func action_service() {
-        if let phone = goodsDetial?.phone {
-            let tel = "telprompt://" + phone
-            let url = URL.init(string: tel)
-            UIApplication.shared.openURL(url!)
-            if phone.isEmpty {
-                showAutoHideHUD(message: "暂无服务号码！")
-            }
-        } else {
-            showAutoHideHUD(message: "暂无服务号码！")
+        
+        let alertCtrl = UIAlertController.init(title: "请选择联系方式", message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "联系客服", style: .default) { (action) in
+            
+            //设置会话的目标会话ID。（单聊、客服、公众服务会话为对方的ID，群聊、聊天室为会话的ID）
+            let chat = RCConversationViewController.init(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: "s" + "\((self.goodsDetial?.sid)!)")
+         
+            //
+            //设置聊天会话界面要显示的标题
+            chat!.title = "联系客服"
+            //显示聊天会话界面
+            self.navigationController?.pushViewController(chat!, animated: true)
         }
+        let sureAction = UIAlertAction.init(title: "拨打电话", style: .default) { (action) in
+            if let phone = self.goodsDetial?.phone {
+                let tel = "telprompt://" + phone
+                let url = URL.init(string: tel)
+                UIApplication.shared.openURL(url!)
+                if phone.isEmpty {
+                    self.showAutoHideHUD(message: "暂无服务号码！")
+                }
+            } else {
+                self.showAutoHideHUD(message: "暂无服务号码！")
+            }
+        }
+        alertCtrl.addAction(cancelAction)
+        alertCtrl.addAction(sureAction)
+        self.present(alertCtrl, animated: true, completion: nil)
+       
     }
     
     @IBAction func action_collect(_ sender: UIButton) {
@@ -389,7 +417,13 @@ class GoodsDetialController: TMViewController {
     
     @IBAction func action_add(_ sender: UIButton) {
         if !inspectLogin() { return }
-        showOptionView(isBuy: false)
+        if self.goodsDetial?.grade == 0 {
+            showOptionView(isBuy: false)
+        }
+        else{
+            self.showAutoHideHUD(message: "虚拟商品不能加入购物车！")
+
+        }
     }
     /** 立即购买 */
     @IBAction func action_buy(_ sender: UIButton) {
@@ -426,6 +460,7 @@ class GoodsDetialController: TMViewController {
     }
     /** 拍卖购买 */
     func auctionBuy() {
+        
         showHUD()
         getRequest(baseUrl: AuctionBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
@@ -438,9 +473,11 @@ class GoodsDetialController: TMViewController {
             self.hideHUD()
             self.inspectError()
         }
+        
     }
     /** 团购购买 */
     func groupBuy() {
+        
         showHUD()
         getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
@@ -453,9 +490,11 @@ class GoodsDetialController: TMViewController {
             self.hideHUD()
             self.inspectError()
         }
+        
     }
     /** 秒杀购买 */
     func timelimitBuy() {
+        
         showHUD()
         getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : goodsID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
@@ -468,9 +507,11 @@ class GoodsDetialController: TMViewController {
             self.hideHUD()
             self.inspectError()
         }
+        
     }
     /** 商品购买 */
     func goodsBuy() {
+        
         showHUD()
         getRequest(baseUrl: Buy_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
@@ -483,21 +524,37 @@ class GoodsDetialController: TMViewController {
             self.hideHUD()
             self.inspectError()
         }
+        
     }
     /** 提交 */
     func submit(flowType: String) {
+        
         getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
             if "success" == obj.status {
-                let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())
-                confirmOrder.flowType = flowType
-                confirmOrder.orderInfo = obj
-                self?.navigationController?.pushViewController(confirmOrder, animated: true)
+           
+                if self?.goodsDetial?.grade == 1{
+                   let confirmOrder = XuNiConfirmOrderViewController.init(nibName: "XuNiConfirmOrderViewController", bundle: getBundle())
+                    confirmOrder.flowType = flowType
+                    confirmOrder.orderInfo = obj
+                    self?.navigationController?.pushViewController(confirmOrder, animated: true)
+                }
+                else{
+                    let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())
+                    confirmOrder.flowType = flowType
+                    confirmOrder.orderInfo = obj
+                    self?.navigationController?.pushViewController(confirmOrder, animated: true)
+                }
+                
+                
+            
+             
             } else {
                 self?.inspectLogin(model: obj)
             }
         }) { (error) in
             self.inspectError()
         }
+        
     }
     
     // MARK: - Getter
@@ -510,6 +567,7 @@ class GoodsDetialController: TMViewController {
         let height: CGFloat = 30
         view.indicatorFrame = CGRect.init(x: WIDTH - width, y: bannerHeight - height, width: width, height: height)
         return view
+        
     }()
     
     lazy var specificOption: SpecificOptionView = {
@@ -517,25 +575,31 @@ class GoodsDetialController: TMViewController {
         let view = SpecificOptionView.specificOption() as! SpecificOptionView
         view.frame = CGRect.init(x: 0, y: HEIGHT, width: WIDTH, height: HEIGHT / 2 + specificH)
         return view
+        
     }()
+    
 }
 
 extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDataSorce
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         if detialType == .auction || detialType == .auctionSuccess {
             return 4
         }
         return 3
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if detialType == .auction || detialType == .auctionSuccess {
             return section == 3 || section == 0 ? 1 : section == 1 ? (salesDetial?.auctionlog.count ?? 0) : comments.count
         }
 //        return section == 2 ? 1 : section == 1 ? comments.count : detialType == .detial ? 3 : 1
         return section == 2 ? 1 : section == 1 ? comments.count : detialType == .detial ? 2 : 1
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -650,12 +714,15 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return tableView.rowHeight
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return (indexPath.section == 0 && indexPath.row == 1 && attrs.count == 0) ? 0 : tableView.rowHeight
+        
     }
     
 }
