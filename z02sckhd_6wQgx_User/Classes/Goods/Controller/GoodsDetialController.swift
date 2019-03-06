@@ -64,6 +64,7 @@ class GoodsDetialController: TMViewController {
             view.addSubview(specificOption)
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -380,14 +381,40 @@ class GoodsDetialController: TMViewController {
         let cancelAction = UIAlertAction.init(title: "联系客服", style: .default) { (action) in
             
             //设置会话的目标会话ID。（单聊、客服、公众服务会话为对方的ID，群聊、聊天室为会话的ID）
-            let chat = RCConversationViewController.init(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: "s" + "\((self.goodsDetial?.sid)!)")
+            
+            
+            var parent: UIViewController?
+            var navigation:UINavigationController?
+            if let window = UIApplication.shared.delegate?.window,let rootVC = window?.rootViewController {
+                parent = rootVC
+                while (parent?.presentedViewController != nil) {
+                    parent = parent?.presentedViewController!
+                }
+                
+                if let tabbar = parent as? UITabBarController ,let nav = tabbar.selectedViewController as? UINavigationController {
+                    navigation = nav
+                }else if let nav = parent as? UINavigationController {
+                    navigation = nav
+                }
+            }
+            navigation?.setNavigationBarHidden(true, animated: true)
+            
+            let chat = ChatDDDDViewController()
+            chat.conversationType = RCConversationType.ConversationType_PRIVATE
+            chat.targetId = "s" + "\((self.goodsDetial?.sid)!)"
+            chat.title = "联系客服"
+            
+            self.navigationController?.pushViewController(chat, animated: true)
+            
+//            let chat = RCConversationViewController.init(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: "s" + "\((self.goodsDetial?.sid)!)")
+//              chat?.conversationMessageCollectionView.frame = CGRect.init(x: 0, y: NavigationBarH, width: WIDTH, height: HEIGHT-200)
 //            chat!.view.frame = CGRect.init(x: 0, y: 64, width: WIDTH, height: 300)
 //            
 //            chat!.view.backgroundColor = UIColor.red
 //            chat!.chatSessionInputBarControl.backgroundColor = UIColor.red
 //            chat!.chatSessionInputBarControl.containerView.backgroundColor = UIColor.green
 //            chat!.chatSessionInputBarControl.frame = CGRect.init(x: 0, y: HEIGHT-200, width: WIDTH, height: 50)
-//            chat!.conversationMessageCollectionView.frame = CGRect.init(x: 0, y: NavigationBarH, width: WIDTH, height: HEIGHT-200)
+          
 //            chat!.extensionView.frame = CGRect.init(x: 0, y: NavigationBarH, width: WIDTH, height: HEIGHT-200)
            
            
@@ -395,9 +422,9 @@ class GoodsDetialController: TMViewController {
 //            chat!.chatSessionInputBarControl = bar
             //
             //设置聊天会话界面要显示的标题
-            chat!.title = "联系客服"
-            //显示聊天会话界面
-            self.navigationController?.pushViewController(chat!, animated: true)
+//            chat!.title = "联系客服"
+//            //显示聊天会话界面
+//            self.navigationController?.pushViewController(chat!, animated: true)
         }
         let sureAction = UIAlertAction.init(title: "拨打电话", style: .default) { (action) in
             if let phone = self.goodsDetial?.phone {

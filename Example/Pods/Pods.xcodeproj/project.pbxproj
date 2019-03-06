@@ -796,7 +796,7 @@
 		46EB00007CE0 /* CartSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB00001D00 /* CartSectionFooter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		46EB00007CF0 /* CartSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB00001D10 /* CartSectionHeader.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		46EB00007D00 /* AllCommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB00001D40 /* AllCommentsController.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		46EB00007D10 /* ChatKeFuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB00001D50 /* ChatKeFuViewController.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		46EB00007D10 /* ChatDDDDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB00001D50 /* ChatDDDDViewController.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		46EB00007D30 /* ConfirmOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB00001D70 /* ConfirmOrderController.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		46EB00007D40 /* GoodsDetialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB00001D80 /* GoodsDetialController.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		46EB00007D50 /* OnlinePayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB00001D90 /* OnlinePayController.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1786,7 +1786,7 @@
 		46EB00001D00 /* CartSectionFooter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CartSectionFooter.swift; sourceTree = "<group>"; };
 		46EB00001D10 /* CartSectionHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CartSectionHeader.swift; sourceTree = "<group>"; };
 		46EB00001D40 /* AllCommentsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AllCommentsController.swift; sourceTree = "<group>"; };
-		46EB00001D50 /* ChatKeFuViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatKeFuViewController.swift; sourceTree = "<group>"; };
+		46EB00001D50 /* ChatDDDDViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatDDDDViewController.swift; sourceTree = "<group>"; };
 		46EB00001D70 /* ConfirmOrderController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfirmOrderController.swift; sourceTree = "<group>"; };
 		46EB00001D80 /* GoodsDetialController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoodsDetialController.swift; sourceTree = "<group>"; };
 		46EB00001D90 /* OnlinePayController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnlinePayController.swift; sourceTree = "<group>"; };
@@ -3443,7 +3443,7 @@
 			isa = PBXGroup;
 			children = (
 				46EB00001D40 /* AllCommentsController.swift */,
-				46EB00001D50 /* ChatKeFuViewController.swift */,
+				46EB00001D50 /* ChatDDDDViewController.swift */,
 				46EB00001D70 /* ConfirmOrderController.swift */,
 				46EB00001D80 /* GoodsDetialController.swift */,
 				46EB00001D90 /* OnlinePayController.swift */,
@@ -6482,7 +6482,7 @@
 				46EB00007CC0 /* CartModel.swift in Sources */,
 				46EB00007CE0 /* CartSectionFooter.swift in Sources */,
 				46EB00007CF0 /* CartSectionHeader.swift in Sources */,
-				46EB00007D10 /* ChatKeFuViewController.swift in Sources */,
+				46EB00007D10 /* ChatDDDDViewController.swift in Sources */,
 				46EB000080E0 /* CollectController.swift in Sources */,
 				46EB00008180 /* CollectGoodsCell.swift in Sources */,
 				46EB00008190 /* CollectStoreCell.swift in Sources */,

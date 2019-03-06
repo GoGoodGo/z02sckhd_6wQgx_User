@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
-        
+//        window?.rootViewController = YHNavigaitonController.init(rootViewController: SSViewController())
         window?.rootViewController = YHTabBarController()
         window?.makeKeyAndVisible()
         
