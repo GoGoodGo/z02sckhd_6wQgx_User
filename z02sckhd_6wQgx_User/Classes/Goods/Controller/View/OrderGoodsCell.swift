@@ -51,7 +51,7 @@ class OrderGoodsCell: UITableViewCell {
         didSet {
             returnGoods.setTitle(cellType == 3 ? "立即评价" : "退换货", for: .normal)
             returnGoods.isHidden = (cellType == 3 || cellType == 4) ? false : true
-            returnGoodsW.constant = (cellType == 3 || cellType == 4) ? 60 : 0
+//            returnGoodsW.constant = (cellType == 3 || cellType == 4) ? 60 : 0
             
         
             
@@ -81,12 +81,19 @@ class OrderGoodsCell: UITableViewCell {
             number.text = "X\(orderGoods?.goods_numbers ?? 1)"
             if cellType == 3 {
                 returnGoods.isEnabled = orderGoods?.evaluation_status != 1
-            } else if cellType == 4 {
-                returnGoods.isEnabled = orderGoods?.goods_status != 1
             }
+//            else if cellType == 4 {
+//                returnGoods.isEnabled = orderGoods?.goods_status != 1
+//            }
             color.text = ""
             if orderGoods!.is_return == 0 && cellType == 4 {
-                returnGoods.isHidden = true
+                print(orderGoods!.is_return)
+//                returnGoods.isHidden = true
+                returnGoodsW.constant = 0
+            }
+            else{
+//                returnGoods.isHidden = false
+                returnGoodsW.constant = 60
             }
         }
     }

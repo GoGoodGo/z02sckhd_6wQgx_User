@@ -381,7 +381,18 @@ class GoodsDetialController: TMViewController {
             
             //设置会话的目标会话ID。（单聊、客服、公众服务会话为对方的ID，群聊、聊天室为会话的ID）
             let chat = RCConversationViewController.init(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: "s" + "\((self.goodsDetial?.sid)!)")
-         
+//            chat!.view.frame = CGRect.init(x: 0, y: 64, width: WIDTH, height: 300)
+//            
+//            chat!.view.backgroundColor = UIColor.red
+//            chat!.chatSessionInputBarControl.backgroundColor = UIColor.red
+//            chat!.chatSessionInputBarControl.containerView.backgroundColor = UIColor.green
+//            chat!.chatSessionInputBarControl.frame = CGRect.init(x: 0, y: HEIGHT-200, width: WIDTH, height: 50)
+//            chat!.conversationMessageCollectionView.frame = CGRect.init(x: 0, y: NavigationBarH, width: WIDTH, height: HEIGHT-200)
+//            chat!.extensionView.frame = CGRect.init(x: 0, y: NavigationBarH, width: WIDTH, height: HEIGHT-200)
+           
+           
+//            let bar = RCChatSessionInputBarControl.init(frame: CGRect.init(x: 0, y: HEIGHT-200, width: WIDTH, height: 50), withContainerView: chat!.chatSessionInputBarControl.containerView, controlType: RCChatSessionInputBarControlType.defaultType, controlStyle: RCChatSessionInputBarControlStyle(rawValue: 0)!, defaultInputType: RCChatSessionInputBarInputType(rawValue: 0)!)
+//            chat!.chatSessionInputBarControl = bar
             //
             //设置聊天会话界面要显示的标题
             chat!.title = "联系客服"

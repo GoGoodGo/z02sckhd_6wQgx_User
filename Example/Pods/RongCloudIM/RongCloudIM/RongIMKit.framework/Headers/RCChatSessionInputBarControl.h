@@ -240,7 +240,7 @@ typedef NS_ENUM(NSInteger, KBottomBarStatus) {
 /*!
  所处的会话页面View
  */
-@property(weak, nonatomic, readonly) UIView *containerView;
+@property(weak, nonatomic) UIView *containerView;
 
 /*!
  当前的输入状态

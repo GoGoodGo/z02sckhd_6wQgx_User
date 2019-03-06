@@ -17,7 +17,7 @@ z02sckhd_6wQgx_User is available through [CocoaPods](https://cocoapods.org). To 
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'z02sckhd_6wQgx_User', '~> 1.7.5'
+pod 'z02sckhd_6wQgx_User', '~> 1.7.6'
 ```
 
 ## Author
