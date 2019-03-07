@@ -83,7 +83,7 @@ public class MineController: TMViewController {
 extension MineController: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,6 +116,9 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(collectCtrl, animated: true)
         case 5:
             let bindingCtrl = BindingController.init(nibName: "BindingController", bundle: getBundle())
+            navigationController?.pushViewController(bindingCtrl, animated: true)
+        case 6:
+            let bindingCtrl = ChatListViewController()
             navigationController?.pushViewController(bindingCtrl, animated: true)
         default: return
         }

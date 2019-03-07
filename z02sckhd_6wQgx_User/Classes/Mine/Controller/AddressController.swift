@@ -32,6 +32,7 @@ class AddressController: TMViewController {
         
         self.title = "收货地址"
         setupUI()
+      
     }
     
     // MARK: - Private Method
@@ -57,7 +58,7 @@ class AddressController: TMViewController {
             } else {
                 self?.inspectLogin(model: obj)
             }
-        }) { (error) in
+            }) { (error) in
             self.hideHUD()
             self.inspectError()
         }

@@ -16,6 +16,14 @@ class SSViewController: UIViewController {
         self.title = "测试"
         // Do any additional setup after loading the view.
         self.view.addSubview(btn)
+        
+  
+        
+        let className="z02sckhd_6wQgx_User" + "." + "HomeController"
+        let viewC = NSClassFromString(className)! as!  HomeController.Type
+        let vc=viewC.init()
+        vc.perform(#selector(vc.arouseAppAction(url:)), with:URL.init(string: "tmapp://com.tenma.ventures.test/openwith?goods_id=601")!)
+        
     }
     
     lazy var btn: UIButton = {

@@ -10,6 +10,8 @@ import Foundation
 import ObjectMapper
 import YHTool
 
+
+
 class ShareUrl: BaseModel {
     
     var data = ""
@@ -20,6 +22,7 @@ class ShareUrl: BaseModel {
         msg <- map["msg"]
         data <- map["data"]
     }
+   
 }
 
 class CommentInfo: BaseModel {
@@ -33,6 +36,8 @@ class CommentInfo: BaseModel {
         data <- map["data"]
     }
 }
+
+
 
 class CommentData: Mappable {
     
