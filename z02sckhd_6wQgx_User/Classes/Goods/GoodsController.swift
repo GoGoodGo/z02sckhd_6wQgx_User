@@ -98,6 +98,9 @@ public class GoodsController: TMViewController {
                 self?.totalPage = (obj.data?.totalpage)!
                 self?.page += 1
                 self?.collectionView.reloadData()
+                
+                
+                
             } else {
                 self?.inspectLogin(model: obj)
             }

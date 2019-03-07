@@ -84,6 +84,9 @@ class XuNiConfirmOrderViewController: TMViewController {
 //            showAutoHideHUD(message: "请选择收货地址！")
 //            return
 //        }
+        
+
+        
         var dic = ["token" : TMHttpUser.token() ?? TestToken, "flow_type" : flowType, "pay_note" : payNote,"grade":"1"] as [String : Any]
         var from_str = ""
         var from_val = ""
@@ -96,6 +99,11 @@ class XuNiConfirmOrderViewController: TMViewController {
                 
                 from_val.append((self.tableView.cellForRow(at: IndexPath.init(row: i, section: 1)) as! TextFieldTableViewCell).textField.text ?? "")
                 
+                if (self.tableView.cellForRow(at: IndexPath.init(row: i, section: 1)) as! TextFieldTableViewCell).textField.text == "" {
+                    showAutoHideHUD(message: "请输入" + (orderInfo?.data?.from[i].name ?? "")!)
+                    return
+                }
+                
                 if i != (orderInfo?.data?.from)!.count-1{
                     from_str.append(",")
                      from_val.append(",")
@@ -107,12 +115,12 @@ class XuNiConfirmOrderViewController: TMViewController {
             dic["from_str"] = from_str
             dic["from_val"] = from_val
 
-            
         }
         
         
         
         showHUD()
+        
         getRequest(baseUrl: OrderDone_URL, params: dic as! Dictionary<String, String>, success: { [weak self] (obj: OrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {

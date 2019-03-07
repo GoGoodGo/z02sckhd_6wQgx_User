@@ -358,7 +358,7 @@ class GoodsDetialController: TMViewController {
             showAutoHideHUD(message: "对不起，暂时还不能分享哦！")
             return
         }
-        TMShareInstance.sharedManager()?.showShare("https://www.sixgrid.cn/z02sckhd_6wqgx/apigoods/h5/id/\(self.goodsID)", thumbUrl: "", title: goodsDetial?.goods_name, descr: "下载APP得更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
+        TMShareInstance.sharedManager()?.showShare("\(BASE_URL)/apigoods/h5/id/\(self.goodsID)/code/\(CODE)", thumbUrl: "", title: goodsDetial?.goods_name, descr: "下载APP得更多精彩礼品！", currentController: self, finish: { [weak self] (data, error) in
             if let shareError = error {
                 self?.showAutoHideHUD(message: "分享失败")
             } else {

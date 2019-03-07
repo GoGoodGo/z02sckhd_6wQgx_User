@@ -61,9 +61,22 @@ public class HomeController: TMViewController {
             automaticallyAdjustsScrollViewInsets = false
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(appCallACtion), name: NSNotification.Name(rawValue:"kTMAppDelegateHandleOpenURLNotification"), object: nil)
+        
         setupUI()
         self.loadUserDetial()
     }
+    
+    @objc func appCallACtion(nofi : Notification){
+        let url:URL = nofi.object as! URL
+        let str = url.absoluteString
+        let arr = str.components(separatedBy: "goods_id=")
+        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
+        goodsDetialCtrl.goodsID = arr[1]
+        navigationController?.pushViewController(goodsDetialCtrl, animated: true)
+        
+    }
+    
     
     func loginRongYun(str:String){
         RCIM.shared()?.connect(withToken: str, success: { (userId) in
@@ -87,7 +100,7 @@ public class HomeController: TMViewController {
             if "success" == obj.status {
 //                Singleton.shared.rongyun_token =
                 self?.loginRongYun(str: (obj.data?.rongyun_token)!)
-
+                CODE = (obj.data?.code)!
             }
         }) { (error) in
             self.inspectError()
@@ -117,6 +130,8 @@ public class HomeController: TMViewController {
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
+            
+                
                 self?.categorys = (obj.data?.category)!
                 self?.auctionGoods = (obj.data?.auction)!
                 self?.groupGoods = (obj.data?.groupbuy)!

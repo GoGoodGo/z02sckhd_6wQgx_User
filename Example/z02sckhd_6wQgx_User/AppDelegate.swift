@@ -32,11 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        WXApi.registerApp("wxf5434529e3d5f55c")
         
+       
+        
+        
         return true
     }
     
     /** Pay */
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        
         
         TMPayUtils.sharedInstance().tm_handlePayResult(withOpen: url, options: ["key" : "value"])
         
