@@ -61,22 +61,13 @@ public class HomeController: TMViewController {
             automaticallyAdjustsScrollViewInsets = false
         }
         
+       
         
         
         setupUI()
         self.loadUserDetial()
     }
     
-    @objc public func arouseAppAction(url:URL){
-        let kWindow = UIApplication.shared.keyWindow
-        let vc = kWindow?.currentViewController()
-        
-        let str = url.absoluteString
-        let arr = str.components(separatedBy: "goods_id=")
-        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
-        goodsDetialCtrl.goodsID = arr[1]
-        vc?.navigationController?.pushViewController(goodsDetialCtrl, animated: true)
-    }
     
     
     func loginRongYun(str:String){

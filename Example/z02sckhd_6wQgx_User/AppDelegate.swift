@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
 //        window?.rootViewController = YHNavigaitonController.init(rootViewController: SSViewController())
         window?.rootViewController = YHTabBarController()
+//        window?.rootViewController = TestTestViewController()
         window?.makeKeyAndVisible()
         
         RCIM.shared().initWithAppKey("sfci50a7s347i")

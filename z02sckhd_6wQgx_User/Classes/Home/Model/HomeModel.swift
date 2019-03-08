@@ -20,7 +20,30 @@ class ShopListInfo: BaseModel {
         msg <- map["msg"]
         data <- map["data"]
     }
+    @objc public func arouseAppAction(){
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(openArouseApp), name:
+            NSNotification.Name("kTMAppDelegateHandleOpenURLNotification") , object: nil)
+        
+        
+    }
+    
+    @objc func openArouseApp(noti:Notification){
+        
+        let kWindow = UIApplication.shared.keyWindow
+        let vc = kWindow?.currentViewController()
+        let url:URL = noti.object as! URL
+        let str = url.absoluteString
+        let arr = str.components(separatedBy: "goods_id=")
+        let goodsDetialCtrl = GoodsDetialController.init(nibName: "GoodsDetialController", bundle: getBundle())
+        goodsDetialCtrl.goodsID = arr[1]
+        vc?.navigationController?.pushViewController(goodsDetialCtrl, animated: true)
+        
+    }
+    
 }
+
+
 
 class ShopListData: Mappable {
     

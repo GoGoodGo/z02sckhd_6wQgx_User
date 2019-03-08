@@ -17,12 +17,15 @@ class SSViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.addSubview(btn)
         
-  
-        
-        let className="z02sckhd_6wQgx_User" + "." + "HomeController"
-        let viewC = NSClassFromString(className)! as!  HomeController.Type
-        let vc=viewC.init()
-        vc.perform(#selector(vc.arouseAppAction(url:)), with:URL.init(string: "tmapp://com.tenma.ventures.test/openwith?goods_id=601")!)
+       
+//
+//        let className="z02sckhd_6wQgx_User" + "." + "HomeController"
+//        let viewC = NSClassFromString(className)! as!  HomeController.Type
+//        let vc=viewC.init()
+//        vc.perform(#selector(vc.arouseAppAction), with:nil)
+    
+        let model:SingleInstance = SingleInstance.defaultSingleInstance()
+
         
     }
     
@@ -34,7 +37,9 @@ class SSViewController: UIViewController {
     }()
     
     @objc func doSomething(){
-        self.navigationController?.pushViewController(YHTabBarController(), animated: true)
+          NotificationCenter.default.post(name: NSNotification.Name("kTMAppDelegateHandleOpenURLNotification"), object: URL.init(string: "tmapp://com.tenma.ventures.test/openwith?goods_id=601"), userInfo: nil)
+        
+//        self.navigationController?.pushViewController(YHTabBarController(), animated: true)
     }
     
     
