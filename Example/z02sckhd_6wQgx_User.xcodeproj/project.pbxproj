@@ -12,8 +12,6 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		7B858956627FFD8FD5BF8B91 /* Pods_z02sckhd_6wQgx_User_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FD942274F7C17B2599E8E5 /* Pods_z02sckhd_6wQgx_User_Example.framework */; };
 		803DDF73222FBEEE0073D478 /* SSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803DDF72222FBEEE0073D478 /* SSViewController.swift */; };
-		803DDF83223213320073D478 /* TestTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803DDF82223213320073D478 /* TestTestViewController.m */; };
-		803DDF862232163E0073D478 /* TTTTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803DDF852232163E0073D478 /* TTTTViewController.m */; };
 		83CB90C32153D36F00B968ED /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 83CB90C22153D36F00B968ED /* config.xml */; };
 		83CB90C72153D38400B968ED /* pages in Resources */ = {isa = PBXBuildFile; fileRef = 83CB90C42153D38400B968ED /* pages */; };
 		83CB90C82153D38500B968ED /* tm_src in Resources */ = {isa = PBXBuildFile; fileRef = 83CB90C52153D38400B968ED /* tm_src */; };
@@ -46,10 +44,6 @@
 		7CACC7C0F6A4B78697335A45 /* Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-z02sckhd_6wQgx_User_Example/Pods-z02sckhd_6wQgx_User_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		803DDF72222FBEEE0073D478 /* SSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSViewController.swift; sourceTree = "<group>"; };
 		803DDF80223213320073D478 /* z02sckhd_6wQgx_User_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "z02sckhd_6wQgx_User_Example-Bridging-Header.h"; sourceTree = "<group>"; };
-		803DDF81223213320073D478 /* TestTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTestViewController.h; sourceTree = "<group>"; };
-		803DDF82223213320073D478 /* TestTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTestViewController.m; sourceTree = "<group>"; };
-		803DDF842232163E0073D478 /* TTTTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTTViewController.h; sourceTree = "<group>"; };
-		803DDF852232163E0073D478 /* TTTTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTTViewController.m; sourceTree = "<group>"; };
 		83CB90C22153D36F00B968ED /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		83CB90C42153D38400B968ED /* pages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pages; sourceTree = "<group>"; };
 		83CB90C52153D38400B968ED /* tm_src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tm_src; sourceTree = "<group>"; };
@@ -96,10 +90,6 @@
 				83CB90C62153D38400B968ED /* TMBaseConfig.plist */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				803DDF72222FBEEE0073D478 /* SSViewController.swift */,
-				803DDF81223213320073D478 /* TestTestViewController.h */,
-				803DDF82223213320073D478 /* TestTestViewController.m */,
-				803DDF842232163E0073D478 /* TTTTViewController.h */,
-				803DDF852232163E0073D478 /* TTTTViewController.m */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				83CB90C22153D36F00B968ED /* config.xml */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -338,8 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				803DDF73222FBEEE0073D478 /* SSViewController.swift in Sources */,
-				803DDF83223213320073D478 /* TestTestViewController.m in Sources */,
-				803DDF862232163E0073D478 /* TTTTViewController.m in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
