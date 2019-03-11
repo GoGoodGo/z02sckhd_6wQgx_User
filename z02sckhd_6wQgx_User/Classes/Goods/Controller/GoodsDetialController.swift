@@ -46,6 +46,8 @@ class GoodsDetialController: TMViewController {
     var specificH: CGFloat = 0
     var shareUrl = ""
     
+    var isPush = 0
+    
     var goodsDetial: GoodsDetial?
     var salesDetial: SalesDetialData?
     var comments = [Comment]()
@@ -54,9 +56,18 @@ class GoodsDetialController: TMViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.isTranslucent = true
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.barStyle = .default
+//        navigationController?.navigationBar.isTranslucent = false
+//        
+//        
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -350,7 +361,13 @@ class GoodsDetialController: TMViewController {
     }
     
     @objc func action_back() {
-        navigationController?.popViewController(animated: true)
+        if self.isPush == 1{
+           self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            navigationController?.popViewController(animated: true)
+
+        }
     }
     
     @objc func action_share() {

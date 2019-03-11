@@ -36,6 +36,8 @@ public class HomeController: TMViewController {
         navigationController?.navigationBar.isTranslucent = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(login(notifi:)), name: NSNotification.Name(rawValue: "login"), object: nil)
+        
+        
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
@@ -54,6 +56,9 @@ public class HomeController: TMViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let _ = SingleInstance.defaultSingleInstance()
         
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
@@ -352,6 +357,9 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
                     self?.navigationController?.pushViewController(goodsDetialCtrl, animated: true)
                 }
                 else{
+                    let webView = WebViewController()
+                    webView.url = (self?.banner_Models[index].url)!
+                    self?.navigationController?.pushViewController(webView, animated: true)
                     print("链接")
                 }
             }

@@ -97,7 +97,7 @@ PODS:
     - QBImagePickerController
     - SDWebImage
     - SwiftyJSON
-  - z02sckhd_6wQgx_User (1.8.0):
+  - z02sckhd_6wQgx_User (1.8.1):
     - Cosmos
     - IQKeyboardManager
     - Kingfisher
@@ -172,7 +172,7 @@ SPEC CHECKSUMS:
   TMShare: 82d2b03f65bbe5c5b8f167d56f1b203521acbedd
   TMUserCenter: 30d68a85eb404be5075fe8d83504c577306a27aa
   YHTool: 34739e878c101f989d3cb9278564496b3d65f866
-  z02sckhd_6wQgx_User: 23847ef8a8142f6286399b8904dba0f9d607619a
+  z02sckhd_6wQgx_User: 960fb9c0a2c097ece76f752b3fcb80e5df0614a7
 
 PODFILE CHECKSUM: 29c6eb257930fca757fc24da80a6a079449fa0db
 

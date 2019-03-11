@@ -459,7 +459,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZHV8C9SF94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = z02sckhd_6wQgx_User/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -490,7 +490,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZHV8C9SF94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = z02sckhd_6wQgx_User/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

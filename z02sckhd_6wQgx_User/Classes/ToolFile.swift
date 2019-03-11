@@ -15,8 +15,10 @@ extension UIViewController {
     public func inspectLogin(model: BaseModel) {
         showAutoHideHUD(message: model.msg!) {
             if model.msg == "登录失效,请重新登录" {
+                
                 let login = SetI001LoginViewController()
                 self.navigationController?.pushViewController(login, animated: true)
+                
             }
         }
     }
@@ -63,14 +65,4 @@ public extension UIWindow {
         return currentViewController
     }
 }
-
-
-
-
-
-
-
-
-
-
 

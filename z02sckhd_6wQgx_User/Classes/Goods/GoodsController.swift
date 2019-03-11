@@ -55,6 +55,7 @@ public class GoodsController: TMViewController {
         
         loadCategorys()
         loadBest()
+        
     }
     /** 获取分类 */
     func loadCategorys() {

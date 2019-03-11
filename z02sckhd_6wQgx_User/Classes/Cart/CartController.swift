@@ -56,7 +56,7 @@ public class CartController: TMViewController {
         } else {
             barBottom.constant = -TabBarH
         }
-        load()
+//        load()
         showHUD()
     }
     
