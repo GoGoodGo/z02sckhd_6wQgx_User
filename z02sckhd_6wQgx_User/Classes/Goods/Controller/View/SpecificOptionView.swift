@@ -29,6 +29,8 @@ class SpecificOptionView: UIView {
     var goodsNum = 1
     var selectedIndexPath: IndexPath?
     
+    var isPush = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -57,8 +59,8 @@ class SpecificOptionView: UIView {
         return bundle(self).loadNibNamed(String(describing: self), owner: nil, options: nil)?.last
     }
     /** 是否显示 */
-    public func isShowOption(isShow: Bool, specificGap: CGFloat) {
-        
+    public func isShowOption(isShow: Bool, specificGap: CGFloat ,isPush: Int) {
+        self.isPush = isPush
         collectionView.isHidden = specificGap == 0
         stock.isHidden = specificGap == 0
         specific.isHidden = specificGap != 0
@@ -66,6 +68,12 @@ class SpecificOptionView: UIView {
         layer.shadowOffset = CGSize.init(width: 0, height: isShow ? -1 : 0)
         UIView.animate(withDuration: 0.3) {
             self.y = isShow ? HEIGHT / 2 - specificGap - NavigationBarH : HEIGHT
+            if isPush == 1{
+                 self.y = isShow ? HEIGHT / 2 - specificGap : HEIGHT
+            }
+            else{
+                self.y = isShow ? HEIGHT / 2 - specificGap - NavigationBarH : HEIGHT
+            }
         }
         if !isShow {
             specID = ""
@@ -103,7 +111,7 @@ class SpecificOptionView: UIView {
     }
     
     @IBAction func action_close() {
-        isShowOption(isShow: false, specificGap: 0)
+        isShowOption(isShow: false, specificGap: 0, isPush: self.isPush)
     }
     
     // MARK: - Setter

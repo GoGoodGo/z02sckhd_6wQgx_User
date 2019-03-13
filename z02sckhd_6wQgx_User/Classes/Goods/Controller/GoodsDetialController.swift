@@ -271,7 +271,7 @@ class GoodsDetialController: TMViewController {
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "添加成功！", completed: {
-                    self?.specificOption.isShowOption(isShow: false, specificGap: (self?.specificH)!)
+                    self?.specificOption.isShowOption(isShow: false, specificGap: (self?.specificH)!,isPush: (self?.isPush)!)
                 })
             } else {
                 self?.inspectLogin(model: obj)
@@ -328,7 +328,7 @@ class GoodsDetialController: TMViewController {
             specificOption.limitNum = "\((salesDetial?.store?.number)!)"
         }
         specificOption.goodsDetial = goodsDetial
-        specificOption.isShowOption(isShow: true, specificGap: specificH)
+        specificOption.isShowOption(isShow: true, specificGap: specificH,isPush: self.isPush)
         self.isBuy = isBuy
     }
     
