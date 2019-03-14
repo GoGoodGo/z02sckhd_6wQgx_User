@@ -168,6 +168,7 @@ extension BannerScrollView {
 //MARK: 设置UI--轮播界面,指示器,定时器
 extension BannerScrollView {
     fileprivate func setUpUI() {
+        self.backgroundColor = UIColor.white
         addSubview(collectionView)
         addSubview(pageControl)
         //启动定时器

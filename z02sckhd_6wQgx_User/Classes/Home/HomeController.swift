@@ -229,6 +229,7 @@ public class HomeController: TMViewController {
             let category = self?.categorys[index]
             let typeCtrl = SecondaryTypesController.init(nibName: "SecondaryTypesController", bundle: getBundle())
             typeCtrl.pID = "\((category?.id)!)"
+            typeCtrl.title = "\((category?.name)!)"
             self?.navigationController?.pushViewController(typeCtrl, animated: true)
         }
     }

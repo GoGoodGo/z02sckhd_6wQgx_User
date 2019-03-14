@@ -10,7 +10,7 @@ import UIKit
 import YHTool
 
 
-class HomeHeaderView: UICollectionReusableView {
+class HomeHeaderView: UICollectionReusableView,CycleViewDelegate {
     
     let bannerHeight: CGFloat = 200
     var clickItemBlock: ((_ index: Int) -> Void)?
@@ -66,36 +66,35 @@ class HomeHeaderView: UICollectionReusableView {
     }
     var images = [String]() {
         didSet {
-            carouselView.imgURLArr = images
+            if images.count != 0 {
+                carouselView.imageURLStringArr = images
+
+            }
         }
     }
     
     // MARK: - Getter
-    lazy var carouselView: YHScrollView = {
+    lazy var carouselView: BannerScrollView = {
     
         
         
         //轮播图加载
-//        let pointY = 44 + UIApplication.shared.statusBarFrame.size.height
-//        let cycleView : CycleView = CycleView(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: bannerHeight))
-//        cycleView.delegate = self
-//        cycleView.mode = .scaleAspectFill
-//        //本地图片测试--加载网络图片,请用第三方库如SDWebImage等
-//        cycleView.imageURLStringArr = ["banner01.jpg", "banner02.jpg", "banner03.jpg", "banner04.jpg"]
+        let cycleView : BannerScrollView = BannerScrollView(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: bannerHeight))
+        cycleView.delegate = self
+        cycleView.mode = .scaleAspectFill
+        //本地图片测试--加载网络图片,请用第三方库如SDWebImage等
+        cycleView.imageURLStringArr = Banners()
         
-        let view = YHScrollView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: bannerHeight), imageName: Banners())!
-        view.currentIndicatorColor = UIColor.black
-        view.otherIndicatorColor = UIColor.white
-        let width: CGFloat = CGFloat((Banners()?.count)! * 20)
-        let height: CGFloat = 30
-        view.indicatorFrame = CGRect.init(x: WIDTH - width, y: bannerHeight - height, width: width, height: height)
-        view.tapImgBlock = {[weak self](index) in
-            if let click = self?.top_clickItemBlock {
-                click(index)
-            }
-        }
-        return view
+    
+    
+        return cycleView
     }();
+    
+    func cycleViewDidSelectedItemAtIndex(_ index: NSInteger) {
+        if let click = self.top_clickItemBlock {
+            click(index)
+        }
+    }
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout.init()

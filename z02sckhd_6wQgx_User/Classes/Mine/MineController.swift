@@ -18,11 +18,16 @@ public class MineController: TMViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header: UIView!
     
+    var vip_level = ""
+    
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isTranslucent = true
+        if inspectLogin() == true{
+            tableView.mj_header.beginRefreshing()
+        }
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
@@ -44,7 +49,7 @@ public class MineController: TMViewController {
         }
         
         setupUI()
-        load()
+
     }
     
     // MARK: - Private Method
@@ -55,8 +60,19 @@ public class MineController: TMViewController {
         
         tableView.tableFooterView = nil
         tableView.register(UINib.init(nibName: CellName(MineInfoCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(MineInfoCell.self))
-        
-        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(load))
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(loadUserDetial))
+    }
+    
+   @objc func loadUserDetial() {
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: UserInfo) in
+            if "success" == obj.status {
+                //                Singleton.shared.rongyun_token =
+                self?.vip_level = (obj.data?.rank_name)!
+                self?.load()
+            }
+        }) { (error) in
+            self.inspectError()
+        }
     }
     
     @objc func load() {
@@ -67,7 +83,7 @@ public class MineController: TMViewController {
         let url = URL.init(string: (head_pic.contains("://") ? "" : (config?.domain)!) + head_pic)
         imgBtn.kf.setImage(with: url, for: .normal)
         if let nickname = user?.member_nickname {
-            name.text = nickname.isEmpty ? user?.mobile : nickname
+            name.text = nickname.isEmpty ? "\(user?.mobile ?? "")   \(self.vip_level)" : "\(nickname)   \(self.vip_level)"
         }
         tableView.mj_header.endRefreshing()
     }

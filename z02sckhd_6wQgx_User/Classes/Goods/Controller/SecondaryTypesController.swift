@@ -48,7 +48,7 @@ class SecondaryTypesController: TMViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = goodsTitle
+//        self.title = goodsTitle
         tempBtn = view.viewWithTag(btnTag) as? UIButton
         setupUI()
         

@@ -443,7 +443,7 @@ class GoodsDetialController: TMViewController {
 //            //显示聊天会话界面
 //            self.navigationController?.pushViewController(chat!, animated: true)
         }
-        let sureAction = UIAlertAction.init(title: "拨打电话", style: .default) { (action) in
+        let sureAction = UIAlertAction.init(title: "拨打电话：\((self.goodsDetial?.phone)!)", style: .default) { (action) in
             if let phone = self.goodsDetial?.phone {
                 let tel = "telprompt://" + phone
                 let url = URL.init(string: tel)

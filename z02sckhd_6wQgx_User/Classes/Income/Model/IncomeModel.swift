@@ -37,7 +37,7 @@ class User: Mappable {
     var pidname = ""
     var code = ""
     var tel = ""
-    
+    var rank_name = ""
     required init?(map: Map) {
         
     }
@@ -46,6 +46,8 @@ class User: Mappable {
         
         user_id <- map["user_id"]
         mid <- map["mid"]
+        rank_name <- map["rank_name"]
+        
         rongyun_token <- map["rongyun_token"]
         user_money <- map["user_money"]
         frozen_money <- map["frozen_money"]
