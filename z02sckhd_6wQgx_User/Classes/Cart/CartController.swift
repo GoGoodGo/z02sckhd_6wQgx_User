@@ -31,11 +31,15 @@ public class CartController: TMViewController {
 
         self.title = "购物车"
         setupUI()
+
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.mj_header.beginRefreshing()
+        if inspectLogin() == true{
+            tableView.mj_header.beginRefreshing()
+        }
+
     }
     
     // MARK: - Private Method
@@ -57,7 +61,7 @@ public class CartController: TMViewController {
             barBottom.constant = -TabBarH
         }
 //        load()
-        showHUD()
+//        showHUD()
     }
     
     /** 购物车 */
@@ -70,9 +74,10 @@ public class CartController: TMViewController {
                 self?.stores = (obj.data?.goods)!
                 self?.tableView.reloadData()
                 self?.setupState()
-            } else {
-                self?.inspectLogin(model: obj)
             }
+//            else {
+//                self?.inspectLogin(model: obj)
+//            }
         }) { (error) in
             self.tableView.mj_header.endRefreshing()
             self.hideAllHUD()

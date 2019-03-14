@@ -9,6 +9,7 @@
 import UIKit
 import YHTool
 
+
 class HomeHeaderView: UICollectionReusableView {
     
     let bannerHeight: CGFloat = 200
@@ -71,6 +72,16 @@ class HomeHeaderView: UICollectionReusableView {
     
     // MARK: - Getter
     lazy var carouselView: YHScrollView = {
+    
+        
+        
+        //轮播图加载
+//        let pointY = 44 + UIApplication.shared.statusBarFrame.size.height
+//        let cycleView : CycleView = CycleView(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: bannerHeight))
+//        cycleView.delegate = self
+//        cycleView.mode = .scaleAspectFill
+//        //本地图片测试--加载网络图片,请用第三方库如SDWebImage等
+//        cycleView.imageURLStringArr = ["banner01.jpg", "banner02.jpg", "banner03.jpg", "banner04.jpg"]
         
         let view = YHScrollView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: bannerHeight), imageName: Banners())!
         view.currentIndicatorColor = UIColor.black

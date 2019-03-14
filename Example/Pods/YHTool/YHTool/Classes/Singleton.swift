@@ -12,7 +12,7 @@ public final class Singleton {
     
     public var uid = ""
     public var token = "2E214A98E2FEAF00DF358020F0A60021"
-    public var rongyun_token = ""
+    
     public static let shared = Singleton()
     
     // MARK: - PrivateMethod

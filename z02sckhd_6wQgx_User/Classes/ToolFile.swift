@@ -13,14 +13,14 @@ import SetI001
 extension UIViewController {
     
     public func inspectLogin(model: BaseModel) {
-        showAutoHideHUD(message: model.msg!) {
+//        showAutoHideHUD(message: model.msg!) {
             if model.msg == "登录失效,请重新登录" {
                 
                 let login = SetI001LoginViewController()
                 self.navigationController?.pushViewController(login, animated: true)
                 
             }
-        }
+//        }
     }
     
     func inspectLogin() -> Bool {
