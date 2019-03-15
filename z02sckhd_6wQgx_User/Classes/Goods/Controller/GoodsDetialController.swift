@@ -398,7 +398,7 @@ class GoodsDetialController: TMViewController {
         let cancelAction = UIAlertAction.init(title: "联系客服", style: .default) { (action) in
             
             //设置会话的目标会话ID。（单聊、客服、公众服务会话为对方的ID，群聊、聊天室为会话的ID）
-            
+             if !self.inspectLogin() { return }
             
             var parent: UIViewController?
             var navigation:UINavigationController?

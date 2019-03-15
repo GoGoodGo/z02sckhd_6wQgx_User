@@ -31,7 +31,6 @@
                             <constraint firstAttribute="height" constant="15" id="DkX-hV-Z8I"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.62352941176470589" green="0.6470588235294118" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -50,7 +49,7 @@
                 <outlet property="imgView" destination="Ued-XL-6xW" id="dtN-xi-tY3"/>
                 <outlet property="name" destination="VdG-Xx-sDx" id="1tg-Ji-dd0"/>
             </connections>
-            <point key="canvasLocation" x="203.5" y="-494.5"/>
+            <point key="canvasLocation" x="202.40000000000001" y="-495.20239880059972"/>
         </collectionViewCell>
     </objects>
 </document>
