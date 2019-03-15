@@ -245,6 +245,7 @@ class StoreController: TMViewController {
     private lazy var segmentView: YHSegmentView = {
         
         let view = YHSegmentView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: 30), titles: self.titles)
+        view.itemW = 75
         view.normalColor = UIColor.white
         view.background = UIColor.clear
         view.separatorColor = UIColor.clear

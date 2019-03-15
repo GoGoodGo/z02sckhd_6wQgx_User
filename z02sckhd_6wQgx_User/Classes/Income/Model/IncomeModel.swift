@@ -22,6 +22,55 @@ class UserInfo: BaseModel {
     }
 }
 
+class RUserInfo: BaseModel {
+    
+    var data: RUserData?
+    
+    override func mapping(map: Map) {
+        
+        status <- map["status"]
+        msg <- map["msg"]
+        data <- map["data"]
+    }
+}
+
+class RUserData: Mappable {
+    
+    var user: RUser?
+    var seller: RUser?
+
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        user <- map["user"]
+        seller <- map["seller"]
+     
+    }
+}
+
+class RUser: Mappable {
+    
+    var userid = ""
+    var username = ""
+    var head_pic = ""
+
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        userid <- map["userid"]
+        username <- map["username"]
+        head_pic <- map["head_pic"]
+
+    }
+}
+
+
 class User: Mappable {
     
     var user_id = 0

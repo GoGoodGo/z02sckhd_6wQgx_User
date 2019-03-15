@@ -37,11 +37,12 @@ class SSViewController: UIViewController {
     }()
     
     @objc func doSomething(){
+        
           NotificationCenter.default.post(name: NSNotification.Name("kTMAppDelegateHandleOpenURLNotification"), object: URL.init(string: "tmapp://com.tenma.ventures.test/openwith?goods_id=601"), userInfo: nil)
         
-//        self.navigationController?.pushViewController(YHTabBarController(), animated: true)
+        self.navigationController?.pushViewController(YHTabBarController(), animated: true)
             NotificationCenter.default.post(name: NSNotification.Name("SetI001_Notification_Login"), object: URL.init(string: "tmapp://com.tenma.ventures.test/openwith?goods_id=601"), userInfo: nil)
-            NotificationCenter.default.post(name: NSNotification.Name("SetI001_Notification_Logout"), object: URL.init(string: "tmapp://com.tenma.ventures.test/openwith?goods_id=601"), userInfo: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name("SetI001_Notification_Logout"), object: URL.init(string: "tmapp://com.tenma.ventures.test/openwith?goods_id=601"), userInfo: nil)
 
         
         

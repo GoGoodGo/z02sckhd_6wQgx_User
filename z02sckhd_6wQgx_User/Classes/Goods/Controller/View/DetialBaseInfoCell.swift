@@ -41,7 +41,7 @@ class DetialBaseInfoCell: UITableViewCell {
                 self.returnGoodsLabel.text = " 可返现\(goodsDetial?.back_price ?? 0)元 "
             }
             else{
-                self.returnMoneyLabel.isHidden = true
+                self.returnMoneyLabel.isHidden = false
                 self.returnMoneyLabel.text = " 可返现\(goodsDetial?.back_price ?? 0)元 "
                 self.returnGoodsLabel.isHidden = true
                 

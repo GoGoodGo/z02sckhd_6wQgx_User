@@ -11,6 +11,8 @@ import YHTool
 import TMSDK
 
 public class SingleInstance: NSObject,RCIMUserInfoDataSource {
+  
+    
     //在单例类中，有一个用来共享数据的数组
     public var datas = [String]()
     //创建一个静态或者全局变量，保存当前单例实例值
@@ -20,10 +22,20 @@ public class SingleInstance: NSObject,RCIMUserInfoDataSource {
     
     var name = ""
     
+    var userID = ""
+    
     //私有化构造方法
     public override init() {
         //给数组加一个原始数据
         super.init()
+        
+        RCIM.shared().initWithAppKey("sfci50a7s347i")
+        RCIM.shared()?.userInfoDataSource = self
+        ///是否将用户信息和群组信息在本地持久化存储
+        RCIM.shared().enablePersistentUserInfoCache = true
+        ///是否在发送的所有消息中携带当前登录的用户信息
+        RCIM.shared().enableMessageAttachUserInfo = true
+        RCIMClient.shared()?.initWithAppKey("sfci50a7s347i")
         
         NotificationCenter.default.addObserver(self, selector: #selector(openArouseApp), name:
             NSNotification.Name("kTMAppDelegateHandleOpenURLNotification") , object: nil)
@@ -58,16 +70,10 @@ public class SingleInstance: NSObject,RCIMUserInfoDataSource {
             goodsDetialCtrl.goodsID = arr[1]
             goodsDetialCtrl.isPush = 1
            vc?.present(YHNavigaitonController.init(rootViewController:goodsDetialCtrl), animated: true, completion: nil)
-//            vc?.navigationController?.pushViewController(, animated: true)
             
         }
         
-        RCIM.shared().initWithAppKey("sfci50a7s347i")
-        RCIM.shared()?.userInfoDataSource = self
-        ///是否将用户信息和群组信息在本地持久化存储
-        RCIM.shared().enablePersistentUserInfoCache = false
-        ///是否在发送的所有消息中携带当前登录的用户信息
-        RCIM.shared().enableMessageAttachUserInfo = true
+        
         
     }
     @objc func successLogin(){
@@ -82,7 +88,8 @@ public class SingleInstance: NSObject,RCIMUserInfoDataSource {
             if "success" == obj.status {
                 //                Singleton.shared.rongyun_token =
                 self?.loginRongYun(str: (obj.data?.rongyun_token)!)
-                CODE = (obj.data?.code)!
+                
+                self?.userID = "\((obj.data?.user_id)!)"
                 let user = TMHttpUserInstance.sharedManager()
                 let config = TMEngineConfig.instance()
                 let head_pic = user?.head_pic ?? ""
@@ -101,7 +108,9 @@ public class SingleInstance: NSObject,RCIMUserInfoDataSource {
         RCIM.shared()?.connect(withToken: str, success: { (userId) in
             print("登录成功-----token:\(userId ?? "")")
             
-            
+            let currentUserInfo = RCUserInfo(userId: userId!, name: self.name, portrait: self.head)
+            ///将设置的用户信息赋值给登录账号
+            RCIM.shared().currentUserInfo = currentUserInfo
             
         }, error: { (status) in
             //            self.showAutoHideHUD(message: "融云链接失败")
@@ -112,19 +121,51 @@ public class SingleInstance: NSObject,RCIMUserInfoDataSource {
         })
     }
     
-    public func getUserInfo(withUserId userId: String!, completion: ((RCUserInfo?) -> Void)!) {
-        if CODE == userId {
-            let user = RCUserInfo()
-            user.userId = userId
-            user.portraitUri = self.head
-            user.name = self.name
-            completion(user)
-            RCIM.shared()?.currentUserInfo = user
-            RCIM.shared()?.refreshUserInfoCache(user, withUserId: user.userId)
-           
+    @objc public func getUserInfo(withUserId userId: String!, completion: ((RCUserInfo?) -> Void)!) {
+
+        
+        if RCIM.shared()?.getUserInfoCache(userId) != nil {
+            
+            return
+            
+        }
+        
+        var dic  = [String:String]()
+        if userID.contains("s") {
+            dic = ["sid":userID]
+        }
+        else{
+            dic = ["uid":userID]
+            
+        }
+        NetworkingManager.getRequest(baseUrl: RUserDetial_URL, params: dic, success: { [weak self] (obj: RUserInfo) in
+            if "success" == obj.status {
+                let user = RCUserInfo()
+                
+                if userId.contains("s") {
+                    user.userId = obj.data?.seller?.userid
+                    user.portraitUri = obj.data?.seller?.head_pic
+                    user.name = obj.data?.seller?.username
+                }
+                else{
+                    user.userId = obj.data?.user?.userid
+                    user.portraitUri = obj.data?.user?.head_pic
+                    user.name = obj.data?.user?.username
+                    
+                }
+                
+                
+                completion(user)
+                
+                
+            }
+        }) { (error) in
+            //            self.inspectError()
         }
         
     }
+    
+
     
     
 }

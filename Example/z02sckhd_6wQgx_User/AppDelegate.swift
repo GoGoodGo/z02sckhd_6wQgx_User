@@ -21,15 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
 //        window?.rootViewController = YHNavigaitonController.init(rootViewController: SSViewController())
-//        window?.rootViewController = YHTabBarController()
+        window?.rootViewController = YHTabBarController()
 //        window?.rootViewController = TestTestViewController()
         window?.makeKeyAndVisible()
         
-        RCIM.shared().initWithAppKey("sfci50a7s347i")
-        ///是否将用户信息和群组信息在本地持久化存储
-        RCIM.shared().enablePersistentUserInfoCache = false
-        ///是否在发送的所有消息中携带当前登录的用户信息
-        RCIM.shared().enableMessageAttachUserInfo = true
+//        RCIM.shared().initWithAppKey("sfci50a7s347i")
+//        ///是否将用户信息和群组信息在本地持久化存储
+//        RCIM.shared().enablePersistentUserInfoCache = false
+//        ///是否在发送的所有消息中携带当前登录的用户信息
+//        RCIM.shared().enableMessageAttachUserInfo = true
         
 //        WXApi.registerApp("wxf5434529e3d5f55c")
         

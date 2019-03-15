@@ -661,7 +661,7 @@ extension GoodsDetialController: UITableViewDelegate, UITableViewDataSource {
                 if indexPath.row == 0 {
                     if detialType == .detial {
                         let cell = tableView.dequeueReusableCell(withIdentifier: CellName(DetialBaseInfoCell.self)) as! DetialBaseInfoCell
-                        cell.goodsDetial = goodsDetial
+                        cell.goodsDetial = self.goodsDetial
                         
                         return cell
                     } else {

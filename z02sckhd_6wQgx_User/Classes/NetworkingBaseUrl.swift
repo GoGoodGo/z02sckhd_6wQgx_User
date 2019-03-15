@@ -101,6 +101,8 @@ public let TimelimitBuy_URL = BASE_URL + "/z02sckhd_6wqgx/apispike/buy"
 
 // 用户信息
 public let UserDetial_URL = BASE_URL + "/z02sckhd_6wqgx/apiuser/detail"
+// 用户信息
+public let RUserDetial_URL = BASE_URL + "/z02sckhd_6wqgx/api/getuserinfos"
 
 // 绑定上级
 public let Binding_URL = BASE_URL + "/z02sckhd_6wqgx/apiuser/bind"
