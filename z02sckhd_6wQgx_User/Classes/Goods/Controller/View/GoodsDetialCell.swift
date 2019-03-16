@@ -18,6 +18,7 @@ class GoodsDetialCell: UITableViewCell, UIWebViewDelegate {
         super.awakeFromNib()
     
         let url = URLRequest.init(url: URL.init(string: "https://www.baidu.com")!)
+        
         webView.loadRequest(url)
         webView.delegate = self
     }
@@ -37,8 +38,26 @@ class GoodsDetialCell: UITableViewCell, UIWebViewDelegate {
     // MARK: - Setter
     var detial: String? {
         didSet {
-            webView.loadHTMLString((detial?.replacingOccurrences(of: "<img src=\"", with: "<img width=\(WIDTH - 15) src=\"\(BASE_URL)") ?? "暂无详情..."), baseURL: nil)
-            webView.loadHTMLString((detial?.replacingOccurrences(of: "width:", with: "width:\(WIDTH - 15)") ?? "..."), baseURL: nil)
+            if detial == nil {
+                return;
+            }
+         
+            
+            if detial!.contains("src=\"https:") {
+                
+                webView.loadHTMLString((detial?.replacingOccurrences(of: "<img src=\"", with: "<img width=\(WIDTH - 15) src=\"") ?? "暂无详情..."), baseURL:  nil)
+                webView.loadHTMLString((detial?.replacingOccurrences(of: "width:", with: "width:\(WIDTH - 15)") ?? "..."), baseURL:  nil)
+            }
+            else{
+                
+                webView.loadHTMLString((detial?.replacingOccurrences(of: "<img src=\"", with: "<img width=\(WIDTH - 15) src=\"") ?? "暂无详情..."), baseURL:  URL.init(string: BASE_URL))
+                webView.loadHTMLString((detial?.replacingOccurrences(of: "width:", with: "width:\(WIDTH - 15)") ?? "..."), baseURL:  URL.init(string: BASE_URL))
+            }
+                
+                
+                
+            
+//            webView.loadHTMLString(detial ?? "", baseURL:)
         }
     }
     

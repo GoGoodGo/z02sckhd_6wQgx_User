@@ -1,16 +1,16 @@
 //
-//  YHSegmentView.swift
+//  YSegScrollView.swift
+//  AFNetworking
 //
-//  Created by YH_O on 2017/4/26.
-//  Copyright © 2017年 OYH. All rights reserved.
+//  Created by 虞淞晴 on 2019/3/16.
 //
 
 import UIKit
-
+import YHTool
 let indicatorH: CGFloat = 2
 
-public class YHSegmentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
-
+public class YSegScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     public var clickItemBlock: ((_ index: Int) -> Void)?
     
     public init(frame: CGRect, titles: Array<String>) {
@@ -45,12 +45,12 @@ public class YHSegmentView: UIView, UICollectionViewDelegate, UICollectionViewDa
         
         let indexPath = IndexPath.init(row: index, section: 0)
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
-        let selectedItem = collectionView(collectionView, cellForItemAt: indexPath) as! ItemCell
+        let selectedItem = collectionView(collectionView, cellForItemAt: indexPath) as! CItemCell
         layoutLayerFrame(item: selectedItem)
     }
     
     /** 根据选中的 item 布局 layer 指示器 */
-    private func layoutLayerFrame(item: ItemCell) {
+    private func layoutLayerFrame(item: CItemCell) {
         
         UIView.animate(withDuration: 0.3) {
             self.indicatorView.centerX = item.centerX
@@ -63,7 +63,7 @@ public class YHSegmentView: UIView, UICollectionViewDelegate, UICollectionViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ItemCell.self), for: indexPath) as! ItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellName(CItemCell.self), for: indexPath) as! CItemCell
         cell.normalColor = normalColor
         cell.background = background
         cell.selectedColor = selectedColor
@@ -76,7 +76,7 @@ public class YHSegmentView: UIView, UICollectionViewDelegate, UICollectionViewDa
     // MARK: - UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let selectedItem = collectionView.cellForItem(at: indexPath) as! ItemCell
+        let selectedItem = collectionView.cellForItem(at: indexPath) as! CItemCell
         layoutLayerFrame(item: selectedItem)
         
         if let clickItem = clickItemBlock {
@@ -122,7 +122,7 @@ public class YHSegmentView: UIView, UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
-    public var itemW: CGFloat = 60.0 {
+    public var itemW: CGFloat = 80.0 {
         didSet {
             layout.itemSize = CGSize.init(width: itemW, height: self.height)
             selectedItem(index: 0)
@@ -140,7 +140,7 @@ public class YHSegmentView: UIView, UICollectionViewDelegate, UICollectionViewDa
     
     // MARK: - Getter
     private lazy var layout: UICollectionViewFlowLayout = {
-       
+        
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: WIDTH / CGFloat(self.titles.count), height: self.height)
         layout.scrollDirection = .horizontal
@@ -148,11 +148,13 @@ public class YHSegmentView: UIView, UICollectionViewDelegate, UICollectionViewDa
     }()
     
     private lazy var collectionView: UICollectionView = {
-       
+        
         let view = UICollectionView(frame: self.bounds, collectionViewLayout: self.layout)
         let bundle = Bundle.init(for: type(of: self))
         let url = bundle.url(forResource: "YHTool", withExtension: "bundle")
-        view.register(UINib.init(nibName: String(describing: ItemCell.self), bundle: Bundle.init(url: url!)), forCellWithReuseIdentifier: String(describing: ItemCell.self))
+//        view.register(UINib.init(nibName: CellName(CItemCell.self), bundle: getBundle()), forCellReuseIdentifier: CellName(CItemCell.self))
+//        view.register(UINib.init(nibName: CellName(CItemCell.self), bundle: getBundle()), forCellWithReuseIdentifier: CellName(CItemCell.self))
+        view.register(CItemCell.self, forCellWithReuseIdentifier: "CItemCell")
         view.backgroundColor = UIColor.white
         view.showsHorizontalScrollIndicator = false
         view.delegate = self

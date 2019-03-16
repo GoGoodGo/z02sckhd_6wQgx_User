@@ -242,9 +242,9 @@ class StoreController: TMViewController {
         }
     }
     
-    private lazy var segmentView: YHSegmentView = {
+    private lazy var segmentView: YSegScrollView = {
         
-        let view = YHSegmentView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: 30), titles: self.titles)
+        let view = YSegScrollView.init(frame: CGRect.init(x: 0, y: 0, width: WIDTH, height: 30), titles: self.titles)
         view.itemW = 75
         view.normalColor = UIColor.white
         view.background = UIColor.clear

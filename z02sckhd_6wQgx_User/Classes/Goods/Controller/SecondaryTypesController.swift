@@ -144,7 +144,7 @@ class SecondaryTypesController: TMViewController {
     }
     /** 获取商品列表 */
     @objc func load() {
-        
+        self.title = "\((currentCategory?.name) ?? "")"
         showHUD()
         params = ["cate_id" : "\(currentCategory?.id ?? Int(pID)!)", "sort" : sort, "order" : order, "p" : "1","token" : TMHttpUser.token() ?? TestToken]
         getRequest(baseUrl: GoodsList_URL, params: params, success: { [weak self] (obj: DataInfo) in
