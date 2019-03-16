@@ -12,7 +12,7 @@ import TMSDK
 
 let IMG_URL = ""
 //let TestToken = "2E214A98E2FEAF00DF358020F0A60021"
-let TestToken = "2D55C98267E2447155BF08A662FB47DB"
+//let TestToken = "2D55C98267E2447155BF08A662FB47DB"
 //let TestToken = ""
 var CODE = ""
 let BASE_URL = TMEngineConfig.instance().domain!
