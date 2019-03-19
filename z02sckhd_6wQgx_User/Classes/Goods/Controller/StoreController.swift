@@ -11,6 +11,7 @@ import MJRefresh
 import Kingfisher
 import YHTool
 import TMSDK
+import RongIMKit
 
 class StoreController: TMViewController {
     
@@ -29,6 +30,7 @@ class StoreController: TMViewController {
     var totalPage = 1
     var cateID = ""
     let gap: CGFloat = 15
+    var phone = ""
     var shopData: ShopData?
     var recommends = [Goods]()
     var goodsList = [Goods]()
@@ -205,6 +207,7 @@ class StoreController: TMViewController {
     // MARK: - Callbacks
     @objc private func action_search() {
         let searchCtrl = SearchController.init(nibName: "SearchController", bundle: getBundle())
+        searchCtrl.ID = self.ID
         navigationController?.pushViewController(searchCtrl, animated: true)
     }
     
@@ -215,6 +218,61 @@ class StoreController: TMViewController {
             addCollect(sender: sender)
         }
     }
+    
+    
+    @IBAction func callKefu(_ sender: Any) {
+        
+        let alertCtrl = UIAlertController.init(title: "请选择联系方式", message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "联系客服", style: .default) { (action) in
+            
+            //设置会话的目标会话ID。（单聊、客服、公众服务会话为对方的ID，群聊、聊天室为会话的ID）
+            if !self.inspectLogin() { return }
+            
+            var parent: UIViewController?
+            var navigation:UINavigationController?
+            if let window = UIApplication.shared.delegate?.window,let rootVC = window?.rootViewController {
+                parent = rootVC
+                while (parent?.presentedViewController != nil) {
+                    parent = parent?.presentedViewController!
+                }
+                
+                if let tabbar = parent as? UITabBarController ,let nav = tabbar.selectedViewController as? UINavigationController {
+                    navigation = nav
+                }else if let nav = parent as? UINavigationController {
+                    navigation = nav
+                }
+            }
+            navigation?.setNavigationBarHidden(true, animated: true)
+            
+            let chat = ChatDDDDViewController()
+            chat.conversationType = RCConversationType.ConversationType_PRIVATE
+            chat.targetId = "s" + "\((self.ID))"
+            chat.title = "联系客服"
+            
+            self.navigationController?.pushViewController(chat, animated: true)
+            
+        }
+        let sureAction = UIAlertAction.init(title: "拨打电话：\(self.phone)", style: .default) {[weak self] (action) in
+            if let phone = self?.phone {
+                let tel = "telprompt://" + phone
+                let url = URL.init(string: tel)
+                UIApplication.shared.openURL(url!)
+                if phone.isEmpty {
+                    self?.showAutoHideHUD(message: "暂无服务号码！")
+                }
+            } else {
+                self?.showAutoHideHUD(message: "暂无服务号码！")
+            }
+        }
+        alertCtrl.addAction(cancelAction)
+        alertCtrl.addAction(sureAction)
+        self.present(alertCtrl, animated: true, completion: nil)
+        
+        
+        
+        
+    }
+    
     
     func callbacksSegmentView() {
         segmentView.clickItemBlock = { [weak self] index in

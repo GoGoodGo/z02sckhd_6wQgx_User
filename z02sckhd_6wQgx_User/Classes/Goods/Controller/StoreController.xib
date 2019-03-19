@@ -86,6 +86,31 @@
                                 <action selector="action_collect:" destination="-1" eventType="touchUpInside" id="O5R-up-pg5"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pF-iG-cEc">
+                            <rect key="frame" x="151.5" y="83" width="65" height="25"/>
+                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="0.1973191353" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="65" id="ka7-e2-5bm"/>
+                                <constraint firstAttribute="height" constant="25" id="r5a-kj-pVh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="联系客服"/>
+                            <state key="selected" image="ico_img_pjwx"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <real key="value" value="12.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="action_collect:" destination="-1" eventType="touchUpInside" id="rV8-Ig-BBS"/>
+                                <action selector="callKefu:" destination="-1" eventType="touchUpInside" id="A78-Sf-NGf"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -96,6 +121,7 @@
                         <constraint firstAttribute="trailing" secondItem="jOA-Xm-nzr" secondAttribute="trailing" id="KpA-ZY-CH6"/>
                         <constraint firstItem="Ncc-ee-4eZ" firstAttribute="leading" secondItem="U0k-KZ-yk1" secondAttribute="leading" constant="10" id="OOK-0F-ZeK"/>
                         <constraint firstAttribute="bottom" secondItem="jOA-Xm-nzr" secondAttribute="bottom" id="Qtl-6N-zob"/>
+                        <constraint firstItem="6pF-iG-cEc" firstAttribute="centerY" secondItem="9yv-Ta-sIX" secondAttribute="centerY" id="WlZ-8U-emR"/>
                         <constraint firstAttribute="trailing" secondItem="Ncc-ee-4eZ" secondAttribute="trailing" constant="10" id="XVU-pp-CqH"/>
                         <constraint firstAttribute="trailing" secondItem="UVy-Qa-x0y" secondAttribute="trailing" constant="15" id="eub-wR-d89"/>
                         <constraint firstItem="9yv-Ta-sIX" firstAttribute="centerY" secondItem="pVI-z7-wp0" secondAttribute="centerY" id="fhD-3w-6pM"/>
@@ -103,6 +129,7 @@
                         <constraint firstItem="jOA-Xm-nzr" firstAttribute="top" secondItem="U0k-KZ-yk1" secondAttribute="top" id="qX2-R6-lBp"/>
                         <constraint firstAttribute="bottom" secondItem="Ncc-ee-4eZ" secondAttribute="bottom" constant="5" id="rKO-sh-0Fg"/>
                         <constraint firstAttribute="height" constant="180" id="rR0-h4-KZO"/>
+                        <constraint firstItem="6pF-iG-cEc" firstAttribute="leading" secondItem="9yv-Ta-sIX" secondAttribute="trailing" constant="10" id="vHs-Gu-mJm"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="MTE-ez-nf4">

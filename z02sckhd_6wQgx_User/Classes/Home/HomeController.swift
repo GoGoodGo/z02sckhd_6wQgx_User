@@ -209,6 +209,7 @@ public class HomeController: TMViewController {
         
 //        isShowSearchBar(isShow: false)
         let searchCtrl = SearchController.init(nibName: "SearchController", bundle: getBundle())
+
         navigationController?.pushViewController(searchCtrl, animated: true)
     }
     

@@ -17,6 +17,8 @@ class SearchController: UIViewController {
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var ID = ""
+    
     let gap: CGFloat = 15.0
     let titles = ["商品", "店铺"]
     
@@ -58,6 +60,7 @@ class SearchController: UIViewController {
         segmentCallbacks()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.item(title: "搜索", titleColor: HexString("#2f9cf7"), target: self, action: #selector(action_search))
+     
         
         let width = (WIDTH - gap * 3) / 2
         let height = width + gap + 60
@@ -85,7 +88,7 @@ class SearchController: UIViewController {
     /** search */
     func searchGoods() {
         showHUD()
-        getRequest(baseUrl: GoodsList_URL, params: ["keyword" : searchTextF.text!, "page" : "1"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["keyword" : searchTextF.text!, "page" : "1","sid":self.ID], success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -123,7 +126,7 @@ class SearchController: UIViewController {
     }
     
     func loadMoreGoods() {
-        getRequest(baseUrl: GoodsList_URL, params: ["keyword" : searchTextF.text!, "page" : "\(goodsInfo?.page ?? 1)"], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["keyword" : searchTextF.text!, "page" : "\(goodsInfo?.page ?? 1)","sid":self.ID], success: { [weak self] (obj: DataInfo) in
             self?.collectionView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.goods += (obj.data?.result)!

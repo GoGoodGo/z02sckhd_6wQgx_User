@@ -388,6 +388,7 @@ class GoodsDetialController: TMViewController {
         
         let storeCtrl = StoreController.init(nibName: "StoreController", bundle: getBundle())
         storeCtrl.ID = "\((goodsDetial?.sid)!)"
+        storeCtrl.phone = "\((goodsDetial?.phone)!)"
         navigationController?.pushViewController(storeCtrl, animated: true)
         
     }
