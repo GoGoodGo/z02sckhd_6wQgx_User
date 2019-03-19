@@ -1,6 +1,6 @@
 {
   "name": "z02sckhd_6wQgx_User",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "summary": "TM User.",
   "description": "TM User framework",
   "homepage": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User",
@@ -13,11 +13,11 @@
   },
   "source": {
     "git": "https://github.com/GoGoodGo/z02sckhd_6wQgx_User.git",
-    "tag": "1.9.1"
+    "tag": "1.9.2"
   },
   "static_framework": true,
   "requires_arc": true,
-  "swift_version": "4.2",
+  "swift_versions": "4.2",
   "platforms": {
     "ios": "9.0"
   },
