@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param url 回调地址
  @param options 回调参数
  */
-- (void)tm_handlePayResultWithOpenURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options;
+- (void)tm_handlePayResultWithOpenURL:(NSURL *)url options:(NSDictionary *)options;
 
 
 

@@ -22,7 +22,6 @@
 @property (nonatomic, copy) NSString *member_nickname;
 @property (nonatomic, copy) NSString *member_real_name;
 @property (nonatomic, copy) NSString *mobile;
-//@property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSString *qq;
 @property (nonatomic, copy) NSString *wx;
 @property (nonatomic, copy) NSString *wb;
@@ -30,8 +29,6 @@
 @property (nonatomic, copy) NSString *site_code;
 @property (nonatomic, assign) int status;
 
-
-//+ (TMHttpUserInstance *)instance DEPRECATED_MSG_ATTRIBUTE("请使用sharedManager");
 + (TMHttpUserInstance *)instance;
 + (instancetype)sharedManager;
 //销毁数据

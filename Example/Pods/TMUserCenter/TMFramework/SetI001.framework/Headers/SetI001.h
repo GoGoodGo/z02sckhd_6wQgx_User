@@ -18,8 +18,12 @@ FOUNDATION_EXPORT const unsigned char SetI001VersionString[];
 
 
 #import <SetI001/SetI001MainViewController.h>
+#import <SetI001/SetI001TwoMainViewController.h>
 #import <SetI001/SetI001LoginViewController.h>
 #import <SetI001/SetI001ConfigInstance.h>
+#import <SetI001/SetI001Tools.h>
+#import <SetI001/SetI001ChannelTool.h>
+#import <SetI001/OpenInstallSDK.h>
 
 
 

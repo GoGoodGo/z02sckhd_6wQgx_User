@@ -12,6 +12,8 @@
 #define     SetI001_Notification_NightModel @"SetI001_Notification_NightModel"
 #define     SetI001_Notification_Font       @"SetI001_Notification_Font"
 #define     SetI001_Notification_Logout     @"SetI001_Notification_Logout"
+#define     SetI001_Notification_Login     @"SetI001_Notification_Login"
+
 #define     SetI001_Notification_WifiLookImage     @"SetI001_Notification_WifiLookImage"
 #define     SetI001_Notification_AutoPlayVideo     @"SetI001_Notification_AutoPlayVideo"
 
@@ -64,15 +66,10 @@ typedef NS_ENUM(NSUInteger, SetI001_Config_Font) {
 
 
 /**
- 舍弃
- */
-+ (SetI001ConfigInstance *)instance DEPRECATED_MSG_ATTRIBUTE("请使用sharedManager");
-
-/**
  返回一个单例
  */
++ (SetI001ConfigInstance *)instance;
 + (instancetype)sharedManager;
-
 
 //只会统计及清除Document/Caches、Tmp、Caches三个路径下的缓存
 - (void)cleanCache:(void(^)(BOOL))result;

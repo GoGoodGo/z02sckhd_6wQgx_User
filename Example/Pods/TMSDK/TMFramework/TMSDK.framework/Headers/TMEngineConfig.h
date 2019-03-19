@@ -15,11 +15,35 @@
  */
 @property (nonatomic, strong) UIColor *themeColor;
 
-/*导航控制器颜色，默认与themeColor保持一致，也可单独配置。
+/*导航控制器颜色，默认与themeColor保持一致，也可单独配置。q
  一般会在导航组件加载配置后根据配置设定。
  （导航组件加载配置后，设定themeColor同时也将navigationBarTintColor设定为themeColor一致的值，若配置有图片且下载成功后，可将navigationBarTintColor设定为图片的Color
+ 
+ 已弃用
  */
 @property (nonatomic, strong) UIColor *navigationBarTintColor;
+
+
+
+
+/**
+ 导航栏tintColor颜色，即文字等颜色
+ */
+@property (nonatomic, strong) UIColor *navigationTintColor;
+
+/**
+ 导航控制器背景颜色值类型，0：16进制色值字符串（如1479D7），1：图片base64字符串，2：图片网络链接,默认为色值字符串
+ */
+@property (nonatomic, assign) NSInteger navigationBarBackgroundType;
+
+/**
+ 导航控制器背景颜色值,值类型参照navigationBarBackgroundType字段
+ */
+@property (nonatomic, strong) NSString *navigationBarBackgroundValue;
+
+
+
+
 
 /*夜间模式主色调，默认0x383838
  */
@@ -45,10 +69,6 @@
 @property (nonatomic, copy) NSString *jpushAppkey;
 @property (nonatomic, copy) NSString *jpushChannel;
 
-/*友盟统计相关key，框架使用
- */
-@property (nonatomic, copy) NSString *umengAppkey;
-@property (nonatomic, copy) NSString *umengChannel;
 
 /**
  服务器配置
@@ -57,10 +77,16 @@
 
 @property (nonatomic, copy) NSArray *landscapes;
 
+
+/**
+ 是否是debug模式，主要涉及是否打印日志
+ */
+@property (nonatomic, assign) BOOL tm_isDebug;
+
 //根据key取各个组件在“TMBaseConfig.plist”中自定义的配置数据
 - (NSDictionary *)featureByName:(NSString *)key;
 
-
+@property (nonatomic, strong) NSArray *infoSchemeArray;
 
 //+ (TMEngineConfig *)instance DEPRECATED_MSG_ATTRIBUTE("请使用sharedManager");
 + (TMEngineConfig *)instance;

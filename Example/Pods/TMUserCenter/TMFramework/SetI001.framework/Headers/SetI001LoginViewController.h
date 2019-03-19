@@ -7,18 +7,9 @@
 //
 
 #import <TMSDK/Cordova.h>
-
+typedef void(^TMExitLoginPageComplate)(BOOL isLogin);
 @interface SetI001LoginViewController : TMViewController
 
-/**
- 登录类型，默认为账号密码登录，1：账号密码登录， 2：手机号登录，
- */
-@property (nonatomic, assign) NSInteger loginType;
+@property (nonatomic, copy) TMExitLoginPageComplate pageComplate;
 
-/*
- paramstr:
- {
- "needDismiss":true
- }
- */
 @end

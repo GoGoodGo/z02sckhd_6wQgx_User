@@ -67,7 +67,6 @@ public class YHSegmentView: UIView, UICollectionViewDelegate, UICollectionViewDa
         cell.normalColor = normalColor
         cell.background = background
         cell.selectedColor = selectedColor
-        
         cell.itemLabel.text = titles[indexPath.row]
         
         return cell

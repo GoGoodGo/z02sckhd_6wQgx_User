@@ -26,5 +26,8 @@
 
 #define TMMessageNotification_WillTerminate             @"TMMessageNotification_WillTerminate"
 
+//接收到openURL消息
+#define kTMAppDelegateHandleOpenURLNotification @"kTMAppDelegateHandleOpenURLNotification"
+
 
 #endif /* Header_h */

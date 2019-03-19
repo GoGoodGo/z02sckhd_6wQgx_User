@@ -62,7 +62,6 @@ FOUNDATION_EXPORT const unsigned char CordovaVersionString[];
 //#import <TMSDK/CDVFile.h>
 ////#import <TMSDK/LocalDataPlugin.h>
 //#import <TMSDK/OnePasswordExtension.h>
-////#import <TMSDK/TMProtocolCustom.h>
 //#import <TMSDK/CDVReachability.h>
 
 

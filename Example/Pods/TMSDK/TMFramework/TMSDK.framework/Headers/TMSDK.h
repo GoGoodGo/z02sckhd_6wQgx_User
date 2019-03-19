@@ -10,14 +10,19 @@
 
 #import <TMSDK/Cordova.h>
 
+#import <TMSDK/CDVAppDelegate+TMJPush.h>
+
 #import <TMSDK/TMMessageDefine.h>
 #import <TMSDK/TMHttpUserInstance.h>
 #import <TMSDK/TMHttpUser.h>
+
+
 #import <TMSDK/TMHttpDefine.h>
-#import <TMSDK/TMHttpConfig.h>
 #import <TMSDK/TMEngineConfig.h>
 #import <TMSDK/TMDataCache.h>
-//#import <TMSDK/TMHttpBase.h>
-
-
+#import <TMSDK/TMLocation.h>
+#import <TMSDK/TMBaseNetworking.h>
+#import <TMSDK/TMCertificateConfig.h>
+#import <TMSDK/TMEncryptionTool.h>
+#import <TMSDK/NSString+TMEncryption.h>
 #endif /* TMSDK_h */

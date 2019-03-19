@@ -26,4 +26,7 @@
 //@property (nonatomic, strong) NSMutableArray *controllers;
 @property (nonatomic, strong) IBOutlet CDVViewController* viewController;
 
+@property (nonatomic, assign) BOOL isLoadComplate;
+
+@property (nonatomic, strong) NSURL *openUrl;
 @end
