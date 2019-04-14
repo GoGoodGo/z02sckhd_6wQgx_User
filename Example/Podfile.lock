@@ -14,20 +14,20 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - Alamofire (4.8.1)
+  - Alamofire (4.8.2)
   - AlamofireObjectMapper (5.2.0):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
   - AlipaySDK-iOS (15.5.9)
   - Cosmos (18.0.1)
-  - IQKeyboardManager (6.2.0)
+  - IQKeyboardManager (6.2.1)
   - JCore (1.2.6)
   - JPush (3.1.2):
     - JCore (~> 1.2.6)
   - Kingfisher (4.10.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
-  - MJRefresh (3.1.15.7)
+  - MJRefresh (3.1.16)
   - mob_sharesdk (4.1.4):
     - mob_sharesdk/ShareSDK (= 4.1.4)
     - MOBFoundation
@@ -57,21 +57,21 @@ PODS:
   - MOBFoundation (3.2.2)
   - ObjectMapper (3.4.2)
   - QBImagePickerController (3.4.0)
-  - RongCloudIM/IMKit (2.9.12):
+  - RongCloudIM/IMKit (2.9.14):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (2.9.12)
-  - SDCycleScrollView (1.75):
-    - SDWebImage (>= 4.0.0)
-  - SDWebImage (4.4.6):
-    - SDWebImage/Core (= 4.4.6)
-  - SDWebImage/Core (4.4.6)
+  - RongCloudIM/IMLib (2.9.14)
+  - SDCycleScrollView (1.80):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.0.1):
+    - SDWebImage/Core (= 5.0.1)
+  - SDWebImage/Core (5.0.1)
   - SnapKit (4.2.0)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.2.0)
+  - SwiftyJSON (4.3.0)
   - TMPaySDK (0.0.9):
     - AlipaySDK-iOS
     - TMShare
-  - TMSDK (0.0.16):
+  - TMSDK (0.0.17):
     - AFNetworking
     - JPush
   - TMShare (0.0.9):
@@ -103,7 +103,7 @@ PODS:
     - QBImagePickerController
     - SDWebImage
     - SwiftyJSON
-  - z02sckhd_6wQgx_User (1.9.2):
+  - z02sckhd_6wQgx_User (1.9.5):
     - Cosmos
     - IQKeyboardManager
     - Kingfisher
@@ -155,34 +155,34 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   AlipaySDK-iOS: 1c5283b30977a24acecc0114662697f7dc78f618
   Cosmos: 7dfaa3f52584ca5f94ab74b5c2e264019cc9f7f5
-  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  IQKeyboardManager: 964638372b4a61892cc74fdfa6fd26de8c9464a2
   JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
   JPush: d0cead70ba223a6a3b52749899ebda830dfbc49a
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  MJRefresh: 7798e16e53a5ef7f332dd05b27664db4e29530fd
   mob_sharesdk: 765cc2fd2fac0a6fd7c3e6c2b10d729ad006c608
   MOBFoundation: b5ff4038ddb9a0f06b685b86408f905a10aa147c
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
-  RongCloudIM: c00152f04571af9ac7623de2f56eb97038848096
-  SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
-  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  RongCloudIM: 7283628517deaf3500c004d207b2db9836458163
+  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
+  SDWebImage: 27dd2c9ea07a2252f94557c9fbb6105ee94b74c9
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   TMPaySDK: 4649e5a06f70b4d7156d6ed4cbec7a9e730944e6
-  TMSDK: d3aa8335e1c8d0c1a5937bcd725381c136bbc820
+  TMSDK: bd00a3c523bb620341e78b16f3ae113d1e5773e7
   TMShare: f5e47b9c06f5a404e80abaef6f9201c941e3fc51
   TMUserCenter: 8e5cf1057442791cf0b32b4a7cce0715f4893df1
   TYAttributedLabel: cb8fc910d97eb5224936d4f692a78e042af691b2
   YHTool: b5a30ec4670497315c3389ca7c674713940f1f10
-  z02sckhd_6wQgx_User: 7d2967a4322f75975317425eb7b03c488f27d21a
+  z02sckhd_6wQgx_User: 59478b7c6da3400746cc5d916e49ad11a73b1064
 
 PODFILE CHECKSUM: 29c6eb257930fca757fc24da80a6a079449fa0db
 
