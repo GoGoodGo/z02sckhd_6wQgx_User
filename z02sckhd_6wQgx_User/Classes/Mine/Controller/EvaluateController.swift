@@ -51,7 +51,7 @@ class EvaluateController: TMViewController {
     }
     /** 评价 */
     func load() {
-        getRequest(baseUrl: Evaluate_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "rec_id" : "\((evaluate?.rec_id)!)", "comment" : comment, "Score" : score, "images" : imagesID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: Evaluate_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "rec_id" : "\((evaluate?.rec_id)!)", "comment" : comment, "Score" : score, "images" : imagesID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: obj.msg!, completed: {

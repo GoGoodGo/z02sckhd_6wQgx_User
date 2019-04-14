@@ -53,7 +53,7 @@ class MyOrderController: TMViewController {
     /** 我的订单 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyOrder_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "order_status" : status, "status" : evaluateStatus], success: { [weak self] (obj: MyOrderInfo) in
+        getRequest(baseUrl: MyOrder_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "order_status" : status, "status" : evaluateStatus], success: { [weak self] (obj: MyOrderInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -72,7 +72,7 @@ class MyOrderController: TMViewController {
     /** 待评价商品 */
     func loadEvaluateGoods() {
         showHUD()
-        getRequest(baseUrl: NotEvaluate_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: NotEvaluateInfo) in
+        getRequest(baseUrl: NotEvaluate_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: NotEvaluateInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -99,7 +99,7 @@ class MyOrderController: TMViewController {
     /** 确认收货 */
     func loadReceive(section: Int) {
         showHUD()
-        getRequest(baseUrl: OrderReceive_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "order_id" : "\((orderInfo?.result[section]._orders.first?.order_id)!)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderReceive_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "order_id" : "\((orderInfo?.result[section]._orders.first?.order_id)!)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.orderInfo?.result.remove(at: section)
@@ -115,7 +115,7 @@ class MyOrderController: TMViewController {
     /** 取消订单 */
     func loadCancel(section: Int) {
         showHUD()
-        getRequest(baseUrl: OrderCancel_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "mid" : "\((orderInfo?.result[section].mid)!)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: OrderCancel_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "mid" : "\((orderInfo?.result[section].mid)!)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.orderInfo?.result.remove(at: section)

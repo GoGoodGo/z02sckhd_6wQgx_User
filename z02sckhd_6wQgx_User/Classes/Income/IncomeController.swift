@@ -46,7 +46,7 @@ public class IncomeController: TMViewController {
     /** 获取收益 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "11"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "type" : "11"], success: { [weak self] (obj: IncomeInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {

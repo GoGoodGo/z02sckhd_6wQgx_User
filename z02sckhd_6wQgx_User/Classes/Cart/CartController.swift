@@ -66,7 +66,7 @@ public class CartController: TMViewController {
     
     /** 购物车 */
     @objc func load() {
-        getRequest(baseUrl: Cart_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: CartInfo) in
+        getRequest(baseUrl: Cart_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: CartInfo) in
             self?.hideAllHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -89,7 +89,7 @@ public class CartController: TMViewController {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
         let store = stores[indexPath.section]
-        getRequest(baseUrl: CartQuantity_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "spec_id" : "\(goods.spec_id)", "quantity" : "\(num)"], success: { [weak self] (obj: CartInfo) in
+        getRequest(baseUrl: CartQuantity_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "spec_id" : "\(goods.spec_id)", "quantity" : "\(num)"], success: { [weak self] (obj: CartInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 if goods.is_shipping != 0 {
@@ -112,7 +112,7 @@ public class CartController: TMViewController {
     func loadCheck(indexPath: IndexPath, isSelected: Bool) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartCheck_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "rec_id" : "\(goods.rec_id)", "status" : isSelected ? "1" : "0"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartCheck_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "rec_id" : "\(goods.rec_id)", "status" : isSelected ? "1" : "0"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 goods.is_shipping = isSelected ? 1 : 0
@@ -134,7 +134,7 @@ public class CartController: TMViewController {
     func loadAllCheck(section: Int, sender: UIButton) {
         showHUD()
         let store = stores[section]
-        getRequest(baseUrl: CartAllCheck_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "status" : sender.isSelected ? "1" : "0", "sid" : "\(store.sid)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartAllCheck_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "status" : sender.isSelected ? "1" : "0", "sid" : "\(store.sid)"], success: { [weak self] (obj: BaseModel) in
             self?.hideAllHUD()
             if "success" == obj.status {
                 self?.updateState(section: section, isSelected: sender.isSelected)
@@ -152,7 +152,7 @@ public class CartController: TMViewController {
     func loadDelete(indexPath: IndexPath) {
         showHUD()
         let goods = stores[indexPath.section].result[indexPath.row]
-        getRequest(baseUrl: CartDelete_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "rec_id" : "\(goods.rec_id)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CartDelete_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "rec_id" : "\(goods.rec_id)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.stores[indexPath.section].result.remove(at: indexPath.row)
@@ -276,7 +276,7 @@ public class CartController: TMViewController {
     
     @IBAction func pay() {
         showHUD()
-        getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: CartOrderInfo) in
+        getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: CartOrderInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 let confirmOrder = ConfirmOrderController.init(nibName: "ConfirmOrderController", bundle: getBundle())

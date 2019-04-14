@@ -64,7 +64,7 @@ public class MineController: TMViewController {
     }
     
    @objc func loadUserDetial() {
-        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: UserInfo) in
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: UserInfo) in
             if "success" == obj.status {
                 //                Singleton.shared.rongyun_token =
                 self?.vip_level = (obj.data?.rank_name)!

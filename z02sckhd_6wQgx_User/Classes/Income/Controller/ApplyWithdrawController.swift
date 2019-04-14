@@ -42,7 +42,7 @@ class ApplyWithdrawController: TMViewController {
     }
     /** 获取用户信息 */
     func loadUserDetial() {
-        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: UserInfo) in
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: UserInfo) in
             if "success" == obj.status {
                 self?.avaliableWithdraw.text = "¥\(obj.data?.user_money ?? "0.00")"
             } else {
@@ -54,7 +54,7 @@ class ApplyWithdrawController: TMViewController {
     }
     /** 获取提现收益 */
     func load() {
-        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "2"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "type" : "2"], success: { [weak self] (obj: IncomeInfo) in
             if "success" == obj.status {
                 self?.totalWithdraw.text = "¥\(obj.data?.ok ?? "0.00")"
             } else {
@@ -67,7 +67,7 @@ class ApplyWithdrawController: TMViewController {
     /** 提现账户 */
     func loadAccount() {
         showHUD()
-        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "page" : "1"], success: { [weak self] (obj: AccountInfo) in
+        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "page" : "1"], success: { [weak self] (obj: AccountInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.accounts = (obj.data?.result)!
@@ -86,7 +86,7 @@ class ApplyWithdrawController: TMViewController {
             return
         }
         showHUD()
-        getRequest(baseUrl: ApplyWithdraw_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "price" : textField.text!, "account_id" : accountID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: ApplyWithdraw_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "price" : textField.text!, "account_id" : accountID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "申请成功，等候处理！", completed: {

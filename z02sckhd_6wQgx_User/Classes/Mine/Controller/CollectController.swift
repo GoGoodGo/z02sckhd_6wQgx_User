@@ -61,7 +61,7 @@ class CollectController: TMViewController {
     /** 我的收藏 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "\(selectedIndex + 1)", "page" : "1"], success: { [weak self] (obj: CollectInfo) in
+        getRequest(baseUrl: MyCollect_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "type" : "\(selectedIndex + 1)", "page" : "1"], success: { [weak self] (obj: CollectInfo) in
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             self?.collectInfo?.data?.result.removeAll()
@@ -79,7 +79,7 @@ class CollectController: TMViewController {
     }
     /** 加载更多 */
     @objc func loadMore() {
-        getRequest(baseUrl: MyCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : "\(selectedIndex + 1)", "page" : "\(collectInfo?.data?.page ?? 2)"], success: { [weak self] (obj: CollectInfo) in
+        getRequest(baseUrl: MyCollect_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "type" : "\(selectedIndex + 1)", "page" : "\(collectInfo?.data?.page ?? 2)"], success: { [weak self] (obj: CollectInfo) in
             if "success" == obj.status {
                 self?.collectInfo?.data?.page += 1
                 self?.collectInfo?.data?.result += (obj.data?.result)!
@@ -95,7 +95,7 @@ class CollectController: TMViewController {
     func loadCancel(indexPath: IndexPath) {
         let collect = collectInfo?.data?.result[indexPath.row]
         showHUD()
-        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : "\((collect?.rec_id)!)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : "\((collect?.rec_id)!)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.collectInfo?.data?.result.remove(at: indexPath.row)

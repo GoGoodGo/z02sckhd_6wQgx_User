@@ -93,7 +93,7 @@ public class HomeController: TMViewController {
     //
     
     func loadUserDetial() {
-        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: UserInfo) in
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: UserInfo) in
             if "success" == obj.status {
 //                Singleton.shared.rongyun_token =
                 self?.loginRongYun(str: (obj.data?.rongyun_token)!)
@@ -123,7 +123,7 @@ public class HomeController: TMViewController {
     /** 获取首页 */
     func loadHome() {
         showHUD()
-        getRequest(baseUrl: Home_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: HomeInfo) in
+        getRequest(baseUrl: Home_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: HomeInfo) in
             self?.hideHUD()
             self?.collectionView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -154,7 +154,7 @@ public class HomeController: TMViewController {
    
     /** 新品列表 */
     func loadNewGoods() {
-        getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1","token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: DataInfo) in
+        getRequest(baseUrl: GoodsList_URL, params: ["sort" : sort, "order" : order, "p" : "1","token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: DataInfo) in
             self?.hideHUD()
             self?.hideAllHUD()
             self?.collectionView.mj_header.endRefreshing()

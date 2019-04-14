@@ -50,7 +50,7 @@ class AddressController: TMViewController {
     /** 加载地址 */
     func load() {
         showHUD()
-        getRequest(baseUrl: Address_URL, params: ["token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: AddressInfo) in
+        getRequest(baseUrl: Address_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: AddressInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.addresses = obj.data
@@ -66,7 +66,7 @@ class AddressController: TMViewController {
     /** 新增地址 */
     func addAddress(name: String, phone: String, detial: String) {
         let address = province + " " + city + " " + district
-        let params = ["token" : TMHttpUser.token() ?? TestToken, "address" : address, "consignee" : name, "tel" : phone, "address_name" : detial]
+        let params = ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "address" : address, "consignee" : name, "tel" : phone, "address_name" : detial]
         showHUD()
         getRequest(baseUrl: AddAddress_URL, params: params, success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
@@ -84,7 +84,7 @@ class AddressController: TMViewController {
     /** 编辑地址 */
     func editAddress(name: String, phone: String, detial: String) {
         let address = province + " " + city + " " + district
-        let params = ["aid" : aid, "token" : TMHttpUser.token() ?? TestToken, "address" : address, "consignee" : name, "tel" : phone, "address_name" : detial]
+        let params = ["aid" : aid, "token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "address" : address, "consignee" : name, "tel" : phone, "address_name" : detial]
         showHUD()
         getRequest(baseUrl: EditAddress_URL, params: params, success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
@@ -101,7 +101,7 @@ class AddressController: TMViewController {
     }
     /** 删除地址 */
     func delete() {
-        getRequest(baseUrl: DelAddress_URL, params: ["aid" : aid, "token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: DelAddress_URL, params: ["aid" : aid, "token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: BaseModel) in
             if "success" == obj.status {
                 self?.maskView.diss()
                 self?.addresses.remove(at: (self?.index)!)
@@ -117,7 +117,7 @@ class AddressController: TMViewController {
     /** 设置默认 */
     func isDefault() {
         showHUD()
-        getRequest(baseUrl: DefaultAddress_URL, params: ["address_id" : aid, "token" : TMHttpUser.token() ?? TestToken], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: DefaultAddress_URL, params: ["address_id" : aid, "token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()

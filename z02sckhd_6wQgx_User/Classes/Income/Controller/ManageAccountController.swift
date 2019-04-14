@@ -56,7 +56,7 @@ class ManageAccountController: TMViewController {
     /** 提现账户 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "page" : "1"], success: { [weak self] (obj: AccountInfo) in
+        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "page" : "1"], success: { [weak self] (obj: AccountInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -74,7 +74,7 @@ class ManageAccountController: TMViewController {
     }
     /** 加载更多 */
     @objc func loadMore() {
-        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "page" : "\(accountData?.page ?? 1)"], success: { [weak self] (obj: AccountInfo) in
+        getRequest(baseUrl: MyAccount_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "page" : "\(accountData?.page ?? 1)"], success: { [weak self] (obj: AccountInfo) in
             self?.tableView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.accountData?.result += (obj.data?.result)!
@@ -91,7 +91,7 @@ class ManageAccountController: TMViewController {
     /** 新增账户 */
     func loadAdd(number: String) {
         showHUD()
-        getRequest(baseUrl: AddAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : accountType, "number" : number, "is_default" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddAccount_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "type" : accountType, "number" : number, "is_default" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
@@ -107,7 +107,7 @@ class ManageAccountController: TMViewController {
     /** 编辑账户 */
     func loadEdit(number: String) {
         showHUD()
-        getRequest(baseUrl: EditAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "type" : accountType, "number" : number, "id" : currentID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: EditAccount_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "type" : accountType, "number" : number, "id" : currentID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.load()
@@ -123,7 +123,7 @@ class ManageAccountController: TMViewController {
     /** 删除账户 */
     func loadDel(index: Int) {
         showHUD()
-        getRequest(baseUrl: DelAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : currentID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: DelAccount_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : currentID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.accountData?.result.remove(at: index)
@@ -140,7 +140,7 @@ class ManageAccountController: TMViewController {
     /** 设置默认账户 */
     func setDefaultAccount(indexPath: IndexPath?) {
         showHUD()
-        getRequest(baseUrl: SetDefaultAccount_URL, params: ["token" : TMHttpUser.token() ?? TestToken, "id" : currentID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: SetDefaultAccount_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : currentID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
