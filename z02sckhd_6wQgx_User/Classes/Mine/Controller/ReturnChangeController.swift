@@ -46,7 +46,7 @@ class ReturnChangeController: UIViewController {
         showHUD()
         let order = orderResult?._orders[subIndexPath?.section ?? 0]
         let goods = order?._goods[subIndexPath?.row ?? 0]
-        getRequest(baseUrl: ReturnGoods_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "order_id" : "\(order?.order_id ?? 0)", "rec_id" : "\(goods?.rec_id ?? 0)", "type" : type, "reson" : reason, "desc" : describe], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: ReturnGoods_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "order_id" : "\(order?.order_id ?? 0)", "rec_id" : "\(goods?.rec_id ?? 0)", "type" : type, "reson" : reason, "desc" : describe], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 let typeTitle = self?.type == "1" ? "退货" : "换货"

@@ -84,7 +84,7 @@ public class SingleInstance: NSObject,RCIMUserInfoDataSource {
     }
     
     func loadUserDetial() {
-        NetworkingManager.getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: UserInfo) in
+        NetworkingManager.getRequest(baseUrl: UserDetial_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)"], success: { [weak self] (obj: UserInfo) in
             if "success" == obj.status {
                 //                Singleton.shared.rongyun_token =
                 self?.loginRongYun(str: (obj.data?.rongyun_token)!)

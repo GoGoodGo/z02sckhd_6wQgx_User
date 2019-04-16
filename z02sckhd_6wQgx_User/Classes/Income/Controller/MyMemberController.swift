@@ -41,7 +41,7 @@ class MyMemberController: UIViewController {
     /** 加载会员 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: MyMember_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "page" : "1"], success: { [weak self] (obj: MyMemberInfo) in
+        getRequest(baseUrl: MyMember_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "page" : "1"], success: { [weak self] (obj: MyMemberInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -60,7 +60,7 @@ class MyMemberController: UIViewController {
     }
     
     @objc func loadMore() {
-        getRequest(baseUrl: MyMember_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "page" : "\(memberData?.page)"], success: { [weak self] (obj: MyMemberInfo) in
+        getRequest(baseUrl: MyMember_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "page" : "\(memberData?.page)"], success: { [weak self] (obj: MyMemberInfo) in
             self?.tableView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.members += (obj.data?.result)!

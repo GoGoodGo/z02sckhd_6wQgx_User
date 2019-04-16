@@ -45,7 +45,7 @@ class WithdrawRecordController: TMViewController {
     /** 获取提现 */
     @objc func load() {
         showHUD()
-        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "type" : "2", "status" : status, "page" : "1"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "type" : "2", "status" : status, "page" : "1"], success: { [weak self] (obj: IncomeInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -65,7 +65,7 @@ class WithdrawRecordController: TMViewController {
     }
     /** 更多 */
     @objc func loadMore() {
-        getRequest(baseUrl: Income_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "type" : "2", "status" : status, "page" : "\(withdrawData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
+        getRequest(baseUrl: Income_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "type" : "2", "status" : status, "page" : "\(withdrawData?.page ?? 1)"], success: { [weak self] (obj: IncomeInfo) in
             self?.tableView.mj_footer.endRefreshing()
             if "success" == obj.status {
                 self?.withdraws += (obj.data?.result)!
@@ -81,7 +81,7 @@ class WithdrawRecordController: TMViewController {
     /** 取消提现 */
     func loadCancel(ID: String) {
         showHUD()
-        getRequest(baseUrl: CancelWithdraw_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "mid" : ID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelWithdraw_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "mid" : ID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.tableView.mj_header.beginRefreshing()

@@ -32,7 +32,7 @@ class BindingController: UIViewController {
     /** 获取用户信息 */
     func loadUserDetial() {
         showHUD()
-        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: UserInfo) in
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)"], success: { [weak self] (obj: UserInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 if obj.data?.pid != 0 {
@@ -59,7 +59,7 @@ class BindingController: UIViewController {
     
     func bindingUser(code: String) {
         showHUD()
-        getRequest(baseUrl: Binding_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "code" : code], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: Binding_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "code" : code], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "绑定成功！", completed: {

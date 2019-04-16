@@ -87,7 +87,7 @@ class XuNiConfirmOrderViewController: TMViewController {
         
 
         
-        var dic = ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "flow_type" : flowType, "pay_note" : payNote,"grade":"1"] as [String : Any]
+        var dic = ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "flow_type" : flowType, "pay_note" : payNote,"grade":"1"] as [String : Any]
         var from_str = ""
         var from_val = ""
 

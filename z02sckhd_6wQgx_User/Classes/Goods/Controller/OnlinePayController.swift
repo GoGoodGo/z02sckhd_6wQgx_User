@@ -64,7 +64,7 @@ class OnlinePayController: TMViewController {
     func loadPay(type: String) {
         showHUD()
         if payWay == "1" {
-            getRequest(baseUrl: OrderPay_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: PayInfo) in
+            getRequest(baseUrl: OrderPay_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "mid" : mid, "type" : type, "form" : "1"], success: { [weak self] (obj: PayInfo) in
                 self?.hideHUD()
                 if "success" == obj.status {
                     TMPayUtils.sharedInstance().tm_pay(withOrderData: obj.data, type: .aliPay, payFinish: { (status, data, message) in
@@ -77,7 +77,7 @@ class OnlinePayController: TMViewController {
                 self.inspectError()
             }
         } else {
-            Alamofire.request(OrderPay_URL, method: .get, parameters: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "mid" : mid, "type" : type, "form" : "1"]).responseJSON { [weak self] (response) in
+            Alamofire.request(OrderPay_URL, method: .get, parameters: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "mid" : mid, "type" : type, "form" : "1"]).responseJSON { [weak self] (response) in
                 self?.hideHUD()
                 guard response.result.isSuccess else {
                     self?.inspectError()

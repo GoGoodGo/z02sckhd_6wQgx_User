@@ -166,7 +166,7 @@ class GoodsDetialController: TMViewController {
     /** 商品详情 */
     func load() {
         showHUD()
-        getRequest(baseUrl: GoodsDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID], success: { [weak self] (obj: DetialInfo) in
+        getRequest(baseUrl: GoodsDetial_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID], success: { [weak self] (obj: DetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -191,7 +191,7 @@ class GoodsDetialController: TMViewController {
     func loadAuction() {
         let form = TMHttpUserInstance.sharedManager()?.member_id == 0 ? "100" : ""
         showHUD()
-        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID, "form" : form], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: AuctionDetial_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID, "form" : form], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -212,7 +212,7 @@ class GoodsDetialController: TMViewController {
     /** 团购详情 */
     func loadGroup() {
         showHUD()
-        getRequest(baseUrl: GroupDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: GroupDetial_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -234,7 +234,7 @@ class GoodsDetialController: TMViewController {
     /** 秒杀详情 */
     func loadTimelimit() {
         showHUD()
-        getRequest(baseUrl: TimelimitDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID], success: { [weak self] (obj: SalesDetialInfo) in
+        getRequest(baseUrl: TimelimitDetial_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID], success: { [weak self] (obj: SalesDetialInfo) in
             self?.hideHUD()
             self?.tableView.mj_header.endRefreshing()
             if "success" == obj.status {
@@ -253,7 +253,7 @@ class GoodsDetialController: TMViewController {
     }
     /** 获取评论 */
     func loadComment() {
-        getRequest(baseUrl: GoodsComment_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : "\(goodsDetial?.goods_id ?? 0)", "page" : "1"], success: { [weak self] (obj: CommentInfo) in
+        getRequest(baseUrl: GoodsComment_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : "\(goodsDetial?.goods_id ?? 0)", "page" : "1"], success: { [weak self] (obj: CommentInfo) in
             if "success" == obj.status {
                 self?.comments = (obj.data?.result)!
                 self?.tableView.reloadData()
@@ -267,7 +267,7 @@ class GoodsDetialController: TMViewController {
     /** 加入购物车 */
     func addCart() {
         showHUD()
-        getRequest(baseUrl: AddCart_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCart_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.showAutoHideHUD(message: "添加成功！", completed: {
@@ -283,7 +283,7 @@ class GoodsDetialController: TMViewController {
     /** 收藏 */
     func addCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: AddCollect_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID, "type" : "1"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: AddCollect_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID, "type" : "1"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = true
@@ -297,7 +297,7 @@ class GoodsDetialController: TMViewController {
     /** 取消收藏 */
     func cancelCollect(sender: UIButton) {
         showHUD()
-        getRequest(baseUrl: CancelCollect_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: CancelCollect_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 sender.isSelected = false
@@ -499,7 +499,7 @@ class GoodsDetialController: TMViewController {
         showHUD()
         let newPrice = salesDetial?.store?.new_price ?? "0.00"
         let price = Float(newPrice.isEmpty ? "0.00" : newPrice)! + Float(salesDetial?.store?.markups ?? "0")!
-        getRequest(baseUrl: AuctionBid_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: AuctionBid_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID, "price" : "\(price)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 if obj.data?.is_top == 1 {
@@ -518,7 +518,7 @@ class GoodsDetialController: TMViewController {
     func auctionBuy() {
         
         showHUD()
-        getRequest(baseUrl: AuctionBuy_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: AuctionBuy_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID, "price" : (salesDetial?.store?.maxprice)!], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "2")
@@ -535,7 +535,7 @@ class GoodsDetialController: TMViewController {
     func groupBuy() {
         
         showHUD()
-        getRequest(baseUrl: GroupBuy_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: GroupBuy_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "1")
@@ -552,7 +552,7 @@ class GoodsDetialController: TMViewController {
     func timelimitBuy() {
         
         showHUD()
-        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "id" : goodsID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
+        getRequest(baseUrl: TimelimitBuy_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "id" : goodsID, "quantity" : "\(number)"], success: { [weak self] (obj: AuctionBid) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "4")
@@ -569,7 +569,7 @@ class GoodsDetialController: TMViewController {
     func goodsBuy() {
         
         showHUD()
-        getRequest(baseUrl: Buy_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
+        getRequest(baseUrl: Buy_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "spec_id" : specID, "quantity" : "\(number)"], success: { [weak self] (obj: BaseModel) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.submit(flowType: "5")
@@ -585,7 +585,7 @@ class GoodsDetialController: TMViewController {
     /** 提交 */
     func submit(flowType: String) {
         
-        getRequest(baseUrl: CartSubmit_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken, "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
+        getRequest(baseUrl: CartSubmit_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)", "flow_type" : flowType], success: { [weak self] (obj: CartOrderInfo) in
             if "success" == obj.status {
            
                 if self?.goodsDetial?.grade == 1 {

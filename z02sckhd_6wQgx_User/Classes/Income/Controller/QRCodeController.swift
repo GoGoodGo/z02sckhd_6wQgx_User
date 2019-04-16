@@ -46,7 +46,7 @@ class QRCodeController: TMViewController {
     /** 获取用户信息 */
     func loadUserDetial() {
         showHUD()
-        getRequest(baseUrl: UserDetial_URL, params: ["token" : TMHttpUserInstance.sharedManager().member_code ?? TestToken], success: { [weak self] (obj: UserInfo) in
+        getRequest(baseUrl: UserDetial_URL, params: ["token" : "\(TMHttpUserInstance.sharedManager().member_id)"], success: { [weak self] (obj: UserInfo) in
             self?.hideHUD()
             if "success" == obj.status {
                 self?.isShowError(isShow: false)
