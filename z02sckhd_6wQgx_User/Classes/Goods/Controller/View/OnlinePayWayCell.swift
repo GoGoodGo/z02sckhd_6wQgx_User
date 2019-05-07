@@ -28,7 +28,7 @@ class OnlinePayWayCell: UITableViewCell {
     
     @IBAction func action_wxPay(_ sender: UIButton) {
         if let click = pay {
-            click("4")
+            click("2")
         }
     }
     // MARK: - Setter
