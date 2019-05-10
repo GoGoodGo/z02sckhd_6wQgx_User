@@ -109,6 +109,7 @@ currentController:(UIViewController *)currentController
 - (void)tm_showShareWithImage:(id)image
                        finish:(TM_ShareComplete)complate;
 
+
 /*
 第三方登录
 platformType  1 QQ  2 微信 3 新浪微博
