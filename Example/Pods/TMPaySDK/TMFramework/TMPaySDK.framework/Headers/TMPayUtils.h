@@ -46,13 +46,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)tm_payWithOrderData:(id)orderData type:(TMPayType )type payFinishBlock:(TMPayFinish)payFinishBlock;
 
-/**
- 处理支付回调
-
- @param url 回调地址
- @param options 回调参数
- */
-- (void)tm_handlePayResultWithOpenURL:(NSURL *)url options:(NSDictionary *)options;
 
 
 
